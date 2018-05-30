@@ -52,7 +52,7 @@ setMethod("performDC", "dataCheck",
 })
 
 DC <- yaml::yaml.load_file("./data_DC_test.yaml")
-# dataRaw <- readRDS("./dataRaw_chiroptera_Australia.RDS")
+dataRaw <- readRDS("./dataRaw_chiroptera_Australia.RDS")
 
 for(i in seq_along(DC)) {
     foo <- new("dataCheckMeta",
