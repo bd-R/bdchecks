@@ -41,7 +41,7 @@ DC_1:
       Fitness: TRUE
       Table: TRUE
   Functionality: |
-    FUNC <- function(TARGET, DEPEND) {
+    FUNC <- function() {
       result <- TARGET %in% DEPEND
       return(result)
     }

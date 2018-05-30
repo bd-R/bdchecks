@@ -17,9 +17,42 @@ dataCheck <- setClass(
         input  = "list",
         output = "list",
         func   = "expression"))
+setGeneric("performDC", function(DC) standardGeneric("performDC"))
+setMethod("performDC", "dataCheck",
+    function(DC) {
 
-DC <- yaml::yaml.load_file("~/work/gsoc18/pg_dataCheck/DC_test.yaml")
-dataRaw <- readRDS("~/work/gsoc18/pg_dataCheck/dataRaw_chiroptera_Australia.RDS")
+        # TARGETS
+        targetNames <- unlist(strsplit(DC@input$Target, ","))
+        for(j in seq_along(targetNames)) {
+            assign(paste0("TARGET", j), dataRaw[, targetNames[j], drop = TRUE])
+        }
+        if (length(targetNames) == 1) {
+            TARGET <- TARGET1
+        }
+
+        # DEPENDENCIES
+        # pacman Gives
+  #       Error in eval(match.call()[[2]]) : 
+  # trying to get slot "input" from an object of a basic class ("list") with no slots
+        # if (!is.null(DC@input$Dependency$Rpackages)) {
+              library(DC@input$Dependency$Rpackages, character.only = TRUE)
+        #     pacman::p_load(DC@input$Dependency$Rpackages, character.only = TRUE)
+        # }
+        if (!is.null(DC@input$Dependency$Data)) {
+            dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
+            for(j in seq_along(dependencies)) {
+                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
+            }
+            if (length(dependencies) == 1) {
+                DEPEND <- DEPEND1
+            }
+            DEPENDS <- ls(pattern = "DEPEND\\d+")
+        }
+        eval(DC@func)()
+})
+
+DC <- yaml::yaml.load_file("./data_DC_test.yaml")
+# dataRaw <- readRDS("./dataRaw_chiroptera_Australia.RDS")
 
 for(i in seq_along(DC)) {
     foo <- new("dataCheckMeta",
@@ -39,36 +72,4 @@ for(i in seq_along(DC)) {
                func   = parse(text = DC[[i]]$Functionality))
     assign(paste0("DC_", DC[[i]]$name), bar)
 }
-
-setGeneric("performDC", function(DC) standardGeneric("performDC"))
-setMethod("performDC", "dataCheck",
-    function(DC) {
-
-        # TARGETS
-        targetNames <- unlist(strsplit(DC@input$Target, ","))
-        for(j in seq_along(targetNames)) {
-            assign(paste0("TARGET", j), dataRaw[, targetNames[j], drop = TRUE])
-        }
-        if (length(targetNames) == 1) {
-            TARGET <- TARGET1
-        }
-
-        # DEPENDENCIES
-        DEPENDENCIES <- DC@input$Dependency
-        if (!is.null(DEPENDENCIES$Rpackages)) {
-            pacman::p_load(DEPENDENCIES$Rpackages, character.only = TRUE)
-        }
-        if (!is.null(DEPENDENCIES$Data)) {
-            dependencies <- unlist(strsplit(DEPENDENCIES$Data, ","))
-            for(j in seq_along(dependencies)) {
-                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
-            }
-            if (length(dependencies) == 1) {
-                DEPEND <- DEPEND1
-            }
-            DEPENDS <- ls(pattern = "DEPEND\\d+")
-        }
-
-        eval(DC@func)(TARGET, DEPEND)
-})
 performDC(DC_countryNameUnkown)
