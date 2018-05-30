@@ -1,0 +1,51 @@
+dataCheckMeta <- setClass(
+    "dataCheckMeta",
+    slots = c(
+        description = "list",
+        keywords    = "character",
+        question    = "character",
+        dimension   = "character",
+        pseudocode  = "character",
+        source      = "list",
+        example     = "list"))
+dataCheck <- setClass(
+    "dataCheck",
+    slots = c(
+        name   = "character",
+        guid   = "character",
+        meta   = "dataCheckMeta",
+        input  = "list",
+        output = "list",
+        func   = "expression"))
+setGeneric("performDC", function(DC) standardGeneric("performDC"))
+setMethod("performDC", "dataCheck",
+    function(DC) {
+
+        # TARGETS
+        targetNames <- unlist(strsplit(DC@input$Target, ","))
+        for(j in seq_along(targetNames)) {
+            assign(paste0("TARGET", j), dataRaw[, targetNames[j], drop = TRUE])
+        }
+        if (length(targetNames) == 1) {
+            TARGET <- TARGET1
+        }
+
+        # DEPENDENCIES
+        if (!is.null(DC@input$Dependency$Rpackages)) {
+            if (!require(DC@input$Dependency$Rpackages, character.only = TRUE)) {
+                install.packages(DC@input$Dependency$Rpackages)
+            }
+                library(DC@input$Dependency$Rpackages, character.only = TRUE)
+        }
+        if (!is.null(DC@input$Dependency$Data)) {
+            dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
+            for(j in seq_along(dependencies)) {
+                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
+            }
+            if (length(dependencies) == 1) {
+                DEPEND <- DEPEND1
+            }
+            DEPENDS <- ls(pattern = "DEPEND\\d+")
+        }
+        eval(DC@func)()
+})
