@@ -31,13 +31,12 @@ setMethod("performDC", "dataCheck",
         }
 
         # DEPENDENCIES
-        # pacman Gives
-  #       Error in eval(match.call()[[2]]) : 
-  # trying to get slot "input" from an object of a basic class ("list") with no slots
-        # if (!is.null(DC@input$Dependency$Rpackages)) {
-              library(DC@input$Dependency$Rpackages, character.only = TRUE)
-        #     pacman::p_load(DC@input$Dependency$Rpackages, character.only = TRUE)
-        # }
+        if (!is.null(DC@input$Dependency$Rpackages)) {
+          if (!require(DC@input$Dependency$Rpackages)) {
+            install.packages(DC@input$Dependency$Rpackages)
+          }
+            library(somepackage)
+        }
         if (!is.null(DC@input$Dependency$Data)) {
             dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
             for(j in seq_along(dependencies)) {
