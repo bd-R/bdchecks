@@ -1,0 +1,101 @@
+dataCheckMeta <- setClass(
+    "dataCheckMeta",
+    slots = c(
+        description = "list",
+        keywords    = "character",
+        question    = "character",
+        dimension   = "character",
+        pseudocode  = "character",
+        source      = "list",
+        example     = "list"))
+dataCheck <- setClass(
+    "dataCheck",
+    slots = c(
+        name   = "character",
+        guid   = "character",
+        meta   = "dataCheckMeta",
+        input  = "list",
+        output = "list",
+        func   = "expression"))
+setGeneric("performDC", function(DC, data) standardGeneric("performDC"))
+setMethod("performDC", "dataCheck",
+    function(DC, data) {
+
+        # TARGETS
+        targetNames <- unlist(strsplit(DC@input$Target, ","))
+        for(j in seq_along(targetNames)) {
+            assign(paste0("TARGET", j), data[, targetNames[j], drop = TRUE])
+        }
+        if (length(targetNames) == 1) {
+            TARGET <- TARGET1
+        }
+        TARGETS <- ls(pattern = "TARGET\\d+")
+
+        # DEPENDENCIES
+        if (!is.null(DC@input$Dependency$Rpackages)) {
+            if (!require(DC@input$Dependency$Rpackages, character.only = TRUE)) {
+                install.packages(DC@input$Dependency$Rpackages)
+            }
+                library(DC@input$Dependency$Rpackages, character.only = TRUE)
+        }
+        if (!is.null(DC@input$Dependency$Data)) {
+            dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
+            for(j in seq_along(dependencies)) {
+                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
+            }
+            if (length(dependencies) == 1) {
+                DEPEND <- DEPEND1
+            }
+            DEPENDS <- ls(pattern = "DEPEND\\d+")
+        }
+        eval(DC@func)()
+})
+
+
+
+################################################################################
+################################################################################
+
+
+########################################
+# Meta
+########################################
+
+library(bdchecks)
+YAML <- "data_DC_test.yaml"
+
+
+########################################
+# Get DC
+########################################
+
+DC <- yaml::yaml.load_file(YAML)
+for(i in seq_along(DC)) {
+    foo <- new("dataCheckMeta",
+               description = DC[[i]]$meta$Description,
+               keywords    = DC[[i]]$meta$Keywords,
+               question    = DC[[i]]$meta$InputQuestion,
+               dimension   = DC[[i]]$meta$Dimension,
+               pseudocode  = DC[[i]]$meta$Pseudocode,
+               source      = DC[[i]]$meta$Source,
+               example     = DC[[i]]$meta$Example)
+    bar <- new("dataCheck",
+               name   = DC[[i]]$name,
+               guid   = DC[[i]]$guid,
+               meta   = foo,
+               input  = DC[[i]]$Input,
+               output = DC[[i]]$Output,
+               func   = parse(text = DC[[i]]$Functionality))
+    assign(paste0("DC_", DC[[i]]$name), bar)
+    dput(eval(parse(text = paste0("DC_", DC[[i]]$name))), 
+         paste0("./R/", paste0("DC_", DC[[i]]$name), ".R"),
+         "niceNames")
+}
+
+########################################
+# Test
+########################################
+
+dataRaw <- readRDS("./data/dataRaw_chiroptera_Australia.RDS")
+performDC(DC_countryNameUnkown, dataRaw)
+performDC(DC_dateNull, dataRaw)
