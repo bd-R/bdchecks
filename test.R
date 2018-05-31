@@ -51,6 +51,39 @@ setMethod("performDC", "dataCheck",
         eval(DC@func)()
 })
 
+########################################
+# Load DCs
+getDC <- function(YAML = "./DC/DC_test.yaml", 
+                  exportDC = TRUE,
+                  pathDC = "./DC/") {
+
+    DCyaml <- yaml::yaml.load_file(YAML)
+    DC <- list()
+    for(i in seq_along(DCyaml)) {
+        foo <- new("dataCheckMeta",
+                   description = DCyaml[[i]]$meta$Description,
+                   keywords    = DCyaml[[i]]$meta$Keywords,
+                   question    = DCyaml[[i]]$meta$InputQuestion,
+                   dimension   = DCyaml[[i]]$meta$Dimension,
+                   pseudocode  = DCyaml[[i]]$meta$Pseudocode,
+                   source      = DCyaml[[i]]$meta$Source,
+                   example     = DCyaml[[i]]$meta$Example)
+        bar <- new("dataCheck",
+                   name   = DCyaml[[i]]$name,
+                   guid   = DCyaml[[i]]$guid,
+                   meta   = foo,
+                   input  = DCyaml[[i]]$Input,
+                   output = DCyaml[[i]]$Output,
+                   func   = parse(text = DCyaml[[i]]$Functionality))
+        DC[[paste0("DC_", DCyaml[[i]]$name)]] <- bar
+        if (exportDC) {
+            dput(bar, paste0(pathDC, paste0("DC_", DCyaml[[i]]$name), ".R"),
+                 "niceNames")
+        }
+    }
+    return(DC)
+}
+
 ################################################################################
 ################################################################################
 
@@ -58,5 +91,24 @@ library(bdchecks)
 DC <- getDC()
 
 dataRaw <- readRDS("./data/dataRaw_chiroptera_Australia.RDS")
-performDC(DC$DC_countryNameUnkown, dataRaw)
-performDC(DC$DC_dateNull, dataRaw)
+lapply(DC, performDC, dataRaw)
+
+
+wantedDC    <- sub("^DC_", "", names(DC))
+performedDC <- character(length(DC))
+while(!all(wantedDC %in% performedDC)) {
+    for(i in seq_along(DC)) {
+        # If there are no dependencies then it's safe to run DC
+        DCsafe <- is.null(DC[[i]]@input$Dependency$DataChecks)
+        if (!DCsafe) {
+            # Check if required dependencies are already performed
+            DCsafe <- DC[[i]]@input$Dependency$DataChecks %in% performedDC
+        }
+
+        if (DCsafe & !wantedDC[i] %in% performedDC) {
+            print(i)
+            performDC(DC[[i]], dataRaw)
+            performedDC[i] <- wantedDC[i]
+        }
+    }
+}
