@@ -87,9 +87,13 @@ DC_2:
       percentPass: TRUE
       Fitness: TRUE
       Table: TRUE
-  Functionality:
-      name: fx_countryMismatch
-DC_4:
+  Functionality: |
+    FUNC <- function() {
+        foo <- sapply(TARGET1, function(x) which(DEPEND1 == x))
+        bar <- sapply(TARGET2, function(x) which(DEPEND2 == x))
+        as.vector(foo == bar)
+    }
+DC_3:
   name: dayMonthTransposed
   guid: f98a54eb-59e7-44c7-b96f-200e6af1c895
   meta:
@@ -131,9 +135,11 @@ DC_4:
       percentPass: TRUE
       Fitness: TRUE
       Table: TRUE
-  Functionality:
-      name: fx_dayMonthTransposed
-DC_3:
+  Functionality: |
+    FUNC <- function() {
+      TARGET1 <= 12 & TARGET2 > 12
+    }
+DC_4:
   name: dateNull
   guid: 41267642-60ff-4116-90eb-499fee2cd83f
   meta:
@@ -175,5 +181,7 @@ DC_3:
       percentPass: TRUE
       Fitness: TRUE
       Table: TRUE
-  Functionality:
-      body: fx_dateNull
+  Functionality: |
+    FUNC <- function() {
+        all(sapply(TARGETS, function(x) !is.null(get(x))))
+    }

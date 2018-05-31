@@ -29,6 +29,7 @@ setMethod("performDC", "dataCheck",
         if (length(targetNames) == 1) {
             TARGET <- TARGET1
         }
+        TARGETS <- ls(pattern = "TARGET\\d+")
 
         # DEPENDENCIES
         if (!is.null(DC@input$Dependency$Rpackages)) {
