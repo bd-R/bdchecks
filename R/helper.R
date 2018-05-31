@@ -1,7 +1,7 @@
 # Load DCs
-getDC <- function(YAML = "data_DC_test.yaml", 
+getDC <- function(YAML = "./DC/DC_test.yaml", 
                   exportDC = TRUE,
-                  pathDC = "./R/") {
+                  pathDC = "./DC/") {
 
     DCyaml <- yaml::yaml.load_file(YAML)
     DC <- list()
@@ -23,7 +23,7 @@ getDC <- function(YAML = "data_DC_test.yaml",
                    func   = parse(text = DCyaml[[i]]$Functionality))
         DC[[paste0("DC_", DCyaml[[i]]$name)]] <- bar
         if (exportDC) {
-            dput(bar, paste0("./R/", paste0("DC_", DCyaml[[i]]$name), ".R"),
+            dput(bar, paste0(pathDC, paste0("DC_", DCyaml[[i]]$name), ".R"),
                  "niceNames")
         }
     }
