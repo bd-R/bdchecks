@@ -17,14 +17,14 @@ dataCheck <- setClass(
         input  = "list",
         output = "list",
         func   = "expression"))
-setGeneric("performDC", function(DC) standardGeneric("performDC"))
+setGeneric("performDC", function(DC, data) standardGeneric("performDC"))
 setMethod("performDC", "dataCheck",
-    function(DC) {
+    function(DC, data) {
 
         # TARGETS
         targetNames <- unlist(strsplit(DC@input$Target, ","))
         for(j in seq_along(targetNames)) {
-            assign(paste0("TARGET", j), dataRaw[, targetNames[j], drop = TRUE])
+            assign(paste0("TARGET", j), data[, targetNames[j], drop = TRUE])
         }
         if (length(targetNames) == 1) {
             TARGET <- TARGET1
