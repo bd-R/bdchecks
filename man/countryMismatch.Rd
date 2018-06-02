@@ -4,9 +4,9 @@
 \name{countryMismatch}
 \alias{countryMismatch}
 \title{Data check countryMismatch Checks if country name matchs ISO code}
-\format{An object of class \code{"dataCheck"}, see\code{\link{dataCheck}} for details.}
+\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
 \description{
-This data check answers: "Does contry name match country code?" question.\cr Data check will pass if strong{Country name (dwc:country) and ISO country code (dwc:countryCode) match}and fail if strong{Country name (dwc:country) and ISO country code (dwc:countryCode) do not match}.\cr Dimension of this data check is strong{Consistency}and it's flagging type is: strong{FLAG}\cr Example of entries that will pass:AUS AUS, JP JP\cr Passed data check will generate:TRUEoutput.\cr Example of entries that will fail:AUS AUST, AUS JP\cr Failed data check will generate:FALSEoutput.
+This data check answers: "Does contry name match country code?" question.\cr Data check will pass if \strong{Country name (dwc:country) and ISO country code (dwc:countryCode) match} and will fail if \strong{Country name (dwc:country) and ISO country code (dwc:countryCode) do not match}.\cr Dimension of this data check is \strong{Consistency} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{AUS AUS, JP JP}, such data check will return \code{TRUE}.\cr Example of entries that will fail: \code{AUS AUST, AUS JP}, such data check will return \code{FALSE}.
 }
 \references{
 LATER

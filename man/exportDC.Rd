@@ -5,7 +5,7 @@
 \title{Export data checks as R objects}
 \usage{
 exportDC(pathYAML = "./DC_test.yaml", exportRDA = TRUE, exportROX = TRUE,
-  pathRDA = "./data/", pathROX = "./R/", idRDA = NULL, idROX = "DC_")
+  pathRDA = "./data/", pathROX = "./R/", idRDA = "DC_", idROX = "DC_")
 }
 \arguments{
 \item{pathYAML}{Path to a YAML file.}

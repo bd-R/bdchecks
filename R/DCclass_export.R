@@ -20,7 +20,7 @@ exportDC <- function(pathYAML  = "./DC_test.yaml",
                      exportROX = TRUE,
                      pathRDA   = "./data/",
                      pathROX   = "./R/",
-                     idRDA     = NULL,  
+                     idRDA     = "DC_",  
                      idROX     = "DC_") {
 
     # Load YAML file with data checks
@@ -36,7 +36,7 @@ exportDC <- function(pathYAML  = "./DC_test.yaml",
             assign(paste0(idROX, x$name), DC)
             # Save DC object as rda
             save(list = paste0(idROX, x$name), 
-                 file = paste0(idRDA, pathRDA, x$name, ".rda"))
+                 file = paste0(pathRDA, idRDA, x$name, ".rda"))
         }
         if (exportROX) {
             writeLines(generateRoxygenComment(DC), 
@@ -62,7 +62,7 @@ generateRoxygenComment <- function(DC) {
         "longDesc",
         "#' @name",
         "#' @docType data",
-        "#' @format An object of class \\code{\"dataCheck\"}, see\\code{\\link{dataCheck}} for details.",
+        "#' @format An object of class \\code{\"dataCheck\"}, see \\code{\\link{dataCheck}} for details.",
         "#' @references LATER")
 
     # Add short description
@@ -73,14 +73,14 @@ generateRoxygenComment <- function(DC) {
     # Add long description
     skeleton <- sub("longDesc", paste0(
         "#'     This data check answers: \"", DC@meta@question, "?\" question.",
-        "\\\\cr Data check will pass if \\strong{", DC@meta@description$Pass, "}", 
-                "and fail if \\strong{",  DC@meta@description$Fail, "}.", 
-        "\\\\cr Dimension of this data check is \\strong{", DC@meta@dimension, "}",
-                "and it's flagging type is: \\strong{FLAG}",
-        "\\\\cr Example of entries that will pass:", DC@meta@example$InputPass, "",
-        "\\\\cr Passed data check will generate:", DC@meta@example$OutputPass, "output.",
-        "\\\\cr Example of entries that will fail:", DC@meta@example$InputFail, "",
-        "\\\\cr Failed data check will generate:", DC@meta@example$OutputFail, "output."
+        "\\\\cr Data check will pass if \\\\strong{", DC@meta@description$Pass, "}", 
+                " and will fail if \\\\strong{",  DC@meta@description$Fail, "}.", 
+        "\\\\cr Dimension of this data check is \\\\strong{", DC@meta@dimension, "}",
+                " and it's flagging type is: \\\\strong{FLAG}",
+        "\\\\cr Example of entries that will pass: \\\\code{", DC@meta@example$InputPass, "},",
+                " such data check would return \\\\code{", DC@meta@example$OutputPass, "}.",
+        "\\\\cr Example of entries that will fail: \\\\code{", DC@meta@example$InputFail, "},",
+                " such data check would return \\\\code{", DC@meta@example$OutputFail, "}."
         ),
         skeleton)
     # Add name
