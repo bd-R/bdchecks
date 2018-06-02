@@ -1,0 +1,187 @@
+DC_1:
+  name: countryNameUnkown
+  guid: 69b2efdc-6269-45a4-aecb-4cb99c2ae134
+  meta:
+    Description:
+      Main: Checks if given country code name is known
+      Fail: Country name (dwc:country) not in vocabulary
+      Pass: Country name (dwc:country) is in vocabulary
+    Keywords: country, geo
+    InputQuestion: Is country known
+    Dimension: Conformance
+    Pseudocode: |
+      for entry in field
+        result = entry %in% dictionary
+        return(result)
+    Source:
+      Reference: NULL
+      CreatedBy: NULL
+      MaintainedBy: NULL
+      CreationDate: NULL
+      ModificationDate: NULL
+      ModificationHist: NULL
+    Example:
+      InputFail: xxx, AUST, 1
+      InputPass: AUS,JP
+      OutputFail: FALSE
+      OutputPass: TRUE
+  Input:
+    Target: countryCode
+    Dependency:
+      Data: isocodes$code
+      DataChecks: NULL
+      Sibling: NULL
+      Rpackages: rgbif
+  Output:
+    Flag: Invalid
+    Severity: Warning
+    Report:
+      percentEmpty: TRUE
+      percentPass: TRUE
+      Fitness: TRUE
+      Table: TRUE
+  Functionality: |
+    FUNC <- function() {
+      result <- TARGET %in% DEPEND
+      return(result)
+    }
+DC_2:
+  name: countryMismatch
+  guid: b23110e7-1be7-444a-a677-cdee0cf4330c
+  meta:
+    Description:
+      Main: Checks if country name matchs ISO code
+      Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do not match
+      Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
+    Keywords: country, geo
+    InputQuestion: Does contry name match country code
+    Dimension: Consistency
+    Pseudocode: |
+      for countryName & countryCode in field
+        result = countryName == countryCode
+        return(result)
+    Source:
+      Reference: NULL 
+      CreatedBy: NULL
+      MaintainedBy: NULL
+      CreationDate: NULL
+      ModificationDate: NULL
+      ModificationHist: NULL
+    Example:
+      InputFail: AUS AUST, AUS JP
+      InputPass: AUS AUS, JP JP
+      OutputFail: FALSE
+      OutputPass: TRUE
+  Input:
+    Target: country,countryCode
+    Dependency:
+      Data: isocodes$name,isocodes$code
+      DataChecks: NULL
+      Sibling: NULL
+      Rpackages: rgbif 
+  Output:
+    Flag: Invalid
+    Severity: Warning
+    Report:
+      percentEmpty: TRUE
+      percentPass: TRUE
+      Fitness: TRUE
+      Table: TRUE
+  Functionality: |
+    FUNC <- function() {
+        foo <- sapply(TARGET1, function(x) which(DEPEND1 == x))
+        bar <- sapply(TARGET2, function(x) which(DEPEND2 == x))
+        as.vector(foo == bar)
+    }
+DC_3:
+  name: dayMonthTransposed
+  guid: f98a54eb-59e7-44c7-b96f-200e6af1c895
+  meta:
+    Description:
+      Main: Checks if day and month information is not transposed
+      Fail: The event month is greater than 12 and event day is less than 12 inferring field transpositon
+      Pass: The event month and day is feasible
+    Keywords: date
+    InputQuestion: Is day and month not switched
+    Dimension: Conformance
+    Pseudocode: |
+      for day and month in field
+        result = month > 12 and day < 12
+        return(result)
+    Source:
+      Reference: NULL 
+      CreatedBy: NULL
+      MaintainedBy: NULL
+      CreationDate: NULL
+      ModificationDate: NULL
+      ModificationHist: NULL
+    Example:
+      InputFail: day=1 + month = 13, day = 12 + month = 31
+      InputPass: day=1 + month = 12, day = 31 + month = 1
+      OutputFail: Amendment
+      OutputPass: TRUE
+  Input:
+    Target: day,month
+    Dependency:
+      Data: NULL
+      DataChecks: dateNull
+      Sibling: NULL
+      Rpackages: NULL 
+  Output:
+    Flag: Invalid
+    Severity: Warning
+    Report:
+      percentEmpty: TRUE
+      percentPass: TRUE
+      Fitness: TRUE
+      Table: TRUE
+  Functionality: |
+    FUNC <- function() {
+      TARGET1 <= 12 & TARGET2 > 12
+    }
+DC_4:
+  name: dateNull
+  guid: 41267642-60ff-4116-90eb-499fee2cd83f
+  meta:
+    Description:
+      Main: Checks if date feeld is not empty
+      Fail: No date information
+      Pass: Date information is present
+    Keywords: date
+    InputQuestion: Is date feeld not empty
+    Dimension: Completness
+    Pseudocode: |
+      for dateCols in field
+        result = isNull(year) & isNull(eventDate) & isNull(verbatimEventDate)
+        return(result)
+    Source:
+      Reference: NULL 
+      CreatedBy: NULL
+      MaintainedBy: NULL
+      CreationDate: NULL
+      ModificationDate: NULL
+      ModificationHist: NULL
+    Example:
+      InputFail: year=NULL + eventDate=NULL + verbatimEventDate=NULL, year=2010 + eventDate=NULL + verbatimEventDate=NULL
+      InputPass: year=2010 + eventDate=2010.01.01 + verbatimEventDate=2010.01.01
+      OutputFail: FALSE
+      OutputPass: TRUE
+  Input:
+    Target: year,eventDate,verbatimEventDate
+    Dependency:
+      Data: NULL
+      DataChecks: NULL
+      Sibling: NULL
+      Rpackages: NULL 
+  Output:
+    Flag: Invalid
+    Severity: Warning
+    Report:
+      percentEmpty: TRUE
+      percentPass: TRUE
+      Fitness: TRUE
+      Table: TRUE
+  Functionality: |
+    FUNC <- function() {
+        all(sapply(TARGETS, function(x) !is.null(get(x))))
+    }
