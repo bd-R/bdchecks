@@ -1,0 +1,10 @@
+#'
+#' Data check dayMonthTransposed Checks if day and month information is not transposed
+#'
+#'     This data check answers: "Is day and month not switched?" question.\cr Data check will pass if strong{The event month and day is feasible}and fail if strong{The event month is greater than 12 and event day is less than 12 inferring field transpositon}.\cr Dimension of this data check is strong{Conformance}and it's flagging type is: strong{FLAG}\cr Example of entries that will pass:day=1 + month = 12, day = 31 + month = 1\cr Passed data check will generate:TRUEoutput.\cr Example of entries that will fail:day=1 + month = 13, day = 12 + month = 31\cr Failed data check will generate:Amendmentoutput.
+#' @name dayMonthTransposed
+#' @docType data
+#' @format An object of class \code{"dataCheck"}, see\code{\link{dataCheck}} for details.
+#' @references LATER
+#' @keywords date
+NULL
