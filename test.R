@@ -53,7 +53,7 @@ setMethod("performDC", "dataCheck",
 
 ########################################
 # Load DCs
-getDC <- function(YAML = "./DC/DC_test.yaml", 
+getDC <- function(YAML = "./DC_test.yaml", 
                   exportDC = TRUE,
                   pathDC = "./DC/") {
 
@@ -83,6 +83,8 @@ getDC <- function(YAML = "./DC/DC_test.yaml",
     }
     return(DC)
 }
+
+
 
 ################################################################################
 ################################################################################

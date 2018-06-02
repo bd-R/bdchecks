@@ -9,3 +9,5 @@ Author: Tomer Gueta <tomer.gu@gmail.com>, Vijay Barve <vijay.barve@gmail.com>,
     Carmel Yohay <yohay@cv.technion.ac.il>
 Maintainer: Povilas Gibas <povilasgibas@gmail.com>
 Imports: yaml
+LazyData: true
+RoxygenNote: 6.0.1
