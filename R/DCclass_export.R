@@ -15,7 +15,7 @@
 #' @examples
 #' exportDC(pathYAML = "pathToYAML.yaml")
 #' 
-exportDC <- function(pathYAML  = "./DC_test.yaml", 
+exportDC <- function(pathYAML  = "./data/DCtest.yaml", 
                      exportRDA = TRUE,
                      exportROX = TRUE,
                      pathRDA   = "./data/",

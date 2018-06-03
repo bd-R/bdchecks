@@ -10,7 +10,7 @@
 #' @examples
 #' dataChecks <- getDC(pathYAML = "pathToYAML.yaml")
 #' 
-getDC <- function(pathYAML = "./DC_test.yaml") {
+getDC <- function(pathYAML = "./data/DCtest.yaml") {
     # Load YAML file with data checks
     DCyaml <- yaml::yaml.load_file(pathYAML)
     DC <- list()
