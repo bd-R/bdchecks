@@ -1,3 +1,5 @@
+#' Create DC meta
+#'
 dataCheckMeta <- setClass(
     "dataCheckMeta",
     slots = c(
@@ -8,6 +10,9 @@ dataCheckMeta <- setClass(
         pseudocode  = "character",
         source      = "list",
         example     = "list"))
+
+#' Create DC
+#'
 dataCheck <- setClass(
     "dataCheck",
     slots = c(
@@ -17,6 +22,11 @@ dataCheck <- setClass(
         input  = "list",
         output = "list",
         func   = "expression"))
+
+#' Perform data check
+#'
+#' @export
+#' 
 setGeneric("performDC", function(DC, data) standardGeneric("performDC"))
 setMethod("performDC", "dataCheck",
     function(DC, data) {

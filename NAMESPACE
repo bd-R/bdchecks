@@ -2,3 +2,4 @@
 
 export(createDCclassMain)
 export(getDC)
+export(performDC)
