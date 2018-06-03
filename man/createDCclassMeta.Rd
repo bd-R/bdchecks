@@ -9,6 +9,9 @@ createDCclassMeta(DCmeta)
 \arguments{
 \item{DCmeta}{Data check metadata slot in YAML format}
 }
+\value{
+Data check metadata object
+}
 \description{
 Create a data check metatadata from a given YAML file
 }

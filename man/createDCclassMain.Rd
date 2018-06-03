@@ -9,6 +9,9 @@ createDCclassMain(DCyaml)
 \arguments{
 \item{DCyaml}{Data check slot in YAML format}
 }
+\value{
+Data check object
+}
 \description{
 Create a data check object from a given YAML file
 }

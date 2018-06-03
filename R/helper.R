@@ -5,10 +5,12 @@
 #'
 #' @param pathYAML Path to a YAML file.
 #'
-#' @export
+#' @return A list of data checks
 #' 
 #' @examples
 #' dataChecks <- getDC(pathYAML = "pathToYAML.yaml")
+#' 
+#' @export
 #' 
 getDC <- function(pathYAML = "./data/DCtest.yaml") {
     # Load YAML file with data checks

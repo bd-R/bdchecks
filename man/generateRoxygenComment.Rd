@@ -9,6 +9,9 @@ generateRoxygenComment(DC)
 \arguments{
 \item{DC}{Data check to generate documentation for.}
 }
+\value{
+Data check description in a roxygen2 comment style
+}
 \description{
 `generateRoxygenComment()` is a function for generating roxygen2 comments for 
 a given data check. It's not super flexible as it just inserts metadata into

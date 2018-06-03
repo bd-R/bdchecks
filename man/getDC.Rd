@@ -9,6 +9,9 @@ getDC(pathYAML = "./data/DCtest.yaml")
 \arguments{
 \item{pathYAML}{Path to a YAML file.}
 }
+\value{
+A list of data checks
+}
 \description{
 `getDC()` is a function for importing data checks from YAML file as 
 a dataCheck object.

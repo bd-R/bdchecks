@@ -64,6 +64,8 @@ setMethod("performDC", "dataCheck",
 #' 
 #' @param DCmeta Data check metadata slot in YAML format
 #' 
+#' @return Data check metadata object
+#' 
 createDCclassMeta <- function(DCmeta) {
     res <- new("dataCheckMeta",
                description = DCmeta$Description,
@@ -79,6 +81,8 @@ createDCclassMeta <- function(DCmeta) {
 #' 
 #' @param DCyaml Data check slot in YAML format
 #'
+#' @return Data check object
+#' 
 #' @export
 #' 
 createDCclassMain <- function(DCyaml) {
