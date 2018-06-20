@@ -1,116 +1,103 @@
-dataCheckMeta <- setClass(
-    "dataCheckMeta",
-    slots = c(
-        description = "list",
-        keywords    = "character",
-        question    = "character",
-        dimension   = "character",
-        pseudocode  = "character",
-        source      = "list",
-        example     = "list"))
-dataCheck <- setClass(
-    "dataCheck",
+library(bdchecks)
+
+
+# Doesn't work  (adjust export)
+# ls(envir = asNamespace("bdchecks"))
+# DC <- getDC()
+
+dataCheckFlag_SINGLE <- setClass(
+    "dataCheckFlag_SINGLE",
     slots = c(
         name   = "character",
-        guid   = "character",
-        meta   = "dataCheckMeta",
-        input  = "list",
-        output = "list",
-        func   = "expression"))
-setGeneric("performDC", function(DC, data) standardGeneric("performDC"))
-setMethod("performDC", "dataCheck",
-    function(DC, data) {
+        target = "character",
+        flag   = "character",
+        result = "logical"))
 
-        # TARGETS
-        targetNames <- unlist(strsplit(DC@input$Target, ","))
-        for(j in seq_along(targetNames)) {
-            assign(paste0("TARGET", j), data[, targetNames[j], drop = TRUE])
-        }
-        if (length(targetNames) == 1) {
-            TARGET <- TARGET1
-        }
-        TARGETS <- ls(pattern = "TARGET\\d+")
+dataCheckFlag <- setClass(
+    "dataCheckFlag", 
+    slots = c(
+        DC       = "vector",
+        flags    = "list",
+        dataOrig = "data.frame",
+        dataMod  = "data.frame"))
 
-        # DEPENDENCIES
-        if (!is.null(DC@input$Dependency$Rpackages)) {
-            if (!require(DC@input$Dependency$Rpackages, character.only = TRUE)) {
-                install.packages(DC@input$Dependency$Rpackages)
+performDataCheck <- function(data = NULL, DC = getDC()) {
+    wantedDC    <- sub("^DC_", "", names(DC))
+    performedDC <- character(length(DC))
+    result <- list()
+    while(!all(wantedDC %in% performedDC)) {
+        for(i in seq_along(DC)) {
+            # If there are no dependencies then it's safe to run DC
+            DCsafe <- is.null(DC[[i]]@input$Dependency$DataChecks)
+            if (!DCsafe) {
+                # Check if required dependencies are already performed
+                DCsafe <- DC[[i]]@input$Dependency$DataChecks %in% performedDC
             }
-                library(DC@input$Dependency$Rpackages, character.only = TRUE)
+
+            if (DCsafe & !wantedDC[i] %in% performedDC) {
+                result[[i]] <- new("dataCheckFlag_SINGLE",
+                    name   = DC[[i]]@name,
+                    target = DC[[i]]@input$Target,
+                    result = performDC(DC[[i]], data),
+                    flag   = "foo")
+                performedDC[i] <- wantedDC[i]
+                # !!! Add random info
+                if (DC[[i]]@name == "countryNameUnkown") {
+                    result[[i]]@result <- sample(c(TRUE, FALSE), nrow(data), replace = TRUE)
+                }
+            }
         }
-        if (!is.null(DC@input$Dependency$Data)) {
-            dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
-            for(j in seq_along(dependencies)) {
-                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
+    }
+    resultDC <- new("dataCheckFlag", 
+        DC       = as.character(lapply(result, function(x) `@`(x, name))),
+        flags    = result,
+        dataOrig = data,
+        dataMod  = data)
+    return(resultDC)
+}
+
+setMethod("show", "dataCheckFlag",
+    function(object) print(object@DC)
+)
+setMethod("show", "dataCheckFlag_SINGLE",
+    function(object) print(paste(object@name, object@target))
+)
+
+
+setGeneric("exportDataCheck", function(DCresult, writeFile = FALSE, file = "result.csv", verbose = TRUE) standardGeneric("exportDataCheck"))
+setMethod("exportDataCheck", "dataCheckFlag",
+    function(DCresult, writeFile = FALSE, file = "result.csv", verbose = TRUE) {
+        if (writeFile) {
+            if (verbose) {
+                message(paste("Writing file to", file))
             }
-            if (length(dependencies) == 1) {
-                DEPEND <- DEPEND1
-            }
-            DEPENDS <- ls(pattern = "DEPEND\\d+")
+            write.csv(DCresult@dataMod, file)
+        } else {
+            return(DCresult@dataMod)
         }
-        eval(DC@func)()
 })
 
-########################################
-# Load DCs
-getDC <- function(YAML = "./DC_test.yaml", 
-                  exportDC = TRUE,
-                  pathDC = "./DC/") {
+setGeneric("shortSummaryDataCheck", function(DCresult) standardGeneric("shortSummaryDataCheck"))
+setMethod("shortSummaryDataCheck", "dataCheckFlag",
+    function(DCresult) {
+        res <- lapply(DCresult@flags, function(x) {
+            data.frame(name = x@name, passed = paste(round(mean(x@result) * 100, 2), "%"))
+        })
+        res <- do.call(rbind, res)
+        cli::cat_bullet(format(res$name), ": ", res$passed)
+})
 
-    DCyaml <- yaml::yaml.load_file(YAML)
-    DC <- list()
-    for(i in seq_along(DCyaml)) {
-        foo <- new("dataCheckMeta",
-                   description = DCyaml[[i]]$meta$Description,
-                   keywords    = DCyaml[[i]]$meta$Keywords,
-                   question    = DCyaml[[i]]$meta$InputQuestion,
-                   dimension   = DCyaml[[i]]$meta$Dimension,
-                   pseudocode  = DCyaml[[i]]$meta$Pseudocode,
-                   source      = DCyaml[[i]]$meta$Source,
-                   example     = DCyaml[[i]]$meta$Example)
-        bar <- new("dataCheck",
-                   name   = DCyaml[[i]]$name,
-                   guid   = DCyaml[[i]]$guid,
-                   meta   = foo,
-                   input  = DCyaml[[i]]$Input,
-                   output = DCyaml[[i]]$Output,
-                   func   = parse(text = DCyaml[[i]]$Functionality))
-        DC[[paste0("DC_", DCyaml[[i]]$name)]] <- bar
-        if (exportDC) {
-            dput(bar, paste0(pathDC, paste0("DC_", DCyaml[[i]]$name), ".R"),
-                 "niceNames")
-        }
-    }
-    return(DC)
-}
+# ------------
 
+DCresult <- performDataCheck(dataBats)
+# DCresult@dataOrig
+# DCresult@dataMod
+# DCresult@flags[[1]]
+# DCresult@flags[[1]]@result
+# exportDataCheck(DCresult, writeFile = TRUE, file = "tmp_result.csv")
+# dataAfterDC <- exportDataCheck(DCresult)
 
-
-################################################################################
-################################################################################
-
-library(bdchecks)
-DC <- getDC()
-
-dataRaw <- readRDS("./data/dataRaw_chiroptera_Australia.RDS")
-lapply(DC, performDC, dataRaw)
-
-
-wantedDC    <- sub("^DC_", "", names(DC))
-performedDC <- character(length(DC))
-while(!all(wantedDC %in% performedDC)) {
-    for(i in seq_along(DC)) {
-        # If there are no dependencies then it's safe to run DC
-        DCsafe <- is.null(DC[[i]]@input$Dependency$DataChecks)
-        if (!DCsafe) {
-            # Check if required dependencies are already performed
-            DCsafe <- DC[[i]]@input$Dependency$DataChecks %in% performedDC
-        }
-
-        if (DCsafe & !wantedDC[i] %in% performedDC) {
-            print(i)
-            performDC(DC[[i]], dataRaw)
-            performedDC[i] <- wantedDC[i]
-        }
-    }
-}
+shortSummaryDataCheck(DCresult)
+longSummaryDataCheck(DCresult)
+filterDataCheck(DCresult, )
+# more data checks
