@@ -137,7 +137,7 @@ DC_3:
       Table: TRUE
   Functionality: |
     FUNC <- function() {
-      TARGET1 <= 12 & TARGET2 > 12
+        !TARGET1 <= 12 & TARGET2 > 12
     }
 DC_4:
   name: dateNull
