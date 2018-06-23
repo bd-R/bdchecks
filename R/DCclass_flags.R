@@ -31,6 +31,7 @@ setMethod("exportDataCheck", "dataCheckFlag",
         }
 })
 
+
 # DONE
 setGeneric("shortSummaryDataCheck", function(DCresult) {
     standardGeneric("shortSummaryDataCheck")
@@ -43,6 +44,22 @@ setMethod("shortSummaryDataCheck", "dataCheckFlag",
         res <- do.call(rbind, res)
         cli::cat_bullet(format(res$name), ": ", res$passed)
 })
+
+
+
+setGeneric("filterDataCheck", function(DCresult, DC = NULL) {
+    standardGeneric("filterDataCheck")
+})
+setMethod("filterDataCheck", "dataCheckFlag",
+    function(DCresult, DC = NULL) {
+        foo <- do.call(cbind, lapply(DCresult@flags, function(x) `@`(x, result)))
+        if (!is.null(DC)) {
+            foo <- matrix(foo[, DCresult@DC %in% DC], ncol = length(DC))
+        }
+        DCresult@dataMod <- DCresult@dataMod[rowSums(!foo) == 0, ]
+        DCresult
+})
+
 
 
 setGeneric("longSummaryDataCheck", function(DCresult) {
@@ -98,18 +115,4 @@ setMethod("longSummaryDataCheck", "dataCheckFlag",
             }
         }
         dev.off()
-})
-
-
-setGeneric("filterDataCheck", function(DCresult, DC = NULL) {
-    standardGeneric("filterDataCheck")
-})
-setMethod("filterDataCheck", "dataCheckFlag",
-    function(DCresult, DC = NULL) {
-        foo <- do.call(cbind, lapply(DCresult@flags, function(x) `@`(x, result)))
-        if (!is.null(DC)) {
-            foo <- matrix(foo[, DCresult@DC %in% DC], ncol = length(DC))
-        }
-        DCresult@dataMod <- DCresult@dataMod[rowSums(!foo) == 0, ]
-        DCresult
 })

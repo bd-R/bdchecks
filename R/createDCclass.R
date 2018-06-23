@@ -28,7 +28,6 @@ createDCclassMain <- function(DCyaml) {
                guid   = DCyaml$guid,
                meta   = createDCclassMeta(DCyaml$meta),
                input  = DCyaml$Input,
-               output = DCyaml$Output,
                func   = parse(text = DCyaml$Functionality))
     return(res)
 }

@@ -43,7 +43,6 @@ dataCheck <- setClass(
         guid   = "character",
         meta   = "dataCheckMeta",
         input  = "list",
-        output = "list",
         func   = "expression"))
 
 #' Single data check flag class

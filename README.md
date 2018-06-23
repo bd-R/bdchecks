@@ -38,3 +38,8 @@ Load data checks (DC) into `R` using `getDC()` function. Needs local [`yaml` fil
 Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 
     exportDC(pathToYAML)
+
+# Misc
+
+- Create show for dataCheck class.  
+- Rearrange yaml.   

@@ -6,6 +6,8 @@ DC_1:
       Main: Checks if given country code name is known
       Fail: Country name (dwc:country) not in vocabulary
       Pass: Country name (dwc:country) is in vocabulary
+      Flag: Invalid
+      Severity: Warning
     Keywords: country, geo
     InputQuestion: Is country known
     Dimension: Conformance
@@ -28,18 +30,9 @@ DC_1:
   Input:
     Target: countryCode
     Dependency:
-      Data: isocodes$code
       DataChecks: NULL
-      Sibling: NULL
       Rpackages: rgbif
-  Output:
-    Flag: Invalid
-    Severity: Warning
-    Report:
-      percentEmpty: TRUE
-      percentPass: TRUE
-      Fitness: TRUE
-      Table: TRUE
+      Data: isocodes$code
   Functionality: |
     FUNC <- function() {
         result <- TARGET %in% DEPEND
@@ -53,6 +46,8 @@ DC_2:
       Main: Checks if country name matchs ISO code
       Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do not match
       Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
+      Flag: Invalid
+      Severity: Warning
     Keywords: country, geo
     InputQuestion: Does contry name match country code
     Dimension: Consistency
@@ -75,18 +70,9 @@ DC_2:
   Input:
     Target: country,countryCode
     Dependency:
-      Data: isocodes$name,isocodes$code
       DataChecks: NULL
-      Sibling: NULL
       Rpackages: rgbif 
-  Output:
-    Flag: Invalid
-    Severity: Warning
-    Report:
-      percentEmpty: TRUE
-      percentPass: TRUE
-      Fitness: TRUE
-      Table: TRUE
+      Data: isocodes$name,isocodes$code
   Functionality: |
     FUNC <- function() {
         foo <- sapply(TARGET1, function(x) which(DEPEND1 == x))
@@ -101,6 +87,8 @@ DC_3:
       Main: Checks if day and month information is not transposed
       Fail: The event month is greater than 12 and event day is less than 12 inferring field transpositon
       Pass: The event month and day is feasible
+      Flag: Invalid
+      Severity: Warning
     Keywords: date
     InputQuestion: Is day and month not switched
     Dimension: Conformance
@@ -123,18 +111,9 @@ DC_3:
   Input:
     Target: day,month
     Dependency:
-      Data: NULL
       DataChecks: dateNull
-      Sibling: NULL
       Rpackages: NULL 
-  Output:
-    Flag: Invalid
-    Severity: Warning
-    Report:
-      percentEmpty: TRUE
-      percentPass: TRUE
-      Fitness: TRUE
-      Table: TRUE
+      Data: NULL
   Functionality: |
     FUNC <- function() {
         if (TARGET2 > 12) {
@@ -151,6 +130,8 @@ DC_4:
       Main: Checks if date feeld is not empty
       Fail: No date information
       Pass: Date information is present
+      Flag: Invalid
+      Severity: Warning
     Keywords: date
     InputQuestion: Is date feeld not empty
     Dimension: Completness
@@ -173,18 +154,9 @@ DC_4:
   Input:
     Target: year,eventDate,verbatimEventDate
     Dependency:
-      Data: NULL
       DataChecks: NULL
-      Sibling: NULL
       Rpackages: NULL 
-  Output:
-    Flag: Invalid
-    Severity: Warning
-    Report:
-      percentEmpty: TRUE
-      percentPass: TRUE
-      Fitness: TRUE
-      Table: TRUE
+      Data: NULL
   Functionality: |
     FUNC <- function() {
         all(sapply(TARGETS, function(x) !is.null(get(x))))
