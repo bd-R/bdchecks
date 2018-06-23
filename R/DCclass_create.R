@@ -1,4 +1,4 @@
-#' Create DC meta
+#' Create data check metadata
 #'
 dataCheckMeta <- setClass(
     "dataCheckMeta",
@@ -11,7 +11,7 @@ dataCheckMeta <- setClass(
         source      = "list",
         example     = "list"))
 
-#' Create DC
+#' Create data check class
 #'
 dataCheck <- setClass(
     "dataCheck",
@@ -23,43 +23,28 @@ dataCheck <- setClass(
         output = "list",
         func   = "expression"))
 
-#' Perform data check
-#'
-#' @export
+#' Create data check flag class
+#' For a single data check
 #' 
-setGeneric("performDC", function(DC, data) standardGeneric("performDC"))
-setMethod("performDC", "dataCheck",
-    function(DC, data) {
+dataCheckFlag_SINGLE <- setClass(
+    "dataCheckFlag_SINGLE",
+    slots = c(
+        name   = "character",
+        target = "character",
+        flag   = "character",
+        result = "logical"))
 
-        # TARGETS
-        targetNames <- unlist(strsplit(DC@input$Target, ","))
-        for(j in seq_along(targetNames)) {
-            assign(paste0("TARGET", j), data[, targetNames[j], drop = TRUE])
-        }
-        if (length(targetNames) == 1) {
-            TARGET <- TARGET1
-        }
-        TARGETS <- ls(pattern = "TARGET\\d+")
+#' Create data check flag class
+#' For all performed data checks
+#' 
+dataCheckFlag <- setClass(
+    "dataCheckFlag", 
+    slots = c(
+        DC       = "vector",
+        flags    = "list",
+        dataOrig = "data.frame",
+        dataMod  = "data.frame"))
 
-        # DEPENDENCIES
-        if (!is.null(DC@input$Dependency$Rpackages)) {
-            if (!require(DC@input$Dependency$Rpackages, character.only = TRUE)) {
-                install.packages(DC@input$Dependency$Rpackages)
-            }
-                library(DC@input$Dependency$Rpackages, character.only = TRUE)
-        }
-        if (!is.null(DC@input$Dependency$Data)) {
-            dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
-            for(j in seq_along(dependencies)) {
-                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
-            }
-            if (length(dependencies) == 1) {
-                DEPEND <- DEPEND1
-            }
-            DEPENDS <- ls(pattern = "DEPEND\\d+")
-        }
-        eval(DC@func)()
-})
 #' Create a data check metatadata from a given YAML file
 #' 
 #' @param DCmeta Data check metadata slot in YAML format
@@ -82,8 +67,6 @@ createDCclassMeta <- function(DCmeta) {
 #' @param DCyaml Data check slot in YAML format
 #'
 #' @return Data check object
-#' 
-#' @export
 #' 
 createDCclassMain <- function(DCyaml) {
     res <- new("dataCheck",

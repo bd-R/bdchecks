@@ -15,8 +15,6 @@
 #' @examples
 #' exportDC(pathYAML = "pathToYAML.yaml")
 #' 
-#' @export 
-#' 
 exportDC <- function(pathYAML  = "./data/DCtest.yaml", 
                      exportRDA = TRUE,
                      exportROX = TRUE,
@@ -45,7 +43,7 @@ exportDC <- function(pathYAML  = "./data/DCtest.yaml",
                        paste0(pathROX, idROX, x$name, ".R"))
         }
     }
-    return(NULL)
+    invisible()
 }
 
 #' Generate roxygen2 documentation from data check object
