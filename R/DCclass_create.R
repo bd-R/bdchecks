@@ -33,14 +33,12 @@ dataCheckMeta <- setClass(
 #' @slot guid unique identifier for a data check
 #' @slot meta meta-data for a data check of a dataCheckMeta class 
 #' @slot input options for a data check 
-#' @slot output options for a data check 
 #' @slot func expression to execute
 #'
 dataCheck <- setClass(
     "dataCheck",
     slots = c(
         name   = "character",
-        guid   = "character",
         meta   = "dataCheckMeta",
         input  = "list",
         func   = "expression"))
