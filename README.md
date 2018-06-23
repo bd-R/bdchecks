@@ -43,3 +43,9 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 
 - Create show for dataCheck class.  
 - Rearrange yaml.   
+- Add more DC with multiple targets.   
+- Implement filtering method for flags.   
+- Document.   
+- Long summary.   
+- Add more DC with different flags.   
+- Add more DC.   
