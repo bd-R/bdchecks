@@ -4,7 +4,7 @@ DC_8dd12160-8c22-11e7-bb31-be2e44b06b34:
     Description:
       IMPLEMENTATION_STATUS: STARTED
       Main: Check if distance in space and time between two records is compatible with the available means of transportation at that time
-      InputQuestion: Record collection distance and time is compatible
+      InputQuestion: Record collection distance and time is compatible?
       Example:
         Fail: Distance in space and time between two collected items from the same collector are incompatible with the available means of transportation at that time (maximum distance that can be travelled in the period).
         Pass: Distance in space and time between two collected items from the same collector are compatible with the available means of transportation at that time (maximum distance that can be travelled in the period).
@@ -43,42 +43,50 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   name: dateIdentifiedInFuture
   meta:
     Description:
-      Main: ''
-      InputQuestion: ''
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if record identification date is not in the future
+      InputQuestion: Is record identified in the past?
       Example:
-        Fail: dwc:dateIdentified is in the future
-        Pass: dwc:dateIdentified is valid
-        InputFail: dateIdentified=2230-12-31
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
+        Fail: Date (dwc:dateIdentified) is in the future
+        Pass: Date (dwc:dateIdentified) is not in the future
+        InputFail: dateIdentified > TODAY
+        InputPass: dateIdentified <= TODAY
+        OutputFail: FALSE
+        OutputPass: TRUE
       Resolution:
         Record: SingleRecord
         Term: SingleTerm
       DarwinCoreClass: Identification
-      Keywords: ''
+      Keywords: date
       guid: 7720f2c8-72b3-48b4-972c-9b30fd6aab6c
     Flags:
       Severity: Warning
       Warnign: Invalid
       Output: Validation
       Dimension: Conformance
-    Pseudocode: ''
+    Pseudocode: |
+      for RecordDate in field
+        result = RecordDate <= TodayDate
+        return(result)
     Source:
-      Reference: ''
+      Reference: 
       CreatedBy: Povilas Gibas
       MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist: 
   Input:
     Target: dateIdentified
     Dependency:
       DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
+      DataChecks: 
+      Rpackages: 
+      Data: 
+  Functionality: |
+    FUNC <- function() {
+        result <- as.Date(TARGET) <= Sys.Date()
+        return(result)
+    }
 DC_48aa7d66-36d1-4662-a503-df170f11b03f:
   name: dayInvalid
   meta:
