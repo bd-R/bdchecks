@@ -42,7 +42,7 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 # Misc
 
 - Create show for dataCheck class.  
-- Rearrange yaml.   
+- Rearrange yaml (warning, severity, output, dimension).   
 - Add more DC with multiple targets.   
 - Implement filtering method for flags.   
 - Document.   
