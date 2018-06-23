@@ -4,7 +4,7 @@
 \name{dataCheckMeta-class}
 \alias{dataCheckMeta-class}
 \alias{dataCheckMeta}
-\title{Create DC meta}
+\title{Create data check metadata}
 \description{
-Create DC meta
+Create data check metadata
 }

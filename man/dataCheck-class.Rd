@@ -4,7 +4,7 @@
 \name{dataCheck-class}
 \alias{dataCheck-class}
 \alias{dataCheck}
-\title{Create DC}
+\title{Create data check class}
 \description{
-Create DC
+Create data check class
 }
