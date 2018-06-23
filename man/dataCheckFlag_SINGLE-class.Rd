@@ -4,9 +4,19 @@
 \name{dataCheckFlag_SINGLE-class}
 \alias{dataCheckFlag_SINGLE-class}
 \alias{dataCheckFlag_SINGLE}
-\title{Create data check flag class
-For a single data check}
+\title{Single data check flag class}
 \description{
-Create data check flag class
-For a single data check
+Single data check flag class
 }
+\section{Slots}{
+
+\describe{
+\item{\code{name}}{of performed data check}
+
+\item{\code{target}}{column for performed data check}
+
+\item{\code{flag}}{class}
+
+\item{\code{result}}{logical vector}
+}}
+

@@ -4,7 +4,25 @@
 \name{dataCheckMeta-class}
 \alias{dataCheckMeta-class}
 \alias{dataCheckMeta}
-\title{Create data check metadata}
+\title{Data check meta-data class}
 \description{
-Create data check metadata
+Data check meta-data class
 }
+\section{Slots}{
+
+\describe{
+\item{\code{description}}{of data check}
+
+\item{\code{keywords}}{for specific data check}
+
+\item{\code{question}}{that this data check answers}
+
+\item{\code{dimension}}{of a data check}
+
+\item{\code{pseudocode}}{for this datachecks}
+
+\item{\code{source}}{creators information}
+
+\item{\code{example}}{of passed and failed inputs}
+}}
+

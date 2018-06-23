@@ -4,9 +4,19 @@
 \name{dataCheckFlag-class}
 \alias{dataCheckFlag-class}
 \alias{dataCheckFlag}
-\title{Create data check flag class
-For all performed data checks}
+\title{Combined data checks class}
 \description{
-Create data check flag class
-For all performed data checks
+Combined data checks class
 }
+\section{Slots}{
+
+\describe{
+\item{\code{DC}}{names of performed data checks}
+
+\item{\code{flags}}{list of performed data checks in a dataCheckFlag_SINGLE class}
+
+\item{\code{dataOrig}}{original data before data checks}
+
+\item{\code{dataMod}}{modified data after data checks}
+}}
+

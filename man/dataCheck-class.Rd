@@ -8,3 +8,19 @@
 \description{
 Create data check class
 }
+\section{Slots}{
+
+\describe{
+\item{\code{name}}{of a data check}
+
+\item{\code{guid}}{unique identifier for a data check}
+
+\item{\code{meta}}{meta-data for a data check of a dataCheckMeta class}
+
+\item{\code{input}}{options for a data check}
+
+\item{\code{output}}{options for a data check}
+
+\item{\code{func}}{expression to execute}
+}}
+
