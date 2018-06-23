@@ -1,4 +1,8 @@
 #' Data check meta-data class
+#' 
+#' @name dataCheckMeta-class
+#' @rdname dataCheckMeta-class
+#' @exportClass dataCheckMeta
 #'
 #' @slot description of data check
 #' @slot keywords for specific data check
@@ -20,6 +24,10 @@ dataCheckMeta <- setClass(
         example     = "list"))
 
 #' Create data check class
+#' 
+#' @name dataCheck-class
+#' @rdname dataCheck-class
+#' @exportClass dataCheck
 #'
 #' @slot name of a data check
 #' @slot guid unique identifier for a data check
@@ -40,11 +48,15 @@ dataCheck <- setClass(
 
 #' Single data check flag class
 #' 
+#' @name dataCheckFlag_SINGLE-class
+#' @rdname dataCheckFlag_SINGLE-class
+#' @exportClass dataCheckFlag_SINGLE
+#' 
 #' @slot name of performed data check
 #' @slot target column for performed data check
 #' @slot flag class
 #' @slot result logical vector
-#' @slot 
+#' 
 dataCheckFlag_SINGLE <- setClass(
     "dataCheckFlag_SINGLE",
     slots = c(
@@ -54,6 +66,10 @@ dataCheckFlag_SINGLE <- setClass(
         result = "logical"))
 
 #' Combined data checks class
+#' 
+#' @name dataCheckFlag-class
+#' @rdname dataCheckFlag-class
+#' @exportClass dataCheckFlag
 #' 
 #' @slot DC names of performed data checks
 #' @slot flags list of performed data checks in a dataCheckFlag_SINGLE class
@@ -67,37 +83,3 @@ dataCheckFlag <- setClass(
         flags    = "list",
         dataOrig = "data.frame",
         dataMod  = "data.frame"))
-
-#' Create a data check metatadata from a given YAML file
-#' 
-#' @param DCmeta Data check metadata slot in YAML format
-#' 
-#' @return Data check metadata object
-#' 
-createDCclassMeta <- function(DCmeta) {
-    res <- new("dataCheckMeta",
-               description = DCmeta$Description,
-               question    = DCmeta$InputQuestion,
-               dimension   = DCmeta$Dimension,
-               source      = DCmeta$Source,
-               keywords    = DCmeta$Keywords,
-               example     = DCmeta$Example,
-               pseudocode  = DCmeta$Pseudocode)
-    return(res)
-}
-#' Create a data check object from a given YAML file
-#' 
-#' @param DCyaml Data check slot in YAML format
-#'
-#' @return Data check object
-#' 
-createDCclassMain <- function(DCyaml) {
-    res <- new("dataCheck",
-               name   = DCyaml$name,
-               guid   = DCyaml$guid,
-               meta   = createDCclassMeta(DCyaml$meta),
-               input  = DCyaml$Input,
-               output = DCyaml$Output,
-               func   = parse(text = DCyaml$Functionality))
-    return(res)
-}

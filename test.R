@@ -1,4 +1,4 @@
-# devtools::document();devtools::install()
+devtools::document();devtools::install()
 library(bdchecks)
 
 dataBats$country[1:100] <- "Canada"

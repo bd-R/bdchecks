@@ -2,7 +2,9 @@
 #'
 #' @export
 #' 
-setGeneric("performDC", function(DC, data) standardGeneric("performDC"))
+setGeneric("performDC", function(DC, data) {
+    standardGeneric("performDC")
+}) 
 setMethod("performDC", "dataCheck",
     function(DC, data) {
 

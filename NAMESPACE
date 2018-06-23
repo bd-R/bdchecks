@@ -2,3 +2,7 @@
 
 export(getDC)
 export(performDC)
+exportClasses(dataCheck)
+exportClasses(dataCheckFlag)
+exportClasses(dataCheckFlag_SINGLE)
+exportClasses(dataCheckMeta)
