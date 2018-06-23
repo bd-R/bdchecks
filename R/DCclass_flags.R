@@ -10,6 +10,7 @@ setMethod("show", "dataCheckFlag",
 )
 
 # DONE
+# !!! Dont know if I should export this function out of method
 setGeneric("exportDataCheck", function(DCresult, writeFile = FALSE, file = "result.csv", verbose = TRUE) {
     standardGeneric("exportDataCheck")
 })
@@ -30,7 +31,7 @@ setMethod("exportDataCheck", "dataCheckFlag",
         }
 })
 
-
+# DONE
 setGeneric("shortSummaryDataCheck", function(DCresult) {
     standardGeneric("shortSummaryDataCheck")
 })

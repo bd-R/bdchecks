@@ -12,7 +12,21 @@ Load with:
 
 ## Performing data checks
 
-    performDataChecks(dataBats)
+Perform data checks (not exported yet):
+
+    resultDC <- bdchecks:::performDataCheck(dataBats)
+
+Check what data checks were performed (default show method):
+
+    resultDC
+
+Export data after data checks (file or R object) (not exported yet):  
+
+    bdchecks:::exportDataCheck(resultDC)
+
+Quick glance at data check result (% of records that passed) (not exported yet):  
+
+    bdchecks:::shortSummaryDataCheck(resultDC)
 
 
 ## Dealing with data checks
