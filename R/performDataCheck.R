@@ -19,11 +19,16 @@
 performDataCheck <- function(
     data    = NULL,
     DCadd   = NULL,
+    DConly  = NULL,
     verbose = TRUE,
     DCstand = ls(pos = ("package:bdchecks"), pattern = "^DC_")) {
 
-    # All data checks to perform   
-    DCall <- unique(c(DCadd, DCstand))
+    # All data checks to perform
+    if (!is.null(DConly)) {
+        DCall <- DConly
+    } else {
+        DCall <- unique(c(DCadd, DCstand))
+    }
 
     # Check if all data checks exists
     DCexists <- sapply(DCall, exists)

@@ -1,17 +1,28 @@
+# DONE
 setMethod("show", "dataCheckFlag",
-    function(object) print(object@DC)
-)
-setMethod("show", "dataCheckFlag_SINGLE",
-    function(object) print(paste(object@name, object@target))
+    function(object) {
+        res <- lapply(object@flags, function(x) {
+            data.frame(check = x@name, target = x@target)
+        })
+        res <- do.call(rbind, res)
+        cli::cat_line(format(res$check), " -> ", res$target)
+    }
 )
 
-
-setGeneric("exportDataCheck", function(DCresult, writeFile = FALSE, file = "result.csv", verbose = TRUE) standardGeneric("exportDataCheck"))
+# DONE
+setGeneric("exportDataCheck", function(DCresult, writeFile = FALSE, file = "result.csv", verbose = TRUE) {
+    standardGeneric("exportDataCheck")
+})
 setMethod("exportDataCheck", "dataCheckFlag",
     function(DCresult, writeFile = FALSE, file = "result.csv", verbose = TRUE) {
         if (writeFile) {
+            fileE <- file.exists(file)
             if (verbose) {
-                message(paste("Writing file to", file))
+                if (fileE) {
+                    message(paste("Overwritten", file))
+                } else {
+                    message(paste("Created", file))
+                }
             }
             write.csv(DCresult@dataMod, file)
         } else {
@@ -19,7 +30,10 @@ setMethod("exportDataCheck", "dataCheckFlag",
         }
 })
 
-setGeneric("shortSummaryDataCheck", function(DCresult) standardGeneric("shortSummaryDataCheck"))
+
+setGeneric("shortSummaryDataCheck", function(DCresult) {
+    standardGeneric("shortSummaryDataCheck")
+})
 setMethod("shortSummaryDataCheck", "dataCheckFlag",
     function(DCresult) {
         res <- lapply(DCresult@flags, function(x) {
@@ -30,7 +44,9 @@ setMethod("shortSummaryDataCheck", "dataCheckFlag",
 })
 
 
-setGeneric("longSummaryDataCheck", function(DCresult) standardGeneric("longSummaryDataCheck"))
+setGeneric("longSummaryDataCheck", function(DCresult) {
+    standardGeneric("longSummaryDataCheck")
+})
 setMethod("longSummaryDataCheck", "dataCheckFlag",
     function(DCresult) {
         library(ggplot2)
@@ -83,7 +99,10 @@ setMethod("longSummaryDataCheck", "dataCheckFlag",
         dev.off()
 })
 
-setGeneric("filterDataCheck", function(DCresult, DC = NULL) standardGeneric("filterDataCheck"))
+
+setGeneric("filterDataCheck", function(DCresult, DC = NULL) {
+    standardGeneric("filterDataCheck")
+})
 setMethod("filterDataCheck", "dataCheckFlag",
     function(DCresult, DC = NULL) {
         foo <- do.call(cbind, lapply(DCresult@flags, function(x) `@`(x, result)))

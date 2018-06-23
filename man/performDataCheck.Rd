@@ -4,8 +4,9 @@
 \alias{performDataCheck}
 \title{Perform data checks}
 \usage{
-performDataCheck(data = NULL, DCadd = NULL, verbose = TRUE,
-  DCstand = ls(pos = ("package:bdchecks"), pattern = "^DC_"))
+performDataCheck(data = NULL, DCadd = NULL, DConly = NULL,
+  verbose = TRUE, DCstand = ls(pos = ("package:bdchecks"), pattern =
+  "^DC_"))
 }
 \arguments{
 \item{data}{Data set to perform data checks}
