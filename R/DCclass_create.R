@@ -5,23 +5,17 @@
 #' @exportClass dataCheckMeta
 #'
 #' @slot description of data check
-#' @slot keywords for specific data check
-#' @slot question that this data check answers
-#' @slot dimension of a data check
+#' @slot flags for specific data check
 #' @slot pseudocode for this datachecks
 #' @slot source creators information
-#' @slot example of passed and failed inputs
 #'
 dataCheckMeta <- setClass(
     "dataCheckMeta",
     slots = c(
         description = "list",
-        keywords    = "character",
-        question    = "character",
-        dimension   = "character",
+        flags       = "list",
         pseudocode  = "character",
-        source      = "list",
-        example     = "list"))
+        source      = "list"))
 
 #' Create data check class
 #' 
@@ -30,7 +24,6 @@ dataCheckMeta <- setClass(
 #' @exportClass dataCheck
 #'
 #' @slot name of a data check
-#' @slot guid unique identifier for a data check
 #' @slot meta meta-data for a data check of a dataCheckMeta class 
 #' @slot input options for a data check 
 #' @slot func expression to execute

@@ -7,12 +7,9 @@
 createDCclassMeta <- function(DCmeta) {
     res <- new("dataCheckMeta",
                description = DCmeta$Description,
-               question    = DCmeta$InputQuestion,
-               dimension   = DCmeta$Dimension,
-               source      = DCmeta$Source,
-               keywords    = DCmeta$Keywords,
-               example     = DCmeta$Example,
-               pseudocode  = DCmeta$Pseudocode)
+               flags       = DCmeta$Flags,
+               pseudocode  = DCmeta$Pseudocode,
+               source      = DCmeta$Source)
     return(res)
 }
 
@@ -25,7 +22,6 @@ createDCclassMeta <- function(DCmeta) {
 createDCclassMain <- function(DCyaml) {
     res <- new("dataCheck",
                name   = DCyaml$name,
-               guid   = DCyaml$guid,
                meta   = createDCclassMeta(DCyaml$meta),
                input  = DCyaml$Input,
                func   = parse(text = DCyaml$Functionality))
