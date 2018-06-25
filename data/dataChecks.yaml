@@ -1,3 +1,54 @@
+DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
+  name: basisOfRecordBadlyFormed
+  meta:
+    Description:
+      Main: Check if the specific nature of the data record is within controlled vocabulary
+      InputQuestion: Is basis of record within controlled vocabulary?
+      Example:
+        Fail: dwc:basisOfRecord could not be unambiguously matched to vocabulary
+        Pass: dwc:basisOfRecord was matched to vocabulary
+        InputFail: basisOfRecord=""Human specimen""
+        InputPass: basisOfRecord=""HumanObservation"",basisOfRecord=""LIVING_SPECIMEN""
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: record
+      guid: 24899475-7c8a-45d1-9d7f-cfc620c9460a
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $basisOfRecord %IN% vocabulary
+    Source:
+      Reference: http://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html,https://github.com/iobis/gbif-marine/issues/10,http://rs.tdwg.org/dwc/terms/#basisOfRecord
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2018-06-25
+      ModificationHist:
+  Input:
+    Target: basisOfRecord
+    Dependency:
+      DependencyType: External
+      DataChecks: 
+      Rpackages: 
+      Data: 
+  Functionality: |
+    FUNC <- function() {
+        VOCABULARY <- c("PreservedSpecimen", 
+                        "FossilSpecimen", 
+                        "LivingSpecimen", 
+                        "HumanObservation", 
+                        "MachineObservation")
+        TARGETmod <- gsub("_| ", "", TARGET)
+        result <- tolower(TARGETmod) %in% tolower(VOCABULARY)
+        return(result)
+    }
 DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
   name: occurrenceIdNotGuid
   meta:
