@@ -26,7 +26,12 @@ Export data after data checks (file or R object) (not exported yet):
 
 Quick glance at data check result (% of records that passed) (not exported yet):  
 
+    # Nice output to terminal
     bdchecks:::shortSummaryDataCheck(resultDC)
+    # Output as data frame that can be parsed
+    bdchecks:::shortSummaryDataCheck(resultDC, fancy = FALSE)
+    # Output to a file
+    bdchecks:::shortSummaryDataCheck(resultDC, export = TRUE)
 
 
 ## Dealing with data checks
@@ -43,10 +48,7 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 
 
 - Create show for dataCheck class.  
-- Add missing records to checks and results (NA?).  
-- For invalid warnings transform logical TRUE/FALSE to passed/failed/missing.   
-- Rearrange yaml (warning, severity, output, dimension).   
 - Long summary.   
 - Add more DC with multiple targets and different flags.   
-- Implement filtering method for flags.   
+- Implement filtering method for flags (add flag to DC result).   
 - Document.   

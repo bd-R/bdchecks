@@ -33,16 +33,33 @@ setMethod("exportDataCheck", "dataCheckFlag",
 
 
 # DONE
-setGeneric("shortSummaryDataCheck", function(DCresult) {
+setGeneric("shortSummaryDataCheck", function(DCresult, fancy = TRUE, export = FALSE, file = "./DCresult.csv") {
     standardGeneric("shortSummaryDataCheck")
 })
 setMethod("shortSummaryDataCheck", "dataCheckFlag",
-    function(DCresult) {
+    function(DCresult, fancy, export, file) {
         res <- lapply(DCresult@flags, function(x) {
-            data.frame(name = x@name, passed = paste(round(mean(x@result) * 100, 2), "%"))
+            data.frame(check = x@name, target = x@target,
+                       passed = sum(x@result, na.rm = TRUE) / length(x@result),
+                       failed = sum(!x@result, na.rm = TRUE) / length(x@result),
+                       missing = mean(is.na(x@result)))
         })
         res <- do.call(rbind, res)
-        cli::cat_bullet(format(res$name), ": ", res$passed)
+        res$check <- as.character(res$check)
+        res$target <- as.character(res$target)
+        if (export) {
+            write.csv(res, file, quote = FALSE, row.names = FALSE)
+        } else {
+            if (fancy) {
+                cli::cat_bullet(format(c("Data check", res$check)), 
+                                " -> ", format(c("Target", res$target)), 
+                                " : ", format(c("Passed", paste0(round(res$passed * 100, 2), "%"))), 
+                                "   ",  format(c("Failed", paste0(round(res$failed * 100, 2), "%"))), 
+                                "   ",  format(c("Missing", paste0(round(res$missing * 100, 2), "%"))))
+            } else {
+                res
+            }
+        }
 })
 
 
