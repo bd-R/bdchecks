@@ -1,17 +1,63 @@
+DC_48aa7d66-36d1-4662-a503-df170f11b03f:
+  name: dayInvalid
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if event day is valid (1 <= integer <= 31)
+      InputQuestion: Is event day valid?
+      Example:
+        Fail: The value given for event day is less than 1 or greater than 31
+        Pass: The value given for event day is between 1 and 31
+        InputFail: day=32,day=0,day=1.1,day=-1
+        InputPass: day=1,day=31
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,day,event,integer
+      guid: 48aa7d66-36d1-4662-a503-df170f11b03f
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $day >= 1 AND $day <= 31 & is.integer($day)
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist: 
+  Input:
+    Target: day
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+  Functionality: |
+    FUNC <- function() {
+        result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 31
+        return(result)
+    }
 DC_8dd12160-8c22-11e7-bb31-be2e44b06b34:
   name: collectorSequencePossible
   meta:
     Description:
       IMPLEMENTATION_STATUS: STARTED
       Main: Check if distance in space and time between two records is compatible with the available means of transportation at that time
-      InputQuestion: Record collection distance and time is compatible?
+      InputQuestion: Is record collection distance and time is compatible?
       Example:
         Fail: Distance in space and time between two collected items from the same collector are incompatible with the available means of transportation at that time (maximum distance that can be travelled in the period).
         Pass: Distance in space and time between two collected items from the same collector are compatible with the available means of transportation at that time (maximum distance that can be travelled in the period).
         InputFail: Two records collected by the same person before 1850, the first in day X and the next in day X + 1 are more than 1000km apart, which is the maximum distance that people could travel at that time.
         InputPass: Two records collected by the same person before 1850, the first in day X and the next in day X + 1 are at the distance that people could travel at that time.
-        OutputFail: FALSE
-        OutputPass: TRUE
+        OutputFail: Failed
+        OutputPass: Passed
       Resolution:
         Record: MultiRecord
         Term: MultiTerm
@@ -23,22 +69,22 @@ DC_8dd12160-8c22-11e7-bb31-be2e44b06b34:
       Warnign: Invalid
       Output: Validation
       Dimension: Conformance
-    Pseudocode: "NULL"
+    Pseudocode: ''
     Source:
-      Reference: "NULL"
+      Reference: 
       CreatedBy: Povilas Gibas
       MaintainedBy: Povilas Gibas
       CreationDate: 2018-06-23
       ModificationDate: 2018-06-23
-      ModificationHist: "NULL"
+      ModificationHist: 
   Input:
     Target: recordedBy,eventDate,decimalLatitude,decimalLongitude
     Dependency:
       DependencyType: Internal
-      DataChecks: "NULL"
-      Rpackages: "NULL"
-      Data: "NULL"
-  Functionality: "NULL"
+      DataChecks: 
+      Rpackages: 
+      Data: 
+  Functionality: ''
 DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   name: dateIdentifiedInFuture
   meta:
@@ -51,8 +97,8 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
         Pass: Date (dwc:dateIdentified) is not in the future
         InputFail: dateIdentified > TODAY
         InputPass: dateIdentified <= TODAY
-        OutputFail: FALSE
-        OutputPass: TRUE
+        OutputFail: Failed
+        OutputPass: Passed
       Resolution:
         Record: SingleRecord
         Term: SingleTerm
@@ -65,9 +111,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
-      for RecordDate in field
-        result = RecordDate <= TodayDate
-        return(result)
+      $RecordDate <= $TodayDate
     Source:
       Reference: 
       CreatedBy: Povilas Gibas
@@ -87,617 +131,3 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
         result <- as.Date(TARGET) <= Sys.Date()
         return(result)
     }
-DC_48aa7d66-36d1-4662-a503-df170f11b03f:
-  name: dayInvalid
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The value given for event day is less than 1 or greater than 31
-        Pass: The value given for event day is between 1 and 31
-        InputFail: day=32
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Event
-      Keywords: ''
-      guid: 48aa7d66-36d1-4662-a503-df170f11b03f
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: day
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_cd005e63-6acb-4502-8b25-6c478a71eaf5:
-  name: depthUninterpretable
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: Minimum depth (dwc:minimumDepthInMeters) and/or maximum depth (dwc:maximumDepthInMeters)
-          could not be interpreted from verbatim depth information (dwc:verbatimDepth)
-        Pass: Minimum depth (dwc:minimumDepthInMeters) and maximum depth (dwc:maximumDepthInMeters)
-          were present and within range
-        InputFail: verbatimDepth=""x26f""
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: MultiTerm
-      DarwinCoreClass: Location
-      Keywords: ''
-      guid: cd005e63-6acb-4502-8b25-6c478a71eaf5
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: verbatimDepth,minimumDepthInMeters,maximumDepthInMeters
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_5cb46117-e600-4154-8eb9-72a5bec9d6d6:
-  name: elevationUninterpretable
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: Minimum elevation (dwc:minimumElevationInMeters) and/or maximum elevation
-          (dwc:maximumElevationInMeters) could not be interpreted from verbatim elevation
-          information (dwc:verbatimElevation)
-        Pass: Minimum elevation (dwc:minimumElevationInMeters) and maximum elevation
-          (dwc:maximumElevationInMeters) were present and within range
-        InputFail: verbatimElevation=""1123hp""
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: MultiTerm
-      DarwinCoreClass: Location
-      Keywords: ''
-      guid: 5cb46117-e600-4154-8eb9-72a5bec9d6d6
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: verbatimElevation,minimumElevationInMeters,maxmumElevationMeters
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_:
-  name: hasValidLicense
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: Record declares the license governing its use in a way that allows those
-          rights to be unambiguously understood.
-        Pass: Value of dcterms:license complies with a controlled vocabulary.
-        InputFail: license = ""http://creativecommons.org/publicdomain/zero/1.0""
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerms
-      DarwinCoreClass: Record_level Terms
-      Keywords: ''
-      guid: ''
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: dcterms:license
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
-  name: identifiedDateImprobable
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The date of identification (dwc:dateIdentified) falls prior to Linnaeus
-          (1753) or after the current date.
-        Pass: The date of identification (dwc:dateIdentified) is post Linnaeus (1753)
-          to the current date
-        InputFail: dateidentified=1573-02-14
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Identification
-      Keywords: ''
-      guid: dc8aae4b-134f-4d75-8a71-c4186239178e
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: dateIdentified
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_91591723-b5df-4a73-9ea9-c0be6940532d:
-  name: identifiedDateInvalid
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The date of identification (dwc:dateIdentified) cannot be interpreted
-          or parsed
-        Pass: The date of identification (dwc:dateIdentified) was interpreted ok
-        InputFail: dateIdentified=""200!\io\01""
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Identification
-      Keywords: ''
-      guid: 91591723-b5df-4a73-9ea9-c0be6940532d
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: dateIdentified
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
-  name: individualcountInvalid
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The count of individuals is not an integer and therefore invalid
-        Pass: The count of individuals is a valid integer
-        InputFail: individualCount=0.3
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Occurrence
-      Keywords: ''
-      guid: 6939b2c7-fd81-4f2d-9282-ff8eeba81301
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: individualCount
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_62a9c256-43e4-41ee-8938-d2d2e99479ef:
-  name: modifiedDateInvalid
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: Record modification date cannot be parsed (dcterms:modified)
-        Pass: Record modification date was parsed ok (dcterms:modified)
-        InputFail: dcterms:modified=""200933T1""
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Record_level Terms
-      Keywords: ''
-      guid: 62a9c256-43e4-41ee-8938-d2d2e99479ef
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: dcterms:modified
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
-  name: modifiedInFuture
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: dcterms:modified is in the future
-        Pass: dcterms:modified date is valid
-        InputFail: dcterms:modified=2230-12-31
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Record_level Terms
-      Keywords: ''
-      guid: 5147823a-5c46-4b3d-88e8-244ddc96e749
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: modified
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
-  name: monthInvalid
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The event month is less than 1 or is greater than 12
-        Pass: The event month is between 1 and 12
-        InputFail: month=14
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Event
-      Keywords: ''
-      guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: month
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
-  name: namePublishedYearInFuture
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: dwc:namePublishedInYear is in the future
-        Pass: dwc:namePublishedInYear is valid
-        InputFail: namePublishedInYear=2230
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Taxon
-      Keywords: ''
-      guid: 399ef91d-425c-46f2-a6df-8a0fe4c3e86e
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: namePublishedInYear
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
-  name: occurrenceIdNotGuid
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: occurrenceID is an integer, assuring that it is not a globally uninique
-          identifier (GUID)
-        Pass: occurrenceID is a globally uninique identifier (GUID)
-        InputFail: occurrenceID=42
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Occurrence
-      Keywords: ''
-      guid: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: occurrenceID
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
-  name: precisionRangeMismatch
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The coordinate precision (dwc:coordinatePrecision), as a decimal representation,
-          is outside the range of zero (minimum) and one (maximum)
-        Pass: The coordinate precision (dwc:coordinatePrecision) is between zero (minimum)
-          and one (maximum)
-        InputFail: coordinatePrecision=3
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Location
-      Keywords: ''
-      guid: 11203926-165d-4b5a-a6c6-55fb0bedfaed
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: coordinatePrecision
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_c25d41e3-ab28-473b-b881-c074124482cd:
-  name: recordedByUnparsable
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: The dwc:recordedBy field could not be interpreted
-        Pass: The dwc:recordedBy field was interpreted
-        InputFail: recordedBy=""その出来事を記録したことについて責任を持つ人の名前またはグループ、組織のリスト。実際に収集した人や観察した人、""
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Occurrence
-      Keywords: ''
-      guid: c25d41e3-ab28-473b-b881-c074124482cd
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: recordedBy
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
-DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
-  name: uncertaintyRangeMismatch
-  meta:
-    Description:
-      Main: ''
-      InputQuestion: ''
-      Example:
-        Fail: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) should be a
-          whole number and greater than zero (meters)
-        Pass: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) is a whole
-          number and greater than zero (meters)
-        InputFail: coordinateUncertaintyInMeters=0.002
-        InputPass: ''
-        OutputFail: no
-        OutputPass: yes
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Location
-      Keywords: ''
-      guid: c6adf2ea-3051-4498-97f4-4b2f8a105f57
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: ''
-    Source:
-      Reference: ''
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: '2018-06-23'
-      ModificationDate: '2018-06-23'
-      ModificationHist: ''
-  Input:
-    Target: coordinateUncertaintyInMeters
-    Dependency:
-      DependencyType: Internal
-      DataChecks: ''
-      Rpackages: ''
-      Data: ''
-  Functionality: ''
