@@ -1,147 +1,7 @@
-DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
-  name: modifiedInFuture
-  meta:
-    Description:
-      IMPLEMENTATION_STATUS: FINISHED
-      Main: Check if modification date is not in the future
-      InputQuestion: Is modification date not in the future?
-      Example:
-        Fail: dcterms:modified is in the future
-        Pass: dcterms:modified date is valid
-        InputFail: dcterms:modified=2230-12-31
-        InputPass: dcterms:modified=2000-01-01
-        OutputFail: Failed
-        OutputPass: Passed
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Record_level Terms
-      Keywords: date,record
-      guid: 5147823a-5c46-4b3d-88e8-244ddc96e749
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: |
-      $dateModified <= $dateToday
-    Source:
-      Reference: 
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: 2018-06-23
-      ModificationDate: 2018-06-23
-      ModificationHist:
-  Input:
-    Target: modified
-    Dependency:
-      DependencyType: Internal
-      DataChecks:
-      Rpackages:
-      Data:
-  Functionality: |
-    FUNC <- function() {
-        TARGETdate <- as.Date(TARGET)
-        result <- TARGETdate <= Sys.Date()
-        return(result)
-    }
-DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
-  name: monthInvalid
-  meta:
-    Description:
-      IMPLEMENTATION_STATUS: FINISHED
-      Main: Check if event month is valid (1 <= integer <= 12
-      InputQuestion: Is event month valid?
-      Example:
-        Fail: The event month is less than 1 or is greater than 12
-        Pass: The event month is between 1 and 12
-        InputFail: month=14,month=0
-        InputPass: month=1
-        OutputFail: Failed
-        OutputPass: Passed
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Event
-      Keywords: date,day,event,integer
-      guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: |
-      $month >= 1 AND $month <= 12 & is.integer($month)
-    Source:
-      Reference: 
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: 2018-06-23
-      ModificationDate: 2018-06-23
-      ModificationHist:
-  Input:
-    Target: month
-    Dependency:
-      DependencyType: Internal
-      DataChecks:
-      Rpackages:
-      Data:
-  Functionality: |
-    FUNC <- function() {
-        result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 12
-        return(result)
-    }
-DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
-  name: namePublishedYearInFuture
-  meta:
-    Description:
-      IMPLEMENTATION_STATUS: FINISHED
-      Main: Check if year in which scientific name was published is not in the future
-      InputQuestion: Is publication year not in the future?
-      Example:
-        Fail: dwc:namePublishedInYear is in the future
-        Pass: dwc:namePublishedInYear is valid
-        InputFail: namePublishedInYear=2230
-        InputPass: namePublishedInYear=2000
-        OutputFail: Failed
-        OutputPass: Passed
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Taxon
-      Keywords: date,record
-      guid: 399ef91d-425c-46f2-a6df-8a0fe4c3e86e
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: |
-      $namePublishedInYear <= $dateToday
-    Source:
-      Reference:
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: 2018-06-23
-      ModificationDate: 2018-06-23
-      ModificationHist:
-  Input:
-    Target: namePublishedInYear
-    Dependency:
-      DependencyType: Internal
-      DataChecks:
-      Rpackages:
-      Data:
-  Functionality: |
-    FUNC <- function() {
-        result <- format(as.Date(TARGET), "%Y") <= format(Sys.Date(), "%Y")
-        return(result)
-    }
 DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
   name: precisionRangeMismatch
   meta:
     Description:
-      IMPLEMENTATION_STATUS: FINISHED
       Main: Check if precision range mismatch is between 0 and 1
       InputQuestion: Is range mismatch between 0 and 1?
       Example:
@@ -189,7 +49,6 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
   name: uncertaintyRangeMismatch
   meta:
     Description:
-      IMPLEMENTATION_STATUS: FINISHED
       Main: Check if geopoint uncertainty range mismatch is a positive integer (meters).
       InputQuestion: Is uncertainty mismatch is an intiger greater than zero?
       Example:
@@ -215,7 +74,7 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
     Pseudocode: |
       is.integer($uncertainty) AND $uncertainty > 0
     Source:
-      Reference: 
+      Reference: https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/UNCERTAINTY_NOT_SPECIFIED
       CreatedBy: Povilas Gibas
       MaintainedBy: Povilas Gibas
       CreationDate: 2018-06-23
@@ -237,8 +96,7 @@ DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
   name: individualcountInvalid
   meta:
     Description:
-      IMPLEMENTATION_STATUS: FINISHED
-      Main: Check if individual count is intiger
+      Main: Check if the number of individuals represented present at the time of the occurrence is and intiger
       InputQuestion: Is number of individuals a positive integer?
       Example:
         Fail: The count of individuals is not an integer and therefore invalid
@@ -279,60 +137,10 @@ DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
         result <- TARGET %% 1 == 0 & TARGET >= 0
         return(result)
     }
-DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
-  name: identifiedDateImprobable
-  meta:
-    Description:
-      IMPLEMENTATION_STATUS: FINISHED
-      Main: Check if identification date is between Linnaeus and current date
-      InputQuestion: Is identification date possible (between Linnaeus and current date)?
-      Example:
-        Fail: The date of identification (dwc:dateIdentified) falls prior to Linnaeus
-          (1753) or after the current date.
-        Pass: The date of identification (dwc:dateIdentified) is post Linnaeus (1753)
-          to the current date
-        InputFail: dateidentified=1573-02-14,dateidentified=1000-01-01,dateidentified=3000-01-01
-        InputPass: dateidentified=2000-01-01
-        OutputFail: Failed
-        OutputPass: Passed
-      Resolution:
-        Record: SingleRecord
-        Term: SingleTerm
-      DarwinCoreClass: Identification
-      Keywords: date,event,identification
-      guid: dc8aae4b-134f-4d75-8a71-c4186239178e
-    Flags:
-      Severity: Warning
-      Warnign: Invalid
-      Output: Validation
-      Dimension: Conformance
-    Pseudocode: |
-      $dateIdentified >= dateLinnaeus AND $dateIdentified <= $dateToday
-    Source:
-      Reference: 
-      CreatedBy: Povilas Gibas
-      MaintainedBy: Povilas Gibas
-      CreationDate: 2018-06-23
-      ModificationDate: 2018-06-23
-      ModificationHist: 
-  Input:
-    Target: dateIdentified
-    Dependency:
-      DependencyType: Internal
-      DataChecks: 
-      Rpackages: 
-      Data: 
-  Functionality: |
-    FUNC <- function() {
-        TARGETdate <- as.Date(TARGET)
-        result <- TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01")
-        return(result)
-    }
 DC_48aa7d66-36d1-4662-a503-df170f11b03f:
   name: dayInvalid
   meta:
     Description:
-      IMPLEMENTATION_STATUS: FINISHED
       Main: Check if event day is valid (1 <= integer <= 31)
       InputQuestion: Is event day valid?
       Example:
@@ -356,7 +164,7 @@ DC_48aa7d66-36d1-4662-a503-df170f11b03f:
     Pseudocode: |
       $day >= 1 AND $day <= 31 & is.integer($day)
     Source:
-      Reference: 
+      Reference: https://github.com/tdwg/bdq/issues/125
       CreatedBy: Povilas Gibas
       MaintainedBy: Povilas Gibas
       CreationDate: 2018-06-23
@@ -374,52 +182,148 @@ DC_48aa7d66-36d1-4662-a503-df170f11b03f:
         result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 31
         return(result)
     }
-DC_8dd12160-8c22-11e7-bb31-be2e44b06b34:
-  name: collectorSequencePossible
+DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
+  name: monthInvalid
   meta:
     Description:
-      IMPLEMENTATION_STATUS: STARTED
-      Main: Check if distance in space and time between two records is compatible with the available means of transportation at that time
-      InputQuestion: Is record collection distance and time is compatible?
+      Main: Check if event month is valid (1 <= integer <= 12)
+      InputQuestion: Is event month valid?
       Example:
-        Fail: Distance in space and time between two collected items from the same collector are incompatible with the available means of transportation at that time (maximum distance that can be travelled in the period).
-        Pass: Distance in space and time between two collected items from the same collector are compatible with the available means of transportation at that time (maximum distance that can be travelled in the period).
-        InputFail: Two records collected by the same person before 1850, the first in day X and the next in day X + 1 are more than 1000km apart, which is the maximum distance that people could travel at that time.
-        InputPass: Two records collected by the same person before 1850, the first in day X and the next in day X + 1 are at the distance that people could travel at that time.
+        Fail: The event month is less than 1 or is greater than 12
+        Pass: The event month is between 1 and 12
+        InputFail: month=14,month=0
+        InputPass: month=1
         OutputFail: Failed
         OutputPass: Passed
       Resolution:
-        Record: MultiRecord
-        Term: MultiTerm
-      DarwinCoreClass: Record_level Terms, Event, Location
-      Keywords: distance,date,record,latitute,longitude
-      guid: 8dd12160-8c22-11e7-bb31-be2e44b06b34
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,month,event,integer
+      guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
     Flags:
       Severity: Warning
       Warnign: Invalid
       Output: Validation
       Dimension: Conformance
-    Pseudocode: ''
+    Pseudocode: |
+      $month >= 1 AND $month <= 12 AND is.integer($month)
     Source:
-      Reference: 
+      Reference: https://github.com/tdwg/bdq/issues/126
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist:
+  Input:
+    Target: month
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 12
+        return(result)
+    }
+DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
+  name: namePublishedYearInFuture
+  meta:
+    Description:
+      Main: Check if year in which scientific name was published is not in the future
+      InputQuestion: Is publication year not in the future?
+      Example:
+        Fail: dwc:namePublishedInYear is in the future
+        Pass: dwc:namePublishedInYear is valid
+        InputFail: namePublishedInYear=2230
+        InputPass: namePublishedInYear=2000
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Taxon
+      Keywords: date,taxon
+      guid: 399ef91d-425c-46f2-a6df-8a0fe4c3e86e
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $namePublishedInYear <= $dateToday
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23 
+      ModificationHist:
+  Input:
+    Target: namePublishedInYear
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        result <- format(as.Date(TARGET), "%Y") <= format(Sys.Date(), "%Y")
+        return(result)
+    }
+DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
+  name: identifiedDateImprobable
+  meta:
+    Description:
+      Main: Check if identification date is between Linnaeus and current date
+      InputQuestion: Is identification date possible (between Linnaeus and current date)?
+      Example:
+        Fail: The date of identification (dwc:dateIdentified) falls prior to Linnaeus
+          (1753) or after the current date.
+        Pass: The date of identification (dwc:dateIdentified) is post Linnaeus (1753)
+          to the current date
+        InputFail: dateidentified=1573-02-14,dateidentified=1000-01-01,dateidentified=3000-01-01
+        InputPass: dateidentified=2000-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Identification
+      Keywords: date,identification
+      guid: dc8aae4b-134f-4d75-8a71-c4186239178e
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $dateIdentified >= dateLinnaeus AND $dateIdentified <= $dateToday
+    Source:
+      Reference: https://github.com/tdwg/bdq/issues/76
       CreatedBy: Povilas Gibas
       MaintainedBy: Povilas Gibas
       CreationDate: 2018-06-23
       ModificationDate: 2018-06-23
       ModificationHist: 
   Input:
-    Target: recordedBy,eventDate,decimalLatitude,decimalLongitude
+    Target: dateIdentified
     Dependency:
       DependencyType: Internal
       DataChecks: 
       Rpackages: 
       Data: 
-  Functionality: ''
+  Functionality: |
+    FUNC <- function() {
+        TARGETdate <- as.Date(TARGET)
+        result <- TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01")
+        return(result)
+    }
 DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   name: dateIdentifiedInFuture
   meta:
     Description:
-      IMPLEMENTATION_STATUS: FINISHED
       Main: Check if record identification date is not in the future
       InputQuestion: Is record identified in the past?
       Example:
@@ -433,7 +337,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
         Record: SingleRecord
         Term: SingleTerm
       DarwinCoreClass: Identification
-      Keywords: date
+      Keywords: date,identification
       guid: 7720f2c8-72b3-48b4-972c-9b30fd6aab6c
     Flags:
       Severity: Warning
@@ -443,7 +347,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
     Pseudocode: |
       $RecordDate <= $TodayDate
     Source:
-      Reference: 
+      Reference: https://github.com/tdwg/bdq/issues/76
       CreatedBy: Povilas Gibas
       MaintainedBy: Povilas Gibas
       CreationDate: 2018-06-23
@@ -459,5 +363,51 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   Functionality: |
     FUNC <- function() {
         result <- as.Date(TARGET) <= Sys.Date()
+        return(result)
+    }
+DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
+  name: modifiedInFuture
+  meta:
+    Description:
+      Main: Check if date on which the resource was changed is not in the future
+      InputQuestion: Is modification date not in the future?
+      Example:
+        Fail: dcterms:modified is in the future
+        Pass: dcterms:modified date is valid
+        InputFail: dcterms:modified=2230-12-31
+        InputPass: dcterms:modified=2000-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: date,modification
+      guid: 5147823a-5c46-4b3d-88e8-244ddc96e749
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $dateModified <= $dateToday
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist:
+  Input:
+    Target: modified
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        TARGETdate <- as.Date(TARGET)
+        result <- TARGETdate <= Sys.Date()
         return(result)
     }
