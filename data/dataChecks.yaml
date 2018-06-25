@@ -1,3 +1,48 @@
+DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
+  name: countryNameUnknown
+  meta:
+    Description:
+      Main: Check if the name of the country or major administrative unit in which the location occurs is within given vocabulary
+      InputQuestion: Is country known?
+      Example:
+        Fail: Country name (dwc:country) not in vocabulary
+        Pass: Country name (dwc:country) is in vocabulary
+        InputFail: country=Austend
+        InputPass:  country=Australia
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Location
+      Keywords: geo,location,country
+      guid: 69b2efdc-6269-45a4-aecb-4cb99c2ae134
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $country %IN% VOCABULARY
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2018-06-25
+      ModificationHist:
+  Input:
+    Target: country
+    Dependency:
+      DependencyType: External
+      DataChecks: 
+      Rpackages: rgbif 
+      Data: isocodes$name
+  Functionality: |
+      FUNC <- function() {
+         result <- TARGET %in% DEPEND
+         return(result)
+       }
 DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
   name: classUnknown
   meta:
@@ -7,8 +52,8 @@ DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
       Example:
         Fail: Taxonomic rank Class value cannot be interpreted
         Pass: Taxonomic rank Class was interpreted correctly
-        InputFail: class=""Birds""
-        InputPass: class=""Unicorns""
+        InputFail: class=Birds
+        InputPass: class=Unicorns
         OutputFail: Failed
         OutputPass: Passed
       Resolution:
@@ -56,8 +101,8 @@ DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
       Example:
         Fail: dwc:basisOfRecord could not be unambiguously matched to vocabulary
         Pass: dwc:basisOfRecord was matched to vocabulary
-        InputFail: basisOfRecord=""Human specimen""
-        InputPass: basisOfRecord=""HumanObservation"",basisOfRecord=""LIVING_SPECIMEN""
+        InputFail: basisOfRecord=Human specimen
+        InputPass: basisOfRecord=HumanObservation,basisOfRecord=LIVING_SPECIMEN
         OutputFail: Failed
         OutputPass: Passed
       Resolution:
