@@ -73,3 +73,13 @@ dataCheckFlag <- setClass(
         flags    = "list",
         dataOrig = "data.frame",
         dataMod  = "data.frame"))
+
+setMethod("show", "dataCheck",
+    function(object) {
+        cat(" Data check is used to:\n\t",
+              object@meta@description$Main, "\n",
+              "This data check answers following question:\n\t",object@meta@description$Question, "\n",
+              "Target (column) that this data checks operates on is:\n\t", object@input$Target, 
+              "\n")
+    }
+)
