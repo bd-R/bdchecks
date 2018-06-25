@@ -1,3 +1,49 @@
+DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
+  name: individualcountInvalid
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if individual count is intiger
+      InputQuestion: Is number of individuals a positive integer?
+      Example:
+        Fail: The count of individuals is not an integer and therefore invalid
+        Pass: The count of individuals is a valid integer
+        InputFail: individualCount=0.3,individualCount=-1,individualCount=0
+        InputPass: individualCount=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Occurrence
+      Keywords: count,integer
+      guid: 6939b2c7-fd81-4f2d-9282-ff8eeba81301
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      is.integer($individualCount) AND $individualCount > 0
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist: 
+  Input:
+    Target: individualCount
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+  Functionality: |
+    FUNC <- function() {
+        result <- TARGET %% 1 == 0 & TARGET >= 0
+        return(result)
+    }
 DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
   name: identifiedDateImprobable
   meta:
@@ -26,7 +72,7 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
-      $dateIdentified >= dateLinnaeus & $dateIdentified <= $dateToday
+      $dateIdentified >= dateLinnaeus AND $dateIdentified <= $dateToday
     Source:
       Reference: 
       CreatedBy: Povilas Gibas
