@@ -1,3 +1,49 @@
+DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
+  name: monthInvalid
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if event month is valid (1 <= integer <= 12
+      InputQuestion: Is event month valid?
+      Example:
+        Fail: The event month is less than 1 or is greater than 12
+        Pass: The event month is between 1 and 12
+        InputFail: month=14,month=0
+        InputPass: month=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,day,event,integer
+      guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $month >= 1 AND $month <= 12 & is.integer($month)
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist:
+  Input:
+    Target: month
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 12
+        return(result)
+    }
 DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
   name: namePublishedYearInFuture
   meta:

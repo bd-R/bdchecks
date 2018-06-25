@@ -41,6 +41,8 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 
 # Misc
 
+
+- Test if target column exists.  
 - Create show for dataCheck class.  
 - Add missing records to checks and results (NA?).  
 - For invalid warnings transform logical TRUE/FALSE to passed/failed/missing.   
