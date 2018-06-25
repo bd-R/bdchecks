@@ -1,3 +1,49 @@
+DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
+  name: namePublishedYearInFuture
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if year in which scientific name was published is not in the future
+      InputQuestion: Is publication year not in the future?
+      Example:
+        Fail: dwc:namePublishedInYear is in the future
+        Pass: dwc:namePublishedInYear is valid
+        InputFail: namePublishedInYear=2230
+        InputPass: namePublishedInYear=2000
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Taxon
+      Keywords: date,record
+      guid: 399ef91d-425c-46f2-a6df-8a0fe4c3e86e
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $namePublishedInYear <= $dateToday
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist:
+  Input:
+    Target: namePublishedInYear
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        result <- format(as.Date(TARGET), "%Y") <= format(Sys.Date(), "%Y")
+        return(result)
+    }
 DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
   name: precisionRangeMismatch
   meta:
