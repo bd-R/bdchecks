@@ -1,3 +1,50 @@
+DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
+  name: occurrenceIdNotGuid
+  meta:
+    Description:
+      Main: Check if an identifier for the occurrence is a globally uniquely identifier (currently we use regex pattern solution is implemented)
+      Question: Is occurence ID and GUID?
+      Example:
+        Fail: occurrenceID is an integer, assuring that it is not a globally uninique
+          identifier (GUID)
+        Pass: occurrenceID is a globally uninique identifier (GUID)
+        InputFail: occurrenceID=42
+        InputPass: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Occurrence
+      Keywords: guid,occurence
+      guid: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      grep(patternGUID, $occurrenceID)
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist:
+  Input:
+    Target: occurrenceID
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        result <- grepl("^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                        tolower(TARGET))
+        return(result)
+    }
 DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
   name: precisionRangeMismatch
   meta:
@@ -21,7 +68,7 @@ DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
       guid: 11203926-165d-4b5a-a6c6-55fb0bedfaed
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -68,7 +115,7 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
       guid: c6adf2ea-3051-4498-97f4-4b2f8a105f57
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -113,7 +160,7 @@ DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
       guid: 6939b2c7-fd81-4f2d-9282-ff8eeba81301
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -158,7 +205,7 @@ DC_48aa7d66-36d1-4662-a503-df170f11b03f:
       guid: 48aa7d66-36d1-4662-a503-df170f11b03f
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -203,7 +250,7 @@ DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
       guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -248,7 +295,7 @@ DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
       guid: 399ef91d-425c-46f2-a6df-8a0fe4c3e86e
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -295,7 +342,7 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
       guid: dc8aae4b-134f-4d75-8a71-c4186239178e
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -341,7 +388,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
       guid: 7720f2c8-72b3-48b4-972c-9b30fd6aab6c
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -386,7 +433,7 @@ DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
       guid: 5147823a-5c46-4b3d-88e8-244ddc96e749
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
