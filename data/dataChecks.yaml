@@ -1,3 +1,51 @@
+DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
+  name: uncertaintyRangeMismatch
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if geopoint uncertainty range mismatch is a positive integer (meters).
+      InputQuestion: Is uncertainty mismatch is an intiger greater than zero?
+      Example:
+        Fail: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) should be a
+          whole number and greater than zero (meters)
+        Pass: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) is a whole
+          number and greater than zero (meters)
+        InputFail: coordinateUncertaintyInMeters=0.002,coordinateUncertaintyInMeters=-1,coordinateUncertaintyInMeters=0
+        InputPass: coordinateUncertaintyInMeters=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Location
+      Keywords: location,uncertainty,mismatch,integer
+      guid: c6adf2ea-3051-4498-97f4-4b2f8a105f57
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      is.integer($uncertainty) AND $uncertainty > 0
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist: 
+  Input:
+    Target: coordinateUncertaintyInMeters
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        result <- TARGET %% 1 == 0 & TARGET > 0
+        return(result)
+    }
 DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
   name: individualcountInvalid
   meta:
@@ -56,8 +104,8 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
           (1753) or after the current date.
         Pass: The date of identification (dwc:dateIdentified) is post Linnaeus (1753)
           to the current date
-        InputFail: dateidentified=1573-02-14
-        InputPass: dateidentified=1000-01-01, dateidentified=3000-01-01
+        InputFail: dateidentified=1573-02-14,dateidentified=1000-01-01,dateidentified=3000-01-01
+        InputPass: dateidentified=2000-01-01
         OutputFail: Failed
         OutputPass: Passed
       Resolution:
