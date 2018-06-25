@@ -3,7 +3,7 @@ DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
   meta:
     Description:
       Main: Check if precision range mismatch is between 0 and 1
-      InputQuestion: Is range mismatch between 0 and 1?
+      Question: Is range mismatch between 0 and 1?
       Example:
         Fail: The coordinate precision (dwc:coordinatePrecision), as a decimal representation,
           is outside the range of zero (minimum) and one (maximum)
@@ -50,7 +50,7 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
   meta:
     Description:
       Main: Check if geopoint uncertainty range mismatch is a positive integer (meters).
-      InputQuestion: Is uncertainty mismatch is an intiger greater than zero?
+      Question: Is uncertainty mismatch is an intiger greater than zero?
       Example:
         Fail: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) should be a
           whole number and greater than zero (meters)
@@ -97,7 +97,7 @@ DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
   meta:
     Description:
       Main: Check if the number of individuals represented present at the time of the occurrence is and intiger
-      InputQuestion: Is number of individuals a positive integer?
+      Question: Is number of individuals a positive integer?
       Example:
         Fail: The count of individuals is not an integer and therefore invalid
         Pass: The count of individuals is a valid integer
@@ -142,7 +142,7 @@ DC_48aa7d66-36d1-4662-a503-df170f11b03f:
   meta:
     Description:
       Main: Check if event day is valid (1 <= integer <= 31)
-      InputQuestion: Is event day valid?
+      Question: Is event day valid?
       Example:
         Fail: The value given for event day is less than 1 or greater than 31
         Pass: The value given for event day is between 1 and 31
@@ -187,7 +187,7 @@ DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
   meta:
     Description:
       Main: Check if event month is valid (1 <= integer <= 12)
-      InputQuestion: Is event month valid?
+      Question: Is event month valid?
       Example:
         Fail: The event month is less than 1 or is greater than 12
         Pass: The event month is between 1 and 12
@@ -232,7 +232,7 @@ DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
   meta:
     Description:
       Main: Check if year in which scientific name was published is not in the future
-      InputQuestion: Is publication year not in the future?
+      Question: Is publication year not in the future?
       Example:
         Fail: dwc:namePublishedInYear is in the future
         Pass: dwc:namePublishedInYear is valid
@@ -277,7 +277,7 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
   meta:
     Description:
       Main: Check if identification date is between Linnaeus and current date
-      InputQuestion: Is identification date possible (between Linnaeus and current date)?
+      Question: Is identification date possible (between Linnaeus and current date)?
       Example:
         Fail: The date of identification (dwc:dateIdentified) falls prior to Linnaeus
           (1753) or after the current date.
@@ -325,7 +325,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   meta:
     Description:
       Main: Check if record identification date is not in the future
-      InputQuestion: Is record identified in the past?
+      Question: Is record identified in the past?
       Example:
         Fail: Date (dwc:dateIdentified) is in the future
         Pass: Date (dwc:dateIdentified) is not in the future
@@ -370,7 +370,7 @@ DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
   meta:
     Description:
       Main: Check if date on which the resource was changed is not in the future
-      InputQuestion: Is modification date not in the future?
+      Question: Is modification date not in the future?
       Example:
         Fail: dcterms:modified is in the future
         Pass: dcterms:modified date is valid

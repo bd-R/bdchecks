@@ -42,14 +42,11 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 # Misc
 
 
-- Test if target column exists.  
 - Create show for dataCheck class.  
 - Add missing records to checks and results (NA?).  
 - For invalid warnings transform logical TRUE/FALSE to passed/failed/missing.   
 - Rearrange yaml (warning, severity, output, dimension).   
-- Add more DC with multiple targets.   
+- Long summary.   
+- Add more DC with multiple targets and different flags.   
 - Implement filtering method for flags.   
 - Document.   
-- Long summary.   
-- Add more DC with different flags.   
-- Add more DC.   

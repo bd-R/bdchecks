@@ -11,6 +11,12 @@ setMethod("performDC", "dataCheck",
         # TARGETS
         targetNames <- unlist(strsplit(DC@input$Target, ","))
         for(j in seq_along(targetNames)) {
+            if (!targetNames[j] %in% colnames(data)) {
+                warning("Target ", targetNames[j], 
+                        " doesn't exists in a given dataset,\ncheck ", DC@name,
+                        " can't be performed")
+                return(NULL)
+            }
             assign(paste0("TARGET", j), data[, targetNames[j], drop = TRUE])
         }
         if (length(targetNames) == 1) {

@@ -4,7 +4,7 @@
 \alias{getDC}
 \title{Load data checks}
 \usage{
-getDC(pathYAML = "./data/DCtest.yaml")
+getDC(pathYAML = "./data/dataChecks.yaml")
 }
 \arguments{
 \item{pathYAML}{Path to a YAML file.}

@@ -68,11 +68,15 @@ performDataCheck <- function(
                 if (verbose) {
                     message("Performing data check: ", DCcurrent@name)
                 }
-                resultDC[[i]] <- new("dataCheckFlag_SINGLE",
-                    name   = DCcurrent@name,
-                    target = DCcurrent@input$Target,
-                    result = performDC(DCcurrent, data),
-                    flag   = "foo")
+                currentResult <- performDC(DCcurrent, data)
+                if (!is.null(currentResult)) {
+                    resultDC[[length(resultDC) + 1]] <- new("dataCheckFlag_SINGLE",
+                        name   = DCcurrent@name,
+                        target = DCcurrent@input$Target,
+                        result = currentResult,
+                        flag   = "foo")
+                }
+                # !!! with NULL results dependencies wont work
                 performedDC[i] <- wantedDC[i]
             }
         }

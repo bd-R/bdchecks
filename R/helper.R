@@ -12,7 +12,7 @@
 #' 
 #' @export
 #' 
-getDC <- function(pathYAML = "./data/DCtest.yaml") {
+getDC <- function(pathYAML = "./data/dataChecks.yaml") {
     # Load YAML file with data checks
     DCyaml <- yaml::yaml.load_file(pathYAML)
     DC <- list()

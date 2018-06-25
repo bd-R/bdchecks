@@ -15,7 +15,7 @@
 #' @examples
 #' exportDC(pathYAML = "pathToYAML.yaml")
 #' 
-exportDC <- function(pathYAML  = "./data/DCtest.yaml", 
+exportDC <- function(pathYAML  = "./data/dataChecks.yaml", 
                      exportRDA = TRUE,
                      exportROX = TRUE,
                      pathRDA   = "./data/",
@@ -75,23 +75,23 @@ generateRoxygenComment <- function(DC) {
 
     # Add long description
     skeleton <- sub("longDesc", paste0(
-        "#'     This data check answers: \"", DC@meta@question, "?\" question.",
-        "\\\\cr Data check will pass if \\\\strong{", DC@meta@description$Pass, "}", 
-                " and will fail if \\\\strong{",  DC@meta@description$Fail, "}.", 
-        "\\\\cr Dimension of this data check is \\\\strong{", DC@meta@dimension, "}",
+        "#'     This data check answers: \"", DC@meta@description$Question, "?\" question.",
+        "\\\\cr Data check will pass if \\\\strong{", DC@meta@description$Example$Pass, "}", 
+                " and will fail if \\\\strong{",  DC@meta@description$Example$Fail, "}.", 
+        "\\\\cr Dimension of this data check is \\\\strong{", DC@meta@flags$Dimension, "}",
                 " and it's flagging type is: \\\\strong{FLAG}",
-        "\\\\cr Example of entries that will pass: \\\\code{", DC@meta@example$InputPass, "},",
-                " such data check would return \\\\code{", DC@meta@example$OutputPass, "}.",
-        "\\\\cr Example of entries that will fail: \\\\code{", DC@meta@example$InputFail, "},",
-                " such data check would return \\\\code{", DC@meta@example$OutputFail, "}."
+        "\\\\cr Example of entries that will pass: \\\\code{", DC@meta@description$example$InputPass, "},",
+                " such data check would return \\\\code{", DC@meta@description$example$OutputPass, "}.",
+        "\\\\cr Example of entries that will fail: \\\\code{", DC@meta@description$example$InputFail, "},",
+                " such data check would return \\\\code{", DC@meta@description$example$OutputFail, "}."
         ),
         skeleton)
     # Add name
     skeleton <- sub("@name", paste("@name", DC@name), skeleton)
     # Add keywords
     skeleton <- c(skeleton, 
-                  ifelse(!is.null(DC@meta@keywords), 
-                         paste("#' @keywords", DC@meta@keywords), ""))
+                  ifelse(!is.null(DC@meta@description$keywords), 
+                         paste("#' @keywords", DC@meta@description$keywords), ""))
 
     body <- c("#'", skeleton, "NULL")
     return(body)

@@ -4,7 +4,7 @@
 \alias{exportDC}
 \title{Export data checks as R objects}
 \usage{
-exportDC(pathYAML = "./data/DCtest.yaml", exportRDA = TRUE,
+exportDC(pathYAML = "./data/dataChecks.yaml", exportRDA = TRUE,
   exportROX = TRUE, pathRDA = "./data/", pathROX = "./R/",
   idRDA = "DC_", idROX = "DC_")
 }
