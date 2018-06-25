@@ -1,3 +1,52 @@
+DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
+  name: identifiedDateImprobable
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if identification date is between Linnaeus and current date
+      InputQuestion: Is identification date possible (between Linnaeus and current date)?
+      Example:
+        Fail: The date of identification (dwc:dateIdentified) falls prior to Linnaeus
+          (1753) or after the current date.
+        Pass: The date of identification (dwc:dateIdentified) is post Linnaeus (1753)
+          to the current date
+        InputFail: dateidentified=1573-02-14
+        InputPass: dateidentified=1000-01-01, dateidentified=3000-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Identification
+      Keywords: date,event,identification
+      guid: dc8aae4b-134f-4d75-8a71-c4186239178e
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $dateIdentified >= dateLinnaeus & $dateIdentified <= $dateToday
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist: 
+  Input:
+    Target: dateIdentified
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+  Functionality: |
+    FUNC <- function() {
+        TARGETdate <- as.Date(TARGET)
+        result <- TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01")
+        return(result)
+    }
 DC_48aa7d66-36d1-4662-a503-df170f11b03f:
   name: dayInvalid
   meta:
