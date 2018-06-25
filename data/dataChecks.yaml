@@ -1,3 +1,50 @@
+DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
+  name: modifiedInFuture
+  meta:
+    Description:
+      IMPLEMENTATION_STATUS: FINISHED
+      Main: Check if modification date is not in the future
+      InputQuestion: Is modification date not in the future?
+      Example:
+        Fail: dcterms:modified is in the future
+        Pass: dcterms:modified date is valid
+        InputFail: dcterms:modified=2230-12-31
+        InputPass: dcterms:modified=2000-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: date,record
+      guid: 5147823a-5c46-4b3d-88e8-244ddc96e749
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $dateModified <= $dateToday
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2018-06-23
+      ModificationHist:
+  Input:
+    Target: modified
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        TARGETdate <- as.Date(TARGET)
+        result <- TARGETdate <= Sys.Date()
+        return(result)
+    }
 DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
   name: monthInvalid
   meta:
