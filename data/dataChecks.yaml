@@ -1,3 +1,52 @@
+DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
+  name: classUnknown
+  meta:
+    Description:
+      Main: The full scientific name of the class in which the taxon is classified is within given vocabulary
+      InputQuestion: Is scientific name of the class known?
+      Example:
+        Fail: Taxonomic rank Class value cannot be interpreted
+        Pass: Taxonomic rank Class was interpreted correctly
+        InputFail: class=""Birds""
+        InputPass: class=""Unicorns""
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Taxon
+      Keywords: taxon,class
+      guid: 2cd6884e-3d14-4476-94f7-1191cfff309b
+    Flags:
+      Severity: Warning
+      Warnign: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $class %IN% VOCABULARY
+    Source:
+      Reference:     
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2018-06-25
+      ModificationHist:
+  Input:
+    Target: class
+    Dependency:
+      DependencyType: External
+      DataChecks:     
+      Rpackages:        
+      Data:         
+  Functionality: |
+    FUNC <- function() {
+        VOCABULARY <- c("Mammalia", 
+                        "Aves", 
+                        "Reptilia")
+        TARGETmod <- gsub("_| ", "", TARGET)
+        result <- tolower(TARGETmod) %in% tolower(VOCABULARY)
+        return(result)
+    }
 DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
   name: basisOfRecordBadlyFormed
   meta:
