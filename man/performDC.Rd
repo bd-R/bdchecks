@@ -4,7 +4,7 @@
 \alias{performDC}
 \title{Perform data check}
 \usage{
-performDC(DC, data)
+performDC(DC, DATA)
 }
 \description{
 Perform data check

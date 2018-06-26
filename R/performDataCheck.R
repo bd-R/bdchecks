@@ -69,14 +69,27 @@ performDataCheck <- function(
                     message("Performing data check: ", DCcurrent@name)
                 }
                 currentResult <- performDC(DCcurrent, data)
-                if (!is.null(currentResult)) {
-                    resultDC[[length(resultDC) + 1]] <- new("dataCheckFlag_SINGLE",
-                        name   = DCcurrent@name,
-                        target = DCcurrent@input$Target,
-                        result = currentResult,
-                        flag   = "foo")
+                if (class(currentResult) == "list") {
+                    for(j in seq_along(currentResult)) {
+                        if (!is.null(currentResult)) {
+                            resultDC[[length(resultDC) + 1]] <- new("dataCheckFlag_SINGLE",
+                                name   = DCcurrent@name,
+                                target = unlist(strsplit(DCcurrent@input$Target, ","))[j],
+                                result = currentResult[[j]],
+                                flag   = "foo")
+                        }
+                    }
+                } else {
+                    if (!is.null(currentResult)) {
+                        resultDC[[length(resultDC) + 1]] <- new("dataCheckFlag_SINGLE",
+                            name   = DCcurrent@name,
+                            target = DCcurrent@input$Target,
+                            result = currentResult,
+                            flag   = "foo")
+                    }
                 }
                 # !!! with NULL results dependencies wont work
+                # !!! what if one target is null and another returns result?
                 performedDC[i] <- wantedDC[i]
             }
         }

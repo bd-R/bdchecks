@@ -2,22 +2,22 @@
 #'
 #' @export
 #' 
-setGeneric("performDC", function(DC, data) {
+setGeneric("performDC", function(DC, DATA) {
     standardGeneric("performDC")
 }) 
 setMethod("performDC", "dataCheck",
-    function(DC, data) {
+    function(DC, DATA) {
 
         # TARGETS
         targetNames <- unlist(strsplit(DC@input$Target, ","))
         for(j in seq_along(targetNames)) {
-            if (!targetNames[j] %in% colnames(data)) {
+            if (!targetNames[j] %in% colnames(DATA)) {
                 warning("Target ", targetNames[j], 
                         " doesn't exists in a given dataset,\ncheck ", DC@name,
                         " can't be performed")
                 return(NULL)
             }
-            assign(paste0("TARGET", j), data[, targetNames[j], drop = TRUE])
+            assign(paste0("TARGET", j), DATA[, targetNames[j], drop = TRUE])
         }
         if (length(targetNames) == 1) {
             TARGET <- TARGET1
