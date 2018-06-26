@@ -1,3 +1,58 @@
+DC_65f962aa-c474-4392-9176-028bf0b86a2e:
+  name: coordinatePrecisionMismatch
+  meta:
+    Description:
+      Main: Check if decimal value given in decimalLatitude and decimalLongitude does agree witha a decimal representation of the precision of the coordinates (coordinatePrecision)
+      InputQuestion: Is decimal number in langitude and latitude not smaller than a given decimal precision?
+      Example:
+        Fail: The number of decimal places of latitude (dwc:decimalLatitude) or longitude
+          (dwc:decimalLongitude) is not in agreement with the supplied coordinate
+          precision (dwc:coordinatePrecision)
+        Pass: The number of decimal places of latitude (dwc:decimalLatitude) and longitude
+          (dwc:decimalLongitude) is in agreement with the supplied coordinate precision
+          (dwc:coordinatePrecision)
+        InputFail: coordinatePrecision=0.5, decimalLatitude=-35.123456
+        InputPass: coordinatePrecision=1e-5, decimalLatitude=-35.123
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,precision
+      guid: 65f962aa-c474-4392-9176-028bf0b86a2e
+    Flags:
+      Severity: Warning
+      Warnign: Inconsistent
+      Output: Validation
+      Dimension: Consistency
+    Pseudocode: |
+      numberOfDecimals($decimalLatitude) <= coordinatePrecision
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2018-06-25
+      ModificationHist: 
+  Input:
+    Target: decimalLatitude,decimalLongitude
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages:
+      Data: DATA$coordinatePrecision
+  Functionality: |
+    FUNC <- function() {
+        options(scipen = 999)
+        coordinatePrecisionMismatch <- function(TARGET) {
+            nTARGET <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(TARGET)))
+            nDEPEND <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(DEPEND)))
+            nTARGET <= nDEPEND
+        }
+        result <- lapply(TARGETS, coordinatePrecisionMismatch)
+        return(result)
+    }
 DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
   name: countryNameUnknown
   meta:
