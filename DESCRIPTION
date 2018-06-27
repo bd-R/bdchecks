@@ -10,6 +10,6 @@ Author: Tomer Gueta <tomer.gu@gmail.com>, Vijay Barve <vijay.barve@gmail.com>,
 Maintainer: Povilas Gibas <povilasgibas@gmail.com>
 Imports: 
     yaml,
-    cli
+    knitr
 LazyData: true
 RoxygenNote: 6.0.1

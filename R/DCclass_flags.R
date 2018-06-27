@@ -47,21 +47,23 @@ setMethod("shortSummaryDataCheck", "dataCheckFlag",
         res <- do.call(rbind, res)
         res$check <- as.character(res$check)
         res$target <- as.character(res$target)
+        res <- res[order(res$failed, decreasing = TRUE), ]
         if (export) {
             write.csv(res, file, quote = FALSE, row.names = FALSE)
         } else {
             if (fancy) {
-                cli::cat_bullet(format(c("Data check", res$check)), 
-                                " -> ", format(c("Target", res$target)), 
-                                " : ", format(c("Passed", paste0(round(res$passed * 100, 2), "%"))), 
-                                "   ",  format(c("Failed", paste0(round(res$failed * 100, 2), "%"))), 
-                                "   ",  format(c("Missing", paste0(round(res$missing * 100, 2), "%"))))
+                rownames(res) <- NULL
+                res$passed <- paste0(round(res$passed * 100, 2), "%")
+                res$failed <- paste0(round(res$failed * 100, 2), "%")
+                res$missing <- paste0(round(res$missing * 100, 2), "%")
+                colnames(res) <- c("Data Check", "Column (Target)", 
+                                   "Passed, %", "Failed, %", "Missing,% ")
+                knitr::kable(res, format = "rst")
             } else {
                 res
             }
         }
 })
-
 
 
 setGeneric("filterDataCheck", function(DCresult, DC = NULL) {
