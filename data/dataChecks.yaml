@@ -1,3 +1,52 @@
+DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
+  name: countryMismatch
+  meta:
+    Description:
+      Main: 'FOO'
+      InputQuestion: 'FOO'
+      Example:
+        Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
+          not match
+        Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
+        InputFail: country=""Australia"", countryCode=4
+        InputPass: country=""Australia"", countryCode=4
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,iso,country
+      guid: b23110e7-1be7-444a-a677-cdee0cf4330c
+    Flags:
+      Severity: Warning
+      Warnign: Inconsistent
+      Output: Validation
+      Dimension: Consistency
+    Pseudocode: 'FOO'
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: country,countryCode
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages: rgbif 
+      Data: isocodes$name,isocodes$code
+  Functionality: |
+      FUNC <- function() {
+          result <- sapply(seq_along(TARGET1), function(i) {
+              result <- which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
+              return(result)
+          })
+          result[is.na(result == 0)] <- FALSE
+          return(result)
+       }
 DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
   name: coordinatesZero
   meta:
