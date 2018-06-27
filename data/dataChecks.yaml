@@ -1,3 +1,47 @@
+DC_41267642-60ff-4116-90eb-499fee2cd83f:
+  name: dateNull
+  meta:
+    Description:
+      Main: Check if eventDate, year, verbatimEventDate are not NULL
+      InputQuestion: Is eventDate, year or verbatimEventDate not NULL?
+      Example:
+        Fail: No date information
+        Pass: Date information is present
+        InputFail: year=NULL + eventDate=NULL + verbatimEventDate=NULL
+        InputPass: year=2000 + eventDate=2000.01.01 + verbatimEventDate=2000.01.01 
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Event
+      Keywords: date,null
+      guid: 41267642-60ff-4116-90eb-499fee2cd83f
+    Flags:
+      Severity: Error
+      Warning: Invalid
+      Output: Validation
+      Dimension: Completeness
+    Pseudocode: |
+      is.na($eventDate)
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: eventDate,year,verbatimEventDate
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        lapply(TARGETS, function(i) !is.na(get(i)))
+    }
 DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
   name: dataGeneralised
   meta:
@@ -17,7 +61,7 @@ DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
         Record: SingleRecord
         Term: SingleTerm
       DarwinCoreClass: Record_level Terms
-      Keywords: longitude,latitude
+      Keywords: longitude,latitude,null
       guid: 13d5a10e-188e-40fd-a22c-dbaa87b91df2
     Flags:
       Severity: Warning
@@ -25,7 +69,7 @@ DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
       Output: Validation
       Dimension: Resolution
     Pseudocode: |
-      is.null($dataGeneralised)
+      is.na($dataGeneralised)
     Source:
       Reference:
       CreatedBy: Povilas Gibas
@@ -42,8 +86,7 @@ DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
       Data:
   Functionality: |
       FUNC <- function() {
-          result <- is.null(TARGET)
-          return(result)
+          is.na(TARGET)
        }
 DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   name: countryMismatch
@@ -89,8 +132,7 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   Functionality: |
       FUNC <- function() {
           result <- sapply(seq_along(TARGET1), function(i) {
-              result <- which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
-              return(result)
+              which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
           })
           result[is.na(result == 0)] <- FALSE
           return(result)
@@ -140,8 +182,7 @@ DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
         coordinatesZero <- function(TARGET) {
             get(TARGET) != 0
         }
-        result <- lapply(TARGETS, coordinatesZero)
-        return(result)
+        lapply(TARGETS, coordinatesZero)
     }
 DC_65f962aa-c474-4392-9176-028bf0b86a2e:
   name: coordinatePrecisionMismatch
@@ -195,8 +236,7 @@ DC_65f962aa-c474-4392-9176-028bf0b86a2e:
             nDEPEND <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(DEPEND)))
             nTARGET <= nDEPEND
         }
-        result <- lapply(TARGETS, coordinatePrecisionMismatch)
-        return(result)
+        lapply(TARGETS, coordinatePrecisionMismatch)
     }
 DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
   name: countryNameUnknown
@@ -239,10 +279,9 @@ DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
       Rpackages: rgbif 
       Data: isocodes$name
   Functionality: |
-      FUNC <- function() {
-         result <- TARGET %in% DEPEND
-         return(result)
-       }
+    FUNC <- function() {
+        TARGET %in% DEPEND
+    }
 DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
   name: classUnknown
   meta:
@@ -289,8 +328,7 @@ DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
                         "Aves", 
                         "Reptilia")
         TARGETmod <- gsub("_| ", "", TARGET)
-        result <- tolower(TARGETmod) %in% tolower(VOCABULARY)
-        return(result)
+        tolower(TARGETmod) %in% tolower(VOCABULARY)
     }
 DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
   name: basisOfRecordBadlyFormed
@@ -340,8 +378,7 @@ DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
                         "HumanObservation", 
                         "MachineObservation")
         TARGETmod <- gsub("_| ", "", TARGET)
-        result <- tolower(TARGETmod) %in% tolower(VOCABULARY)
-        return(result)
+        tolower(TARGETmod) %in% tolower(VOCABULARY)
     }
 DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
   name: occurrenceIdNotGuid
@@ -386,9 +423,8 @@ DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
       Data:
   Functionality: |
     FUNC <- function() {
-        result <- grepl("^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                        tolower(TARGET))
-        return(result)
+        grepl("^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              tolower(TARGET))
     }
 DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
   name: precisionRangeMismatch
@@ -434,8 +470,7 @@ DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
       Data:
   Functionality: |
     FUNC <- function() {
-        result <- TARGET >= 0 & TARGET <= 1
-        return(result)
+        TARGET >= 0 & TARGET <= 1
     }
 DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
   name: uncertaintyRangeMismatch
@@ -481,8 +516,7 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
       Data:
   Functionality: |
     FUNC <- function() {
-        result <- TARGET %% 1 == 0 & TARGET > 0
-        return(result)
+        TARGET %% 1 == 0 & TARGET > 0
     }
 DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
   name: individualcountInvalid
@@ -526,8 +560,7 @@ DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
       Data: 
   Functionality: |
     FUNC <- function() {
-        result <- TARGET %% 1 == 0 & TARGET >= 0
-        return(result)
+        TARGET %% 1 == 0 & TARGET >= 0
     }
 DC_48aa7d66-36d1-4662-a503-df170f11b03f:
   name: dayInvalid
@@ -571,8 +604,7 @@ DC_48aa7d66-36d1-4662-a503-df170f11b03f:
       Data: 
   Functionality: |
     FUNC <- function() {
-        result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 31
-        return(result)
+        TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 31
     }
 DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
   name: monthInvalid
@@ -616,8 +648,7 @@ DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
       Data:
   Functionality: |
     FUNC <- function() {
-        result <- TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 12
-        return(result)
+        TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 12
     }
 DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
   name: namePublishedYearInFuture
@@ -661,8 +692,7 @@ DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
       Data:
   Functionality: |
     FUNC <- function() {
-        result <- format(as.Date(TARGET), "%Y") <= format(Sys.Date(), "%Y")
-        return(result)
+        format(as.Date(TARGET), "%Y") <= format(Sys.Date(), "%Y")
     }
 DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
   name: identifiedDateImprobable
@@ -709,8 +739,7 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
   Functionality: |
     FUNC <- function() {
         TARGETdate <- as.Date(TARGET)
-        result <- TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01")
-        return(result)
+        TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01")
     }
 DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   name: dateIdentifiedInFuture
@@ -754,8 +783,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
       Data: 
   Functionality: |
     FUNC <- function() {
-        result <- as.Date(TARGET) <= Sys.Date()
-        return(result)
+        as.Date(TARGET) <= Sys.Date()
     }
 DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
   name: modifiedInFuture
@@ -799,7 +827,5 @@ DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
       Data:
   Functionality: |
     FUNC <- function() {
-        TARGETdate <- as.Date(TARGET)
-        result <- TARGETdate <= Sys.Date()
-        return(result)
+        as.Date(TARGET) <= Sys.Date()
     }
