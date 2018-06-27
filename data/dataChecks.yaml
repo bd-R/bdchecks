@@ -1,3 +1,50 @@
+DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
+  name: dataGeneralised
+  meta:
+    Description:
+      Main: Chech if dataGeneralizations is a NULL column (ie, latitude and longitude were not generalized)
+      InputQuestion: Is dataGeneralizations NULL?
+      Example:
+        Fail: Latitude and longitude values may have been generalized as indicated
+          by dwc:dataGeneralizations is not NULL
+        Pass: Latitude and longitude values have not been generalized as indicated
+          by dwc:dataGeneralizations is NULL
+        InputFail: dataGeneralizations=record placed on 0.1 degree grid
+        InputPass: dataGeneralizations=
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: longitude,latitude
+      guid: 13d5a10e-188e-40fd-a22c-dbaa87b91df2
+    Flags:
+      Severity: Warning
+      Warnign: Amended
+      Output: Validation
+      Dimension: Resolution
+    Pseudocode: |
+      is.null($dataGeneralised)
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: dataGeneralizations
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+      FUNC <- function() {
+          result <- is.null(TARGET)
+          return(result)
+       }
 DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   name: countryMismatch
   meta:
@@ -8,8 +55,8 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
         Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
           not match
         Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
-        InputFail: country=""Australia"", countryCode=4
-        InputPass: country=""Australia"", countryCode=4
+        InputFail: country=Australia, countryCode=4
+        InputPass: country=Australia, countryCode=AU
         OutputFail: Failed
         OutputPass: Passed
       Resolution:
