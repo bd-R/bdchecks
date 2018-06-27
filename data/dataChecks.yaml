@@ -49,8 +49,8 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   name: countryMismatch
   meta:
     Description:
-      Main: 'FOO'
-      InputQuestion: 'FOO'
+      Main: Check if given country match given country code.
+      InputQuestion: Does country and country code match?
       Example:
         Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
           not match
@@ -70,7 +70,8 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
       Warnign: Inconsistent
       Output: Validation
       Dimension: Consistency
-    Pseudocode: 'FOO'
+    Pseudocode: |
+      get.Country($countryCode) == $country
     Source:
       Reference:
       CreatedBy: Povilas Gibas
