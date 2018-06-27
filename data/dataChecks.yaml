@@ -1,8 +1,56 @@
+DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
+  name: coordinatesZero
+  meta:
+    Description:
+      Main: Check if decimal values given in decimalLatitude and decimalLongitude are not zero 
+      InputQuestion: Is decimal number in langitude and latitude not zero?
+      Example:
+        Fail: Decimal latitude and longitude are both zero (0) degrees
+        Pass: Decimal latitude and longitude are not zero (0) degrees
+        InputFail: decimalLatitude=0, decimalLongitude=0
+        InputPass: decimalLatitude=-1, decimalLongitude=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location
+      guid: 1bf0e210-6792-4128-b8cc-ab6828aa4871
+    Flags:
+      Severity: Warning
+      Warnign: Unlikely
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $decimalLatitude != 0
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: decimalLatitude,decimalLongitude
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        coordinatesZero <- function(TARGET) {
+            get(TARGET) != 0
+        }
+        result <- lapply(TARGETS, coordinatesZero)
+        return(result)
+    }
 DC_65f962aa-c474-4392-9176-028bf0b86a2e:
   name: coordinatePrecisionMismatch
   meta:
     Description:
-      Main: Check if decimal value given in decimalLatitude and decimalLongitude does agree witha a decimal representation of the precision of the coordinates (coordinatePrecision)
+      Main: Check if decimal values given in decimalLatitude and decimalLongitude does agree witha a decimal representation of the precision of the coordinates (coordinatePrecision)
       InputQuestion: Is decimal number in langitude and latitude not smaller than a given decimal precision?
       Example:
         Fail: The number of decimal places of latitude (dwc:decimalLatitude) or longitude
