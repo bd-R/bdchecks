@@ -50,4 +50,5 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 - Add more DC with multiple targets and different flags.   
 - Implement filtering method for flags (add flag to DC result).   
 - Document.   
-- Add info about not performed data checks to DCresult.  
+- Add info about not performed data checks to DCresult.   
+- I need to rethink what functions returns as amended functions should also return modified data (now it works only with warning TRUE/FALSE)
