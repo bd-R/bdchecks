@@ -21,7 +21,7 @@ DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
       guid: 13d5a10e-188e-40fd-a22c-dbaa87b91df2
     Flags:
       Severity: Warning
-      Warnign: Amended
+      Warning: Amended
       Output: Validation
       Dimension: Resolution
     Pseudocode: |
@@ -67,7 +67,7 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
       guid: b23110e7-1be7-444a-a677-cdee0cf4330c
     Flags:
       Severity: Warning
-      Warnign: Inconsistent
+      Warning: Inconsistent
       Output: Validation
       Dimension: Consistency
     Pseudocode: |
@@ -116,7 +116,7 @@ DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
       guid: 1bf0e210-6792-4128-b8cc-ab6828aa4871
     Flags:
       Severity: Warning
-      Warnign: Unlikely
+      Warning: Unlikely
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -168,7 +168,7 @@ DC_65f962aa-c474-4392-9176-028bf0b86a2e:
       guid: 65f962aa-c474-4392-9176-028bf0b86a2e
     Flags:
       Severity: Warning
-      Warnign: Inconsistent
+      Warning: Inconsistent
       Output: Validation
       Dimension: Consistency
     Pseudocode: |
@@ -219,7 +219,7 @@ DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
       guid: 69b2efdc-6269-45a4-aecb-4cb99c2ae134
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -264,7 +264,7 @@ DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
       guid: 2cd6884e-3d14-4476-94f7-1191cfff309b
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -313,7 +313,7 @@ DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
       guid: 24899475-7c8a-45d1-9d7f-cfc620c9460a
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
@@ -365,7 +365,7 @@ DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
       guid: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
     Flags:
       Severity: Warning
-      Warnign: Invalid
+      Warning: Invalid
       Output: Validation
       Dimension: Conformance
     Pseudocode: |
