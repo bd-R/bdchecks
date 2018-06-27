@@ -110,28 +110,28 @@ setMethod("longSummaryDataCheck", "dataCheckFlag",
                 theme(axis.ticks = element_blank(),
                       panel.grid.major.y = element_line(size = 0.1, color = "black"), 
                       legend.position = "none")
-            # pd3 <- data.frame(x = table(DCresult@dataOrig[!pd$x, target]))
-            # if (nrow(pd3) > 0) {
-            #     colnames(pd3) <- c("ID", "Freq")
-            #     pd3$per <- paste0(round(pd3$Freq * 100 / sum(pd3$Freq), 1), "%")
-            #     p2 <- ggplot(pd3, aes(ID, Freq, fill = ID)) +
-            #         geom_bar(stat = "identity", position = "dodge",
-            #                  width = 0.8, color = "black") +
-            #         geom_text(aes(label = per), vjust = -1) +
-            #         labs(title = paste("Data check:", name),
-            #              subtitle = paste("Failed targets in", target),
-            #              x = NULL,
-            #              y = "# records",
-            #              fill = NULL) +
-            #         theme_classic() +
-            #         theme(axis.ticks = element_blank(),
-            #               legend.position = "none")
+            pd3 <- data.frame(x = table(DCresult@dataOrig[!pd$x, target]))
+            if (nrow(pd3) > 0) {
+                colnames(pd3) <- c("ID", "Freq")
+                pd3$per <- paste0(round(pd3$Freq * 100 / sum(pd3$Freq), 1), "%")
+                p2 <- ggplot(pd3, aes(ID, Freq, fill = ID)) +
+                    geom_bar(stat = "identity", position = "dodge",
+                             width = 0.8, color = "black") +
+                    geom_text(aes(label = per), vjust = -1) +
+                    labs(title = paste("Data check:", name),
+                         subtitle = paste("Failed targets in", target),
+                         x = NULL,
+                         y = "# records",
+                         fill = NULL) +
+                    theme_classic() +
+                    theme(axis.ticks = element_blank(),
+                          legend.position = "none")
             #     # res[[i]] <- 
-            #     egg::ggarrange(p1, p2, ncol = 2)
-            # } else {
+                egg::ggarrange(p1, p2, ncol = 2)
+            } else {
                 # res[[i]] <- 
                 egg::ggarrange(p1, ncol = 2)
-            # }
+            }
         }
         dev.off()
 })

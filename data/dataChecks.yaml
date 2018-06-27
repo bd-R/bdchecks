@@ -44,8 +44,8 @@ DC_65f962aa-c474-4392-9176-028bf0b86a2e:
       Data: DATA$coordinatePrecision
   Functionality: |
     FUNC <- function() {
-        options(scipen = 999)
         coordinatePrecisionMismatch <- function(TARGET) {
+            TARGET <- get(TARGET)
             nTARGET <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(TARGET)))
             nDEPEND <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(DEPEND)))
             nTARGET <= nDEPEND

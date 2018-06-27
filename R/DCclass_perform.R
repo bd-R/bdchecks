@@ -7,7 +7,7 @@ setGeneric("performDC", function(DC, DATA) {
 }) 
 setMethod("performDC", "dataCheck",
     function(DC, DATA) {
-
+        options(scipen = 999)
         # TARGETS
         targetNames <- unlist(strsplit(DC@input$Target, ","))
         for(j in seq_along(targetNames)) {
