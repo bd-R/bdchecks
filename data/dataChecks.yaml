@@ -1,3 +1,187 @@
+DC_c09ecbf9-34e3-4f3e-b74a-8796af15e59f:
+  name: yearMissing
+  meta:
+    Description:
+      Main: Check if year information is not missing
+      InputQuestion: Is year information present?
+      Example:
+        Fail: The value for dwc:year is NULL
+        Pass: The value for dwc:year is valid
+        InputFail: year=
+        InputPass: year=2000
+        OutputFail: Faield
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: year,null
+      guid: c09ecbf9-34e3-4f3e-b74a-8796af15e59f
+    Flags:
+      Severity: Error
+      Warning: Invalid
+      Output: Validation
+      Dimension: Completeness
+    Pseudocode: |
+      is.na($year)
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: year
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+      FUNC <- function() {
+          !is.na(TARGET)
+       }
+DC_3cff4dc4-72e9-4abe-9bf3-8a30f1618432:
+  name: eventDateInFuture
+  meta:
+    Description:
+      Main: Check if event date is not in the future
+      Question: Is event date not in the future?
+      Example:
+        Fail: dwc:eventDate is in the future
+        Pass: dwc:eventDate is valid
+        InputFail: eventDate=2230-12-31
+        InputPass: eventDate=2001-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,event
+      guid: 3cff4dc4-72e9-4abe-9bf3-8a30f1618432
+    Flags:
+      Severity: Error
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $eventDate <= $dateToday
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: eventDate
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function() {
+        as.Date(TARGET) <= Sys.Date()
+    }
+DC_0bb8297d-8f8a-42d2-80c1-558f29efe798:
+  name: elevationOutOfRange
+  meta:
+    Description:
+      Main: Check if elevationOutOfRange is not out of range.
+      InputQuestion: Is elevation within range?
+      Example:
+        Fail: Minimum elevation in meters is less than zero and/or maximum elevation in meters is greater than 10,000
+        Pass: Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters
+        InputFail: maximumElevationInMeters=19375
+        InputPass: minimumElevationInMeters=1,maximumElevationInMeters=100
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,elevation
+      guid: 0bb8297d-8f8a-42d2-80c1-558f29efe798
+    Flags:
+      Severity: Warning
+      Warning: Unlikely
+      Output: Validation
+      Dimension: Likeliness
+    Pseudocode: |
+       0 <= $minimumElevationInMeters <= 10000
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: minimumElevationinMeters,maximumElevationInMeters
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function(minE = 0, maxE = 1e4) {
+        elevationOutOfRange <- function(TARGET) {
+            get(TARGET) >= minE & get(TARGET) <= maxE 
+        }
+        lapply(TARGETS, elevationOutOfRange)
+    }
+DC_04b2c8f3-c71b-4e95-8e43-f70374c5fb92:
+  name: depthOutOfRange
+  meta:
+    Description:
+      Main: Check if depthOutOfRange is not out of range.
+      InputQuestion: Is depth within range?
+      Example:
+        Fail: Minimum depth is less than zero (0) or maximum depth is greater than
+          11,000 meters
+        Pass: Minimum depth is greater than or equal to zero (0) and maximum depth
+          is less than 11,000 meters
+        InputFail: maximumDepthInMeters=19380
+        InputPass: minimumDepthInMeters=1,maximumDepthInMeters=100
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,depth
+      guid: 04b2c8f3-c71b-4e95-8e43-f70374c5fb92
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Likeliness
+    Pseudocode: |
+       0 <= $minimumDepthInMeters <= 11000
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2018-06-27
+      ModificationHist:
+  Input:
+    Target: minimumDepthInMeters,maximumDepthInMeters
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+  Functionality: |
+    FUNC <- function(minD = 0, maxD = 11e3) {
+        depthOutOfRange <- function(TARGET) {
+            get(TARGET) >= minD & get(TARGET) <= maxD 
+        }
+        lapply(TARGETS, depthOutOfRange)
+    }
 DC_41267642-60ff-4116-90eb-499fee2cd83f:
   name: dateNull
   meta:
