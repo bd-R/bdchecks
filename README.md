@@ -46,11 +46,22 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 
 # Misc
 
+## Todo
 
-- Add more DC with multiple targets and different flags.   
-- Implement filtering method for flags (add flag to DC result).   
-- Document.   
-- Add info about not performed data checks to DCresult.   
-- I need to rethink what functions returns as amended functions should also return modified data (now it works only with warning TRUE/FALSE).  
-- performDC checks only for first colnames and quits (doesn't give chance for other ones)   
-- Add info to DCresult about failed DC
+### Main
+- Output from different flag types (ie modified data)  
+- Shiny for filtering DC result  
+- Add information about failed DC  
+
+### Other
+- PerformDC checks only if first colname is present and quits (doesn't give chance for other ones)   
+- Export summary as pdf (almost as a presentation) - change long output  
+- Test DC/filtering with more data (eg 1e6 rows)?   
+- Add computing time to DC  
+- Add DC filtering info (history) shiny     
+- Shiny app idea: upload data and yaml   
+- Shiny app idea: create your own data check and yaml :)  
+
+## Questions
+- Were to put/get external DC data (vocabularies)?   
+- What to do with dependency if data check failed?  
