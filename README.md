@@ -52,4 +52,5 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 - Document.   
 - Add info about not performed data checks to DCresult.   
 - I need to rethink what functions returns as amended functions should also return modified data (now it works only with warning TRUE/FALSE).  
-- performDC checks only for first colnames and quits (doesn't give chance for other ones)
+- performDC checks only for first colnames and quits (doesn't give chance for other ones)   
+- Add info to DCresult about failed DC
