@@ -61,6 +61,8 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 - Add DC filtering info (history) shiny     
 - Shiny app idea: upload data and yaml   
 - Shiny app idea: create your own data check and yaml :)  
+- In filtering add test for all selection (passed, failed, missing)  
+- change shortDummaryDataCheck just to summary
 
 ## Questions
 - Were to put/get external DC data (vocabularies)?   

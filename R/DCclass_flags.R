@@ -66,21 +66,6 @@ setMethod("shortSummaryDataCheck", "dataCheckFlag",
 })
 
 
-setGeneric("filterDataCheck", function(DCresult, DC = NULL) {
-    standardGeneric("filterDataCheck")
-})
-setMethod("filterDataCheck", "dataCheckFlag",
-    function(DCresult, DC = NULL) {
-        foo <- do.call(cbind, lapply(DCresult@flags, function(x) `@`(x, result)))
-        if (!is.null(DC)) {
-            foo <- matrix(foo[, DCresult@DC %in% DC], ncol = length(DC))
-        }
-        DCresult@dataMod <- DCresult@dataMod[rowSums(!foo) == 0, ]
-        DCresult
-})
-
-
-
 setGeneric("longSummaryDataCheck", function(DCresult) {
     standardGeneric("longSummaryDataCheck")
 })
