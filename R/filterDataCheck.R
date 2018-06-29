@@ -22,3 +22,18 @@ filterDataCheck <- function(DCresult, DCfilts = NULL) {
     idx <- unique(idx)
     DCresult@dataMod[-idx, ]
 }
+
+generateDCfilts <- function(DCresult, selectedCells) {
+    filters <- c("P", "M", "F")
+    result <- lapply(unique(selectedCells[, 1]), function(i) {
+        DCcurrent <- DCresult[selectedCells[i, 1], ]
+        tmpFilt <- filters[unique(selectedCells[selectedCells[, 1] == i, 2] - 2)]
+        list(name = DCcurrent$check,
+             target = DCcurrent$target,
+             filter = paste(tmpFilt, collapse = ""))
+    })
+
+    list(name = sapply(result, "[[", 1),
+         target = sapply(result, "[[", 2),
+         filter = sapply(result, "[[", 3))
+}
