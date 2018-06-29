@@ -31,41 +31,6 @@ setMethod("exportDataCheck", "dataCheckFlag",
         }
 })
 
-
-# DONE
-setGeneric("shortSummaryDataCheck", function(DCresult, fancy = TRUE, export = FALSE, file = "./DCresult.csv") {
-    standardGeneric("shortSummaryDataCheck")
-})
-setMethod("shortSummaryDataCheck", "dataCheckFlag",
-    function(DCresult, fancy, export, file) {
-        res <- lapply(DCresult@flags, function(x) {
-            data.frame(check = x@name, target = x@target,
-                       passed = sum(x@result, na.rm = TRUE) / length(x@result),
-                       failed = sum(!x@result, na.rm = TRUE) / length(x@result),
-                       missing = mean(is.na(x@result)))
-        })
-        res <- do.call(rbind, res)
-        res$check <- as.character(res$check)
-        res$target <- as.character(res$target)
-        res <- res[order(res$failed, decreasing = TRUE), ]
-        if (export) {
-            write.csv(res, file, quote = FALSE, row.names = FALSE)
-        } else {
-            if (fancy) {
-                rownames(res) <- NULL
-                res$passed <- paste0(round(res$passed * 100, 2), "%")
-                res$failed <- paste0(round(res$failed * 100, 2), "%")
-                res$missing <- paste0(round(res$missing * 100, 2), "%")
-                colnames(res) <- c("Data Check", "Column (Target)", 
-                                   "Passed, %", "Failed, %", "Missing,% ")
-                knitr::kable(res, format = "rst")
-            } else {
-                res
-            }
-        }
-})
-
-
 setGeneric("longSummaryDataCheck", function(DCresult) {
     standardGeneric("longSummaryDataCheck")
 })

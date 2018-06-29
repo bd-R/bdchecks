@@ -3,6 +3,7 @@
 export(getDC)
 export(performDC)
 export(performDataCheck)
+export(summary)
 exportClasses(dataCheck)
 exportClasses(dataCheckFlag)
 exportClasses(dataCheckFlag_SINGLE)

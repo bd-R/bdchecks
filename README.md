@@ -26,12 +26,8 @@ Export data after data checks (file or R object) (not exported yet):
 
 Quick glance at data check result (% of records that passed) (not exported yet):  
 
-    # Nice output to terminal
-    bdchecks:::shortSummaryDataCheck(resultDC)
-    # Output as data frame that can be parsed
-    bdchecks:::shortSummaryDataCheck(resultDC, fancy = FALSE)
-    # Output to a file
-    bdchecks:::shortSummaryDataCheck(resultDC, export = TRUE)
+    # Nice summary
+    <summary></summary>(resultDC)
 
 
 ## Dealing with data checks
@@ -62,7 +58,6 @@ Export DCs from a given `yaml` file to rda and `roxygen2` comments:
 - Shiny app idea: upload data and yaml   
 - Shiny app idea: create your own data check and yaml :)  
 - In filtering add test for all selection (passed, failed, missing)  
-- change shortDummaryDataCheck just to summary
 
 ## Questions
 - Were to put/get external DC data (vocabularies)?   
