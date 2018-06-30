@@ -4,7 +4,7 @@
 #' 
 #' @return result
 #' 
-summary_DC <- function(object, fancy = TRUE) {
+summary_DC <- function(object, fancy = TRUE, filteringDT = FALSE) {
     res <- lapply(object@flags, function(x) {
         data.frame(check = x@name, target = x@target,
                    passed = sum(x@result, na.rm = TRUE) / length(x@result),
@@ -15,16 +15,21 @@ summary_DC <- function(object, fancy = TRUE) {
     res$check <- as.character(res$check)
     res$target <- as.character(res$target)
     res <- res[order(res$failed, decreasing = TRUE), ]
-    if (fancy) {
-        rownames(res) <- NULL
-        res$passed <- paste0(round(res$passed * 100, 2), "%")
-        res$failed <- paste0(round(res$failed * 100, 2), "%")
-        res$missing <- paste0(round(res$missing * 100, 2), "%")
+    rownames(res) <- NULL
+    if (!fancy & !filteringDT) {
+        return(res)
+    } else {
+        res$passed <- as.character(round(res$passed * 100, 2))
+        res$failed <- as.character(round(res$failed * 100, 2))
+        res$missing <- as.character(round(res$missing * 100, 2))
         colnames(res) <- c("Data Check", "Column (Target)", 
                            "Passed, %", "Failed, %", "Missing,% ")
-        knitr::kable(res, format = "rst")
-    } else {
-        res
+        if (fancy) {
+            return(knitr::kable(res, format = "rst"))
+        } 
+        if (filteringDT) {
+            return(res)
+        }
     }
 }
 #' Perform data check
