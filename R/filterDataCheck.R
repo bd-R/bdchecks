@@ -25,14 +25,13 @@ filterDataCheck <- function(DCresult, DCfilts) {
     DCresult@dataMod[-idx, ]
 }
 
-generateDCfilts <- function(DCresult, selectedCells) {
-    filters <- c("P", "M", "F")
+generateDCfilts <- function(DCresultSummary, selectedCells, filters = c("P", "F", "M")) {
     result <- lapply(unique(selectedCells[, 1]), function(i) {
-        DCcurrent <- DCresult[selectedCells[i, 1], ]
-        tmpFilt <- filters[unique(selectedCells[selectedCells[, 1] == i, 2] - 2)]
+        DCcurrent <- DCresultSummary[i, ]
+        foo <- unique(selectedCells[selectedCells[, 1] == i, 2] - 2)
         list(name = DCcurrent$check,
              target = DCcurrent$target,
-             filter = paste(tmpFilt, collapse = ""))
+             filter = paste(filters[foo[foo > 0]], collapse = ""))
     })
 
     list(name = sapply(result, "[[", 1),
