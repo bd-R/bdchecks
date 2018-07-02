@@ -4,7 +4,7 @@
 \alias{summary_DC}
 \title{Create a data check metatadata from a given YAML file}
 \usage{
-summary_DC(object, fancy = TRUE)
+summary_DC(object, fancy = TRUE, filteringDT = FALSE)
 }
 \arguments{
 \item{fancy}{Nice kable outptu}

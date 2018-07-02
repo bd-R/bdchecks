@@ -28,9 +28,9 @@ filterDataCheck <- function(DCresult, DCfilts) {
 generateDCfilts <- function(DCresultSummary, selectedCells, filters = c("P", "F", "M")) {
     result <- lapply(unique(selectedCells[, 1]), function(i) {
         DCcurrent <- DCresultSummary[i, ]
-        foo <- unique(selectedCells[selectedCells[, 1] == i, 2] - 2)
-        list(name = DCcurrent$check,
-             target = DCcurrent$target,
+        foo <- unique(selectedCells[selectedCells[, 1] == i, 2] - 1)
+        list(name = DCcurrent[, 1],
+             target = DCcurrent[, 2],
              filter = paste(filters[foo[foo > 0]], collapse = ""))
     })
 
