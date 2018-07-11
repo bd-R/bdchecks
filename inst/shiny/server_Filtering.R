@@ -1,17 +1,19 @@
 library(bdchecks)
 library(magrittr)
-DCresult <- performDataCheck(dataBats)
-DCresultSummary <- summary(DCresult, fancy = FALSE, filteringDT = TRUE)
+DCresult <- eventReactive(input$selectDC, {
+    write.csv(input$chkBoxDC, "foo.csv2")
+    performDataCheck(dataOriginal(), DConly = paste0("DC_", input$chkBoxDC))})
+DCresultSummary <- reactive({summary(DCresult(), fancy = FALSE, filteringDT = TRUE)})
 output$tableDataChecks <- DT::renderDT(
-    DCresultSummary, 
+    DCresultSummary(), 
     rownames = FALSE,
-    options = list(pageLength = nrow(DCresultSummary)),
+    options = list(pageLength = nrow(DCresultSummary())),
     selection = list(target = "cell"))
 selectedCells <- reactive({input$tableDataChecks_cells_selected})
 
 proxy <- dataTableProxy("tableDataChecks")
 observeEvent(input$selectionToRemove, {
-    cells <- 1:nrow(DCresultSummary)
+    cells <- 1:nrow(DCresultSummary())
     res <- NULL
     if ("Passed" %in% input$selectionToRemove) {
         res <- rbind(res, cbind(cells, 2))
@@ -30,14 +32,14 @@ observeEvent(input$DC_cellClear, {
 
 
 DCfilt <- eventReactive(input$DC_remove, {
-    bdchecks:::generateDCfilts(DCresultSummary, selectedCells())
+    bdchecks:::generateDCfilts(DCresultSummary(), selectedCells())
 })
 dataAfter <- reactive({
-    bdchecks:::filterDataCheck(DCresult, DCfilt())
+    bdchecks:::filterDataCheck(DCresult(), DCfilt())
 })
 output$nRecordsBefore <- renderTable({
-    data.frame(nRecordsBefore = nrow(dataBats),
-               nDataChecksBefore =  nrow(DCresultSummary),
+    data.frame(nRecordsBefore = nrow(dataOriginal()),
+               nDataChecksBefore =  nrow(DCresultSummary()),
                nRecordsAfter = nrow(dataAfter())) 
 })
 
