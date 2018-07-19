@@ -32,15 +32,15 @@ output$DCgroupsCheckBox <- renderUI({
     # Create chech box for each group
     for (i in unique(DCgroups()$group)) {
         RAW <- checkboxGroupInput(paste0("DC_chck_", gsub(" ", "_", i)), 
-                                          gsub(" ", "_", i), 
-                                          subset(DCgroups(), group == i)$DC)
+                                  i, 
+                                  subset(DCgroups(), group == i)$DC)
 
         for(i in subset(DCgroups(), group == i)$DC) {
             RAW <- gsub(paste0('<span>', i, '</span>'), 
-                           paste0('<span id="DC_', i, '">', i, '</span>'), 
-                           RAW)
+                        paste0('<span id="DC_', i, '">', i, '</span>'), 
+                        RAW)
         }
-        result[[i]] <- HTML(RAW)
+        result[[i]] <- column(2, HTML(RAW))
     }
     result
 })
@@ -51,11 +51,6 @@ output$selected_DC <- renderText({
 
 createHoverText <- function(object) {
       object@meta@description$Main
-    # paste(" Data check is used to:\n\t",
-    #       object@meta@description$Main, "\n",
-    #       "This data check answers following question:\n\t",object@meta@description$Question, "\n",
-    #       "Target (column) that this data checks operates on is:\n\t", object@input$Target, 
-    #       "\n")
 }
 hoverInfo <- eventReactive(input$DCgroupsAvailable, {
     DCall <- ls(pos = ("package:bdchecks"), pattern = "^DC_")
@@ -65,7 +60,6 @@ hoverInfo <- eventReactive(input$DCgroupsAvailable, {
     }
     do.call(tagList, result)
 })
-
 output$DCcheckBoxHover <- renderUI({
     hoverInfo()
 })
