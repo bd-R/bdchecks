@@ -2,9 +2,16 @@ fluidPage(
     conditionalPanel("!input.acceptFile", 
                      h2("Upload and Accept Dataset")),
     conditionalPanel("input.acceptFile", 
-        checkboxGroupInput("chkBoxDC","Select Data Checks:", c("ID" = "ID")),
+        radioButtons("DCgroupsAvailable", 
+                     "Select category to group data checks:",
+                     c("Darwin Core Class" = "DarwinCoreClass",
+                       "Dimension" = "Dimension",
+                       "Warning Type" = "Warning",
+                       "Output Type" = "Output",
+                       "Severity" = "Severity"),
+                     "DarwinCoreClass"),
+        uiOutput("DCgroupsCheckBox"),
         textOutput("selected_DC"),
-        textOutput("txt"),
         actionButton("selectDC", "Select Data Checks")
     )
 )

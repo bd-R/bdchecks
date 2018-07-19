@@ -1,8 +1,8 @@
 library(bdchecks)
 library(magrittr)
 DCresult <- eventReactive(input$selectDC, {
-    write.csv(input$chkBoxDC, "foo.csv2")
-    performDataCheck(dataOriginal(), DConly = paste0("DC_", input$chkBoxDC))})
+    performDataCheck(dataOriginal(), DConly = paste0("DC_", DCselected()))
+})
 DCresultSummary <- reactive({summary(DCresult(), fancy = FALSE, filteringDT = TRUE)})
 output$tableDataChecks <- DT::renderDT(
     DCresultSummary(), 
