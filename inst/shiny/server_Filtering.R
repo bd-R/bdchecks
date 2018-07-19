@@ -5,10 +5,20 @@ DCresult <- eventReactive(input$selectDC, {
 })
 DCresultSummary <- reactive({summary(DCresult(), fancy = FALSE, filteringDT = TRUE)})
 output$tableDataChecks <- DT::renderDT(
-    DCresultSummary(), 
+
+    DCresultSummary(),
     rownames = FALSE,
-    options = list(pageLength = nrow(DCresultSummary())),
-    selection = list(target = "cell"))
+    options = list(pageLength = nrow(DCresultSummary()),
+                   columnDefs = list(list(className = "no_select", targets = 0:1))),
+    selection = list(target = "cell"),
+    callback = JS("table.on('click', 'td.no_select', function() {
+                     var td = $(this), row = table.row(td.closest('tr'));
+                     if ($(td.node()).hasClass('selected')) {
+                       $(td.node()).removeClass('selected');
+                     }
+                   });")
+)
+
 selectedCells <- reactive({input$tableDataChecks_cells_selected})
 
 proxy <- dataTableProxy("tableDataChecks")
@@ -29,8 +39,6 @@ observeEvent(input$selectionToRemove, {
 observeEvent(input$DC_cellClear, {
     selectCells(proxy, NULL)
 })
-
-
 DCfilt <- eventReactive(input$DC_remove, {
     bdchecks:::generateDCfilts(DCresultSummary(), selectedCells())
 })
