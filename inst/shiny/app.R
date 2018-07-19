@@ -1,5 +1,6 @@
 library(shiny)
 library(shinydashboard)
+library(shinyBS)
 library(DT)
 
 sidebar <- dashboardSidebar(

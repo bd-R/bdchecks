@@ -25,20 +25,43 @@ DCselected <- reactive({
     for(i in DCcheckBox()) {
         result <- c(result, input[[i]])
     }
-    saveRDS(result, "foo.RDS")
     result
 })
 output$DCgroupsCheckBox <- renderUI({
     result <- list()
     # Create chech box for each group
     for (i in unique(DCgroups()$group)) {
-        result[[i]] <- checkboxGroupInput(paste0("DC_chck_", gsub(" ", "_", i)), 
+        RAW <- checkboxGroupInput(paste0("DC_chck_", gsub(" ", "_", i)), 
                                           gsub(" ", "_", i), 
                                           subset(DCgroups(), group == i)$DC)
+
+        for(i in subset(DCgroups(), group == i)$DC) {
+            RAW <- gsub(paste0('<span>', i, '</span>'), 
+                           paste0('<span id="DC_', i, '">', i, '</span>'), 
+                           RAW)
+        }
+        result[[i]] <- HTML(RAW)
     }
     result
 })
 
 output$selected_DC <- renderText({
     DCselected()
+})
+
+createHoverText <- function(object) {
+              object@meta@description$Main
+    # paste(" Data check is used to:\n\t",
+    #       object@meta@description$Main, "\n",
+    #       "This data check answers following question:\n\t",object@meta@description$Question, "\n",
+    #       "Target (column) that this data checks operates on is:\n\t", object@input$Target, 
+    #       "\n")
+}
+output$DCcheckBoxHover <- renderUI({
+    DCall <- ls(pos = ("package:bdchecks"), pattern = "^DC_")
+    result <- list()
+    for(i in DCall) {
+        result[[i]] <- bsTooltip(i, createHoverText(get(i)), "top", "hover")
+    }
+    do.call(tagList, result)
 })

@@ -1,4 +1,5 @@
 fluidPage(
+    shinyjs::useShinyjs(),
     conditionalPanel("!input.acceptFile", 
                      h2("Upload and Accept Dataset")),
     conditionalPanel("input.acceptFile", 
@@ -11,6 +12,7 @@ fluidPage(
                        "Severity" = "Severity"),
                      "DarwinCoreClass"),
         uiOutput("DCgroupsCheckBox"),
+        uiOutput("DCcheckBoxHover"),
         textOutput("selected_DC"),
         actionButton("selectDC", "Select Data Checks")
     )
