@@ -50,18 +50,22 @@ output$selected_DC <- renderText({
 })
 
 createHoverText <- function(object) {
-              object@meta@description$Main
+      object@meta@description$Main
     # paste(" Data check is used to:\n\t",
     #       object@meta@description$Main, "\n",
     #       "This data check answers following question:\n\t",object@meta@description$Question, "\n",
     #       "Target (column) that this data checks operates on is:\n\t", object@input$Target, 
     #       "\n")
 }
-output$DCcheckBoxHover <- renderUI({
+hoverInfo <- eventReactive(input$DCgroupsAvailable, {
     DCall <- ls(pos = ("package:bdchecks"), pattern = "^DC_")
     result <- list()
     for(i in DCall) {
         result[[i]] <- bsTooltip(i, createHoverText(get(i)), "top", "hover")
     }
     do.call(tagList, result)
+})
+
+output$DCcheckBoxHover <- renderUI({
+    hoverInfo()
 })
