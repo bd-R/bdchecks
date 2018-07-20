@@ -10,7 +10,8 @@ fluidPage(
                                                  c("text/csv",
                                                    "text/comma-separated-values,text/plain",
                                                    ".csv")
-                                       ), style = "info"
+                                       ),
+                                       style = "info"
 
                        ),
                        bsCollapsePanel("Query Data From a Database",
@@ -23,13 +24,12 @@ fluidPage(
                                                    min = 0, max = 50000),
                                        checkboxGroupInput("queryDB",
                                                           h3("Online Database:"),
-                                                          list("GBIF" = 'gbif',
-                                                               "Vertnet" = 'vertnet',
-                                                               "Bison" = 3,
-                                                               "Inat" = 4,
-                                                               "eBird" = 5,
-                                                               "Ecoengine" = 6,
-                                                               "Vertnet" = 7),
+                                                          list("GBIF" = "gbif",
+                                                               "Bison" = "bison",
+                                                               "Inat" = "inat",
+                                                               "eBird" = "ebird",
+                                                               "Ecoengine" = "ecoengine",
+                                                               "Vertnet" = "vertnet"),
                                                           "gbif"
                                        ),
                                        br(),
@@ -37,7 +37,8 @@ fluidPage(
                                            class = "activeButton",
                                            actionButton("queryDatabase", 
                                                         "Query Database", 
-                                                        icon("download"))), style = "success"
+                                                        icon("download"))), 
+                                       style = "success"
                        )
             )
         ),
