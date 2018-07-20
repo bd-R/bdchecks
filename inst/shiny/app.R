@@ -25,6 +25,27 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output, session) {
+
+    showModal(modalDialog(
+        title = h3("Welcome to bdchecks!"),
+        p("Check your data"),
+        img(src = "www/bdverse.png", align = "center"),
+        helpText(
+            "MIT License ©Tomer Gueta, Vijay Barve, Povilas Gibas, Thiloshon Nagarajah, Ashwin Agrawal and Carmel Yohay (2018).",
+            br(),
+            "bdchecks: Biodiversity Data Checks. R package version 1.0.0."
+        ),
+        helpText(
+            "Contribute: ",
+            a("https://github.com/bd-R/bdchecks", href = "https://github.com/bd-R/bdchecks"),
+            br(), "Join: ",
+            a("https://bd-r-group.slack.com", href = "https://bd-r-group.slack.com")
+        ), 
+        size = "m",
+        easyClose = TRUE
+    ))
+
+
     source("./server_Upload.R", TRUE)
     source("./server_DC.R", TRUE)
     source("./server_Filtering.R", TRUE)
