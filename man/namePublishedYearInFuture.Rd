@@ -8,6 +8,26 @@
 \description{
 This data check answers: "Is publication year not in the future??" question.\cr Data check will pass if \strong{dwc:namePublishedInYear is valid} and will fail if \strong{dwc:namePublishedInYear is in the future}.\cr Dimension of this data check is \strong{Conformance} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
 }
+\section{samplePassData}{
+
+dwc:namePublishedInYear is valid
+}
+
+\section{sampleFailData}{
+
+dwc:namePublishedInYear is in the future
+}
+
+\section{targetDWCField}{
+
+namePublishedInYear
+}
+
+\section{checkCategory}{
+
+ Taxon
+}
+
 \references{
 LATER
 }

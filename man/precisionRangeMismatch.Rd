@@ -8,6 +8,26 @@
 \description{
 This data check answers: "Is range mismatch between 0 and 1??" question.\cr Data check will pass if \strong{The coordinate precision (dwc:coordinatePrecision) is between zero (minimum) and one (maximum)} and will fail if \strong{The coordinate precision (dwc:coordinatePrecision), as a decimal representation, is outside the range of zero (minimum) and one (maximum)}.\cr Dimension of this data check is \strong{Conformance} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
 }
+\section{samplePassData}{
+
+The coordinate precision (dwc:coordinatePrecision) is between zero (minimum) and one (maximum)
+}
+
+\section{sampleFailData}{
+
+The coordinate precision (dwc:coordinatePrecision), as a decimal representation, is outside the range of zero (minimum) and one (maximum)
+}
+
+\section{targetDWCField}{
+
+coordinatePrecision
+}
+
+\section{checkCategory}{
+
+ Location
+}
+
 \references{
 LATER
 }

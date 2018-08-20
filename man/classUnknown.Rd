@@ -8,6 +8,26 @@
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{Taxonomic rank Class was interpreted correctly} and will fail if \strong{Taxonomic rank Class value cannot be interpreted}.\cr Dimension of this data check is \strong{Conformance} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
 }
+\section{samplePassData}{
+
+Taxonomic rank Class was interpreted correctly
+}
+
+\section{sampleFailData}{
+
+Taxonomic rank Class value cannot be interpreted
+}
+
+\section{targetDWCField}{
+
+class
+}
+
+\section{checkCategory}{
+
+ Taxon
+}
+
 \references{
 LATER
 }
