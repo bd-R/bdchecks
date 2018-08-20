@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Latitude and longitude values have not been generalized as indicated by dwc:dataGeneralizations is NULL
+#' @section sampleFailData:
+#' Latitude and longitude values may have been generalized as indicated by dwc:dataGeneralizations is not NULL
+#' @section targetDWCField:
+#' dataGeneralizations
+#' @section checkCategory:
+#'  Record_level Terms
 
 NULL

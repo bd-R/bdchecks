@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' occurrenceID is a globally uninique identifier (GUID)
+#' @section sampleFailData:
+#' occurrenceID is an integer, assuring that it is not a globally uninique identifier (GUID)
+#' @section targetDWCField:
+#' occurrenceID
+#' @section checkCategory:
+#'  Occurrence
 
 NULL

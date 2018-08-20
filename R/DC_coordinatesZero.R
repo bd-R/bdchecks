@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Decimal latitude and longitude are not zero (0) degrees
+#' @section sampleFailData:
+#' Decimal latitude and longitude are both zero (0) degrees
+#' @section targetDWCField:
+#' decimalLatitude,decimalLongitude
+#' @section checkCategory:
+#'  Location
 
 NULL

@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' The date of identification (dwc:dateIdentified) is post Linnaeus (1753) to the current date
+#' @section sampleFailData:
+#' The date of identification (dwc:dateIdentified) falls prior to Linnaeus (1753) or after the current date.
+#' @section targetDWCField:
+#' dateIdentified
+#' @section checkCategory:
+#'  Identification
 
 NULL

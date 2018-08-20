@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Country name (dwc:country) is in vocabulary
+#' @section sampleFailData:
+#' Country name (dwc:country) not in vocabulary
+#' @section targetDWCField:
+#' country
+#' @section checkCategory:
+#'  Location
 
 NULL

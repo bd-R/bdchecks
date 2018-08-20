@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' The number of decimal places of latitude (dwc:decimalLatitude) and longitude (dwc:decimalLongitude) is in agreement with the supplied coordinate precision (dwc:coordinatePrecision)
+#' @section sampleFailData:
+#' The number of decimal places of latitude (dwc:decimalLatitude) or longitude (dwc:decimalLongitude) is not in agreement with the supplied coordinate precision (dwc:coordinatePrecision)
+#' @section targetDWCField:
+#' decimalLatitude,decimalLongitude
+#' @section checkCategory:
+#'  Location
 
 NULL

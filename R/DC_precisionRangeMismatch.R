@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' The coordinate precision (dwc:coordinatePrecision) is between zero (minimum) and one (maximum)
+#' @section sampleFailData:
+#' The coordinate precision (dwc:coordinatePrecision), as a decimal representation, is outside the range of zero (minimum) and one (maximum)
+#' @section targetDWCField:
+#' coordinatePrecision
+#' @section checkCategory:
+#'  Location
 
 NULL

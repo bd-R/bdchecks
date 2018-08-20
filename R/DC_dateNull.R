@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Date information is present
+#' @section sampleFailData:
+#' No date information
+#' @section targetDWCField:
+#' eventDate,year,verbatimEventDate
+#' @section checkCategory:
+#'  Event
 
 NULL

@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' dcterms:modified date is valid
+#' @section sampleFailData:
+#' dcterms:modified is in the future
+#' @section targetDWCField:
+#' modified
+#' @section checkCategory:
+#'  Record_level Terms
 
 NULL

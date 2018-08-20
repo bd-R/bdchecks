@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' dwc:namePublishedInYear is valid
+#' @section sampleFailData:
+#' dwc:namePublishedInYear is in the future
+#' @section targetDWCField:
+#' namePublishedInYear
+#' @section checkCategory:
+#'  Taxon
 
 NULL

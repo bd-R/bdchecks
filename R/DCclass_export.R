@@ -66,7 +66,11 @@ generateRoxygenComment <- function(DC) {
         "#' @name",
         "#' @docType data",
         "#' @format An object of class \\code{\"dataCheck\"}, see \\code{\\link{dataCheck}} for details.",
-        "#' @references LATER")
+        "#' @references LATER",
+        "#' @section samplePassData:\n#' FIELDPASS",
+        "#' @section sampleFailData:\n#' FIELDFAIL",
+        "#' @section targetDWCField:\n#' FIELDTARGET",
+        "#' @section checkCategory:\n#'  FIELDCATERGORY")
 
     # Add short description
     skeleton <- sub("shortDesc", 
@@ -92,6 +96,12 @@ generateRoxygenComment <- function(DC) {
     skeleton <- c(skeleton, 
                   ifelse(!is.null(DC@meta@description$keywords), 
                          paste("#' @keywords", DC@meta@description$keywords), ""))
+
+    # Add additional fiels for the bdclean
+    skeleton <- sub("FIELDPASS", DC@meta@description$Example$Pass, skeleton)
+    skeleton <- sub("FIELDFAIL", DC@meta@description$Example$Fail, skeleton)
+    skeleton <- sub("FIELDTARGET", DC@input$Target, skeleton)
+    skeleton <- sub("FIELDCATERGORY", DC@meta@description$DarwinCoreClass, skeleton)
 
     body <- c("#'", skeleton, "NULL")
     return(body)

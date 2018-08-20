@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' dwc:basisOfRecord was matched to vocabulary
+#' @section sampleFailData:
+#' dwc:basisOfRecord could not be unambiguously matched to vocabulary
+#' @section targetDWCField:
+#' basisOfRecord
+#' @section checkCategory:
+#'  Record_level Terms
 
 NULL

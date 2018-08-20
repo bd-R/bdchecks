@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Taxonomic rank Class was interpreted correctly
+#' @section sampleFailData:
+#' Taxonomic rank Class value cannot be interpreted
+#' @section targetDWCField:
+#' class
+#' @section checkCategory:
+#'  Taxon
 
 NULL

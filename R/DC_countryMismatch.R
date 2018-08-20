@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Country name (dwc:country) and ISO country code (dwc:countryCode) match
+#' @section sampleFailData:
+#' Country name (dwc:country) and ISO country code (dwc:countryCode) do not match
+#' @section targetDWCField:
+#' country,countryCode
+#' @section checkCategory:
+#'  Location
 
 NULL

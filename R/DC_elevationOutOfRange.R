@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters
+#' @section sampleFailData:
+#' Minimum elevation in meters is less than zero and/or maximum elevation in meters is greater than 10,000
+#' @section targetDWCField:
+#' minimumElevationinMeters,maximumElevationInMeters
+#' @section checkCategory:
+#'  Location
 
 NULL

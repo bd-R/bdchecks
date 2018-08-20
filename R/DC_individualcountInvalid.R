@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' The count of individuals is a valid integer
+#' @section sampleFailData:
+#' The count of individuals is not an integer and therefore invalid
+#' @section targetDWCField:
+#' individualCount
+#' @section checkCategory:
+#'  Occurrence
 
 NULL

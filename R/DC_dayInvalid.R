@@ -6,5 +6,13 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER
+#' @section samplePassData:
+#' The value given for event day is between 1 and 31
+#' @section sampleFailData:
+#' The value given for event day is less than 1 or greater than 31
+#' @section targetDWCField:
+#' day
+#' @section checkCategory:
+#'  Event
 
 NULL
