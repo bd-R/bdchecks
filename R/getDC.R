@@ -1,4 +1,4 @@
-#' Load data checks
+#' Load Data Checks
 #'
 #' `getDC()` is a function for importing data checks from a YAML file as 
 #' a dataCheck object.

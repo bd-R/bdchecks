@@ -1,11 +1,22 @@
-#' Create a data check metatadata from a given YAML file
+#' Summarise Data Checks
+#'
+#' `summary_DC()` is a function that calculated statistics for how many data 
+#' checks passed. It's main input is an object of a dataCheckFlag class and output 
+#' is a summary table.
 #' 
-#' @param fancy Nice kable outptu
+#' @param inputFlag Object of a dataCheckFlag class
+#' @param fancy Should ouput be returned in a rst format
+#' @param filteringDT Should output be returned as a summary table that could 
+#' be parsed with a `DT` pacakge
 #' 
-#' @return result
+#' @return A data.frame or rst table with summary statistics
 #' 
-summary_DC <- function(object, fancy = TRUE, filteringDT = FALSE) {
-    res <- lapply(object@flags, function(x) {
+#' @importFrom knitr kable
+#' 
+#' @export
+#' 
+summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
+    res <- lapply(inputFlag@flags, function(x) {
         data.frame(check = x@name, target = x@target,
                    passed = sum(x@result, na.rm = TRUE) / length(x@result),
                    failed = sum(!x@result, na.rm = TRUE) / length(x@result),
