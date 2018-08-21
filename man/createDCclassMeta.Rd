@@ -2,16 +2,17 @@
 % Please edit documentation in R/createDCclass.R
 \name{createDCclassMeta}
 \alias{createDCclassMeta}
-\title{Create a data check metatadata from a given YAML file}
+\title{Create a data check metadata object}
 \usage{
 createDCclassMeta(DCmeta)
 }
 \arguments{
-\item{DCmeta}{Data check metadata slot in YAML format}
+\item{DCyaml}{Data check metadata entry as a list.}
 }
 \value{
 Data check metadata object
 }
 \description{
-Create a data check metatadata from a given YAML file
+Create a data check metadata object from a given slot in a data check list 
+object
 }

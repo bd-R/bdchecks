@@ -2,12 +2,13 @@
 % Please edit documentation in R/createDCclass.R
 \name{createDCclassMain}
 \alias{createDCclassMain}
-\title{Create a data check object from a given YAML file}
+\title{Create a data check object}
 \usage{
 createDCclassMain(DCyaml)
 }
 \arguments{
-\item{DCyaml}{Data check slot in YAML format}
+\item{DCyaml}{Data check entry as a list (originally imported as a 
+YAML file)}
 }
 \value{
 Data check object

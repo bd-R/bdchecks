@@ -1,21 +1,9 @@
-#' Create a data check metatadata from a given YAML file
+#' Create a data check object
 #' 
-#' @param DCmeta Data check metadata slot in YAML format
-#' 
-#' @return Data check metadata object
-#' 
-createDCclassMeta <- function(DCmeta) {
-    res <- new("dataCheckMeta",
-               description = DCmeta$Description,
-               flags       = DCmeta$Flags,
-               pseudocode  = DCmeta$Pseudocode,
-               source      = DCmeta$Source)
-    return(res)
-}
-
 #' Create a data check object from a given YAML file
 #' 
-#' @param DCyaml Data check slot in YAML format
+#' @param DCyaml Data check entry as a list (originally imported as a 
+#' YAML file)
 #'
 #' @return Data check object
 #' 
@@ -25,5 +13,23 @@ createDCclassMain <- function(DCyaml) {
                meta   = createDCclassMeta(DCyaml$meta),
                input  = DCyaml$Input,
                func   = parse(text = DCyaml$Functionality))
+    return(res)
+}
+
+#' Create a data check metadata object
+#' 
+#' Create a data check metadata object from a given slot in a data check list 
+#' object
+#' 
+#' @param DCyaml Data check metadata entry as a list.
+#'
+#' @return Data check metadata object
+#' 
+createDCclassMeta <- function(DCmeta) {
+    res <- new("dataCheckMeta",
+               description = DCmeta$Description,
+               flags       = DCmeta$Flags,
+               pseudocode  = DCmeta$Pseudocode,
+               source      = DCmeta$Source)
     return(res)
 }
