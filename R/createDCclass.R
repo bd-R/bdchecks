@@ -8,7 +8,7 @@
 #' @return Data check object
 #' 
 createDCclassMain <- function(DCyaml) {
-    res <- new("dataCheck",
+    res <- methods::new("dataCheck",
                name   = DCyaml$name,
                meta   = createDCclassMeta(DCyaml$meta),
                input  = DCyaml$Input,
@@ -21,12 +21,12 @@ createDCclassMain <- function(DCyaml) {
 #' Create a data check metadata object from a given slot in a data check list 
 #' object
 #' 
-#' @param DCyaml Data check metadata entry as a list.
+#' @param DCmeta Data check metadata entry as a list.
 #'
 #' @return Data check metadata object
 #' 
 createDCclassMeta <- function(DCmeta) {
-    res <- new("dataCheckMeta",
+    res <- methods::new("dataCheckMeta",
                description = DCmeta$Description,
                flags       = DCmeta$Flags,
                pseudocode  = DCmeta$Pseudocode,

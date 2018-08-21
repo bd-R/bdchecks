@@ -4,7 +4,7 @@
 \alias{exportDC}
 \title{Export data checks as R objects}
 \usage{
-exportDC(pathYAML = "./data/dataChecks.yaml", exportRDA = TRUE,
+exportDC(pathYAML = "./inst/extdata/dataChecks.yaml", exportRDA = TRUE,
   exportROX = TRUE, pathRDA = "./data/", pathROX = "./R/",
   idRDA = "DC_", idROX = "DC_")
 }
@@ -27,8 +27,4 @@ exportDC(pathYAML = "./data/dataChecks.yaml", exportRDA = TRUE,
 \description{
 `exportDC()` is a function for exporting data checks from YAML file to
 rda and/or roxygen2 file.
-}
-\examples{
-exportDC(pathYAML = "pathToYAML.yaml")
-
 }

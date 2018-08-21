@@ -11,9 +11,6 @@
 #' @return Object of a dataCheckFlag class (combined result for all performed
 #' data checks)
 #' 
-#' @examples
-#' resultDataChecks <- performDataCheck(dataBats)
-#' 
 #' @export
 #' 
 performDataCheck <- function(
@@ -72,7 +69,7 @@ performDataCheck <- function(
                 if (class(currentResult) == "list") {
                     for(j in seq_along(currentResult)) {
                         if (!is.null(currentResult)) {
-                            resultDC[[length(resultDC) + 1]] <- new("dataCheckFlag_SINGLE",
+                            resultDC[[length(resultDC) + 1]] <- methods::new("dataCheckFlag_SINGLE",
                                 name   = DCcurrent@name,
                                 target = unlist(strsplit(DCcurrent@input$Target, ","))[j],
                                 result = currentResult[[j]],
@@ -81,7 +78,7 @@ performDataCheck <- function(
                     }
                 } else {
                     if (!is.null(currentResult)) {
-                        resultDC[[length(resultDC) + 1]] <- new("dataCheckFlag_SINGLE",
+                        resultDC[[length(resultDC) + 1]] <- methods::new("dataCheckFlag_SINGLE",
                             name   = DCcurrent@name,
                             target = DCcurrent@input$Target,
                             result = currentResult,
@@ -94,7 +91,7 @@ performDataCheck <- function(
             }
         }
     }
-    resultDC <- new("dataCheckFlag", 
+    resultDC <- methods::new("dataCheckFlag", 
         DC       = as.character(lapply(resultDC, function(x) `@`(x, name))),
         flags    = resultDC,
         dataOrig = data,

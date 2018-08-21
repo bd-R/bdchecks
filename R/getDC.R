@@ -9,12 +9,9 @@
 #' 
 #' @importFrom yaml yaml.load_file
 #' 
-#' @examples
-#' dataChecks <- getDC(pathYAML = "pathToYAML.yaml")
-#' 
 #' @export
 #' 
-getDC <- function(pathYAML = "./data/dataChecks.yaml") {
+getDC <- function(pathYAML = "../inst/extdata/dataChecks.yaml") {
     # Load YAML file with data checks
     DCyaml <- yaml::yaml.load_file(pathYAML)
     DC <- list()

@@ -12,10 +12,9 @@
 #' @param idROX     ID in the beginning of file for .R file 
 #'                  (helps to differentiate other functions from data checks).
 #' 
-#' @examples
-#' exportDC(pathYAML = "pathToYAML.yaml")
+#' @importFrom yaml yaml.load_file
 #' 
-exportDC <- function(pathYAML  = "./data/dataChecks.yaml", 
+exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml", 
                      exportRDA = TRUE,
                      exportROX = TRUE,
                      pathRDA   = "./data/",
@@ -32,14 +31,14 @@ exportDC <- function(pathYAML  = "./data/dataChecks.yaml",
     for(x in DCyaml) {
         if (exportRDA) {
             # Create DC object as save according to DC name
-            DC <- createDCclassMain(x)
+            DC <- bdchecks:::createDCclassMain(x)
             assign(paste0(idROX, x$name), DC)
             # Save DC object as rda
             save(list = paste0(idROX, x$name), 
                  file = paste0(pathRDA, idRDA, x$name, ".rda"))
         }
         if (exportROX) {
-            writeLines(generateRoxygenComment(DC), 
+            writeLines(bdchecks:::generateRoxygenComment(DC), 
                        paste0(pathROX, idROX, x$name, ".R"))
         }
     }
@@ -91,7 +90,7 @@ generateRoxygenComment <- function(DC) {
         ),
         skeleton)
     # Add name
-    skeleton <- sub("@name", paste("@name", DC@name), skeleton)
+    skeleton <- sub("@name", paste("@name", paste0("DC_", DC@name)), skeleton)
     # Add keywords
     skeleton <- c(skeleton, 
                   ifelse(!is.null(DC@meta@description$keywords), 

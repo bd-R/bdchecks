@@ -2,7 +2,7 @@
 #' Data check depthOutOfRange Check if depthOutOfRange is not out of range.
 #'
 #'     This data check answers: "?" question.\cr Data check will pass if \strong{Minimum depth is greater than or equal to zero (0) and maximum depth is less than 11,000 meters} and will fail if \strong{Minimum depth is less than zero (0) or maximum depth is greater than 11,000 meters}.\cr Dimension of this data check is \strong{Likeliness} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
-#' @name depthOutOfRange
+#' @name DC_depthOutOfRange
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references LATER

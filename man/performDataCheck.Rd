@@ -25,7 +25,3 @@ data checks)
 `performDataCheck()` is a function for performing all available data checks
 on a give data set
 }
-\examples{
-resultDataChecks <- performDataCheck(dataBats)
-
-}

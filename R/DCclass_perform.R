@@ -1,10 +1,27 @@
-#' Perform data check
-#'
-#' @export
+#' Perform Data Checks
 #' 
+#' Method that performs data check on a given dataset
+#' 
+#' @name performDC
+#' 
+#' @param DC A data check as a dataCheck class object
+#' @param DATA a data frame to perform data check on
+#' 
+#' @return A vector of logical values that determine if data check was passed on 
+#' specific entry in a given DATA object
+#' 
+#' @rdname dataCheck
+#' 
+#' @exportMethod performDC
+#'
 setGeneric("performDC", function(DC, DATA) {
     standardGeneric("performDC")
 }) 
+
+#' @rdname dataCheck
+#' 
+#' @aliases performDC
+#'
 setMethod("performDC", "dataCheck",
     function(DC, DATA) {
         options(scipen = 999)

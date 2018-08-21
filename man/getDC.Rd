@@ -4,7 +4,7 @@
 \alias{getDC}
 \title{Load Data Checks}
 \usage{
-getDC(pathYAML = "./data/dataChecks.yaml")
+getDC(pathYAML = "../inst/extdata/dataChecks.yaml")
 }
 \arguments{
 \item{pathYAML}{Path to a YAML file.}
@@ -15,8 +15,4 @@ A list of data checks
 \description{
 `getDC()` is a function for importing data checks from a YAML file as 
 a dataCheck object.
-}
-\examples{
-dataChecks <- getDC(pathYAML = "pathToYAML.yaml")
-
 }

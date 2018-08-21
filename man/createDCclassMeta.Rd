@@ -7,7 +7,7 @@
 createDCclassMeta(DCmeta)
 }
 \arguments{
-\item{DCyaml}{Data check metadata entry as a list.}
+\item{DCmeta}{Data check metadata entry as a list.}
 }
 \value{
 Data check metadata object
