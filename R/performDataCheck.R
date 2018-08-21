@@ -1,4 +1,4 @@
-#' Perform data checks
+#' Perform Data Checks
 #'
 #' `performDataCheck()` is a function for performing all available data checks
 #' on a give data set
@@ -68,7 +68,7 @@ performDataCheck <- function(
                 if (verbose) {
                     message("Performing data check: ", DCcurrent@name)
                 }
-                currentResult <- performDC(DCcurrent, data)
+                currentResult <- bdchecks:::performDC(DCcurrent, data)
                 if (class(currentResult) == "list") {
                     for(j in seq_along(currentResult)) {
                         if (!is.null(currentResult)) {
