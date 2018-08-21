@@ -43,9 +43,19 @@ summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
         }
     }
 }
-#' Perform data check
-#'
-#' @export
+
+#' Method summary
 #' 
+#' @name summary
+#' 
+#' @rdname dataCheckFlag-class
+#' 
+#' @exportMethod summary
+#'
 setGeneric("summary")
-setMethod("summary", "dataCheckFlag", summary_DC)
+
+#' @rdname dataCheckFlag-class
+#' 
+#' @aliases summary
+#'
+setMethod("summary", "dataCheckFlag", function(object) {summary_DC(object)})

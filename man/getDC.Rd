@@ -2,7 +2,7 @@
 % Please edit documentation in R/getDC.R
 \name{getDC}
 \alias{getDC}
-\title{Load data checks}
+\title{Load Data Checks}
 \usage{
 getDC(pathYAML = "./data/dataChecks.yaml")
 }

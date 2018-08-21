@@ -2,16 +2,23 @@
 % Please edit documentation in R/summaryDC.R
 \name{summary_DC}
 \alias{summary_DC}
-\title{Create a data check metatadata from a given YAML file}
+\title{Summarise Data Checks}
 \usage{
-summary_DC(object, fancy = TRUE, filteringDT = FALSE)
+summary_DC(inputFlag, fancy = TRUE, filteringDT = FALSE)
 }
 \arguments{
-\item{fancy}{Nice kable outptu}
+\item{inputFlag}{Object of a dataCheckFlag class}
+
+\item{fancy}{Should ouput be returned in a rst format}
+
+\item{filteringDT}{Should output be returned as a summary table that could 
+be parsed with a `DT` pacakge}
 }
 \value{
-result
+A data.frame or rst table with summary statistics
 }
 \description{
-Create a data check metatadata from a given YAML file
+`summary_DC()` is a function that calculated statistics for how many data 
+checks passed. It's main input is an object of a dataCheckFlag class and output 
+is a summary table.
 }
