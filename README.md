@@ -1,3 +1,6 @@
+[![Travis-CI Build Status](https://travis-ci.org/bd-R/bdchecks.svg?branch=master?style=flat-square&label=Travis+CI)](https://travis-ci.org/bd-R/bdchecks) 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bd-R/bdchecks?branch=master&svg=true)](https://ci.appveyor.com/project/bd-R/bdchecks)
+
 # bdchecks
 Managing all data checks
 
