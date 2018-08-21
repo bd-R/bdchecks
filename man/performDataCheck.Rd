@@ -2,7 +2,7 @@
 % Please edit documentation in R/performDataCheck.R
 \name{performDataCheck}
 \alias{performDataCheck}
-\title{Perform data checks}
+\title{Perform Data Checks}
 \usage{
 performDataCheck(data = NULL, DCadd = NULL, DConly = NULL,
   verbose = TRUE, DCstand = ls(pos = ("package:bdchecks"), pattern =
