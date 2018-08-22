@@ -1,8 +1,8 @@
 Package: bdchecks
 Version: 0.0.2
 Date: 2018-08-21
-Title: biodiversity data checks
-Description: Data checks for biodiversity data
+Title: Biodiversity Data Checks
+Description: Data checks for biodiversity data. 
 Authors@R: c(
     person(
         "Povilas", "Gibas",

@@ -3,19 +3,19 @@
 \docType{methods}
 \name{show,dataCheckFlag-method}
 \alias{show,dataCheckFlag-method}
-\alias{show}
+\alias{show-dataCheckFlag}
 \alias{exportDataCheck}
 \alias{exportDataCheck,dataCheckFlag-method}
 \title{Export Data Checks}
 \usage{
 \S4method{show}{dataCheckFlag}(object)
 
-exportDataCheck(DCresult)
+exportDataCheck(object)
 
-\S4method{exportDataCheck}{dataCheckFlag}(DCresult)
+\S4method{exportDataCheck}{dataCheckFlag}(object)
 }
 \arguments{
-\item{DCresult}{A result of data checks (data check flag class)}
+\item{object}{A result of data checks (data check flag class)}
 }
 \value{
 A data.frame that contains original users data.frame modified according

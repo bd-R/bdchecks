@@ -5,9 +5,13 @@
 #'
 #' @param data Data set to perform data checks
 #' @param DCadd Character vector of names for additional data checks to be performed
+#' @param DConly Character vector of names for data checks that should be performed 
+#' (ie perform only these data checks)
 #' @param DCstand Character vector of standardize data checks
 #' @param verbose Message which data check is being performed
 #'
+#' @importFrom methods new
+#' 
 #' @return Object of a dataCheckFlag class (combined result for all performed
 #' data checks)
 #' 

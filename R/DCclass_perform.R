@@ -10,6 +10,8 @@
 #' @return A vector of logical values that determine if data check was passed on 
 #' specific entry in a given DATA object
 #' 
+#' @importFrom utils install.packages
+#' 
 #' @rdname dataCheck
 #' 
 #' @exportMethod performDC
@@ -34,10 +36,10 @@ setMethod("performDC", "dataCheck",
                         " can't be performed")
                 return(NULL)
             }
+            if (j == 1) {
+                assign("TARGET", DATA[, targetNames[j], drop = TRUE])
+            }
             assign(paste0("TARGET", j), DATA[, targetNames[j], drop = TRUE])
-        }
-        if (length(targetNames) == 1) {
-            TARGET <- TARGET1
         }
         TARGETS <- ls(pattern = "TARGET\\d+")
 
@@ -52,9 +54,9 @@ setMethod("performDC", "dataCheck",
             dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
             for(j in seq_along(dependencies)) {
                 assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
-            }
-            if (length(dependencies) == 1) {
-                DEPEND <- DEPEND1
+                if (j == 1) {
+                    assign("DEPEND", eval(parse(text = dependencies[j])))
+                }
             }
             DEPENDS <- ls(pattern = "DEPEND\\d+")
         }

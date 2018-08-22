@@ -13,6 +13,9 @@ performDataCheck(data = NULL, DCadd = NULL, DConly = NULL,
 
 \item{DCadd}{Character vector of names for additional data checks to be performed}
 
+\item{DConly}{Character vector of names for data checks that should be performed 
+(ie perform only these data checks)}
+
 \item{verbose}{Message which data check is being performed}
 
 \item{DCstand}{Character vector of standardize data checks}

@@ -74,6 +74,10 @@ dataCheckFlag <- setClass(
         dataOrig = "data.frame",
         dataMod  = "data.frame"))
 
+#' @rdname dataCheck
+#' 
+#' @aliases show-dataCheck
+#' 
 setMethod("show", "dataCheck",
     function(object) {
         cat(" Data check is used to:\n\t",

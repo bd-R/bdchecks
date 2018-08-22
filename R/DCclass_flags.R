@@ -1,6 +1,6 @@
 #' @rdname dataCheckFlag
 #' 
-#' @aliases show
+#' @aliases show-dataCheckFlag
 #' 
 setMethod("show", "dataCheckFlag",
     function(object) {
@@ -18,7 +18,7 @@ setMethod("show", "dataCheckFlag",
 #' 
 #' @name exportDataCheck
 #' 
-#' @param DCresult A result of data checks (data check flag class)
+#' @param object A result of data checks (data check flag class)
 #' 
 #' @return A data.frame that contains original users data.frame modified according
 #' to data checks
@@ -27,7 +27,7 @@ setMethod("show", "dataCheckFlag",
 #' 
 #' @exportMethod exportDataCheck
 #'
-setGeneric("exportDataCheck", function(DCresult) {
+setGeneric("exportDataCheck", function(object) {
     standardGeneric("exportDataCheck")
 })
 
@@ -35,6 +35,6 @@ setGeneric("exportDataCheck", function(DCresult) {
 #' 
 #' @aliases exportDataCheck
 #'
-setMethod("exportDataCheck", "dataCheckFlag", function(DCresult) {
-    return(DCresult@dataMod)
+setMethod("exportDataCheck", "dataCheckFlag", function(object) {
+    return(object@dataMod)
 })

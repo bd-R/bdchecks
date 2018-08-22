@@ -5,6 +5,8 @@
 #' @param DCyaml Data check entry as a list (originally imported as a 
 #' YAML file)
 #'
+#' @importFrom methods new
+#' 
 #' @return Data check object
 #' 
 createDCclassMain <- function(DCyaml) {
@@ -22,7 +24,9 @@ createDCclassMain <- function(DCyaml) {
 #' object
 #' 
 #' @param DCmeta Data check metadata entry as a list.
-#'
+#' 
+#' @importFrom methods new
+#' 
 #' @return Data check metadata object
 #' 
 createDCclassMeta <- function(DCmeta) {
