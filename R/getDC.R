@@ -17,7 +17,7 @@ getDC <- function(pathYAML = "../inst/extdata/dataChecks.yaml") {
     DC <- list()
     # For each entry create data check object
     for(x in DCyaml) {
-        DC[[paste0("DC_", x$name)]] <- bdchecks:::createDCclassMain(x)
+        DC[[paste0("DC_", x$name)]] <- createDCclassMain(x)
     }
     return(DC)
 }

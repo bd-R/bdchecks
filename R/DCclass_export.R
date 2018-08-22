@@ -31,14 +31,14 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
     for(x in DCyaml) {
         if (exportRDA) {
             # Create DC object as save according to DC name
-            DC <- bdchecks:::createDCclassMain(x)
+            DC <- createDCclassMain(x)
             assign(paste0(idROX, x$name), DC)
             # Save DC object as rda
             save(list = paste0(idROX, x$name), 
                  file = paste0(pathRDA, idRDA, x$name, ".rda"))
         }
         if (exportROX) {
-            writeLines(bdchecks:::generateRoxygenComment(DC), 
+            writeLines(generateRoxygenComment(DC), 
                        paste0(pathROX, idROX, x$name, ".R"))
         }
     }
@@ -54,6 +54,8 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
 #' @param DC Data check to generate documentation for.
 #' 
 #' @return Data check description in a roxygen2 comment style
+#' 
+#' @export
 #' 
 generateRoxygenComment <- function(DC) {
 

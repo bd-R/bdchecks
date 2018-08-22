@@ -9,6 +9,8 @@
 #' 
 #' @return Data check object
 #' 
+#' @export
+#' 
 createDCclassMain <- function(DCyaml) {
     res <- methods::new("dataCheck",
                name   = DCyaml$name,

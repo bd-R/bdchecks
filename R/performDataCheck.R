@@ -69,7 +69,7 @@ performDataCheck <- function(
                 if (verbose) {
                     message("Performing data check: ", DCcurrent@name)
                 }
-                currentResult <- bdchecks:::performDC(DCcurrent, data)
+                currentResult <- performDC(DCcurrent, data)
                 if (class(currentResult) == "list") {
                     for(j in seq_along(currentResult)) {
                         if (!is.null(currentResult)) {
