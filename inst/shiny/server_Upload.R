@@ -1,3 +1,6 @@
+rv <- reactiveValues(
+    dataOriginal = data.frame()
+)
 dataLoadedTask <- function(data) {
     showNotification("Read Data Succesfully", duration = 2)
     output$contents <- DT::renderDataTable(DT::datatable({
@@ -26,6 +29,6 @@ observeEvent(input$queryDatabase, {
                                        input$recordSize)[[i]]$data[[1]]
         })
     }
-    dataOriginal <- do.call(rbind, dataTMP)
-    dataLoadedTask(dataOriginal)
+    rv$dataOriginal <- do.call(rbind, dataTMP)
+    dataLoadedTask(rv$dataOriginal)
 })

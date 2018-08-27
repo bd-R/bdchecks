@@ -1,9 +1,9 @@
 library(bdchecks)
 library(magrittr)
 DCresult <- eventReactive(input$selectDC, {
-    performDataCheck(dataOriginal(), DConly = paste0("DC_", DCselected()))
+    performDataCheck(rv$dataOriginal, DConly = paste0("DC_", DCselected()))
 })
-DCresultSummary <- reactive({summary(DCresult(), fancy = FALSE, filteringDT = TRUE)})
+DCresultSummary <- reactive({summary_DC(DCresult(), fancy = FALSE, filteringDT = TRUE)})
 output$tableDataChecks <- DT::renderDT(
 
     DCresultSummary(),
@@ -46,7 +46,7 @@ dataAfter <- reactive({
     bdchecks:::filterDataCheck(DCresult(), DCfilt())
 })
 output$nRecordsBefore <- renderTable({
-    data.frame(nRecordsBefore = nrow(dataOriginal()),
+    data.frame(nRecordsBefore = nrow(rv$dataOriginal),
                nDataChecksBefore =  nrow(DCresultSummary()),
                nRecordsAfter = nrow(dataAfter())) 
 })
