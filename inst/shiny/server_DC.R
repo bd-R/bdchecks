@@ -63,3 +63,7 @@ hoverInfo <- eventReactive(input$DCgroupsAvailable, {
 output$DCcheckBoxHover <- renderUI({
     hoverInfo()
 })
+
+observeEvent(input$selectDC, {
+    updateTabItems(session, "myTabs", "filtering")
+})
