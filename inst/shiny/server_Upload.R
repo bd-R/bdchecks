@@ -46,10 +46,6 @@ dataLoadedTask <- function(data) {
     output$contents <- DT::renderDataTable(DT::datatable({
         summarizeDataframe(data)
     }, options = list(scrollX = TRUE)))
-    # output$dataOriginalRows <- renderText(nrow(data))
-    # output$dataOriginalColumns <- renderText(length(data))
-    # output$dataOriginalSpecies <-
-    #     renderText(length(unique(data$scientificName)))
 }
 observeEvent(input$pathInput, {
     withProgress(message = paste("Loading", input$pathInput, "..."), {

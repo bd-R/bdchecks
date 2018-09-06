@@ -6,9 +6,9 @@ DCgroups <- reactive({
     DCgroup <- lapply(DCall, function(x) {
         meta <- `@`(get(x), meta)
         if (input$DCgroupsAvailable == "DarwinCoreClass") {
-            data.frame(DC = x, group = meta@description$DarwinCoreClass)
+            data.frame(DC = x, group = gsub("_", " ", meta@description$DarwinCoreClass))
         } else {
-            data.frame(DC = x, group = meta@flags[[input$DCgroupsAvailable]])
+            data.frame(DC = x, group = gsub("_", " ", meta@flags[[input$DCgroupsAvailable]]))
         }
     })
     DCgroup <- do.call(rbind, DCgroup)
@@ -31,7 +31,7 @@ output$DCgroupsCheckBox <- renderUI({
     result <- list()
     # Create chech box for each group
     for (i in unique(DCgroups()$group)) {
-        RAW <- checkboxGroupInput(paste0("DC_chck_", gsub(" ", "_", i)), 
+        RAW <- checkboxGroupInput(paste0("DC_chck_", i), 
                                   i, 
                                   subset(DCgroups(), group == i)$DC)
 
