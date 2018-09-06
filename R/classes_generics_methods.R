@@ -198,14 +198,19 @@ setMethod("performDC", "dataCheck",
                 warning("Target ", targetNames[j], 
                         " doesn't exists in a given dataset,\ncheck ", DC@name,
                         " can't be performed")
-                return(NULL)
-            }
-            if (j == 1) {
+                TARGET1 <- NULL
+                TARGET  <- NULL
+            } else if (j == 1) {
                 assign("TARGET", DATA[, targetNames[j], drop = TRUE])
+                assign("TARGET1", DATA[, targetNames[j], drop = TRUE])
+            } else {
+                assign(paste0("TARGET", j), DATA[, targetNames[j], drop = TRUE])
             }
-            assign(paste0("TARGET", j), DATA[, targetNames[j], drop = TRUE])
         }
         TARGETS <- ls(pattern = "TARGET\\d+")
+        if (is.null(TARGETS) | is.null(TARGET)) {
+            return(NULL)
+        }
 
         # DEPENDENCIES
         if (!is.null(DC@input$Dependency$Rpackages)) {

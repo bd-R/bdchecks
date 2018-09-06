@@ -66,9 +66,6 @@ performDataCheck <- function(
             }
 
             if (DCsafe & !wantedDC[i] %in% performedDC) {
-                if (verbose) {
-                    message("Performing data check: ", DCcurrent@name)
-                }
                 currentResult <- performDC(DCcurrent, data)
                 if (class(currentResult) == "list") {
                     for(j in seq_along(currentResult)) {
@@ -95,10 +92,14 @@ performDataCheck <- function(
             }
         }
     }
-    resultDC <- methods::new("dataCheckFlag", 
-        DC       = as.character(lapply(resultDC, function(x) `@`(x, name))),
-        flags    = resultDC,
-        dataOrig = data,
-        dataMod  = data)
-    return(resultDC)
+    if (length(resultDC) > 0) {
+        resultDC <- methods::new("dataCheckFlag", 
+            DC       = as.character(lapply(resultDC, function(x) `@`(x, name))),
+            flags    = resultDC,
+            dataOrig = data,
+            dataMod  = data)
+        return(resultDC)
+    } else {
+        return(NULL)
+    }
 }

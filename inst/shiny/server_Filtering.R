@@ -3,12 +3,18 @@ library(magrittr)
 DCresult <- eventReactive(input$selectDC, {
     performDataCheck(rv$dataOriginal, DConly = paste0("DC_", DCselected()))
 })
-DCresultSummary <- reactive({summary_DC(DCresult(), fancy = FALSE, filteringDT = TRUE)})
+DCresultSummary <- reactive({
+    if (is.null(DCresult())) {
+        return(NULL)
+    } else {
+        summary_DC(DCresult(), fancy = FALSE, filteringDT = TRUE)
+    }
+})
 output$tableDataChecks <- DT::renderDT(
 
     DCresultSummary(),
     rownames = FALSE,
-    options = list(pageLength = nrow(DCresultSummary()),
+    options = list(pageLength = length(DCselected()),
                    columnDefs = list(list(className = "no_select", targets = 0:1))),
     selection = list(target = "cell"),
     callback = JS("table.on('click', 'td.no_select', function() {
@@ -40,10 +46,18 @@ observeEvent(input$DC_cellClear, {
     selectCells(proxy, NULL)
 })
 DCfilt <- eventReactive(input$DC_remove, {
-    bdchecks:::generateDCfilts(DCresultSummary(), selectedCells())
+    if (is.null(DCresultSummary())) {
+        return(NULL)
+    } else {
+        bdchecks:::generateDCfilts(DCresultSummary(), selectedCells())
+    }
 })
 dataAfter <- reactive({
-    bdchecks:::filterDataCheck(DCresult(), DCfilt())
+    if (is.null(DCresult()) | is.null(DCfilt())) {
+        rv$dataOriginal
+    } else {
+        bdchecks:::filterDataCheck(DCresult(), DCfilt())
+    }
 })
 output$nRecordsBefore <- renderTable({
     data.frame(nRecordsBefore = nrow(rv$dataOriginal),
