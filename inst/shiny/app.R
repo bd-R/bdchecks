@@ -27,6 +27,9 @@ ui <- dashboardPage(
 
 server <- function(input, output, session) {
 
+    # Automatically stop a Shiny app when closing the browser tab
+    session$onSessionEnded(stopApp)
+
     showModal(modalDialog(
         title = h3("Welcome to bdchecks!"),
         p("Check your data"),
