@@ -56,15 +56,39 @@ observeEvent(input$pathInput, {
                                           data.table = FALSE)
     })
 })
+
 observeEvent(input$queryDatabase, {
-    dataTMP <- list()
-    for(i in input$queryDB[1]) {
-        withProgress(message = paste("Querying", i, "..."), {
-            dataTMP[[i]] <- spocc::occ(input$scientificName, i,
-                                       input$recordSize)[[i]]$data[[1]]
-        })
-    }
-    rv$dataOriginal <- do.call(rbind, dataTMP)
+    result <- list()
+    withProgress(message = paste("Querying", input$queryDB, "..."), {
+        if (input$queryDB == "gbif") {
+            data <-
+                rgbif::occ_search(
+                    scientificName = input$scientificName,
+                    limit = input$recordSize
+                )
+            result[[1]] <- data$data
+            
+        } else {
+            warnings <- capture.output(
+                data <-
+                    spocc::occ(
+                        query = input$scientificName,
+                        from = input$queryDB,
+                        limit = input$recordSize
+                    ),
+                type = "message"
+            )
+            
+            if (length(warnings) > 0 ){
+                showNotification(paste(warnings, collapse = " "),
+                                 duration = 6)
+            }
+            
+            tempData <- data[[input$queryDB]]$data[[1]]
+            result[[1]] <- tempData
+        }
+    })
+    rv$dataOriginal <- do.call(rbind, result)
 })
 
 observe({
