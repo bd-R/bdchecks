@@ -4,11 +4,11 @@
 #' 
 #' @return `shiny::runApp()` result within browser.
 #' 
-#' @import DT
 #' @import shiny
 #' @import shinyBS
 #' @import shinydashboard
 #' @import shinyFiles
+#' @importFrom DT datatable 
 #' 
 #' @export
 #' 
