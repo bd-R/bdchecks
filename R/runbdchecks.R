@@ -5,9 +5,12 @@
 #' @return `shiny::runApp()` result within browser.
 #' 
 #' @import shiny
+#' @import shiny
 #' @import shinyBS
 #' @import shinydashboard
 #' @importFrom DT datatable 
+#' @importFrom rgbif occ_search
+#' @importFrom spocc occ
 #' 
 #' @export
 #' 
