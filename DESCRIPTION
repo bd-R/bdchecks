@@ -1,6 +1,6 @@
 Package: bdchecks
-Version: 0.0.13
-Date: 2018-09-11
+Version: 0.0.14
+Date: 2018-09-27
 Title: Biodiversity Data Checks
 Description: Data checks for biodiversity data. 
 Authors@R: c(
@@ -37,7 +37,6 @@ Imports: DT,
          shinyBS,
          shinydashboard,
          shinyjs,
-         shinyFiles,
          yaml
 LazyData: true
 RoxygenNote: 6.1.0

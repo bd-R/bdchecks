@@ -7,7 +7,6 @@
 #' @import shiny
 #' @import shinyBS
 #' @import shinydashboard
-#' @import shinyFiles
 #' @importFrom DT datatable 
 #' 
 #' @export

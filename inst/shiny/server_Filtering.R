@@ -66,7 +66,7 @@ output$nRecordsBefore <- renderTable({
 })
 
 output$dwnl_Data <- downloadHandler(
-    filename = function() {"filteredData.csv"},
+    filename = function() {format(Sys.time(), "filteredData_%Y_%b_%d_%X.csv")},
     content = function(file) {
         write.csv(dataAfter(), file, row.names = FALSE)
     }
