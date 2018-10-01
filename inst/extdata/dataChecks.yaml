@@ -84,7 +84,7 @@ DC_3cff4dc4-72e9-4abe-9bf3-8a30f1618432:
       Data:
   Functionality: |
     FUNC <- function() {
-        as.Date(TARGET, origin = "1970-01-01") <= Sys.Date()
+        as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01") <= Sys.Date()
     }
 DC_0bb8297d-8f8a-42d2-80c1-558f29efe798:
   name: elevationOutOfRange
@@ -876,7 +876,7 @@ DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
       Data:
   Functionality: |
     FUNC <- function() {
-        format(as.Date(TARGET, origin = "1970-01-01"), "%Y") <= format(Sys.Date(), "%Y")
+        format(as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01"), "%Y") <= format(Sys.Date(), "%Y")
     }
 DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
   name: identifiedDateImprobable
@@ -922,7 +922,7 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
       Data: 
   Functionality: |
     FUNC <- function() {
-        TARGETdate <- as.Date(TARGET, origin = "1970-01-01")
+        TARGETdate <- as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01")
         TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01", origin = "1970-01-01")
     }
 DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
@@ -967,7 +967,7 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
       Data: 
   Functionality: |
     FUNC <- function() {
-        as.Date(TARGET, origin = "1970-01-01") <= Sys.Date()
+        as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01") <= Sys.Date()
     }
 DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
   name: modifiedInFuture
@@ -1011,5 +1011,5 @@ DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
       Data:
   Functionality: |
     FUNC <- function() {
-        as.Date(TARGET, origin = "1970-01-01") <= Sys.Date()
+        as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01") <= Sys.Date()
     }
