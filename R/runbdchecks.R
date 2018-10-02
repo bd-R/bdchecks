@@ -4,11 +4,14 @@
 #' 
 #' @return `shiny::runApp()` result within browser.
 #' 
+#' @import bdDwC
 #' @import shiny
 #' @import shiny
 #' @import shinyBS
 #' @import shinydashboard
+#' @importFrom data.table fread
 #' @importFrom DT datatable 
+#' @importFrom finch dwca_read
 #' @importFrom rgbif occ_search
 #' @importFrom spocc occ
 #' 

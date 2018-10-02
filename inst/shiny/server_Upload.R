@@ -3,6 +3,12 @@ rv <- reactiveValues(
     dataOriginal = data.frame()
 )
 
+dataLoadedTask <- function(data) {
+    output$contents <- DT::renderDataTable(DT::datatable({
+        summarizeDataframe(data)
+    }, options = list(scrollX = TRUE)))
+}
+
 summarizeDataframe <- function(data) {
     if (nrow(data) == 0) {
         return(data)
@@ -42,57 +48,57 @@ summarizeDataframe <- function(data) {
     tempData
 }
 
-dataLoadedTask <- function(data) {
-    output$contents <- DT::renderDataTable(DT::datatable({
-        summarizeDataframe(data)
-    }, options = list(scrollX = TRUE)))
-}
 observeEvent(input$pathInput, {
-    withProgress(message = paste("Loading", input$pathInput, "..."), {
+    withProgress(message = paste("Reading", input$pathInput$name, "..."), {
         if (is.null(input$pathInput)) {
-            return(NULL)
+            return("No data to view")
         }
-        rv$dataOriginal <- data.table::fread(input$pathInput$datapath, 
-                                          data.table = FALSE)
+        if (grepl("zip", tolower(input$pathInput$type))) {
+            message("Reading DWCA ZIP...")
+            rv$dataOriginal <- finch::dwca_read(input$pathInput$datapath, read = TRUE)$data[[1]]
+        } else {
+            rv$dataOriginal <- data.table::fread(input$pathInput$datapath)
+        }
     })
 })
 
 observeEvent(input$queryDatabase, {
-    result <- list()
     withProgress(message = paste("Querying", input$queryDB, "..."), {
         if (input$queryDB == "gbif") {
-            data <-
-                rgbif::occ_search(
+            rv$dataOriginal <- rgbif::occ_search(
                     scientificName = input$scientificName,
-                    limit = input$recordSize
-                )
-            result[[1]] <- data$data
-            
+                    limit = input$recordSize,
+                    hasCoordinate = switch(input$hasCoords,
+                                           "1" = TRUE,
+                                           "2" = FALSE,
+                                           "3" = NULL
+                   )
+            )$data
         } else {
             warnings <- capture.output(
-                data <-
-                    spocc::occ(
-                        query = input$scientificName,
-                        from = input$queryDB,
-                        limit = input$recordSize
-                    ),
+                data <- spocc::occ(
+                            query = input$scientificName,
+                            from = input$queryDB,
+                            limit = input$recordSize,
+                            has_coords = switch(input$hasCoords,
+                                                "1" = TRUE,
+                                                "2" = FALSE,
+                                                "3" = NULL
+                            )
+                        ),
                 type = "message"
             )
-            
-            if (length(warnings) > 0 ){
+            if (length(warnings) > 0) {
                 showNotification(paste(warnings, collapse = " "),
                                  duration = 6)
             }
-            
-            tempData <- data[[input$queryDB]]$data[[1]]
-            result[[1]] <- tempData
+            rv$dataOriginal <- data[[input$queryDB]]$data[[1]]
         }
     })
-    rv$dataOriginal <- do.call(rbind, result)
 })
 
 observe({
-    darwinizer <- bdDwC::darwinizeNames(rv$dataOriginal,  bdDwC:::dataDarwinCloud$data)
+    darwinizer <- bdDwC::darwinizeNames(rv$dataOriginal, bdDwC:::dataDarwinCloud$data)
     fixed <- darwinizer[darwinizer$matchType == "Darwinized", ]
     if (nrow(fixed) > 0) {
         rv$dataOriginal <- bdDwC::renameUserData(rv$dataOriginal, darwinizer)

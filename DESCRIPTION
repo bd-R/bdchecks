@@ -1,5 +1,5 @@
 Package: bdchecks
-Version: 0.0.19
+Version: 0.0.20
 Date: 2018-10-02
 Title: Biodiversity Data Checks
 Description: Data checks for biodiversity data. 
@@ -30,7 +30,10 @@ Authors@R: c(
     )
 Maintainer: Povilas Gibas <povilasgibas@gmail.com>
 Depends: R (>= 2.10)
-Imports: DT,
+Imports: bdDwC,
+         DT,
+         data.table,
+         finch,
          methods,
          knitr,
          rgbif,
