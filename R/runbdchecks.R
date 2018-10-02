@@ -6,9 +6,9 @@
 #' 
 #' @import bdDwC
 #' @import shiny
-#' @import shiny
 #' @import shinyBS
 #' @import shinydashboard
+#' @import shinyjs
 #' @importFrom data.table fread
 #' @importFrom DT datatable 
 #' @importFrom finch dwca_read

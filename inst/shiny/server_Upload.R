@@ -113,6 +113,9 @@ observe({
         duration = 7)
     }
     dataLoadedTask(rv$dataOriginal)
+    if (nrow(rv$dataOriginal) > 0) {
+        shinyjs::enable("acceptFile") 
+    }
 })
 
 observeEvent(input$acceptFile, {
