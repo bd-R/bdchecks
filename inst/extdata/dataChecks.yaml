@@ -316,9 +316,13 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   Functionality: |
       FUNC <- function() {
           result <- sapply(seq_along(TARGET1), function(i) {
-              which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
+              if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {
+                  NA
+              } else {
+                  which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
+              }
           })
-          result[is.na(result == 0)] <- FALSE
+          result <- unlist(result)
           return(result)
        }
 DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
