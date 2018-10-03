@@ -22,3 +22,11 @@ A data.frame or rst table with summary statistics
 checks passed. It's main input is an object of a dataCheckFlag class and output 
 is a summary table.
 }
+\examples{
+result <- performDataCheck(dataBats)
+# Fancy summary table (for usage in reports)
+summary_DC(result)
+# object of class used for data filtering data.frame
+summary_DC(result, fancy = FALSE, filteringDT = TRUE)
+
+}

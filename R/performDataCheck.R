@@ -15,6 +15,9 @@
 #' @return Object of a dataCheckFlag class (combined result for all performed
 #' data checks)
 #' 
+#' @examples
+#' performDataCheck(dataBats)
+#' 
 #' @export
 #' 
 performDataCheck <- function(

@@ -13,6 +13,13 @@
 #' 
 #' @importFrom knitr kable
 #' 
+#' @examples
+#' result <- performDataCheck(dataBats)
+#' # Fancy summary table (for usage in reports)
+#' summary_DC(result)
+#' # object of class used for data filtering data.frame
+#' summary_DC(result, fancy = FALSE, filteringDT = TRUE)
+#' 
 #' @export
 #' 
 summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {

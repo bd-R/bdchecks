@@ -20,7 +20,7 @@ Run `shiny` app with:
 
 Perform data checks (not exported yet):
 
-    resultDC <- bdchecks:::performDataCheck(dataBats)
+    resultDC <- bdchecks::performDataCheck(dataBats)
 
 Check what data checks were performed (default show method):
 
@@ -28,7 +28,7 @@ Check what data checks were performed (default show method):
 
 Export data after data checks (file or R object) (not exported yet):  
 
-    bdchecks:::exportDataCheck(resultDC)
+    bdchecks::exportDataCheck(resultDC)
 
 Quick glance at data check result (% of records that passed) (not exported yet):  
 
