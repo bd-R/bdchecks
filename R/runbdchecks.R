@@ -8,11 +8,11 @@
 #' @import shiny
 #' @import shinyBS
 #' @import shinydashboard
-#' @import shinyjs
 #' @importFrom data.table fread
 #' @importFrom DT datatable 
 #' @importFrom finch dwca_read
 #' @importFrom rgbif occ_search
+#' @importFrom shinyjs enable disabled useShinyjs
 #' @importFrom spocc occ
 #' 
 #' @export
