@@ -3,7 +3,7 @@ Title: Biodiversity Data Checks
 Description: Data checks for biodiversity data. 
 Version: 0.0.24
 Date: 2018-10-03
-License: GPL-3
+License: GPL-3 | file LICENSE
 URL: https://github.com/bd-R/bdchecks
 BugReports: https://github.com/bd-R/bdchecks/issues
 Authors@R: c(
