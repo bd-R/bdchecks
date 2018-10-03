@@ -21,6 +21,7 @@ fluidPage(
                                    style = "color: #000000; background-color: #71a879; border-color: #091520;
                                             padding:10px; font-size:120%")
             ),
+            br(), br(),
             column(12, style = "margin-bottom:10px; border-bottom:2px solid")
         ),
         br(), br(),

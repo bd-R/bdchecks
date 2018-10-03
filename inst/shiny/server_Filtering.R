@@ -31,17 +31,20 @@ proxy <- dataTableProxy("tableDataChecks")
 observeEvent(input$selectionToRemove, {
     cells <- 1:nrow(DCresultSummary())
     res <- NULL
-    if ("Passed" %in% input$selectionToRemove) {
+    if ("All Passed" %in% input$selectionToRemove) {
         res <- rbind(res, cbind(cells, 2))
     }
-    if ("Failed" %in% input$selectionToRemove) {
+    if ("All Failed" %in% input$selectionToRemove) {
         res <- rbind(res, cbind(cells, 3))
     }
-    if ("Missing" %in% input$selectionToRemove) {
+    if ("All Missing" %in% input$selectionToRemove) {
         res <- rbind(res, cbind(cells, 4))
     }
     selectCells(proxy, res)
 })
+rv2 <- reactiveValues(
+    dataAfter = data.frame()
+)
 observeEvent(input$DC_cellClear, {
     selectCells(proxy, NULL)
 })
@@ -52,22 +55,32 @@ DCfilt <- eventReactive(input$DC_remove, {
         bdchecks:::generateDCfilts(DCresultSummary(), selectedCells())
     }
 })
-dataAfter <- reactive({
+observe({
     if (is.null(DCresult()) | is.null(DCfilt())) {
-        rv$dataOriginal
+        rv2$dataAfter <- rv$dataOriginal
     } else {
-        bdchecks:::filterDataCheck(DCresult(), DCfilt())
+        rv2$dataAfter <- bdchecks:::filterDataCheck(DCresult(), DCfilt())
     }
 })
-output$nRecordsBefore <- renderTable({
-    data.frame(nRecordsBefore = nrow(rv$dataOriginal),
-               nDataChecksBefore =  nrow(DCresultSummary()),
-               nRecordsAfter = nrow(dataAfter())) 
+output$vb_nRecords1 <- renderValueBox({
+    valueBox(nrow(rv$dataOriginal),
+             "Records Submitted", 
+             color = "aqua")
+})
+output$vb_nRecords2 <- renderValueBox({
+    valueBox(nrow(rv2$dataAfter),
+             "Records After Filtering", 
+             color = "light-blue")
+})
+output$vb_nDC1 <- renderValueBox({
+    valueBox(nrow(DCresultSummary()),
+             "Data Checks Performed", 
+             color = "olive")
 })
 
 output$dwnl_Data <- downloadHandler(
     filename = function() {format(Sys.time(), "filteredData_%Y_%b_%d_%X.csv")},
     content = function(file) {
-        write.csv(dataAfter(), file, row.names = FALSE)
+        write.csv(rv2$dataAfter, file, row.names = FALSE)
     }
 )
