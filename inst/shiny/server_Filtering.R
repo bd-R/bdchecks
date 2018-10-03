@@ -60,7 +60,6 @@ observe({
         rv2$dataAfter <- rv$dataOriginal
     } else {
         rv2$dataAfter <- bdchecks:::filterDataCheck(DCresult(), DCfilt())
-        saveRDS(rv2$dataAfter, "~/Desktop/foo.RDS")
     }
 })
 output$vb_nRecords1 <- renderValueBox({
