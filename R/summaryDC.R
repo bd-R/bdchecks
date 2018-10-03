@@ -17,10 +17,14 @@
 #' 
 summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
     res <- lapply(inputFlag@flags, function(x) {
-        data.frame(check = x@name, target = x@target,
-                   passed = sum(x@result, na.rm = TRUE) / length(x@result),
-                   failed = sum(!x@result, na.rm = TRUE) / length(x@result),
-                   missing = mean(is.na(x@result)))
+        if (length(x@result) == 0) {
+            return(NULL)
+        } else {
+            data.frame(check = x@name, target = x@target,
+                       passed = sum(x@result, na.rm = TRUE) / length(x@result),
+                       failed = sum(!x@result, na.rm = TRUE) / length(x@result),
+                       missing = mean(is.na(x@result)))
+        }
     })
     res <- do.call(rbind, res)
     res$check <- as.character(res$check)
