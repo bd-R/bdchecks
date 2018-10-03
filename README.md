@@ -38,7 +38,7 @@ Quick glance at data check result (% of records that passed) (not exported yet):
 
 ## Dealing with data checks
 
-Load data checks (DC) into `R` using `getDC()` function. Needs local [`yaml` file](http://raw.githubusercontent.com/bd-R/bdchecks/master/data/DCtest.yaml):
+Load data checks (DC) into `R` using `getDC()` function. Needs local [`yaml` file](https://github.com/bd-R/bdchecks/blob/master/inst/extdata/dataChecks.yaml):
 
     DC <- getDC(pathToYAML)
 
