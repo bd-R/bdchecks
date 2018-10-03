@@ -1,8 +1,11 @@
 Package: bdchecks
-Version: 0.0.24
-Date: 2018-10-03
 Title: Biodiversity Data Checks
 Description: Data checks for biodiversity data. 
+Version: 0.0.24
+Date: 2018-10-03
+License: GPL-3
+URL: https://github.com/bd-R/bdchecks
+BugReports: https://github.com/bd-R/bdchecks/issues
 Authors@R: c(
     person(
         "Povilas", "Gibas",
@@ -26,9 +29,9 @@ Authors@R: c(
     person(
         "Yohay", "Carmel",
         email = "yohay@cv.technion.ac.il",
-        role = c("aut"))
+        role = c("aut"),
+        comment = c(ORCID = '0000-0002-5883-0184'))
     )
-Maintainer: Povilas Gibas <povilasgibas@gmail.com>
 Depends: R (>= 2.10)
 Imports: bdDwC,
          DT,
@@ -45,5 +48,4 @@ Imports: bdDwC,
          yaml
 LazyData: true
 RoxygenNote: 6.1.0
-License: GPL-3
 Encoding: UTF-8
