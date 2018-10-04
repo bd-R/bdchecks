@@ -57,7 +57,7 @@ observeEvent(input$pathInput, {
             message("Reading DWCA ZIP...")
             rv$dataOriginal <- finch::dwca_read(input$pathInput$datapath, read = TRUE)$data[[1]]
         } else {
-            rv$dataOriginal <- data.table::fread(input$pathInput$datapath)
+            rv$dataOriginal <- data.table::fread(input$pathInput$datapath, data.table = FALSE)
         }
     })
 })
