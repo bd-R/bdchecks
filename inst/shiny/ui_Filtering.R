@@ -17,7 +17,7 @@ fluidPage(
                                style = "color: #000000; background-color: #e4c88b; border-color: #091520;
                                         padding:10px; font-size:120%")),
             br(), br(), br(),
-            column(width = 12, downloadButton("dwnl_Data", "Download final as a .csv file",
+            column(width = 12, downloadButton("dwnl_Data", "Download final data",
                                icon = icon("check"), 
                                width = 350,
                                style = "color: #000000; background-color: #71a879; border-color: #091520;
