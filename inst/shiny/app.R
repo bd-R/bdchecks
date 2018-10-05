@@ -38,7 +38,7 @@ server <- function(input, output, session) {
             "MIT License ©Tomer Gueta, Vijay Barve, Povilas Gibas, 
              Thiloshon Nagarajah, Ashwin Agrawal and Carmel Yohay (2018).",
             br(),
-            "bdchecks: Biodiversity Data Checks. R package version 0.1.0"
+            "bdchecks: Biodiversity Data Checks. R package version 0.1.2"
         ),
         helpText(
             "Contribute: ",
