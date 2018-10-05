@@ -1,3 +1,10 @@
+## Release comments
+
+### 1 Try
+
+We have to resubmit because:
+* "The Description field should not start with the package name" (Fixed)  
+
 ## Test environments
 
 * local OS X install, R 3.5.1
