@@ -28,6 +28,9 @@ dataGeneralizations
  Record_level Terms
 }
 
+\examples{
+performDC(DC = DC_dataGeneralised DC_dataGeneralised, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

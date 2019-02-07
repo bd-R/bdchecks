@@ -28,6 +28,9 @@ dateIdentified
  Identification
 }
 
+\examples{
+performDC(DC = DC_identifiedDateImprobable DC_identifiedDateImprobable, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

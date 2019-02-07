@@ -28,6 +28,9 @@ coordinatePrecision
  Location
 }
 
+\examples{
+performDC(DC = DC_precisionRangeMismatch DC_precisionRangeMismatch, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

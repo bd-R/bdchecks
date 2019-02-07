@@ -28,6 +28,9 @@ country,countryCode
  Location
 }
 
+\examples{
+performDC(DC = DC_countryMismatch DC_countryMismatch, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

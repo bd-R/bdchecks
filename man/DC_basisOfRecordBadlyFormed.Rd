@@ -28,6 +28,9 @@ basisOfRecord
  Record_level Terms
 }
 
+\examples{
+performDC(DC = DC_basisOfRecordBadlyFormed DC_basisOfRecordBadlyFormed, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

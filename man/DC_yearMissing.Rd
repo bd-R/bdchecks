@@ -28,6 +28,9 @@ year
  Event
 }
 
+\examples{
+performDC(DC = DC_yearMissing DC_yearMissing, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

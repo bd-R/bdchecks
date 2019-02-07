@@ -28,6 +28,9 @@ country
  Location
 }
 
+\examples{
+performDC(DC = DC_countryNameUnknown DC_countryNameUnknown, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

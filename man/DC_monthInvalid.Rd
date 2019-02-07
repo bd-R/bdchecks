@@ -28,6 +28,9 @@ month
  Event
 }
 
+\examples{
+performDC(DC = DC_monthInvalid DC_monthInvalid, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

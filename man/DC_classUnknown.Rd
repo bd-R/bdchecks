@@ -28,6 +28,9 @@ class
  Taxon
 }
 
+\examples{
+performDC(DC = DC_classUnknown DC_classUnknown, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

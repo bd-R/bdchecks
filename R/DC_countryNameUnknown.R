@@ -5,7 +5,9 @@
 #' @name DC_countryNameUnknown
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_countryNameUnknown DC_countryNameUnknown, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Country name (dwc:country) is in vocabulary
 #' @section sampleFailData:

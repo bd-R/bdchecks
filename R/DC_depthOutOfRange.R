@@ -5,7 +5,9 @@
 #' @name DC_depthOutOfRange
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_depthOutOfRange DC_depthOutOfRange, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Minimum depth is greater than or equal to zero (0) and maximum depth is less than 11,000 meters
 #' @section sampleFailData:

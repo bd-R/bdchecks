@@ -5,7 +5,9 @@
 #' @name DC_namePublishedYearInFuture
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_namePublishedYearInFuture DC_namePublishedYearInFuture, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' dwc:namePublishedInYear is valid
 #' @section sampleFailData:

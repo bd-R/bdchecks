@@ -5,7 +5,9 @@
 #' @name DC_precisionRangeMismatch
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_precisionRangeMismatch DC_precisionRangeMismatch, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' The coordinate precision (dwc:coordinatePrecision) is between zero (minimum) and one (maximum)
 #' @section sampleFailData:

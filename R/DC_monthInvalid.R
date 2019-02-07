@@ -5,7 +5,9 @@
 #' @name DC_monthInvalid
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_monthInvalid DC_monthInvalid, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' The event month is between 1 and 12
 #' @section sampleFailData:

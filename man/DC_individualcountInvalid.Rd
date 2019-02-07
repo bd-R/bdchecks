@@ -28,6 +28,9 @@ individualCount
  Occurrence
 }
 
+\examples{
+performDC(DC = DC_individualcountInvalid DC_individualcountInvalid, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

@@ -5,7 +5,9 @@
 #' @name DC_identifiedDateImprobable
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_identifiedDateImprobable DC_identifiedDateImprobable, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' The date of identification (dwc:dateIdentified) is post Linnaeus (1753) to the current date
 #' @section sampleFailData:

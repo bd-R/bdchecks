@@ -5,7 +5,9 @@
 #' @name DC_countryMismatch
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_countryMismatch DC_countryMismatch, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Country name (dwc:country) and ISO country code (dwc:countryCode) match
 #' @section sampleFailData:

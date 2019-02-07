@@ -28,6 +28,9 @@ namePublishedInYear
  Taxon
 }
 
+\examples{
+performDC(DC = DC_namePublishedYearInFuture DC_namePublishedYearInFuture, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

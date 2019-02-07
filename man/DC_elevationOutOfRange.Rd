@@ -28,6 +28,9 @@ minimumElevationinMeters,maximumElevationInMeters
  Location
 }
 
+\examples{
+performDC(DC = DC_elevationOutOfRange DC_elevationOutOfRange, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

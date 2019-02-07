@@ -28,6 +28,9 @@ dateIdentified
  Identification
 }
 
+\examples{
+performDC(DC = DC_dateIdentifiedInFuture DC_dateIdentifiedInFuture, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

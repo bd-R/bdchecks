@@ -28,6 +28,9 @@ minimumDepthInMeters,maximumDepthInMeters
  Location
 }
 
+\examples{
+performDC(DC = DC_depthOutOfRange DC_depthOutOfRange, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

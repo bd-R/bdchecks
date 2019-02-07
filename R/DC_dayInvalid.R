@@ -5,7 +5,9 @@
 #' @name DC_dayInvalid
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_dayInvalid DC_dayInvalid, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' The value given for event day is between 1 and 31
 #' @section sampleFailData:

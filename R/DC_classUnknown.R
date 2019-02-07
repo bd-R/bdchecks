@@ -5,7 +5,9 @@
 #' @name DC_classUnknown
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_classUnknown DC_classUnknown, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Taxonomic rank Class was interpreted correctly
 #' @section sampleFailData:

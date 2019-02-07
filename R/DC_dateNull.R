@@ -5,7 +5,9 @@
 #' @name DC_dateNull
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_dateNull DC_dateNull, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Date information is present
 #' @section sampleFailData:

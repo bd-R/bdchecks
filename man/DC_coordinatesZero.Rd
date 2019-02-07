@@ -28,6 +28,9 @@ decimalLatitude,decimalLongitude
  Location
 }
 
+\examples{
+performDC(DC = DC_coordinatesZero DC_coordinatesZero, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }

@@ -5,7 +5,9 @@
 #' @name DC_dataGeneralised
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
-#' @references LATER
+#' @references None
+#' @examples 
+#' performDC(DC = DC_dataGeneralised DC_dataGeneralised, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Latitude and longitude values have not been generalized as indicated by dwc:dataGeneralizations is NULL
 #' @section sampleFailData:

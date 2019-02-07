@@ -28,6 +28,9 @@ day
  Event
 }
 
+\examples{
+performDC(DC = DC_dayInvalid DC_dayInvalid, DATA = bdchecks::dataBats)
+}
 \references{
-LATER
+None
 }
