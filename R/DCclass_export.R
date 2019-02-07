@@ -92,6 +92,9 @@ generateRoxygenComment <- function(DC) {
                 " such data check would return \\\\code{", DC@meta@description$Example$OutputFail, "}."
         ),
         skeleton)
+    # Add additional fiels for the bdclean
+    skeleton <- sub("EXAMPLE@name", paste0("DC_", DC@name), skeleton)
+
     # Add name
     skeleton <- sub("@name", paste("@name", paste0("DC_", DC@name)), skeleton)
     # Add keywords
@@ -99,8 +102,6 @@ generateRoxygenComment <- function(DC) {
                   ifelse(!is.null(DC@meta@description$keywords), 
                          paste("#' @keywords", DC@meta@description$keywords), ""))
 
-    # Add additional fiels for the bdclean
-    skeleton <- sub("EXAMPLE@name", paste0("DC_", DC@name), skeleton)
     skeleton <- sub("FIELDPASS", DC@meta@description$Example$Pass, skeleton)
     skeleton <- sub("FIELDFAIL", DC@meta@description$Example$Fail, skeleton)
     skeleton <- sub("FIELDTARGET", DC@input$Target, skeleton)
