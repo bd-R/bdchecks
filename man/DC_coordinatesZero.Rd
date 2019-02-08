@@ -29,7 +29,7 @@ decimalLatitude,decimalLongitude
 }
 
 \examples{
-performDC(DC = DC_coordinatesZero DC_coordinatesZero, DATA = bdchecks::dataBats)
+performDC(DC = DC_coordinatesZero, DATA = bdchecks::dataBats)
 }
 \references{
 None

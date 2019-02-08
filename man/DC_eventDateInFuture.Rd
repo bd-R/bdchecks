@@ -29,7 +29,7 @@ eventDate
 }
 
 \examples{
-performDC(DC = DC_eventDateInFuture DC_eventDateInFuture, DATA = bdchecks::dataBats)
+performDC(DC = DC_eventDateInFuture, DATA = bdchecks::dataBats)
 }
 \references{
 None

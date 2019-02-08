@@ -29,7 +29,7 @@ country
 }
 
 \examples{
-performDC(DC = DC_countryNameUnknown DC_countryNameUnknown, DATA = bdchecks::dataBats)
+performDC(DC = DC_countryNameUnknown, DATA = bdchecks::dataBats)
 }
 \references{
 None

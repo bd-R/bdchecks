@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_coordinatePrecisionMismatch DC_coordinatePrecisionMismatch, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_coordinatePrecisionMismatch, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' The number of decimal places of latitude (dwc:decimalLatitude) and longitude (dwc:decimalLongitude) is in agreement with the supplied coordinate precision (dwc:coordinatePrecision)
 #' @section sampleFailData:

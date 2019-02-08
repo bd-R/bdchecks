@@ -29,7 +29,7 @@ country,countryCode
 }
 
 \examples{
-performDC(DC = DC_countryMismatch DC_countryMismatch, DATA = bdchecks::dataBats)
+performDC(DC = DC_countryMismatch, DATA = bdchecks::dataBats)
 }
 \references{
 None

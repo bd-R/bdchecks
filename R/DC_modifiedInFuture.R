@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_modifiedInFuture DC_modifiedInFuture, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_modifiedInFuture, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' dcterms:modified date is valid
 #' @section sampleFailData:

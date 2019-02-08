@@ -29,7 +29,7 @@ basisOfRecord
 }
 
 \examples{
-performDC(DC = DC_basisOfRecordBadlyFormed DC_basisOfRecordBadlyFormed, DATA = bdchecks::dataBats)
+performDC(DC = DC_basisOfRecordBadlyFormed, DATA = bdchecks::dataBats)
 }
 \references{
 None

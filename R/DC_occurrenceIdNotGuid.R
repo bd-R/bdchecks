@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_occurrenceIdNotGuid DC_occurrenceIdNotGuid, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_occurrenceIdNotGuid, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' occurrenceID is a globally uninique identifier (GUID)
 #' @section sampleFailData:

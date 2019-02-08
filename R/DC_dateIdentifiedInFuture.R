@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_dateIdentifiedInFuture DC_dateIdentifiedInFuture, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_dateIdentifiedInFuture, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Date (dwc:dateIdentified) is not in the future
 #' @section sampleFailData:

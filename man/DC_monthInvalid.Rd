@@ -29,7 +29,7 @@ month
 }
 
 \examples{
-performDC(DC = DC_monthInvalid DC_monthInvalid, DATA = bdchecks::dataBats)
+performDC(DC = DC_monthInvalid, DATA = bdchecks::dataBats)
 }
 \references{
 None

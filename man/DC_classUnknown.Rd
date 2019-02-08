@@ -29,7 +29,7 @@ class
 }
 
 \examples{
-performDC(DC = DC_classUnknown DC_classUnknown, DATA = bdchecks::dataBats)
+performDC(DC = DC_classUnknown, DATA = bdchecks::dataBats)
 }
 \references{
 None

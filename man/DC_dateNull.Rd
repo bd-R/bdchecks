@@ -29,7 +29,7 @@ eventDate,year,verbatimEventDate
 }
 
 \examples{
-performDC(DC = DC_dateNull DC_dateNull, DATA = bdchecks::dataBats)
+performDC(DC = DC_dateNull, DATA = bdchecks::dataBats)
 }
 \references{
 None

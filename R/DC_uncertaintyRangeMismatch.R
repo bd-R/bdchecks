@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_uncertaintyRangeMismatch DC_uncertaintyRangeMismatch, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_uncertaintyRangeMismatch, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) is a whole number and greater than zero (meters)
 #' @section sampleFailData:

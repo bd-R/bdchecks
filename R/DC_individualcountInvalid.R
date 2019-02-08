@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_individualcountInvalid DC_individualcountInvalid, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_individualcountInvalid, DATA = bdchecks::dataBats)
 #' @section samplePassData:
 #' The count of individuals is a valid integer
 #' @section sampleFailData:

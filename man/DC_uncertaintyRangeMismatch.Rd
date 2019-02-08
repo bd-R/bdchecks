@@ -29,7 +29,7 @@ coordinateUncertaintyInMeters
 }
 
 \examples{
-performDC(DC = DC_uncertaintyRangeMismatch DC_uncertaintyRangeMismatch, DATA = bdchecks::dataBats)
+performDC(DC = DC_uncertaintyRangeMismatch, DATA = bdchecks::dataBats)
 }
 \references{
 None
