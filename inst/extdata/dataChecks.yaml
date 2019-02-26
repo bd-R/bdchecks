@@ -319,12 +319,18 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
               if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {
                   NA
               } else {
-                  which(DEPEND1 == TARGET1[i]) == which(DEPEND2 == TARGET2[i])
+                  foo <- which(DEPEND1 == TARGET1[i])
+                  bar <- which(DEPEND2 == TARGET2[i])
+                  if (length(foo) == 0 | length(bar) == 0) {
+                      NA
+                  } else {
+                      foo == bar
+                  }       
               }
           })
           result <- unlist(result)
           return(result)
-       }
+      }
 DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
   name: coordinatesZero
   meta:
