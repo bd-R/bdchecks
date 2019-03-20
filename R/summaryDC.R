@@ -54,4 +54,3 @@ summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
         }
     }
 }
-
