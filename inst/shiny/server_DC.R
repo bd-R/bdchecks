@@ -36,8 +36,8 @@ output$DCgroupsCheckBox <- renderUI({
                                   subset(DCgroups(), group == i)$DC)
 
         for(i in subset(DCgroups(), group == i)$DC) {
-            RAW <- gsub(paste0('<span>', i, '</span>'), 
-                        paste0('<span id="DC_', i, '">', i, '</span>'), 
+            RAW <- gsub(paste0("<span>", i, "</span>"), 
+                        paste0("<span id=\"DC_", i, "\">", i, "</span>"), 
                         RAW)
         }
         result[[i]] <- column(2, HTML(RAW))
