@@ -1,45 +1,9 @@
 options(shiny.maxRequestSize = 50 * 1024 ^ 2)
-rv <- reactiveValues(
-    dataOriginal = data.frame()
+rv <- shiny::reactiveValues(
+    data_original = data.frame()
 )
 
-summarizeDataframe <- function(data) {
-    if (nrow(data) == 0) {
-        return(data)
-    }
-    tempData <- as.data.frame(data)
-    tempData <-
-        tempData[, names(tempData) %in% c(
-            "scientificName",
-            "taxonRank",
-            "eventDate",
-            "country",
-            "decimalLatitude",
-            "decimalLongitude"
-        )]
-    tempData <- cbind(tempData, data)
-    hidingCols <- c()
-    tempData[] <- lapply(tempData, as.character)
-    for (i in 1:length(names(tempData))) {
-        sample <-
-            sample(1:nrow(tempData),
-                   ifelse(nrow(tempData) > 1000, 1000, nrow(tempData)))
-        f <-
-            mean(sapply(tempData[sample, i], function(x)
-                nchar(x)), na.rm = T)
-        if (!is.nan(f)) {
-            if (f > 50) {
-                hidingCols <- c(hidingCols, i)
-            }
-        }
-    }
-    if (length(hidingCols) > 0) {
-        tempData <- tempData[, c(hidingCols * -1)]
-    }
-    tempData
-}
-
-dataLoadedTask <- function(data) {
+data_loaded_task <- function(data) {
     output$contents <- DT::renderDataTable(
         DT::datatable({
             if (nrow(data) == 0) {
@@ -53,7 +17,7 @@ dataLoadedTask <- function(data) {
                                                     "decimalLatitude",
                                                     "decimalLongitude")]
             result <- cbind(result, data)
-            hidingCols <- c()
+            hiding_cols <- c()
             result[] <- lapply(result, as.character)
             nr <- nrow(result)
             # Trim long columns
@@ -66,12 +30,12 @@ dataLoadedTask <- function(data) {
                 bar <- mean(foo, na.rm = TRUE)
                 if (!is.nan(bar)) {
                     if (bar > 50) {
-                        hidingCols <- c(hidingCols, i)
+                        hiding_cols <- c(hiding_cols, i)
                     }
                 }
             }
-            if (length(hidingCols) > 0) {
-                result <- result[, c(hidingCols * -1)]
+            if (length(hiding_cols) > 0) {
+                result <- result[, c(hiding_cols * -1)]
             }
             result
         },
@@ -80,29 +44,30 @@ dataLoadedTask <- function(data) {
     )
 }
 
-observeEvent(input$pathInput, {
-    withProgress(message = paste("Reading", input$pathInput$name, "..."), {
-        if (is.null(input$pathInput)) {
+shiny::observeEvent(input$path_input, {
+    shiny::withProgress(message = paste("Reading", 
+                                        input$path_input$name, "..."), {
+        if (is.null(input$path_input)) {
             return("No data to view")
         }
-        if (grepl("zip", tolower(input$pathInput$type))) {
+        if (grepl("zip", tolower(input$path_input$type))) {
             message("Reading DWCA ZIP...")
-            rv$dataOriginal <- finch::dwca_read(input$pathInput$datapath,
+            rv$data_original <- finch::dwca_read(input$path_input$datapath,
                                                 TRUE)$data[[1]]
         } else {
-            rv$dataOriginal <- data.table::fread(input$pathInput$datapath,
+            rv$data_original <- data.table::fread(input$path_input$datapath,
                                                  data.table = FALSE)
         }
     })
 })
 
-observeEvent(input$queryDatabase, {
-    withProgress(message = paste("Querying", input$queryDB, "..."), {
-        if (input$queryDB == "gbif") {
-            rv$dataOriginal <- rgbif::occ_search(
-                    scientificName = input$scientificName,
-                    limit = input$recordSize,
-                    hasCoordinate = switch(input$hasCoords,
+shiny::observeEvent(input$query_database, {
+    shiny::withProgress(message = paste("Querying", input$query_db, "..."), {
+        if (input$query_db == "gbif") {
+            rv$data_original <- rgbif::occ_search(
+                    scientificName = input$scientific_name,
+                    limit = input$record_size,
+                    hasCoordinate = switch(input$has_coords,
                                            "1" = TRUE,
                                            "2" = FALSE,
                                            "3" = NULL
@@ -111,10 +76,10 @@ observeEvent(input$queryDatabase, {
         } else {
             warnings <- capture.output(
                 data <- spocc::occ(
-                            query = input$scientificName,
-                            from = input$queryDB,
-                            limit = input$recordSize,
-                            has_coords = switch(input$hasCoords,
+                            query = input$scientific_name,
+                            from = input$query_db,
+                            limit = input$record_size,
+                            has_coords = switch(input$has_coords,
                                                 "1" = TRUE,
                                                 "2" = FALSE,
                                                 "3" = NULL
@@ -123,36 +88,35 @@ observeEvent(input$queryDatabase, {
                 type = "message"
             )
             if (length(warnings) > 0) {
-                showNotification(paste(warnings, collapse = " "),
-                                 duration = 6)
+                shiny::showNotification(paste(warnings, collapse = " "),
+                                        duration = 6)
             }
-            rv$dataOriginal <- data[[input$queryDB]]$data[[1]]
+            rv$data_original <- data[[input$query_db]]$data[[1]]
         }
     })
 })
 
 observe({
-    darwinizer <- bdDwC::darwinizeNames(rv$dataOriginal,
+    darwinizer <- bdDwC::darwinizeNames(rv$data_original,
                                         bdDwC:::dataDarwinCloud$data)
     fixed <- darwinizer[darwinizer$matchType == "Darwinized", ]
     if (nrow(fixed) > 0) {
-        rv$dataOriginal <- bdDwC::renameUserData(rv$dataOriginal, darwinizer)
-                showNotification(paste(
-            "Converted Columns:",
-            paste(
-                paste(fixed[, 1], collapse = ", "),
-                paste(fixed[, 2], collapse = ", "),
-                sep = " -> "
-            )
-        ),
-        duration = 7)
+        rv$data_original <- bdDwC::renameUserData(rv$data_original, darwinizer)
+            shiny::showNotification(paste(
+                "Converted Columns:",
+                paste(
+                    paste(fixed[, 1], collapse = ", "),
+                    paste(fixed[, 2], collapse = ", "),
+                    sep = " -> "
+                )),
+                duration = 7)
     }
-    dataLoadedTask(rv$dataOriginal)
-    if (nrow(rv$dataOriginal) > 0) {
-        shinyjs::enable("acceptFile")
+    data_loaded_task(rv$data_original)
+    if (nrow(rv$data_original) > 0) {
+        shinyjs::enable("accept_file")
     }
 })
 
-observeEvent(input$acceptFile, {
-    updateTabItems(session, "myTabs", "datachecks")
+shiny::observeEvent(input$accept_file, {
+    shinydashboard::updateTabItems(session, "myTabs", "datachecks")
 })

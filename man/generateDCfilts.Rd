@@ -4,14 +4,14 @@
 \alias{generateDCfilts}
 \title{Filter Data Checks}
 \usage{
-generateDCfilts(DCresultSummary, selectedCells, filters = c("P", "F",
+generateDCfilts(dc_result_summary, selected_cells, filters = c("P", "F",
   "M"))
 }
 \arguments{
-\item{DCresultSummary}{Summary table for a dataCheckFlag class
+\item{dc_result_summary}{Summary table for a dataCheckFlag class
 (must be filterable in `DT`)}
 
-\item{selectedCells}{Cells selected in `DT::datatable`}
+\item{selected_cells}{Cells selected in `DT::datatable`}
 
 \item{filters}{Vector that contains names for passed, failed and missing 
 data checks}
@@ -22,5 +22,5 @@ filtering status
 }
 \description{
 `generateDCfilts()` is a function that generates vector for filtering data 
-checks result table according to `DT::datatable()` `selectedCells` object.
+checks result table according to `DT::datatable()` `selectCells` object.
 }

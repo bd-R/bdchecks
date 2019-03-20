@@ -16,7 +16,7 @@
 #' data checks)
 #' 
 #' @examples
-#' performDataCheck(dataBats)
+#' performDataCheck(data_bats)
 #' 
 #' @export
 #' 
@@ -42,11 +42,11 @@ performDataCheck <- function(
         DCall <- DCall[DCexists]
     }
 
-    wantedDC    <- sub("^DC_", "", DCall)
-    performedDC <- character(length(DCall))
+    wanted_dc    <- sub("^DC_", "", DCall)
+    performed_dc <- character(length(DCall))
 
-    resultDC <- list()
-    while (!all(wantedDC %in% performedDC)) {
+    result_dc <- list()
+    while (!all(wanted_dc %in% performed_dc)) {
         for (i in seq_along(DCall)) {
 
             DCcurrent <- get(DCall[[i]])
@@ -54,7 +54,7 @@ performDataCheck <- function(
             # If there are no dependencies then it's safe to run DC
             DCsafe <- is.null(DCcurrent@input$Dependency$DataChecks)
             if (!DCsafe) {
-                if (!DCcurrent@input$Dependency$DataChecks %in% wantedDC) {
+                if (!DCcurrent@input$Dependency$DataChecks %in% wanted_dc) {
                     # If dependency is not the list then perform it
                     DCsafe <- TRUE
                     warning("Dependency ",
@@ -66,48 +66,49 @@ performDataCheck <- function(
                 } else {
                     # Check if required dependencies are already performed
                     DCsafe <-
-                    DCcurrent@input$Dependency$DataChecks %in% performedDC
+                    DCcurrent@input$Dependency$DataChecks %in% performed_dc
                 }
             }
 
-            if (DCsafe & !wantedDC[i] %in% performedDC) {
-                currentResult <- performDC(DCcurrent, data)
-                if (class(currentResult) == "list") {
-                    for (j in seq_along(currentResult)) {
-                        if (!is.null(currentResult)) {
-                            resultDC[[length(resultDC) + 1]] <-
+            if (DCsafe & !wanted_dc[i] %in% performed_dc) {
+                current_result <- performDC(DCcurrent, data)
+                if (class(current_result) == "list") {
+                    for (j in seq_along(current_result)) {
+                        if (!is.null(current_result)) {
+                            result_dc[[length(result_dc) + 1]] <-
                                 methods::new("dataCheckFlag_SINGLE",
                                     name   = DCcurrent@name,
                                     target = unlist(strsplit(
                                         DCcurrent@input$Target, ","))[j],
-                                    result = currentResult[[j]],
+                                    result = current_result[[j]],
                                     flag   = "foo"
                                 )
                         }
                     }
                 } else {
-                    if (!is.null(currentResult)) {
-                        resultDC[[length(resultDC) + 1]] <- methods::new(
+                    if (!is.null(current_result)) {
+                        result_dc[[length(result_dc) + 1]] <- methods::new(
                             "dataCheckFlag_SINGLE",
                             name   = DCcurrent@name,
                             target = DCcurrent@input$Target,
-                            result = currentResult,
+                            result = current_result,
                             flag   = "foo")
                     }
                 }
                 # !!! with NULL results dependencies wont work
                 # !!! what if one target is null and another returns result?
-                performedDC[i] <- wantedDC[i]
+                performed_dc[i] <- wanted_dc[i]
             }
         }
     }
-    if (length(resultDC) > 0) {
-        resultDC <- methods::new("dataCheckFlag",
-            DC       = as.character(lapply(resultDC, function(x) `@`(x, name))),
-            flags    = resultDC,
+    if (length(result_dc) > 0) {
+        result_dc <- methods::new("dataCheckFlag",
+            DC       = as.character(lapply(result_dc, 
+                                           function(x) `@`(x, name))),
+            flags    = result_dc,
             dataOrig = data,
             dataMod  = data)
-        return(resultDC)
+        return(result_dc)
     } else {
         return(NULL)
     }

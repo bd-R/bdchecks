@@ -16,7 +16,7 @@ performDC(DC, DATA)
 \item{DATA}{a data frame to perform data check on}
 }
 \value{
-A vector of logical values that determine if data check was passed on 
+A vector of logical values that determine if data check was passed on
 specific entry in a given DATA object
 }
 \description{

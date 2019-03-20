@@ -4,9 +4,9 @@
 #' checks passed. It's main input is an object of a dataCheckFlag class and output 
 #' is a summary table.
 #' 
-#' @param inputFlag Object of a dataCheckFlag class
+#' @param input_flag Object of a dataCheckFlag class
 #' @param fancy Should ouput be returned in a rst format
-#' @param filteringDT Should output be returned as a summary table that could 
+#' @param filtering_dt Should output be returned as a summary table that could 
 #' be parsed with a `DT` pacakge
 #' 
 #' @return A data.frame or rst table with summary statistics
@@ -14,16 +14,16 @@
 #' @importFrom knitr kable
 #' 
 #' @examples
-#' result <- performDataCheck(dataBats)
+#' result <- performDataCheck(data_bats)
 #' # Fancy summary table (for usage in reports)
 #' summary_DC(result)
 #' # object of class used for data filtering data.frame
-#' summary_DC(result, fancy = FALSE, filteringDT = TRUE)
+#' summary_DC(result, fancy = FALSE, filtering_dt = TRUE)
 #' 
 #' @export
-#' 
-summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
-    res <- lapply(inputFlag@flags, function(x) {
+#'
+summary_DC <- function(input_flag, fancy = TRUE, filtering_dt = FALSE) {
+    res <- lapply(input_flag@flags, function(x) {
         if (length(x@result) == 0) {
             return(NULL)
         } else {
@@ -38,7 +38,7 @@ summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
     res$target <- as.character(res$target)
     res <- res[order(res$failed, decreasing = TRUE), ]
     rownames(res) <- NULL
-    if (!fancy & !filteringDT) {
+    if (!fancy & !filtering_dt) {
         return(res)
     } else {
         res$passed <- as.character(round(res$passed * 100, 2))
@@ -49,7 +49,7 @@ summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
         if (fancy) {
             return(knitr::kable(res, format = "rst"))
         }
-        if (filteringDT) {
+        if (filtering_dt) {
             return(res)
         }
     }

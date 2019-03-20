@@ -4,24 +4,24 @@
 \alias{exportDC}
 \title{Export data checks as R objects}
 \usage{
-exportDC(pathYAML = "./inst/extdata/dataChecks.yaml", exportRDA = TRUE,
-  exportROX = TRUE, pathRDA = "./data/", pathROX = "./R/",
-  idRDA = "DC_", idROX = "DC_")
+exportDC(path_yaml = "./inst/extdata/dataChecks.yaml",
+  export_rda = TRUE, export_rox = TRUE, path_rda = "./data/",
+  path_rox = "./R/", id_rda = "DC_", id_rox = "DC_")
 }
 \arguments{
-\item{pathYAML}{Path to a YAML file.}
+\item{path_yaml}{Path to a YAML file.}
 
-\item{exportRDA}{Should function export data check to a .rda file.}
+\item{export_rda}{Should function export data check to a .rda file.}
 
-\item{exportROX}{Should function create a documentation in .R for roxygen2.}
+\item{export_rox}{Should function create a documentation in .R for roxygen2.}
 
-\item{pathRDA}{Path for .rda file.}
+\item{path_rda}{Path for .rda file.}
 
-\item{pathROX}{Path for .R (roxygen2) file.}
+\item{path_rox}{Path for .R (roxygen2) file.}
 
-\item{idRDA}{ID in the beginning of file for .rda file}
+\item{id_rda}{ID in the beginning of file for .rda file}
 
-\item{idROX}{ID in the beginning of file for .R file 
+\item{id_rox}{ID in the beginning of file for .R file
 (helps to differentiate other functions from data checks).}
 }
 \description{

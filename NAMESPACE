@@ -2,7 +2,7 @@
 
 export(createDCclassMain)
 export(exportDataCheck)
-export(generateRoxygenComment)
+export(generate_roxygen_comment)
 export(getDC)
 export(performDC)
 export(performDataCheck)

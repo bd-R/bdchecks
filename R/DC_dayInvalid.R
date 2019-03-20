@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_dayInvalid, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_dayInvalid, DATA = bdchecks::data_bats)
 #' @section samplePassData:
 #' The value given for event day is between 1 and 31
 #' @section sampleFailData:

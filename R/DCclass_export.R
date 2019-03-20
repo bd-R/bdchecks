@@ -3,43 +3,43 @@
 #' `exportDC()` is a function for exporting data checks from YAML file to
 #' rda and/or roxygen2 file.
 #'
-#' @param pathYAML  Path to a YAML file.
-#' @param exportRDA Should function export data check to a .rda file.
-#' @param exportROX Should function create a documentation in .R for roxygen2.
-#' @param pathRDA   Path for .rda file.
-#' @param pathROX   Path for .R (roxygen2) file.
-#' @param idRDA     ID in the beginning of file for .rda file
-#' @param idROX     ID in the beginning of file for .R file
+#' @param path_yaml  Path to a YAML file.
+#' @param export_rda Should function export data check to a .rda file.
+#' @param export_rox Should function create a documentation in .R for roxygen2.
+#' @param path_rda   Path for .rda file.
+#' @param path_rox   Path for .R (roxygen2) file.
+#' @param id_rda     ID in the beginning of file for .rda file
+#' @param id_rox     ID in the beginning of file for .R file
 #'                  (helps to differentiate other functions from data checks).
 #'
 #' @importFrom yaml yaml.load_file
 #'
-exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
-                     exportRDA = TRUE,
-                     exportROX = TRUE,
-                     pathRDA   = "./data/",
-                     pathROX   = "./R/",
-                     idRDA     = "DC_",
-                     idROX     = "DC_") {
+exportDC <- function(path_yaml  = "./inst/extdata/dataChecks.yaml",
+                     export_rda = TRUE,
+                     export_rox = TRUE,
+                     path_rda   = "./data/",
+                     path_rox   = "./R/",
+                     id_rda     = "DC_",
+                     id_rox     = "DC_") {
 
     # Load YAML file with data checks
-    DCyaml <- yaml::yaml.load_file(pathYAML)
+    DCyaml <- yaml::yaml.load_file(path_yaml)
 
     # Transform DC from YAML to DC class in R
     # Using loop and assign as base::save wants exact object name
     # !!! TEST FOR BAD YAML
     for (x in DCyaml) {
-        if (exportRDA) {
+        if (export_rda) {
             # Create DC object as save according to DC name
             DC <- createDCclassMain(x)
-            assign(paste0(idROX, x$name), DC)
+            assign(paste0(id_rox, x$name), DC)
             # Save DC object as rda
-            save(list = paste0(idROX, x$name),
-                 file = paste0(pathRDA, idRDA, x$name, ".rda"))
+            save(list = paste0(id_rox, x$name),
+                 file = paste0(path_rda, id_rda, x$name, ".rda"))
         }
-        if (exportROX) {
-            writeLines(generateRoxygenComment(DC),
-                       paste0(pathROX, idROX, x$name, ".R"))
+        if (export_rox) {
+            writeLines(generate_roxygen_comment(DC),
+                       paste0(path_rox, id_rox, x$name, ".R"))
         }
     }
     invisible()
@@ -47,9 +47,9 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
 
 #' Generate roxygen2 documentation from data check object
 #'
-#' `generateRoxygenComment()` is a function for generating roxygen2 comments for
-#' a given data check. It's not super flexible as it just inserts metadata into
-#' a hard coded skeleton.
+#' `generate_roxygen_comment()` is a function for generating roxygen2 
+#' comments for a given data check. It's not super flexible as it just 
+#' inserts metadata into a hard coded skeleton.
 #'
 #' @param DC Data check to generate documentation for.
 #'
@@ -57,7 +57,7 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
 #'
 #' @export
 #'
-generateRoxygenComment <- function(DC) {
+generate_roxygen_comment <- function(DC) {
 
     # Skeleton for documentation
     skeleton <- c(
@@ -68,7 +68,7 @@ generateRoxygenComment <- function(DC) {
         "#' @docType data",
         "#' @format An object of class \\code{\"dataCheck\"}, see \\code{\\link{dataCheck}} for details.",
         "#' @references None",
-        "#' @examples \n#' performDC(DC = EXAMPLE@name, DATA = bdchecks::dataBats)",
+        "#' @examples \n#' performDC(DC = EXAMPLE@name, DATA = bdchecks::data_bats)",
         "#' @section samplePassData:\n#' FIELDPASS",
         "#' @section sampleFailData:\n#' FIELDFAIL",
         "#' @section targetDWCField:\n#' FIELDTARGET",

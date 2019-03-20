@@ -29,7 +29,7 @@ dataGeneralizations
 }
 
 \examples{
-performDC(DC = DC_dataGeneralised, DATA = bdchecks::dataBats)
+performDC(DC = DC_dataGeneralised, DATA = bdchecks::data_bats)
 }
 \references{
 None

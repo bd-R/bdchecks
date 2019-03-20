@@ -187,19 +187,19 @@ setMethod("performDC", "dataCheck",
     function(DC, DATA) {
         options(scipen = 999)
         # TARGETS
-        targetNames <- unlist(strsplit(DC@input$Target, ","))
-        for (j in seq_along(targetNames)) {
-            if (!targetNames[j] %in% colnames(DATA)) {
-                warning("Target ", targetNames[j],
+        target_names <- unlist(strsplit(DC@input$Target, ","))
+        for (j in seq_along(target_names)) {
+            if (!target_names[j] %in% colnames(DATA)) {
+                warning("Target ", target_names[j],
                         " doesn't exists in a given dataset,\ncheck ", DC@name,
                         " can't be performed")
                 TARGET1 <- NULL
                 TARGET  <- NULL
             } else if (j == 1) {
-                assign("TARGET", DATA[, targetNames[j], drop = TRUE])
-                assign("TARGET1", DATA[, targetNames[j], drop = TRUE])
+                assign("TARGET", DATA[, target_names[j], drop = TRUE])
+                assign("TARGET1", DATA[, target_names[j], drop = TRUE])
             } else {
-                assign(paste0("TARGET", j), DATA[, targetNames[j], drop = TRUE])
+                assign(paste0("TARGET", j), DATA[, target_names[j], drop = TRUE])
             }
         }
         TARGETS <- ls(pattern = "TARGET\\d+")

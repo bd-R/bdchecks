@@ -29,7 +29,7 @@ minimumElevationinMeters,maximumElevationInMeters
 }
 
 \examples{
-performDC(DC = DC_elevationOutOfRange, DATA = bdchecks::dataBats)
+performDC(DC = DC_elevationOutOfRange, DATA = bdchecks::data_bats)
 }
 \references{
 None

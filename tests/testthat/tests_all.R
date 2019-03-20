@@ -7,7 +7,7 @@ context("Summary Functions")
 test_that("summary_DC", {
     # Data checks on example data
     # We expect warnings as not all columns are present
-    result <- expect_warning(performDataCheck(dataBats))
+    result <- expect_warning(performDataCheck(data_bats))
     # Check if output is valid
     expect_s4_class(result, "dataCheckFlag")
 
@@ -38,7 +38,7 @@ test_that("performDataCheck", {
     result <- expect_warning(bdchecks::performDataCheck())
     expect_true(is.null(result))
 
-    result <- expect_warning(bdchecks::performDataCheck(dataBats))
+    result <- expect_warning(bdchecks::performDataCheck(data_bats))
     # we should have at least 20 performed DCs
     expect_gt(length(result@DC), 20)
 })
@@ -49,5 +49,5 @@ test_that("performDC", {
     expect_error(bdchecks::performDC())
     expect_warning(bdchecks::performDC(DC_monthInvalid, mtcars))
     # This will depend on data version
-    expect_equal(sum(bdchecks::performDC(DC_monthInvalid, dataBats)), 1000)
+    expect_equal(sum(bdchecks::performDC(DC_monthInvalid, data_bats)), 1000)
 })

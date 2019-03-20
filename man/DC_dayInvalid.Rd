@@ -29,7 +29,7 @@ day
 }
 
 \examples{
-performDC(DC = DC_dayInvalid, DATA = bdchecks::dataBats)
+performDC(DC = DC_dayInvalid, DATA = bdchecks::data_bats)
 }
 \references{
 None

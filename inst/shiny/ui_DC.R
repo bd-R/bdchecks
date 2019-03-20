@@ -1,21 +1,23 @@
-fluidPage(
+shiny::fluidPage(
     shinyjs::useShinyjs(),
-    conditionalPanel("!input.acceptFile",
-                     h2("Upload and Accept Dataset")),
-    conditionalPanel("input.acceptFile",
-        fluidRow(
+    shiny::conditionalPanel("!input.accept_file", 
+                            h2("Upload and Accept Dataset")),
+    shiny::conditionalPanel("input.accept_file",
+        shiny::fluidRow(
             column(width = 2,
-                radioButtons("DCgroupsAvailable",
-                             "Select category to group data checks:",
-                             c("Darwin Core Class" = "DarwinCoreClass",
-                               "Dimension" = "Dimension",
-                               "Warning Type" = "Warning",
-                               "Output Type" = "Output",
-                               "Severity" = "Severity"),
-                               "DarwinCoreClass")
+                shiny::radioButtons(
+                    "dc_groups_vailable",
+                     "Select category to group data checks:",
+                     c("Darwin Core Class" = "DarwinCoreClass",
+                       "Dimension" = "Dimension",
+                       "Warning Type" = "Warning",
+                       "Output Type" = "Output",
+                       "Severity" = "Severity"),
+                     "DarwinCoreClass"
+                )
             ),
             column(width = 3,
-                actionButton("selectDC", "Accept Data Checks",
+                shiny::actionButton("select_dc", "Accept Data Checks",
                                    icon = icon("check"),
                                    width = 210,
                                    style = "color: #000000;
@@ -27,9 +29,9 @@ fluidPage(
             column(12, style = "margin-bottom:10px; border-bottom:2px solid")
         ),
         br(), br(),
-        fluidRow(
-            uiOutput("DCgroupsCheckBox")
+        shiny::fluidRow(
+            shiny::uiOutput("dc_groups_check_box")
         ),
-        uiOutput("DCcheckBoxHover")
+        shiny::uiOutput("dc_check_box_hover")
     )
 )

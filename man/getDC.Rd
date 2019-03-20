@@ -4,10 +4,10 @@
 \alias{getDC}
 \title{Load Data Checks}
 \usage{
-getDC(pathYAML = "../inst/extdata/dataChecks.yaml")
+getDC(path_yaml = "../inst/extdata/dataChecks.yaml")
 }
 \arguments{
-\item{pathYAML}{Path to a YAML file.}
+\item{path_yaml}{Path to a YAML file.}
 }
 \value{
 A list of data checks

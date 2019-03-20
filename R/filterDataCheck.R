@@ -1,23 +1,23 @@
 #' Filter Data Checks
 #'
 #' `generateDCfilts()` is a function that generates vector for filtering data 
-#' checks result table according to `DT::datatable()` `selectedCells` object.
+#' checks result table according to `DT::datatable()` `selectCells` object.
 #' 
-#' @param DCresultSummary Summary table for a dataCheckFlag class
+#' @param dc_result_summary Summary table for a dataCheckFlag class
 #' (must be filterable in `DT`)
-#' @param selectedCells Cells selected in `DT::datatable`
+#' @param selected_cells Cells selected in `DT::datatable`
 #' @param filters Vector that contains names for passed, failed and missing 
 #' data checks
 #' 
 #' @return A list that contains name of a data checks, it's target and 
 #' filtering status
 #'
-generateDCfilts <- function(DCresultSummary,
-                            selectedCells,
+generateDCfilts <- function(dc_result_summary,
+                            selected_cells,
                             filters = c("P", "F", "M")) {
-    result <- lapply(unique(selectedCells[, 1]), function(i) {
-        DCcurrent <- DCresultSummary[i, ]
-        foo <- unique(selectedCells[selectedCells[, 1] == i, 2] - 1)
+    result <- lapply(unique(selected_cells[, 1]), function(i) {
+        DCcurrent <- dc_result_summary[i, ]
+        foo <- unique(selected_cells[selected_cells[, 1] == i, 2] - 1)
         list(name = DCcurrent[, 1],
              target = DCcurrent[, 2],
              filter = paste(filters[foo[foo > 0]], collapse = ""))

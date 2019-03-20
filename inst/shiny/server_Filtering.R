@@ -1,18 +1,18 @@
 library(bdchecks)
 library(magrittr)
-DCresult <- eventReactive(input$selectDC, {
-    performDataCheck(rv$dataOriginal, DConly = paste0("DC_", DCselected()))
+DCresult <- shiny::eventReactive(input$select_dc, {
+    performDataCheck(rv$data_original, DConly = paste0("DC_", DCselected()))
 })
-DCresultSummary <- reactive({
+dc_result_summary <- reactive({
     if (is.null(DCresult())) {
         return(NULL)
     } else {
         summary_DC(DCresult(), fancy = FALSE, filteringDT = TRUE)
     }
 })
-output$tableDataChecks <- DT::renderDT(
+output$table_data_checks <- DT::renderDT(
 
-    DCresultSummary(),
+    dc_result_summary(),
     rownames = FALSE,
     options = list(pageLength = 100,
                    columnDefs = list(list(className = "no_select",
@@ -26,66 +26,66 @@ output$tableDataChecks <- DT::renderDT(
                    });")
 )
 
-selectedCells <- reactive({
-    input$tableDataChecks_cells_selected
+selected_cells <- reactive({
+    input$table_data_checks_cells_selected
 })
 
-proxy <- dataTableProxy("tableDataChecks")
-observeEvent(input$selectionToRemove, {
-    cells <- 1:nrow(DCresultSummary())
+proxy <- DT::dataTableProxy("table_data_checks")
+shiny::observeEvent(input$selection_to_remove, {
+    cells <- 1:nrow(dc_result_summary())
     res <- NULL
-    if ("All Passed" %in% input$selectionToRemove) {
+    if ("All Passed" %in% input$selection_to_remove) {
         res <- rbind(res, cbind(cells, 2))
     }
-    if ("All Failed" %in% input$selectionToRemove) {
+    if ("All Failed" %in% input$selection_to_remove) {
         res <- rbind(res, cbind(cells, 3))
     }
-    if ("All Missing" %in% input$selectionToRemove) {
+    if ("All Missing" %in% input$selection_to_remove) {
         res <- rbind(res, cbind(cells, 4))
     }
-    selectCells(proxy, res)
+    DT::selectCells(proxy, res)
 })
-rv2 <- reactiveValues(
-    dataAfter = data.frame()
+rv2 <- shiny::reactiveValues(
+    data_after = data.frame()
 )
-observeEvent(input$DC_cellClear, {
-    selectCells(proxy, NULL)
+shiny::observeEvent(input$dc_cell_clear, {
+    DT::selectCells(proxy, NULL)
 })
-DCfilt <- eventReactive(input$DC_remove, {
-    if (is.null(DCresultSummary())) {
+DCfilt <- shiny::eventReactive(input$DC_remove, {
+    if (is.null(dc_result_summary())) {
         return(NULL)
     } else {
-        bdchecks:::generateDCfilts(DCresultSummary(), selectedCells())
+        bdchecks:::generateDCfilts(dc_result_summary(), selected_cells())
     }
 })
 observe({
     if (is.null(DCresult()) | is.null(DCfilt())) {
-        rv2$dataAfter <- rv$dataOriginal
+        rv2$data_after <- rv$data_original
     } else {
-        rv2$dataAfter <- bdchecks:::filterDataCheck(DCresult(), DCfilt())
+        rv2$data_after <- bdchecks:::filterDataCheck(DCresult(), DCfilt())
     }
 })
-output$vb_nRecords1 <- renderValueBox({
-    valueBox(nrow(rv$dataOriginal),
-             "Records Submitted",
-             color = "aqua")
+output$vb_n_records1 <- shiny::renderValueBox({
+    shinydashboard::valueBox(nrow(rv$data_original),
+                             "Records Submitted",
+                             color = "aqua")
 })
-output$vb_nRecords2 <- renderValueBox({
-    valueBox(nrow(rv2$dataAfter),
-             "Records After Filtering",
-             color = "light-blue")
+output$vb_n_records2 <- shiny::renderValueBox({
+    shinydashboard::valueBox(nrow(rv2$data_after),
+                             "Records After Filtering",
+                             color = "light-blue")
 })
-output$vb_nDC1 <- renderValueBox({
-    valueBox(nrow(DCresultSummary()),
-             "Data Checks Performed",
-             color = "olive")
+output$vb_n_dc <- shiny::renderValueBox({
+    shinydashboard::valueBox(nrow(dc_result_summary()),
+                             "Data Checks Performed",
+                             color = "olive")
 })
 
-output$dwnl_Data <- downloadHandler(
+output$dwnl_Data <- shiny::downloadHandler(
     filename = function() {
         format(Sys.time(), "filteredData_%Y_%b_%d_%X.csv")
     },
     content = function(file) {
-        write.csv(rv2$dataAfter, file, row.names = FALSE)
+        write.csv(rv2$data_after, file, row.names = FALSE)
     }
 )

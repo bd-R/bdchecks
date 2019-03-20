@@ -3,7 +3,7 @@
 #' A dataset of Australian bats (\emph{chiroptera}) (1000 records) downloaded using
 #' \code{rgbif} package.
 #' 
-#' @name dataBats
+#' @name data_bats
 #' @docType data
 #'
 NULL

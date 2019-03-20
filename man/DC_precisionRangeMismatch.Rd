@@ -29,7 +29,7 @@ coordinatePrecision
 }
 
 \examples{
-performDC(DC = DC_precisionRangeMismatch, DATA = bdchecks::dataBats)
+performDC(DC = DC_precisionRangeMismatch, DATA = bdchecks::data_bats)
 }
 \references{
 None

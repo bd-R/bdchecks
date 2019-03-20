@@ -29,7 +29,7 @@ individualCount
 }
 
 \examples{
-performDC(DC = DC_individualcountInvalid, DATA = bdchecks::dataBats)
+performDC(DC = DC_individualcountInvalid, DATA = bdchecks::data_bats)
 }
 \references{
 None

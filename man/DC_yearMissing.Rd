@@ -29,7 +29,7 @@ year
 }
 
 \examples{
-performDC(DC = DC_yearMissing, DATA = bdchecks::dataBats)
+performDC(DC = DC_yearMissing, DATA = bdchecks::data_bats)
 }
 \references{
 None

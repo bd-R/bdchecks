@@ -29,7 +29,7 @@ modified
 }
 
 \examples{
-performDC(DC = DC_modifiedInFuture, DATA = bdchecks::dataBats)
+performDC(DC = DC_modifiedInFuture, DATA = bdchecks::data_bats)
 }
 \references{
 None

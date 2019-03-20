@@ -29,7 +29,7 @@ occurrenceID
 }
 
 \examples{
-performDC(DC = DC_occurrenceIdNotGuid, DATA = bdchecks::dataBats)
+performDC(DC = DC_occurrenceIdNotGuid, DATA = bdchecks::data_bats)
 }
 \references{
 None

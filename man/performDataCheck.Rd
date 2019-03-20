@@ -29,6 +29,6 @@ data checks)
 on a give data set
 }
 \examples{
-performDataCheck(dataBats)
+performDataCheck(data_bats)
 
 }

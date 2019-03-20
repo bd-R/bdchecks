@@ -7,7 +7,7 @@
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
 #' @examples 
-#' performDC(DC = DC_coordinatesZero, DATA = bdchecks::dataBats)
+#' performDC(DC = DC_coordinatesZero, DATA = bdchecks::data_bats)
 #' @section samplePassData:
 #' Decimal latitude and longitude are not zero (0) degrees
 #' @section sampleFailData:

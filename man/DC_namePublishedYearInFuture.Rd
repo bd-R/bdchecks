@@ -29,7 +29,7 @@ namePublishedInYear
 }
 
 \examples{
-performDC(DC = DC_namePublishedYearInFuture, DATA = bdchecks::dataBats)
+performDC(DC = DC_namePublishedYearInFuture, DATA = bdchecks::data_bats)
 }
 \references{
 None

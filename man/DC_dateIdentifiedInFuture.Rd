@@ -29,7 +29,7 @@ dateIdentified
 }
 
 \examples{
-performDC(DC = DC_dateIdentifiedInFuture, DATA = bdchecks::dataBats)
+performDC(DC = DC_dateIdentifiedInFuture, DATA = bdchecks::data_bats)
 }
 \references{
 None

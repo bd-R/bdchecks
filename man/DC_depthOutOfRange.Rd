@@ -29,7 +29,7 @@ minimumDepthInMeters,maximumDepthInMeters
 }
 
 \examples{
-performDC(DC = DC_depthOutOfRange, DATA = bdchecks::dataBats)
+performDC(DC = DC_depthOutOfRange, DATA = bdchecks::data_bats)
 }
 \references{
 None
