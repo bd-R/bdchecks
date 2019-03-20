@@ -1,5 +1,5 @@
 #' Data Check Meta-Data Class
-#' 
+#'
 #' @name dataCheckMeta-class
 #' @rdname dataCheckMeta-class
 #' @export
@@ -18,14 +18,14 @@ dataCheckMeta <- setClass(
         source      = "list"))
 
 #' Create Data Check Class
-#' 
+#'
 #' @name dataCheck-class
 #' @rdname dataCheck-class
 #' @export
 #'
 #' @slot name of a data check
-#' @slot meta meta-data for a data check of a dataCheckMeta class 
-#' @slot input options for a data check 
+#' @slot meta meta-data for a data check of a dataCheckMeta class
+#' @slot input options for a data check
 #' @slot func expression to execute
 #'
 dataCheck <- setClass(
@@ -37,16 +37,16 @@ dataCheck <- setClass(
         func  = "expression"))
 
 #' Single Data Check Flag Class
-#' 
+#'
 #' @name dataCheckFlag_SINGLE-class
 #' @rdname dataCheckFlag_SINGLE-class
 #' @export
-#' 
+#'
 #' @slot name of performed data check
 #' @slot target column for performed data check
 #' @slot flag class
 #' @slot result logical vector
-#' 
+#'
 dataCheckFlag_SINGLE <- setClass(
     "dataCheckFlag_SINGLE",
     slots = c(
@@ -56,18 +56,18 @@ dataCheckFlag_SINGLE <- setClass(
         result = "logical"))
 
 #' Combined Data Checks Class
-#' 
+#'
 #' @name dataCheckFlag-class
 #' @rdname dataCheckFlag-class
 #' @export
-#' 
+#'
 #' @slot DC names of performed data checks
 #' @slot flags list of performed data checks in a dataCheckFlag_SINGLE class
 #' @slot dataOrig original data before data checks
 #' @slot dataMod modified data after data checks
-#' 
+#'
 dataCheckFlag <- setClass(
-    "dataCheckFlag", 
+    "dataCheckFlag",
     slots = c(
         DC       = "vector",
         flags    = "list",
@@ -85,42 +85,42 @@ dataCheckFlag <- setClass(
 
 
 #' Export Data Checks
-#' 
+#'
 #' Method that exports data checks
-#' 
+#'
 #' @param object A result of data checks (data check flag class)
-#' 
+#'
 #' @return A data.frame that contains original users data.frame modified according
 #' to data checks
-#' 
+#'
 #' @export
 #' @docType methods
 #' @rdname exportDataCheck-methods
-#' 
+#'
 setGeneric("exportDataCheck", function(object) {
     standardGeneric("exportDataCheck")
 })
 
 
 #' Perform Data Checks
-#' 
+#'
 #' Method that performs data check on a given dataset
-#' 
+#'
 #' @param DC A data check as a dataCheck class object
 #' @param DATA a data frame to perform data check on
-#' 
-#' @return A vector of logical values that determine if data check was passed on 
+#'
+#' @return A vector of logical values that determine if data check was passed on
 #' specific entry in a given DATA object
-#' 
+#'
 #' @importFrom utils install.packages
-#' 
+#'
 #' @export
 #' @docType methods
 #' @rdname performDC-methods
-#' 
+#'
 setGeneric("performDC", function(DC, DATA) {
     standardGeneric("performDC")
-}) 
+})
 
 
 
@@ -135,11 +135,11 @@ setGeneric("performDC", function(DC, DATA) {
 
 
 #' Show method for dataCheck objects
-#' 
+#'
 #' @rdname dataCheck-class
 #' @param object a dataCheck object
 #' @aliases dataCheck
-#' 
+#'
 setMethod("show", "dataCheck",
     function(object) {
         message(" Data check is used to:\n\t",
@@ -153,11 +153,11 @@ setMethod("show", "dataCheck",
 )
 
 #' Show method for dataCheckFlag objects
-#' 
+#'
 #' @rdname dataCheckFlag-class
 #' @param object a dataCheckFlag object
 #' @aliases dataCheckFlag
-#' 
+#'
 setMethod("show", "dataCheckFlag",
     function(object) {
         res <- lapply(object@flags, function(x) {
@@ -170,9 +170,9 @@ setMethod("show", "dataCheckFlag",
 
 
 #' @rdname exportDataCheck-methods
-#' 
+#'
 #' @aliases exportDataCheck
-#' 
+#'
 setMethod("exportDataCheck", "dataCheckFlag", function(object) {
     return(object@dataMod)
 })
@@ -180,9 +180,9 @@ setMethod("exportDataCheck", "dataCheckFlag", function(object) {
 
 
 #' @rdname performDC-methods
-#' 
+#'
 #' @aliases performDC
-#' 
+#'
 setMethod("performDC", "dataCheck",
     function(DC, DATA) {
         options(scipen = 999)
@@ -190,7 +190,7 @@ setMethod("performDC", "dataCheck",
         targetNames <- unlist(strsplit(DC@input$Target, ","))
         for (j in seq_along(targetNames)) {
             if (!targetNames[j] %in% colnames(DATA)) {
-                warning("Target ", targetNames[j], 
+                warning("Target ", targetNames[j],
                         " doesn't exists in a given dataset,\ncheck ", DC@name,
                         " can't be performed")
                 TARGET1 <- NULL

@@ -44,11 +44,11 @@ summary_DC <- function(inputFlag, fancy = TRUE, filteringDT = FALSE) {
         res$passed <- as.character(round(res$passed * 100, 2))
         res$failed <- as.character(round(res$failed * 100, 2))
         res$missing <- as.character(round(res$missing * 100, 2))
-        colnames(res) <- c("Data Check", "Column (Target)", 
+        colnames(res) <- c("Data Check", "Column (Target)",
                            "Passed, %", "Failed, %", "Missing,% ")
         if (fancy) {
             return(knitr::kable(res, format = "rst"))
-        } 
+        }
         if (filteringDT) {
             return(res)
         }

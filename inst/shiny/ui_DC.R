@@ -1,11 +1,11 @@
 fluidPage(
     shinyjs::useShinyjs(),
-    conditionalPanel("!input.acceptFile", 
+    conditionalPanel("!input.acceptFile",
                      h2("Upload and Accept Dataset")),
     conditionalPanel("input.acceptFile",
         fluidRow(
             column(width = 2,
-                radioButtons("DCgroupsAvailable", 
+                radioButtons("DCgroupsAvailable",
                              "Select category to group data checks:",
                              c("Darwin Core Class" = "DarwinCoreClass",
                                "Dimension" = "Dimension",
@@ -16,7 +16,7 @@ fluidPage(
             ),
             column(width = 3,
                 actionButton("selectDC", "Accept Data Checks",
-                                   icon = icon("check"), 
+                                   icon = icon("check"),
                                    width = 210,
                                    style = "color: #000000;
                                             background-color: #71a879;

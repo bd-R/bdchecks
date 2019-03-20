@@ -35,19 +35,19 @@ server <- function(input, output, session) {
         p("Check your data"),
         img(src = "bdverse.png", align = "center", width = "570"),
         helpText(
-            "MIT License ©Tomer Gueta, Vijay Barve, Povilas Gibas, 
+            "MIT License ©Tomer Gueta, Vijay Barve, Povilas Gibas,
              Thiloshon Nagarajah, Ashwin Agrawal and Carmel Yohay (2018).",
             br(),
             "bdchecks: Biodiversity Data Checks. R package version 0.1.2"
         ),
         helpText(
             "Contribute: ",
-            a("https://github.com/bd-R/bdchecks", 
+            a("https://github.com/bd-R/bdchecks",
               href = "https://github.com/bd-R/bdchecks"),
             br(), "Join: ",
-            a("https://bd-r-group.slack.com", 
+            a("https://bd-r-group.slack.com",
               href = "https://bd-r-group.slack.com")
-        ), 
+        ),
         size = "m",
         easyClose = TRUE
     ))

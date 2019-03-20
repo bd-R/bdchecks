@@ -35,13 +35,13 @@ output$DCgroupsCheckBox <- renderUI({
     result <- list()
     # Create chech box for each group
     for (i in unique(DCgroups()$group)) {
-        RAW <- checkboxGroupInput(paste0("DC_chck_", i), 
-                                  i, 
+        RAW <- checkboxGroupInput(paste0("DC_chck_", i),
+                                  i,
                                   subset(DCgroups(), group == i)$DC)
 
         for (i in subset(DCgroups(), group == i)$DC) {
-            RAW <- gsub(paste0("<span>", i, "</span>"), 
-                        paste0("<span id=\"DC_", i, "\">", i, "</span>"), 
+            RAW <- gsub(paste0("<span>", i, "</span>"),
+                        paste0("<span id=\"DC_", i, "\">", i, "</span>"),
                         RAW)
         }
         result[[i]] <- column(2, HTML(RAW))

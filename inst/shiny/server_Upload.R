@@ -7,7 +7,7 @@ dataLoadedTask <- function(data) {
     output$contents <- DT::renderDataTable(
         DT::datatable({
             summarizeDataframe(data)
-        }, 
+        },
             options = list(scrollX = TRUE)
         )
     )
@@ -28,10 +28,8 @@ summarizeDataframe <- function(data) {
             "decimalLongitude"
         )]
     tempData <- cbind(tempData, data)
-    
     hidingCols <- c()
     tempData[] <- lapply(tempData, as.character)
-    
     for (i in 1:length(names(tempData))) {
         sample <-
             sample(1:nrow(tempData),
@@ -39,14 +37,12 @@ summarizeDataframe <- function(data) {
         f <-
             mean(sapply(tempData[sample, i], function(x)
                 nchar(x)), na.rm = T)
-        
         if (!is.nan(f)) {
             if (f > 50) {
                 hidingCols <- c(hidingCols, i)
             }
         }
     }
-    
     if (length(hidingCols) > 0) {
         tempData <- tempData[, c(hidingCols * -1)]
     }
@@ -63,7 +59,7 @@ observeEvent(input$pathInput, {
             rv$dataOriginal <- finch::dwca_read(input$pathInput$datapath,
                                                 TRUE)$data[[1]]
         } else {
-            rv$dataOriginal <- data.table::fread(input$pathInput$datapath, 
+            rv$dataOriginal <- data.table::fread(input$pathInput$datapath,
                                                  data.table = FALSE)
         }
     })
@@ -122,7 +118,7 @@ observe({
     }
     dataLoadedTask(rv$dataOriginal)
     if (nrow(rv$dataOriginal) > 0) {
-        shinyjs::enable("acceptFile") 
+        shinyjs::enable("acceptFile")
     }
 })
 

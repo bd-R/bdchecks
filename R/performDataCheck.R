@@ -37,11 +37,11 @@ performDataCheck <- function(
     # Check if all data checks exists
     DCexists <- sapply(DCall, exists)
     if (any(!DCexists)) {
-        warning("Following data checks don't exists (will skip them):\n", 
+        warning("Following data checks don't exists (will skip them):\n",
                 paste(DCall[!DCexists], collapse = ", "))
         DCall <- DCall[DCexists]
     }
-    
+
     wantedDC    <- sub("^DC_", "", DCall)
     performedDC <- character(length(DCall))
 
@@ -57,15 +57,15 @@ performDataCheck <- function(
                 if (!DCcurrent@input$Dependency$DataChecks %in% wantedDC) {
                     # If dependency is not the list then perform it
                     DCsafe <- TRUE
-                    warning("Dependency ", 
+                    warning("Dependency ",
                             paste(DCcurrent@input$Dependency$DataChecks,
                                   collapse = ", "),
-                            " for data check ", DCcurrent@name, 
+                            " for data check ", DCcurrent@name,
                             " wasn't not specified to run.\n
                             Will ignore this dependency")
                 } else {
                     # Check if required dependencies are already performed
-                    DCsafe <- 
+                    DCsafe <-
                     DCcurrent@input$Dependency$DataChecks %in% performedDC
                 }
             }
@@ -75,7 +75,7 @@ performDataCheck <- function(
                 if (class(currentResult) == "list") {
                     for (j in seq_along(currentResult)) {
                         if (!is.null(currentResult)) {
-                            resultDC[[length(resultDC) + 1]] <- 
+                            resultDC[[length(resultDC) + 1]] <-
                                 methods::new("dataCheckFlag_SINGLE",
                                     name   = DCcurrent@name,
                                     target = unlist(strsplit(
@@ -102,7 +102,7 @@ performDataCheck <- function(
         }
     }
     if (length(resultDC) > 0) {
-        resultDC <- methods::new("dataCheckFlag", 
+        resultDC <- methods::new("dataCheckFlag",
             DC       = as.character(lapply(resultDC, function(x) `@`(x, name))),
             flags    = resultDC,
             dataOrig = data,

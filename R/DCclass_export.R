@@ -9,17 +9,17 @@
 #' @param pathRDA   Path for .rda file.
 #' @param pathROX   Path for .R (roxygen2) file.
 #' @param idRDA     ID in the beginning of file for .rda file
-#' @param idROX     ID in the beginning of file for .R file 
+#' @param idROX     ID in the beginning of file for .R file
 #'                  (helps to differentiate other functions from data checks).
-#' 
+#'
 #' @importFrom yaml yaml.load_file
-#' 
-exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml", 
+#'
+exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
                      exportRDA = TRUE,
                      exportROX = TRUE,
                      pathRDA   = "./data/",
                      pathROX   = "./R/",
-                     idRDA     = "DC_",  
+                     idRDA     = "DC_",
                      idROX     = "DC_") {
 
     # Load YAML file with data checks
@@ -34,11 +34,11 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
             DC <- createDCclassMain(x)
             assign(paste0(idROX, x$name), DC)
             # Save DC object as rda
-            save(list = paste0(idROX, x$name), 
+            save(list = paste0(idROX, x$name),
                  file = paste0(pathRDA, idRDA, x$name, ".rda"))
         }
         if (exportROX) {
-            writeLines(generateRoxygenComment(DC), 
+            writeLines(generateRoxygenComment(DC),
                        paste0(pathROX, idROX, x$name, ".R"))
         }
     }
@@ -47,16 +47,16 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
 
 #' Generate roxygen2 documentation from data check object
 #'
-#' `generateRoxygenComment()` is a function for generating roxygen2 comments for 
+#' `generateRoxygenComment()` is a function for generating roxygen2 comments for
 #' a given data check. It's not super flexible as it just inserts metadata into
 #' a hard coded skeleton.
 #'
 #' @param DC Data check to generate documentation for.
-#' 
+#'
 #' @return Data check description in a roxygen2 comment style
-#' 
+#'
 #' @export
-#' 
+#'
 generateRoxygenComment <- function(DC) {
 
     # Skeleton for documentation
@@ -75,18 +75,18 @@ generateRoxygenComment <- function(DC) {
         "#' @section checkCategory:\n#'  FIELDCATERGORY")
 
     # Add short description
-    skeleton <- sub("shortDesc", 
+    skeleton <- sub("shortDesc",
                     paste("#' Data check", DC@name, DC@meta@description$Main),
                     skeleton)
 
     # Add long description
     skeleton <- sub("longDesc", paste0(
-        "#'     This data check answers: \"", DC@meta@description$InputQuestion, 
+        "#'     This data check answers: \"", DC@meta@description$InputQuestion,
         "?\" question.",
-        "\\\\cr Data check will pass if \\\\strong{", 
-        DC@meta@description$Example$Pass, "}", 
+        "\\\\cr Data check will pass if \\\\strong{",
+        DC@meta@description$Example$Pass, "}",
         " and will fail if \\\\strong{",
-        DC@meta@description$Example$Fail, "}.", 
+        DC@meta@description$Example$Fail, "}.",
         "\\\\cr Dimension of this data check is \\\\strong{",
         DC@meta@flags$Dimension, "}",
         " and it's flagging type is: \\\\strong{FLAG}",
@@ -106,9 +106,9 @@ generateRoxygenComment <- function(DC) {
     # Add name
     skeleton <- sub("@name", paste("@name", paste0("DC_", DC@name)), skeleton)
     # Add keywords
-    skeleton <- c(skeleton, 
-                  ifelse(!is.null(DC@meta@description$keywords), 
-                         paste("#' @keywords", DC@meta@description$keywords), 
+    skeleton <- c(skeleton,
+                  ifelse(!is.null(DC@meta@description$keywords),
+                         paste("#' @keywords", DC@meta@description$keywords),
                          ""
                   )
                  )

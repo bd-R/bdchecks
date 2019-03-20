@@ -67,17 +67,17 @@ observe({
 })
 output$vb_nRecords1 <- renderValueBox({
     valueBox(nrow(rv$dataOriginal),
-             "Records Submitted", 
+             "Records Submitted",
              color = "aqua")
 })
 output$vb_nRecords2 <- renderValueBox({
     valueBox(nrow(rv2$dataAfter),
-             "Records After Filtering", 
+             "Records After Filtering",
              color = "light-blue")
 })
 output$vb_nDC1 <- renderValueBox({
     valueBox(nrow(DCresultSummary()),
-             "Data Checks Performed", 
+             "Data Checks Performed",
              color = "olive")
 })
 
