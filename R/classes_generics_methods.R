@@ -188,7 +188,7 @@ setMethod("performDC", "dataCheck",
         options(scipen = 999)
         # TARGETS
         targetNames <- unlist(strsplit(DC@input$Target, ","))
-        for(j in seq_along(targetNames)) {
+        for (j in seq_along(targetNames)) {
             if (!targetNames[j] %in% colnames(DATA)) {
                 warning("Target ", targetNames[j], 
                         " doesn't exists in a given dataset,\ncheck ", DC@name,
@@ -217,7 +217,7 @@ setMethod("performDC", "dataCheck",
         }
         if (!is.null(DC@input$Dependency$Data)) {
             dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
-            for(j in seq_along(dependencies)) {
+            for (j in seq_along(dependencies)) {
                 assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
                 if (j == 1) {
                     assign("DEPEND", eval(parse(text = dependencies[j])))

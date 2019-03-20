@@ -46,8 +46,8 @@ performDataCheck <- function(
     performedDC <- character(length(DCall))
 
     resultDC <- list()
-    while(!all(wantedDC %in% performedDC)) {
-        for(i in seq_along(DCall)) {
+    while (!all(wantedDC %in% performedDC)) {
+        for (i in seq_along(DCall)) {
 
             DCcurrent <- get(DCall[[i]])
 
@@ -71,7 +71,7 @@ performDataCheck <- function(
             if (DCsafe & !wantedDC[i] %in% performedDC) {
                 currentResult <- performDC(DCcurrent, data)
                 if (class(currentResult) == "list") {
-                    for(j in seq_along(currentResult)) {
+                    for (j in seq_along(currentResult)) {
                         if (!is.null(currentResult)) {
                             resultDC[[length(resultDC) + 1]] <- methods::new("dataCheckFlag_SINGLE",
                                 name   = DCcurrent@name,

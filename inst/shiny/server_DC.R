@@ -22,7 +22,7 @@ DCcheckBox <- reactive({
 })
 DCselected <- reactive({
     result <- c()
-    for(i in DCcheckBox()) {
+    for (i in DCcheckBox()) {
         result <- c(result, input[[i]])
     }
     result
@@ -35,7 +35,7 @@ output$DCgroupsCheckBox <- renderUI({
                                   i, 
                                   subset(DCgroups(), group == i)$DC)
 
-        for(i in subset(DCgroups(), group == i)$DC) {
+        for (i in subset(DCgroups(), group == i)$DC) {
             RAW <- gsub(paste0("<span>", i, "</span>"), 
                         paste0("<span id=\"DC_", i, "\">", i, "</span>"), 
                         RAW)
@@ -55,7 +55,7 @@ createHoverText <- function(object) {
 hoverInfo <- eventReactive(input$DCgroupsAvailable, {
     DCall <- ls(pos = ("package:bdchecks"), pattern = "^DC_")
     result <- list()
-    for(i in DCall) {
+    for (i in DCall) {
         result[[i]] <- bsTooltip(i, createHoverText(get(i)), "top", "hover")
     }
     do.call(tagList, result)

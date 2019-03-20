@@ -41,7 +41,7 @@ filterDataCheck <- function(DCresult, DCfilts) {
     idx <- c()
     names <- sapply(DCresult@flags, function(x) `@`(x, name))
     targets <- sapply(DCresult@flags, function(x) `@`(x, target))
-    for(i in seq_along(DCfilts$name)) {
+    for (i in seq_along(DCfilts$name)) {
         if (nchar(DCfilts$filter[i]) < 3) {
             foo <- DCresult@flags[names == DCfilts$name[i] & targets == DCfilts$target[i]][[1]]@result
             bar <- c()

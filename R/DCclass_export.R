@@ -28,7 +28,7 @@ exportDC <- function(pathYAML  = "./inst/extdata/dataChecks.yaml",
     # Transform DC from YAML to DC class in R
     # Using loop and assign as base::save wants exact object name
     # !!! TEST FOR BAD YAML
-    for(x in DCyaml) {
+    for (x in DCyaml) {
         if (exportRDA) {
             # Create DC object as save according to DC name
             DC <- createDCclassMain(x)

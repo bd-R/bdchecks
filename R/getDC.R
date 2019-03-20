@@ -16,7 +16,7 @@ getDC <- function(pathYAML = "../inst/extdata/dataChecks.yaml") {
     DCyaml <- yaml::yaml.load_file(pathYAML)
     DC <- list()
     # For each entry create data check object
-    for(x in DCyaml) {
+    for (x in DCyaml) {
         DC[[paste0("DC_", x$name)]] <- createDCclassMain(x)
     }
     return(DC)
