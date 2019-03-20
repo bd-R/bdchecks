@@ -1,10 +1,3 @@
-################################################################################
-################################################################################
-#                                CLASSES
-################################################################################
-################################################################################
-
-
 #' Data Check Meta-Data Class
 #' 
 #' @name dataCheckMeta-class
@@ -150,10 +143,12 @@ setGeneric("performDC", function(DC, DATA) {
 setMethod("show", "dataCheck",
     function(object) {
         message(" Data check is used to:\n\t",
-              object@meta@description$Main, "\n",
-              "This data check answers following question:\n\t",object@meta@description$Question, "\n",
-              "Target (column) that this data checks operates on is:\n\t", object@input$Target, 
-              "\n")
+                object@meta@description$Main, "\n",
+                "This data check answers following question:\n\t",
+                object@meta@description$Question, "\n",
+                "Target (column) that this data checks operates on is:\n\t",
+                object@input$Target,
+                "\n")
     }
 )
 
@@ -214,7 +209,8 @@ setMethod("performDC", "dataCheck",
 
         # DEPENDENCIES
         if (!is.null(DC@input$Dependency$Rpackages)) {
-            if (!require(DC@input$Dependency$Rpackages, character.only = TRUE)) {
+            if (!require(DC@input$Dependency$Rpackages,
+                         character.only = TRUE)) {
                 install.packages(DC@input$Dependency$Rpackages)
             }
                 library(DC@input$Dependency$Rpackages, character.only = TRUE)
