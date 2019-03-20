@@ -34,7 +34,8 @@ summarizeDataframe <- function(data) {
     
     for (i in 1:length(names(tempData))) {
         sample <-
-            sample(1:nrow(tempData), size = ifelse(nrow(tempData) > 1000, 1000, nrow(tempData)))
+            sample(1:nrow(tempData),
+                   ifelse(nrow(tempData) > 1000, 1000, nrow(tempData)))
         f <-
             mean(sapply(tempData[sample, i], function(x)
                 nchar(x)), na.rm = T)
@@ -59,9 +60,11 @@ observeEvent(input$pathInput, {
         }
         if (grepl("zip", tolower(input$pathInput$type))) {
             message("Reading DWCA ZIP...")
-            rv$dataOriginal <- finch::dwca_read(input$pathInput$datapath, read = TRUE)$data[[1]]
+            rv$dataOriginal <- finch::dwca_read(input$pathInput$datapath,
+                                                TRUE)$data[[1]]
         } else {
-            rv$dataOriginal <- data.table::fread(input$pathInput$datapath, data.table = FALSE)
+            rv$dataOriginal <- data.table::fread(input$pathInput$datapath, 
+                                                 data.table = FALSE)
         }
     })
 })
@@ -102,7 +105,8 @@ observeEvent(input$queryDatabase, {
 })
 
 observe({
-    darwinizer <- bdDwC::darwinizeNames(rv$dataOriginal, bdDwC:::dataDarwinCloud$data)
+    darwinizer <- bdDwC::darwinizeNames(rv$dataOriginal,
+                                        bdDwC:::dataDarwinCloud$data)
     fixed <- darwinizer[darwinizer$matchType == "Darwinized", ]
     if (nrow(fixed) > 0) {
         rv$dataOriginal <- bdDwC::renameUserData(rv$dataOriginal, darwinizer)

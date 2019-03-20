@@ -6,9 +6,13 @@ DCgroups <- reactive({
     DCgroup <- lapply(DCall, function(x) {
         meta <- `@`(get(x), meta)
         if (input$DCgroupsAvailable == "DarwinCoreClass") {
-            data.frame(DC = x, group = gsub("_", " ", meta@description$DarwinCoreClass))
+            data.frame(DC = x,
+                       group = gsub("_", " ",
+                                    meta@description$DarwinCoreClass))
         } else {
-            data.frame(DC = x, group = gsub("_", " ", meta@flags[[input$DCgroupsAvailable]]))
+            data.frame(DC = x,
+                       group = gsub("_", " ",
+                                    meta@flags[[input$DCgroupsAvailable]]))
         }
     })
     DCgroup <- do.call(rbind, DCgroup)

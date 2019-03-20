@@ -18,7 +18,9 @@ fluidPage(
                 actionButton("selectDC", "Accept Data Checks",
                                    icon = icon("check"), 
                                    width = 210,
-                                   style = "color: #000000; background-color: #71a879; border-color: #091520;
+                                   style = "color: #000000;
+                                            background-color: #71a879;
+                                            border-color: #091520;
                                             padding:10px; font-size:120%")
             ),
             br(), br(),

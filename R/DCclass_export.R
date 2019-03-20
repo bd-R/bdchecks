@@ -81,15 +81,23 @@ generateRoxygenComment <- function(DC) {
 
     # Add long description
     skeleton <- sub("longDesc", paste0(
-        "#'     This data check answers: \"", DC@meta@description$InputQuestion, "?\" question.",
-        "\\\\cr Data check will pass if \\\\strong{", DC@meta@description$Example$Pass, "}", 
-                " and will fail if \\\\strong{",  DC@meta@description$Example$Fail, "}.", 
-        "\\\\cr Dimension of this data check is \\\\strong{", DC@meta@flags$Dimension, "}",
-                " and it's flagging type is: \\\\strong{FLAG}",
-        "\\\\cr Example of entries that will pass: \\\\code{", DC@meta@description$Example$InputPass, "},",
-                " such data check would return \\\\code{", DC@meta@description$Example$OutputPass, "}.",
-        "\\\\cr Example of entries that will fail: \\\\code{", DC@meta@description$Example$InputFail, "},",
-                " such data check would return \\\\code{", DC@meta@description$Example$OutputFail, "}."
+        "#'     This data check answers: \"", DC@meta@description$InputQuestion, 
+        "?\" question.",
+        "\\\\cr Data check will pass if \\\\strong{", 
+        DC@meta@description$Example$Pass, "}", 
+        " and will fail if \\\\strong{",
+        DC@meta@description$Example$Fail, "}.", 
+        "\\\\cr Dimension of this data check is \\\\strong{",
+        DC@meta@flags$Dimension, "}",
+        " and it's flagging type is: \\\\strong{FLAG}",
+        "\\\\cr Example of entries that will pass: \\\\code{",
+        DC@meta@description$Example$InputPass, "},",
+        " such data check would return \\\\code{",
+        DC@meta@description$Example$OutputPass, "}.",
+        "\\\\cr Example of entries that will fail: \\\\code{",
+        DC@meta@description$Example$InputFail, "},",
+        " such data check would return \\\\code{",
+        DC@meta@description$Example$OutputFail, "}."
         ),
         skeleton)
     # Add additional fiels for the bdclean
@@ -100,12 +108,17 @@ generateRoxygenComment <- function(DC) {
     # Add keywords
     skeleton <- c(skeleton, 
                   ifelse(!is.null(DC@meta@description$keywords), 
-                         paste("#' @keywords", DC@meta@description$keywords), ""))
+                         paste("#' @keywords", DC@meta@description$keywords), 
+                         ""
+                  )
+                 )
 
     skeleton <- sub("FIELDPASS", DC@meta@description$Example$Pass, skeleton)
     skeleton <- sub("FIELDFAIL", DC@meta@description$Example$Fail, skeleton)
     skeleton <- sub("FIELDTARGET", DC@input$Target, skeleton)
-    skeleton <- sub("FIELDCATERGORY", DC@meta@description$DarwinCoreClass, skeleton)
+    skeleton <- sub("FIELDCATERGORY",
+                    DC@meta@description$DarwinCoreClass,
+                    skeleton)
 
     body <- c("#'", skeleton, "NULL")
     return(body)

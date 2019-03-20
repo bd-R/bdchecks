@@ -58,13 +58,15 @@ performDataCheck <- function(
                     # If dependency is not the list then perform it
                     DCsafe <- TRUE
                     warning("Dependency ", 
-                            paste(DCcurrent@input$Dependency$DataChecks, collapse = ", "),
+                            paste(DCcurrent@input$Dependency$DataChecks,
+                                  collapse = ", "),
                             " for data check ", DCcurrent@name, 
                             " wasn't not specified to run.\n
                             Will ignore this dependency")
                 } else {
                     # Check if required dependencies are already performed
-                    DCsafe <- DCcurrent@input$Dependency$DataChecks %in% performedDC
+                    DCsafe <- 
+                    DCcurrent@input$Dependency$DataChecks %in% performedDC
                 }
             }
 
@@ -73,16 +75,20 @@ performDataCheck <- function(
                 if (class(currentResult) == "list") {
                     for (j in seq_along(currentResult)) {
                         if (!is.null(currentResult)) {
-                            resultDC[[length(resultDC) + 1]] <- methods::new("dataCheckFlag_SINGLE",
-                                name   = DCcurrent@name,
-                                target = unlist(strsplit(DCcurrent@input$Target, ","))[j],
-                                result = currentResult[[j]],
-                                flag   = "foo")
+                            resultDC[[length(resultDC) + 1]] <- 
+                                methods::new("dataCheckFlag_SINGLE",
+                                    name   = DCcurrent@name,
+                                    target = unlist(strsplit(
+                                        DCcurrent@input$Target, ","))[j],
+                                    result = currentResult[[j]],
+                                    flag   = "foo"
+                                )
                         }
                     }
                 } else {
                     if (!is.null(currentResult)) {
-                        resultDC[[length(resultDC) + 1]] <- methods::new("dataCheckFlag_SINGLE",
+                        resultDC[[length(resultDC) + 1]] <- methods::new(
+                            "dataCheckFlag_SINGLE",
                             name   = DCcurrent@name,
                             target = DCcurrent@input$Target,
                             result = currentResult,

@@ -15,7 +15,8 @@ output$tableDataChecks <- DT::renderDT(
     DCresultSummary(),
     rownames = FALSE,
     options = list(pageLength = 100,
-                   columnDefs = list(list(className = "no_select", targets = 0:1))),
+                   columnDefs = list(list(className = "no_select",
+                                          targets = 0:1))),
     selection = list(target = "cell"),
     callback = JS("table.on('click', 'td.no_select', function() {
                      var td = $(this), row = table.row(td.closest('tr'));

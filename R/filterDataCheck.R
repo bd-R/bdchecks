@@ -12,7 +12,9 @@
 #' @return A list that contains name of a data checks, it's target and 
 #' filtering status
 #'
-generateDCfilts <- function(DCresultSummary, selectedCells, filters = c("P", "F", "M")) {
+generateDCfilts <- function(DCresultSummary,
+                            selectedCells,
+                            filters = c("P", "F", "M")) {
     result <- lapply(unique(selectedCells[, 1]), function(i) {
         DCcurrent <- DCresultSummary[i, ]
         foo <- unique(selectedCells[selectedCells[, 1] == i, 2] - 1)
@@ -43,7 +45,8 @@ filterDataCheck <- function(DCresult, DCfilts) {
     targets <- sapply(DCresult@flags, function(x) `@`(x, target))
     for (i in seq_along(DCfilts$name)) {
         if (nchar(DCfilts$filter[i]) < 3) {
-            foo <- DCresult@flags[names == DCfilts$name[i] & targets == DCfilts$target[i]][[1]]@result
+            foo <- DCresult@flags[names == DCfilts$name[i] &
+                                  targets == DCfilts$target[i]][[1]]@result
             bar <- c()
             # Remove passed
             if (grepl("P", DCfilts$filter[i], ignore.case = TRUE)) {
