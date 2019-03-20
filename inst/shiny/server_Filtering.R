@@ -10,7 +10,7 @@ dc_result_summary <- reactive({
         summary_DC(DCresult(), fancy = FALSE, filteringDT = TRUE)
     }
 })
-output$table_data_checks <- DT::renderDT(
+output$table_dc <- DT::renderDT(
 
     dc_result_summary(),
     rownames = FALSE,
@@ -27,10 +27,10 @@ output$table_data_checks <- DT::renderDT(
 )
 
 selected_cells <- reactive({
-    input$table_data_checks_cells_selected
+    input$table_dc_cells_selected
 })
 
-proxy <- DT::dataTableProxy("table_data_checks")
+proxy <- DT::dataTableProxy("table_dc")
 shiny::observeEvent(input$selection_to_remove, {
     cells <- 1:nrow(dc_result_summary())
     res <- NULL

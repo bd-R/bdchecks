@@ -49,6 +49,6 @@ shiny::fluidPage(
                 offset = 0)
             ),
             br(), br(),
-            DT::dataTableOutput("table_data_checks")
+            DT::dataTableOutput("table_dc")
     )
 )
