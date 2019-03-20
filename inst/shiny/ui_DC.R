@@ -1,6 +1,6 @@
 shiny::fluidPage(
     shinyjs::useShinyjs(),
-    shiny::conditionalPanel("!input.accept_file", 
+    shiny::conditionalPanel("!input.accept_file",
                             h2("Upload and Accept Dataset")),
     shiny::conditionalPanel("input.accept_file",
         shiny::fluidRow(

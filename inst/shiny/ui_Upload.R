@@ -68,7 +68,7 @@ shiny::fluidPage(
                        )
             ),
             out = shinyjs::disabled(shiny::actionButton(
-                "accept_file", 
+                "accept_file",
                 "Accept Dataset",
                 icon = icon("check"),
                 width = 210,

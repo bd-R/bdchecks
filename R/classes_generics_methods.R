@@ -199,8 +199,8 @@ setMethod("performDC", "dataCheck",
                 assign("TARGET", DATA[, target_names[j], drop = TRUE])
                 assign("TARGET1", DATA[, target_names[j], drop = TRUE])
             } else {
-                assign(paste0("TARGET", j), 
-                       DATA[, target_names[j], 
+                assign(paste0("TARGET", j),
+                       DATA[, target_names[j],
                        drop = TRUE]
                 )
             }

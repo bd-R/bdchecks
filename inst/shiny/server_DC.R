@@ -60,8 +60,8 @@ hover_info <- shiny::eventReactive(input$dc_groups_vailable, {
     DCall <- ls(pos = ("package:bdchecks"), pattern = "^DC_")
     result <- list()
     for (i in DCall) {
-        result[[i]] <- shinyBS::bsTooltip(i, 
-                                          create_hover_text(get(i)), 
+        result[[i]] <- shinyBS::bsTooltip(i,
+                                          create_hover_text(get(i)),
                                           "top", "hover")
     }
     do.call(shiny::tagList, result)

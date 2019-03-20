@@ -45,7 +45,7 @@ data_loaded_task <- function(data) {
 }
 
 shiny::observeEvent(input$path_input, {
-    shiny::withProgress(message = paste("Reading", 
+    shiny::withProgress(message = paste("Reading",
                                         input$path_input$name, "..."), {
         if (is.null(input$path_input)) {
             return("No data to view")

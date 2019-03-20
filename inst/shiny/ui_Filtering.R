@@ -9,7 +9,7 @@ shiny::fluidPage(
             ),
             br(),
             column(width = 12,
-                   shiny::actionButton("DC_remove", 
+                   shiny::actionButton("DC_remove",
                                        "Filter Out Selected Checks",
                                        icon = icon("broom"),
                                        width = 300,

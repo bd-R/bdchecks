@@ -103,7 +103,7 @@ performDataCheck <- function(
     }
     if (length(result_dc) > 0) {
         result_dc <- methods::new("dataCheckFlag",
-            DC       = as.character(lapply(result_dc, 
+            DC       = as.character(lapply(result_dc,
                                            function(x) `@`(x, name))),
             flags    = result_dc,
             dataOrig = data,
