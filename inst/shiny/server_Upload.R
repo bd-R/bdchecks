@@ -3,16 +3,6 @@ rv <- reactiveValues(
     dataOriginal = data.frame()
 )
 
-dataLoadedTask <- function(data) {
-    output$contents <- DT::renderDataTable(
-        DT::datatable({
-            summarizeDataframe(data)
-        },
-            options = list(scrollX = TRUE)
-        )
-    )
-}
-
 summarizeDataframe <- function(data) {
     if (nrow(data) == 0) {
         return(data)
@@ -47,6 +37,47 @@ summarizeDataframe <- function(data) {
         tempData <- tempData[, c(hidingCols * -1)]
     }
     tempData
+}
+
+dataLoadedTask <- function(data) {
+    output$contents <- DT::renderDataTable(
+        DT::datatable({
+            if (nrow(data) == 0) {
+                return(data)
+            }
+            result <- as.data.frame(data)
+            result <- result[, names(result) %in% c("scientificName",
+                                                    "taxonRank",
+                                                    "eventDate",
+                                                    "country",
+                                                    "decimalLatitude",
+                                                    "decimalLongitude")]
+            result <- cbind(result, data)
+            hidingCols <- c()
+            result[] <- lapply(result, as.character)
+            nr <- nrow(result)
+            # Trim long columns
+            # Random sample of rows from columns and define mean length
+            for (i in 1:ncol(result)) {
+                sampled <- sample(nr, ifelse(nr > 1000, 1000, nr))
+                foo <- sapply(result[sampled, i], function(x) {
+                    nchar(x)
+                })
+                bar <- mean(foo, na.rm = TRUE)
+                if (!is.nan(bar)) {
+                    if (bar > 50) {
+                        hidingCols <- c(hidingCols, i)
+                    }
+                }
+            }
+            if (length(hidingCols) > 0) {
+                result <- result[, c(hidingCols * -1)]
+            }
+            result
+        },
+            options = list(scrollX = TRUE)
+        )
+    )
 }
 
 observeEvent(input$pathInput, {
