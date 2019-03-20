@@ -4,9 +4,13 @@ rv <- reactiveValues(
 )
 
 dataLoadedTask <- function(data) {
-    output$contents <- DT::renderDataTable(DT::datatable({
-        summarizeDataframe(data)
-    }, options = list(scrollX = TRUE)))
+    output$contents <- DT::renderDataTable(
+        DT::datatable({
+            summarizeDataframe(data)
+        }, 
+            options = list(scrollX = TRUE)
+        )
+    )
 }
 
 summarizeDataframe <- function(data) {

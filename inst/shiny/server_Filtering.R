@@ -25,7 +25,9 @@ output$tableDataChecks <- DT::renderDT(
                    });")
 )
 
-selectedCells <- reactive({input$tableDataChecks_cells_selected})
+selectedCells <- reactive({
+    input$tableDataChecks_cells_selected
+})
 
 proxy <- dataTableProxy("tableDataChecks")
 observeEvent(input$selectionToRemove, {
@@ -79,7 +81,9 @@ output$vb_nDC1 <- renderValueBox({
 })
 
 output$dwnl_Data <- downloadHandler(
-    filename = function() {format(Sys.time(), "filteredData_%Y_%b_%d_%X.csv")},
+    filename = function() {
+        format(Sys.time(), "filteredData_%Y_%b_%d_%X.csv")
+    },
     content = function(file) {
         write.csv(rv2$dataAfter, file, row.names = FALSE)
     }
