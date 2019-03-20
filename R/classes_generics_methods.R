@@ -169,7 +169,7 @@ setMethod("show", "dataCheckFlag",
             data.frame(check = x@name, target = x@target)
         })
         res <- do.call(rbind, res)
-        print(paste(res$check, "->", res$target))
+        message(paste(res$check, "->", res$target))
     }
 )
 
