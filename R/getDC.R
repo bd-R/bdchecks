@@ -1,16 +1,16 @@
 #' Load Data Checks
 #'
-#' `getDC()` is a function for importing data checks from a YAML file as 
+#' `getDC()` is a function for importing data checks from a YAML file as
 #' a dataCheck object.
-#' 
+#'
 #' @param path_yaml Path to a YAML file.
 #'
 #' @return A list of data checks
-#' 
+#'
 #' @importFrom yaml yaml.load_file
-#' 
+#'
 #' @export
-#' 
+#'
 getDC <- function(path_yaml = "../inst/extdata/dataChecks.yaml") {
     # Load YAML file with data checks
     DCyaml <- yaml::yaml.load_file(path_yaml)

@@ -13,9 +13,11 @@ dataCheckMeta <- setClass(
     "dataCheckMeta",
     slots = c(
         description = "list",
-        flags       = "list",
-        pseudocode  = "character",
-        source      = "list"))
+        flags = "list",
+        pseudocode = "character",
+        source = "list"
+    )
+)
 
 #' Create Data Check Class
 #'
@@ -31,10 +33,12 @@ dataCheckMeta <- setClass(
 dataCheck <- setClass(
     "dataCheck",
     slots = c(
-        name  = "character",
-        meta  = "dataCheckMeta",
+        name = "character",
+        meta = "dataCheckMeta",
         input = "list",
-        func  = "expression"))
+        func = "expression"
+    )
+)
 
 #' Single Data Check Flag Class
 #'
@@ -50,10 +54,12 @@ dataCheck <- setClass(
 dataCheckFlag_SINGLE <- setClass(
     "dataCheckFlag_SINGLE",
     slots = c(
-        name   = "character",
+        name = "character",
         target = "character",
-        flag   = "character",
-        result = "logical"))
+        flag = "character",
+        result = "logical"
+    )
+)
 
 #' Combined Data Checks Class
 #'
@@ -69,10 +75,12 @@ dataCheckFlag_SINGLE <- setClass(
 dataCheckFlag <- setClass(
     "dataCheckFlag",
     slots = c(
-        DC       = "vector",
-        flags    = "list",
+        DC = "vector",
+        flags = "list",
         dataOrig = "data.frame",
-        dataMod  = "data.frame"))
+        dataMod = "data.frame"
+    )
+)
 
 
 
@@ -140,15 +148,18 @@ setGeneric("performDC", function(DC, DATA) {
 #' @param object a dataCheck object
 #' @aliases dataCheck
 #'
-setMethod("show", "dataCheck",
+setMethod(
+    "show", "dataCheck",
     function(object) {
-        message(" Data check is used to:\n\t",
-                object@meta@description$Main, "\n",
-                "This data check answers following question:\n\t",
-                object@meta@description$Question, "\n",
-                "Target (column) that this data checks operates on is:\n\t",
-                object@input$Target,
-                "\n")
+        message(
+            " Data check is used to:\n\t",
+            object@meta@description$Main, "\n",
+            "This data check answers following question:\n\t",
+            object@meta@description$Question, "\n",
+            "Target (column) that this data checks operates on is:\n\t",
+            object@input$Target,
+            "\n"
+        )
     }
 )
 
@@ -158,7 +169,8 @@ setMethod("show", "dataCheck",
 #' @param object a dataCheckFlag object
 #' @aliases dataCheckFlag
 #'
-setMethod("show", "dataCheckFlag",
+setMethod(
+    "show", "dataCheckFlag",
     function(object) {
         res <- lapply(object@flags, function(x) {
             data.frame(check = x@name, target = x@target)
@@ -183,25 +195,30 @@ setMethod("exportDataCheck", "dataCheckFlag", function(object) {
 #'
 #' @aliases performDC
 #'
-setMethod("performDC", "dataCheck",
+setMethod(
+    "performDC", "dataCheck",
     function(DC, DATA) {
         options(scipen = 999)
         # TARGETS
         target_names <- unlist(strsplit(DC@input$Target, ","))
         for (j in seq_along(target_names)) {
             if (!target_names[j] %in% colnames(DATA)) {
-                warning("Target ", target_names[j],
-                        " doesn't exists in a given dataset,\ncheck ", DC@name,
-                        " can't be performed")
+                warning(
+                    "Target ", target_names[j],
+                    " doesn't exists in a given dataset,\ncheck ", DC@name,
+                    " can't be performed"
+                )
                 TARGET1 <- NULL
-                TARGET  <- NULL
+                TARGET <- NULL
             } else if (j == 1) {
                 assign("TARGET", DATA[, target_names[j], drop = TRUE])
                 assign("TARGET1", DATA[, target_names[j], drop = TRUE])
             } else {
-                assign(paste0("TARGET", j),
-                       DATA[, target_names[j],
-                       drop = TRUE]
+                assign(
+                    paste0("TARGET", j),
+                    DATA[, target_names[j],
+                        drop = TRUE
+                    ]
                 )
             }
         }
@@ -213,10 +230,11 @@ setMethod("performDC", "dataCheck",
         # DEPENDENCIES
         if (!is.null(DC@input$Dependency$Rpackages)) {
             if (!require(DC@input$Dependency$Rpackages,
-                         character.only = TRUE)) {
+                character.only = TRUE
+            )) {
                 install.packages(DC@input$Dependency$Rpackages)
             }
-                library(DC@input$Dependency$Rpackages, character.only = TRUE)
+            library(DC@input$Dependency$Rpackages, character.only = TRUE)
         }
         if (!is.null(DC@input$Dependency$Data)) {
             dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
@@ -229,4 +247,5 @@ setMethod("performDC", "dataCheck",
             DEPENDS <- ls(pattern = "DEPEND\\d+")
         }
         eval(DC@func)()
-})
+    }
+)

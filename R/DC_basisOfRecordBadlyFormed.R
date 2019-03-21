@@ -6,7 +6,7 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
-#' @examples 
+#' @examples
 #' performDC(DC = DC_basisOfRecordBadlyFormed, DATA = bdchecks::data_bats)
 #' @section samplePassData:
 #' dwc:basisOfRecord was matched to vocabulary

@@ -6,7 +6,7 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
-#' @examples 
+#' @examples
 #' performDC(DC = DC_elevationOutOfRange, DATA = bdchecks::data_bats)
 #' @section samplePassData:
 #' Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters

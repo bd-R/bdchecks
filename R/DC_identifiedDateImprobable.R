@@ -6,7 +6,7 @@
 #' @docType data
 #' @format An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.
 #' @references None
-#' @examples 
+#' @examples
 #' performDC(DC = DC_identifiedDateImprobable, DATA = bdchecks::data_bats)
 #' @section samplePassData:
 #' The date of identification (dwc:dateIdentified) is post Linnaeus (1753) to the current date

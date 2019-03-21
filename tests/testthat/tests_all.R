@@ -32,7 +32,7 @@ test_that("summary_DC", {
 # Test summary functions
 context("Data Checks")
 # test performDataCheck
-# performs data checks on a given data set 
+# performs data checks on a given data set
 test_that("performDataCheck", {
     # No data set provided will give warnings and null
     result <- expect_warning(bdchecks::performDataCheck())
@@ -43,7 +43,7 @@ test_that("performDataCheck", {
     expect_gt(length(result@DC), 20)
 })
 # test performDC
-# performs one data check on a given data set 
+# performs one data check on a given data set
 test_that("performDC", {
     # No arguments provided
     expect_error(bdchecks::performDC())
