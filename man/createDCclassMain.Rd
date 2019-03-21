@@ -7,7 +7,7 @@
 createDCclassMain(DCyaml)
 }
 \arguments{
-\item{DCyaml}{Data check entry as a list (originally imported as a 
+\item{DCyaml}{Data check entry as a list (originally imported as a
 YAML file)}
 }
 \value{

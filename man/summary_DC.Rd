@@ -4,22 +4,22 @@
 \alias{summary_DC}
 \title{Summarise Data Checks}
 \usage{
-summary_DC(inputFlag, fancy = TRUE, filteringDT = FALSE)
+summary_DC(input_flag, fancy = TRUE, filtering_dt = FALSE)
 }
 \arguments{
-\item{inputFlag}{Object of a dataCheckFlag class}
+\item{input_flag}{Object of a dataCheckFlag class}
 
 \item{fancy}{Should ouput be returned in a rst format}
 
-\item{filteringDT}{Should output be returned as a summary table that could 
+\item{filtering_dt}{Should output be returned as a summary table that could
 be parsed with a `DT` pacakge}
 }
 \value{
 A data.frame or rst table with summary statistics
 }
 \description{
-`summary_DC()` is a function that calculated statistics for how many data 
-checks passed. It's main input is an object of a dataCheckFlag class and output 
+`summary_DC()` is a function that calculated statistics for how many data
+checks passed. It's main input is an object of a dataCheckFlag class and output
 is a summary table.
 }
 \examples{
@@ -27,6 +27,5 @@ result <- performDataCheck(data_bats)
 # Fancy summary table (for usage in reports)
 summary_DC(result)
 # object of class used for data filtering data.frame
-summary_DC(result, fancy = FALSE, filteringDT = TRUE)
-
+summary_DC(result, fancy = FALSE, filtering_dt = TRUE)
 }

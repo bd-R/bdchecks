@@ -13,6 +13,6 @@ createDCclassMeta(DCmeta)
 Data check metadata object
 }
 \description{
-Create a data check metadata object from a given slot in a data check list 
+Create a data check metadata object from a given slot in a data check list
 object
 }

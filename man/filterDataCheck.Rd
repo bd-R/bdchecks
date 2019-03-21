@@ -9,7 +9,7 @@ filterDataCheck(DCresult, DCfilts)
 \arguments{
 \item{DCresult}{Object of a dataCheckFlag generated with `perforDataCheck()`}
 
-\item{DCfilts}{A list containing filtering targets and status generated with 
+\item{DCfilts}{A list containing filtering targets and status generated with
 `generateDCfilts()`}
 }
 \value{

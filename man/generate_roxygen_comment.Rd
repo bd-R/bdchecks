@@ -13,7 +13,7 @@ generate_roxygen_comment(DC)
 Data check description in a roxygen2 comment style
 }
 \description{
-`generate_roxygen_comment()` is a function for generating roxygen2 
-comments for a given data check. It's not super flexible as it just 
+`generate_roxygen_comment()` is a function for generating roxygen2
+comments for a given data check. It's not super flexible as it just
 inserts metadata into a hard coded skeleton.
 }

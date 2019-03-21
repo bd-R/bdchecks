@@ -13,14 +13,14 @@ generateDCfilts(dc_result_summary, selected_cells, filters = c("P", "F",
 
 \item{selected_cells}{Cells selected in `DT::datatable`}
 
-\item{filters}{Vector that contains names for passed, failed and missing 
+\item{filters}{Vector that contains names for passed, failed and missing
 data checks}
 }
 \value{
-A list that contains name of a data checks, it's target and 
+A list that contains name of a data checks, it's target and
 filtering status
 }
 \description{
-`generateDCfilts()` is a function that generates vector for filtering data 
+`generateDCfilts()` is a function that generates vector for filtering data
 checks result table according to `DT::datatable()` `selectCells` object.
 }

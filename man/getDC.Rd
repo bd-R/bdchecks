@@ -13,6 +13,6 @@ getDC(path_yaml = "../inst/extdata/dataChecks.yaml")
 A list of data checks
 }
 \description{
-`getDC()` is a function for importing data checks from a YAML file as 
+`getDC()` is a function for importing data checks from a YAML file as
 a dataCheck object.
 }
