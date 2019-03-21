@@ -19,9 +19,9 @@ online_databases <- list(
 shiny::fluidPage(
     shiny::titlePanel("Upload Data"), shiny::sidebarLayout(
         sidebar_panel2(
-            shiny::bsCollapse(multiple = FALSE,
+            shinyBS::bsCollapse(multiple = FALSE,
                        open = "Upload Local File",
-                       shiny::bsCollapsePanel("Upload Local File",
+                       shinyBS::bsCollapsePanel("Upload Local File",
                             shiny::fileInput(
                                 "path_input",
                                 h3("CSV / DWCA ZIP file input"),
@@ -36,7 +36,7 @@ shiny::fluidPage(
                             ),
                             style = "info"
                        ),
-                       shiny::bsCollapsePanel("Query Data From a Database",
+                       shinyBS::bsCollapsePanel("Query Data From a Database",
                            shiny::textInput("scientific_name",
                                             h3("Scientific Name:"),
                                             "Puma concolor"),
