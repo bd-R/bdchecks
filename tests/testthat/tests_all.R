@@ -12,13 +12,13 @@ test_that("summary_DC", {
     expect_s4_class(result, "dataCheckFlag")
 
     # Summary output 1
-    foo <- summary_DC(result, fancy = FALSE, filteringDT = FALSE)
+    foo <- summary_DC(result, fancy = FALSE, filtering_dt = FALSE)
     expect_s3_class(foo, "data.frame")
     expect_equal(nrow(foo), 22)
     expect_equal(ncol(foo), 5)
     expect_equal(ncol(foo), 5)
 
-    foo <- summary_DC(result, fancy = FALSE, filteringDT = TRUE)
+    foo <- summary_DC(result, fancy = FALSE, filtering_dt = TRUE)
     expect_s3_class(foo, "data.frame")
     expect_match(colnames(foo)[3:5], "%")
 
