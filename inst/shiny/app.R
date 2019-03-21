@@ -57,4 +57,4 @@ server <- function(input, output, session) {
     source("./server_Filtering.R", TRUE)
 }
 
-shinyApp::shinyApp(ui, server)
+shiny::shinyApp(ui, server)
