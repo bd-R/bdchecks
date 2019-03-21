@@ -7,7 +7,7 @@ dc_result_summary <- reactive({
     if (is.null(DCresult())) {
         return(NULL)
     } else {
-        summary_DC(DCresult(), fancy = FALSE, filteringDT = TRUE)
+        summary_DC(DCresult(), fancy = FALSE, filtering_dt = TRUE)
     }
 })
 output$table_dc <- DT::renderDT(
@@ -65,17 +65,17 @@ observe({
         rv2$data_after <- bdchecks:::filterDataCheck(DCresult(), DCfilt())
     }
 })
-output$vb_n_records1 <- shiny::renderValueBox({
+output$vb_n_records1 <- shinydashboard::renderValueBox({
     shinydashboard::valueBox(nrow(rv$data_original),
                              "Records Submitted",
                              color = "aqua")
 })
-output$vb_n_records2 <- shiny::renderValueBox({
+output$vb_n_records2 <- shinydashboard::renderValueBox({
     shinydashboard::valueBox(nrow(rv2$data_after),
                              "Records After Filtering",
                              color = "light-blue")
 })
-output$vb_n_dc <- shiny::renderValueBox({
+output$vb_n_dc <- shinydashboard::renderValueBox({
     shinydashboard::valueBox(nrow(dc_result_summary()),
                              "Data Checks Performed",
                              color = "olive")
