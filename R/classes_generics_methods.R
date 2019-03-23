@@ -10,13 +10,13 @@
 #' @slot source creators information
 #'
 dataCheckMeta <- setClass(
-    "dataCheckMeta",
-    slots = c(
-        description = "list",
-        flags = "list",
-        pseudocode = "character",
-        source = "list"
-    )
+  "dataCheckMeta",
+  slots = c(
+    description = "list",
+    flags = "list",
+    pseudocode = "character",
+    source = "list"
+  )
 )
 
 #' Create Data Check Class
@@ -31,13 +31,13 @@ dataCheckMeta <- setClass(
 #' @slot func expression to execute
 #'
 dataCheck <- setClass(
-    "dataCheck",
-    slots = c(
-        name = "character",
-        meta = "dataCheckMeta",
-        input = "list",
-        func = "expression"
-    )
+  "dataCheck",
+  slots = c(
+    name = "character",
+    meta = "dataCheckMeta",
+    input = "list",
+    func = "expression"
+  )
 )
 
 #' Single Data Check Flag Class
@@ -52,13 +52,13 @@ dataCheck <- setClass(
 #' @slot result logical vector
 #'
 dataCheckFlag_SINGLE <- setClass(
-    "dataCheckFlag_SINGLE",
-    slots = c(
-        name = "character",
-        target = "character",
-        flag = "character",
-        result = "logical"
-    )
+  "dataCheckFlag_SINGLE",
+  slots = c(
+    name = "character",
+    target = "character",
+    flag = "character",
+    result = "logical"
+  )
 )
 
 #' Combined Data Checks Class
@@ -73,13 +73,13 @@ dataCheckFlag_SINGLE <- setClass(
 #' @slot dataMod modified data after data checks
 #'
 dataCheckFlag <- setClass(
-    "dataCheckFlag",
-    slots = c(
-        DC = "vector",
-        flags = "list",
-        dataOrig = "data.frame",
-        dataMod = "data.frame"
-    )
+  "dataCheckFlag",
+  slots = c(
+    DC = "vector",
+    flags = "list",
+    dataOrig = "data.frame",
+    dataMod = "data.frame"
+  )
 )
 
 
@@ -106,7 +106,7 @@ dataCheckFlag <- setClass(
 #' @rdname exportDataCheck-methods
 #'
 setGeneric("exportDataCheck", function(object) {
-    standardGeneric("exportDataCheck")
+  standardGeneric("exportDataCheck")
 })
 
 
@@ -127,7 +127,7 @@ setGeneric("exportDataCheck", function(object) {
 #' @rdname performDC-methods
 #'
 setGeneric("performDC", function(DC, DATA) {
-    standardGeneric("performDC")
+  standardGeneric("performDC")
 })
 
 
@@ -149,18 +149,18 @@ setGeneric("performDC", function(DC, DATA) {
 #' @aliases dataCheck
 #'
 setMethod(
-    "show", "dataCheck",
-    function(object) {
-        message(
-            " Data check is used to:\n\t",
-            object@meta@description$Main, "\n",
-            "This data check answers following question:\n\t",
-            object@meta@description$Question, "\n",
-            "Target (column) that this data checks operates on is:\n\t",
-            object@input$Target,
-            "\n"
-        )
-    }
+  "show", "dataCheck",
+  function(object) {
+    message(
+      " Data check is used to:\n\t",
+      object@meta@description$Main, "\n",
+      "This data check answers following question:\n\t",
+      object@meta@description$Question, "\n",
+      "Target (column) that this data checks operates on is:\n\t",
+      object@input$Target,
+      "\n"
+    )
+  }
 )
 
 #' Show method for dataCheckFlag objects
@@ -170,14 +170,14 @@ setMethod(
 #' @aliases dataCheckFlag
 #'
 setMethod(
-    "show", "dataCheckFlag",
-    function(object) {
-        res <- lapply(object@flags, function(x) {
-            data.frame(check = x@name, target = x@target)
-        })
-        res <- do.call(rbind, res)
-        message(paste(res$check, "->", res$target))
-    }
+  "show", "dataCheckFlag",
+  function(object) {
+    res <- lapply(object@flags, function(x) {
+      data.frame(check = x@name, target = x@target)
+    })
+    res <- do.call(rbind, res)
+    message(paste(res$check, "->", res$target))
+  }
 )
 
 
@@ -186,7 +186,7 @@ setMethod(
 #' @aliases exportDataCheck
 #'
 setMethod("exportDataCheck", "dataCheckFlag", function(object) {
-    return(object@dataMod)
+  return(object@dataMod)
 })
 
 
@@ -196,56 +196,56 @@ setMethod("exportDataCheck", "dataCheckFlag", function(object) {
 #' @aliases performDC
 #'
 setMethod(
-    "performDC", "dataCheck",
-    function(DC, DATA) {
-        options(scipen = 999)
-        # TARGETS
-        target_names <- unlist(strsplit(DC@input$Target, ","))
-        for (j in seq_along(target_names)) {
-            if (!target_names[j] %in% colnames(DATA)) {
-                warning(
-                    "Target ", target_names[j],
-                    " doesn't exists in a given dataset,\ncheck ", DC@name,
-                    " can't be performed"
-                )
-                TARGET1 <- NULL
-                TARGET <- NULL
-            } else if (j == 1) {
-                assign("TARGET", DATA[, target_names[j], drop = TRUE])
-                assign("TARGET1", DATA[, target_names[j], drop = TRUE])
-            } else {
-                assign(
-                    paste0("TARGET", j),
-                    DATA[, target_names[j],
-                        drop = TRUE
-                    ]
-                )
-            }
-        }
-        TARGETS <- ls(pattern = "TARGET\\d+")
-        if (is.null(TARGETS) | is.null(TARGET)) {
-            return(NULL)
-        }
-
-        # DEPENDENCIES
-        if (!is.null(DC@input$Dependency$Rpackages)) {
-            if (!require(DC@input$Dependency$Rpackages,
-                character.only = TRUE
-            )) {
-                install.packages(DC@input$Dependency$Rpackages)
-            }
-            library(DC@input$Dependency$Rpackages, character.only = TRUE)
-        }
-        if (!is.null(DC@input$Dependency$Data)) {
-            dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
-            for (j in seq_along(dependencies)) {
-                assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
-                if (j == 1) {
-                    assign("DEPEND", eval(parse(text = dependencies[j])))
-                }
-            }
-            DEPENDS <- ls(pattern = "DEPEND\\d+")
-        }
-        eval(DC@func)()
+  "performDC", "dataCheck",
+  function(DC, DATA) {
+    options(scipen = 999)
+    # TARGETS
+    target_names <- unlist(strsplit(DC@input$Target, ","))
+    for (j in seq_along(target_names)) {
+      if (!target_names[j] %in% colnames(DATA)) {
+        warning(
+          "Target ", target_names[j],
+          " doesn't exists in a given dataset,\ncheck ", DC@name,
+          " can't be performed"
+        )
+        TARGET1 <- NULL
+        TARGET <- NULL
+      } else if (j == 1) {
+        assign("TARGET", DATA[, target_names[j], drop = TRUE])
+        assign("TARGET1", DATA[, target_names[j], drop = TRUE])
+      } else {
+        assign(
+          paste0("TARGET", j),
+          DATA[, target_names[j],
+            drop = TRUE
+          ]
+        )
+      }
     }
+    TARGETS <- ls(pattern = "TARGET\\d+")
+    if (is.null(TARGETS) | is.null(TARGET)) {
+      return(NULL)
+    }
+
+    # DEPENDENCIES
+    if (!is.null(DC@input$Dependency$Rpackages)) {
+      if (!require(DC@input$Dependency$Rpackages,
+        character.only = TRUE
+      )) {
+        install.packages(DC@input$Dependency$Rpackages)
+      }
+      library(DC@input$Dependency$Rpackages, character.only = TRUE)
+    }
+    if (!is.null(DC@input$Dependency$Data)) {
+      dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
+      for (j in seq_along(dependencies)) {
+        assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
+        if (j == 1) {
+          assign("DEPEND", eval(parse(text = dependencies[j])))
+        }
+      }
+      DEPENDS <- ls(pattern = "DEPEND\\d+")
+    }
+    eval(DC@func)()
+  }
 )

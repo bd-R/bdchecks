@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-runbdchecks <- function() {
-    path_app <- system.file("shiny", package = "bdchecks")
-    return(shiny::runApp(path_app, launch.browser = TRUE))
+run_bdchecks <- function() {
+  path_app <- system.file("shiny", package = "bdchecks")
+  return(shiny::runApp(path_app, launch.browser = TRUE))
 }
