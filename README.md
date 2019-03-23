@@ -1,5 +1,6 @@
 [![Travis CI Build Status](https://img.shields.io/travis/bd-R/bdchecks.svg?branch=master?style=flat-square&label=Travis+CI)](https://travis-ci.org/bd-R/bdchecks) 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bd-R/bdchecks?branch=master&svg=true)](https://ci.appveyor.com/project/bd-R/bdchecks)
+[![Coverage Status](https://img.shields.io/codecov/c/github/bd-R/bdchecks/master.svg)](https://codecov.io/github/bd-R/bdchecks?branch=master)   
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/bdchecks)](https://cran.r-project.org/package=bdchecks) 
 [![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/grand-total/bdchecks)](https://cran.r-project.org/package=bdchecks) 
 
