@@ -1,7 +1,7 @@
 Package: bdchecks
 Title: Biodiversity Data Checks
 Description: Supplies a Shiny app and a set of functions to perform and managing data checks for biodiversity data. 
-Version: 0.1.10
+Version: 0.1.11
 Date: 2019-03-23
 License: GPL-3 | file LICENSE
 URL: https://github.com/bd-R/bdchecks
@@ -32,7 +32,7 @@ Authors@R: c(
         role = c("aut"),
         comment = c(ORCID = '0000-0002-5883-0184'))
     )
-Depends: R (>= 2.10)
+Depends: R (>= 3.4)
 Imports: bdDwC,
          DT,
          data.table,
