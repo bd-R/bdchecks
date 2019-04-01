@@ -1,3 +1,13 @@
+# options
+options(
+  # let bigget input files
+  shiny.maxRequestSize = 50 * 1024 ^ 2,
+  # debug - text (full path)
+  shiny.fullstacktrace = TRUE,
+  # debug - visual
+  shiny.reactlog = TRUE
+)
+
 sidebar <- shinydashboard::dashboardSidebar(
   shinydashboard::sidebarMenu(
     id = "my_tabs",

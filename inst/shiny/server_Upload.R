@@ -1,4 +1,3 @@
-options(shiny.maxRequestSize = 50 * 1024 ^ 2)
 rv <- shiny::reactiveValues(
   data_original = data.frame()
 )
