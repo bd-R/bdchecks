@@ -4,17 +4,22 @@ cache: packages
 
 matrix:
   include:
-  - r: release
+  - name: "Release R github"
+    r: release
     env: bdverse='github'
     after_success:
       - Rscript -e 'covr::codecov()'
     r_github_packages:
       - bd-R/bdDwC
-  - r: release
+  - name: "Release R CRAN"
+    r: release
     env: bdverse='CRAN'
+  - name: "Release R github OSX"
+    r: release
+    env: bdverse='github'
+    r_github_packages:
+      - bd-R/bdDwC
+    os: osx
   - r: devel
   - r: oldrel
   - r: 3.4
-  - r: 3.3
-  - r: 3.2
-  - r: 3.1
