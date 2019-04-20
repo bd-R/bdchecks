@@ -19,7 +19,6 @@ matrix:
     env: bdverse='github'
     r_github_packages:
       - bd-R/bdDwC
-      - force: TRUE
     os: osx
   - r: devel
   - r: oldrel
