@@ -1,15 +1,20 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
 sudo: false
 cache: packages
 
-r:
-  - oldrel
-  - release
-  - devel
-
-r_check_args: "--as-cran"
-
-after_success:
-  - Rscript -e 'covr::codecov()'
+matrix:
+  include:
+  - r: release
+    env: bdverse='github'
+    after_success:
+      - Rscript -e 'covr::codecov()'
+    r_github_packages:
+      - bd-R/bdDwC
+  - r: release
+    env: bdverse='CRAN'
+  - r: devel
+  - r: oldrel
+  - r: 3.4
+  - r: 3.3
+  - r: 3.2
+  - r: 3.1
