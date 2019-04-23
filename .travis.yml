@@ -23,3 +23,11 @@ matrix:
   - r: devel
   - r: oldrel
   - r: 3.4
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:opencpu/jq'
+    packages:
+      - libjq-dev
+      - libv8-dev
