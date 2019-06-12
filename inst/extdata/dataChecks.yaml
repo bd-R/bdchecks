@@ -38,10 +38,6 @@ DC_c09ecbf9-34e3-4f3e-b74a-8796af15e59f:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-      FUNC <- function() {
-          !is.na(TARGET)
-       }
 DC_3cff4dc4-72e9-4abe-9bf3-8a30f1618432:
   name: eventDateInFuture
   meta:
@@ -82,10 +78,6 @@ DC_3cff4dc4-72e9-4abe-9bf3-8a30f1618432:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01") <= Sys.Date()
-    }
 DC_0bb8297d-8f8a-42d2-80c1-558f29efe798:
   name: elevationOutOfRange
   meta:
@@ -126,13 +118,6 @@ DC_0bb8297d-8f8a-42d2-80c1-558f29efe798:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function(minE = 0, maxE = 1e4) {
-        elevationOutOfRange <- function(TARGET) {
-            get(TARGET) >= minE & get(TARGET) <= maxE 
-        }
-        lapply(TARGETS, elevationOutOfRange)
-    }
 DC_04b2c8f3-c71b-4e95-8e43-f70374c5fb92:
   name: depthOutOfRange
   meta:
@@ -175,13 +160,6 @@ DC_04b2c8f3-c71b-4e95-8e43-f70374c5fb92:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function(minD = 0, maxD = 11e3) {
-        depthOutOfRange <- function(TARGET) {
-            get(TARGET) >= minD & get(TARGET) <= maxD 
-        }
-        lapply(TARGETS, depthOutOfRange)
-    }
 DC_41267642-60ff-4116-90eb-499fee2cd83f:
   name: dateNull
   meta:
@@ -222,10 +200,6 @@ DC_41267642-60ff-4116-90eb-499fee2cd83f:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        lapply(TARGETS, function(i) !is.na(get(i)))
-    }
 DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
   name: dataGeneralised
   meta:
@@ -268,10 +242,6 @@ DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-      FUNC <- function() {
-          is.na(TARGET)
-       }
 DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   name: countryMismatch
   meta:
@@ -313,24 +283,6 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
       DataChecks:
       Rpackages: rgbif 
       Data: isocodes$name,isocodes$code
-  Functionality: |
-      FUNC <- function() {
-          result <- sapply(seq_along(TARGET1), function(i) {
-              if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {
-                  NA
-              } else {
-                  foo <- which(DEPEND1 == TARGET1[i])
-                  bar <- which(DEPEND2 == TARGET2[i])
-                  if (length(foo) == 0 | length(bar) == 0) {
-                      NA
-                  } else {
-                      foo == bar
-                  }       
-              }
-          })
-          result <- unlist(result)
-          return(result)
-      }
 DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
   name: coordinatesZero
   meta:
@@ -371,13 +323,6 @@ DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        coordinatesZero <- function(TARGET) {
-            get(TARGET) != 0
-        }
-        lapply(TARGETS, coordinatesZero)
-    }
 DC_65f962aa-c474-4392-9176-028bf0b86a2e:
   name: coordinatePrecisionMismatch
   meta:
@@ -422,16 +367,6 @@ DC_65f962aa-c474-4392-9176-028bf0b86a2e:
       DataChecks: 
       Rpackages:
       Data: DATA$coordinatePrecision
-  Functionality: |
-    FUNC <- function() {
-        coordinatePrecisionMismatch <- function(TARGET) {
-            TARGET <- get(TARGET)
-            nTARGET <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(TARGET)))
-            nDEPEND <- nchar(gsub("(.*\\.)|([0]*$)", "", as.character(DEPEND)))
-            nTARGET <= nDEPEND
-        }
-        lapply(TARGETS, coordinatePrecisionMismatch)
-    }
 DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
   name: countryNameUnknown
   meta:
@@ -472,10 +407,6 @@ DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
       DataChecks: 
       Rpackages: rgbif 
       Data: isocodes$name
-  Functionality: |
-    FUNC <- function() {
-        TARGET %in% DEPEND
-    }
 DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
   name: classUnknown
   meta:
@@ -516,14 +447,6 @@ DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
       DataChecks:     
       Rpackages:        
       Data:         
-  Functionality: |
-    FUNC <- function() {
-        VOCABULARY <- c("Mammalia", 
-                        "Aves", 
-                        "Reptilia")
-        TARGETmod <- gsub("_| ", "", TARGET)
-        tolower(TARGETmod) %in% tolower(VOCABULARY)
-    }
 DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
   name: basisOfRecordBadlyFormed
   meta:
@@ -564,16 +487,6 @@ DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
       DataChecks: 
       Rpackages: 
       Data: 
-  Functionality: |
-    FUNC <- function() {
-        VOCABULARY <- c("PreservedSpecimen", 
-                        "FossilSpecimen", 
-                        "LivingSpecimen", 
-                        "HumanObservation", 
-                        "MachineObservation")
-        TARGETmod <- gsub("_| ", "", TARGET)
-        tolower(TARGETmod) %in% tolower(VOCABULARY)
-    }
 DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
   name: occurrenceIdNotGuid
   meta:
@@ -615,11 +528,6 @@ DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        grepl("^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              tolower(TARGET))
-    }
 DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
   name: precisionRangeMismatch
   meta:
@@ -662,10 +570,6 @@ DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
       DataChecks: 
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        TARGET >= 0 & TARGET <= 1
-    }
 DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
   name: uncertaintyRangeMismatch
   meta:
@@ -708,10 +612,6 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
       DataChecks: 
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        TARGET %% 1 == 0 & TARGET > 0
-    }
 DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
   name: individualcountInvalid
   meta:
@@ -752,10 +652,6 @@ DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
       DataChecks: 
       Rpackages: 
       Data: 
-  Functionality: |
-    FUNC <- function() {
-        TARGET %% 1 == 0 & TARGET >= 0
-    }
 DC_48aa7d66-36d1-4662-a503-df170f11b03f:
   name: dayInvalid
   meta:
@@ -796,10 +692,6 @@ DC_48aa7d66-36d1-4662-a503-df170f11b03f:
       DataChecks: 
       Rpackages: 
       Data: 
-  Functionality: |
-    FUNC <- function() {
-        TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 31
-    }
 DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
   name: monthInvalid
   meta:
@@ -840,10 +732,6 @@ DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        TARGET %% 1 == 0 & TARGET >= 1 & TARGET <= 12
-    }
 DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
   name: namePublishedYearInFuture
   meta:
@@ -884,10 +772,6 @@ DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        format(as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01"), "%Y") <= format(Sys.Date(), "%Y")
-    }
 DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
   name: identifiedDateImprobable
   meta:
@@ -930,11 +814,6 @@ DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
       DataChecks: 
       Rpackages: 
       Data: 
-  Functionality: |
-    FUNC <- function() {
-        TARGETdate <- as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01")
-        TARGETdate <= Sys.Date() & TARGETdate >= as.Date("1753-01-01", origin = "1970-01-01")
-    }
 DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
   name: dateIdentifiedInFuture
   meta:
@@ -975,10 +854,6 @@ DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
       DataChecks: 
       Rpackages: 
       Data: 
-  Functionality: |
-    FUNC <- function() {
-        as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01") <= Sys.Date()
-    }
 DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
   name: modifiedInFuture
   meta:
@@ -1019,7 +894,3 @@ DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
       DataChecks:
       Rpackages:
       Data:
-  Functionality: |
-    FUNC <- function() {
-        as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01") <= Sys.Date()
-    }

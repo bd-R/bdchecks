@@ -1,0 +1,18 @@
+#' @rdname dc_countryMismatch
+dc_countryMismatch <- function(TARGET1, TARGET2) {
+  result <- sapply(seq_along(TARGET1), function(i) {
+    if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {
+      NA
+    } else {
+      foo <- which(DEPEND1 == TARGET1[i])
+      bar <- which(DEPEND2 == TARGET2[i])
+      if (length(foo) == 0 | length(bar) == 0) {
+        NA
+      } else {
+        foo == bar
+      }
+    }
+  })
+  result <- unlist(result)
+  return(result)
+}
