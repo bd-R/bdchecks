@@ -4,10 +4,8 @@
 #' on a give data set
 #'
 #' @param data Data set to perform data checks
-#' @param DCadd Character vector of names for additional data checks to be performed
 #' @param DConly Character vector of names for data checks that should be performed
 #' (ie perform only these data checks)
-#' @param DCstand Character vector of standardize data checks
 #' @param verbose Message which data check is being performed
 #'
 #' @importFrom methods new
@@ -20,29 +18,14 @@
 #' @export
 #'
 dc_perform <- function(data = NULL,
-                       DCadd = NULL,
                        DConly = NULL,
-                       verbose = TRUE,
-                       DCstand = ls(
-                        pos = ("package:bdchecks"),
-                        pattern = "^DC_"
-                       )) {
+                       verbose = TRUE) {
 
   # All data checks to perform
   if (!is.null(DConly)) {
     DCall <- DConly
   } else {
-    DCall <- unique(c(DCadd, DCstand))
-  }
-
-  # Check if all data checks exists
-  DCexists <- sapply(DCall, exists)
-  if (any(!DCexists)) {
-    warning(
-      "Following data checks don't exists (will skip them):\n",
-      paste(DCall[!DCexists], collapse = ", ")
-    )
-    DCall <- DCall[DCexists]
+    DCall <- data.checks@dc_name
   }
 
   wanted_dc <- sub("^DC_", "", DCall)
@@ -51,7 +34,7 @@ dc_perform <- function(data = NULL,
   result_dc <- list()
   while (!all(wanted_dc %in% performed_dc)) {
     for (i in seq_along(DCall)) {
-      DCcurrent <- get(DCall[[i]])
+      DCcurrent <- data.checks@dc_body[[i]]
 
       # If there are no dependencies then it's safe to run DC
       DCsafe <- is.null(DCcurrent@input$Dependency$DataChecks)

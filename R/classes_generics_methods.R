@@ -244,6 +244,6 @@ setMethod(
       DEPENDS <- ls(pattern = "DEPEND\\d+")
     }
     # Here we will need to pass targets
-    get(paste0("dc_", DC@name))()
+    get(paste0("dc_", DC@name))(TARGET)
   }
 )

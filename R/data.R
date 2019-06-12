@@ -8,9 +8,13 @@
 #'
 NULL
 
-#' Data checks in YAML format
+#' Data checks 
 #'
-#' @name DCtest
+#' All data checks incorporated into bdchecks package.
+#' Create with \code{bdchecks:::datacheck_info_export}
+#'
+#' @name data.checks
 #' @docType data
+#' @export
 #'
 NULL
