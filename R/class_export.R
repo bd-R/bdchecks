@@ -36,8 +36,6 @@ datacheck_info_export <- function(
 #'
 #' @return Data check description in a roxygen2 comment style
 #'
-#' @export
-#'
 roxygen_comment_generate <- function(DC) {
 
   # Skeleton for documentation
@@ -58,7 +56,8 @@ roxygen_comment_generate <- function(DC) {
     "#' @section samplePassData:\n#' FIELDPASS",
     "#' @section sampleFailData:\n#' FIELDFAIL",
     "#' @section targetDWCField:\n#' FIELDTARGET",
-    "#' @section checkCategory:\n#'  FIELDCATERGORY"
+    "#' @section checkCategory:\n#'  FIELDCATERGORY",
+    "#' @export"
   )
 
   # Add short description
@@ -92,10 +91,10 @@ roxygen_comment_generate <- function(DC) {
     skeleton
   )
   # Add additional fiels for the bdclean
-  skeleton <- sub("EXAMPLE@name", paste0("DC_", DC$name), skeleton)
+  skeleton <- sub("EXAMPLE@name", paste0("dc_", DC$name), skeleton)
 
   # Add name
-  skeleton <- sub("@name", paste("@name", paste0("DC_", DC$name)), skeleton)
+  skeleton <- sub("@name", paste("@name", paste0("dc_", DC$name)), skeleton)
   # Add keywords
   skeleton <- c(
     skeleton,
