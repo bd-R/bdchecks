@@ -17,13 +17,28 @@ datacheck_info_export <- function(
 ) {
 
   DCyaml <- yaml::yaml.load_file(path_yaml)
-  for (x in DCyaml) {
+  DCclass <- list()
+  for (i in seq_along(DCyaml)) {
     writeLines(
-      roxygen_comment_generate(x),
-      paste0(path_rd, id_rd, x$name, ".R")
+      roxygen_comment_generate(DCyaml[[i]]),
+      paste0(path_rd, id_rd, DCyaml[[i]]$name, ".R")
+    )
+    DCclass[[i]] <- methods::new(
+      "datacheck_single",
+      name = DCyaml[[i]]$name,
+      input = DCyaml[[i]]$Input,
+      description = DCyaml[[i]]$meta$Description,
+      flags = DCyaml[[i]]$meta$Flags,
+      source = DCyaml[[i]]$meta$Source,
+      pseudocode = DCyaml[[i]]$meta$Pseudocode
     )
   }
-  invisible()
+  result <- methods::new(
+    "datacheck",
+    dc_name = sapply(DCclass, "slot", "name"),
+    dc_body = DCclass
+  )
+  return(result)
 }
 
 #' Generate roxygen2 documentation from data check object
@@ -127,8 +142,6 @@ roxygen_comment_generate <- function(DC) {
 #' @importFrom methods new
 #'
 #' @return Data check object
-#'
-#' @export
 #'
 dc_main_create <- function(yaml) {
   res <- methods::new("dataCheck",

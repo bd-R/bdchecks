@@ -1,42 +1,39 @@
-#' Data Check Meta-Data Class
+#' Create Data Check Class
 #'
-#' @name dataCheckMeta-class
-#' @rdname dataCheckMeta-class
+#' @name datacheck-class
+#' @rdname datacheck-class
 #' @export
 #'
-#' @slot description of data check
-#' @slot flags for specific data check
-#' @slot pseudocode for this datachecks
-#' @slot source creators information
-#'
-dataCheckMeta <- setClass(
-  "dataCheckMeta",
+datacheck <- setClass(
+  "datacheck",
   slots = c(
-    description = "list",
-    flags = "list",
-    pseudocode = "character",
-    source = "list"
+    dc_name = "vector",
+    dc_body = "list"
   )
 )
 
 #' Create Data Check Class
 #'
-#' @name dataCheck-class
-#' @rdname dataCheck-class
+#' @name datacheck_single-class
+#' @rdname datacheck_single-class
 #' @export
 #'
 #' @slot name of a data check
-#' @slot meta meta-data for a data check of a dataCheckMeta class
 #' @slot input options for a data check
-#' @slot func expression to execute
+#' @slot description of data check
+#' @slot flags for specific data check
+#' @slot pseudocode for this datachecks
+#' @slot source creators information
 #'
-dataCheck <- setClass(
-  "dataCheck",
+datacheck_single <- setClass(
+  "datacheck_single",
   slots = c(
     name = "character",
-    meta = "dataCheckMeta",
     input = "list",
-    func = "expression"
+    description = "list",
+    flags = "list",
+    pseudocode = "character",
+    source = "list"
   )
 )
 
@@ -144,18 +141,18 @@ setGeneric("performDC", function(DC, DATA) {
 
 #' Show method for dataCheck objects
 #'
-#' @rdname dataCheck-class
+#' @rdname dataCheck_single-class
 #' @param object a dataCheck object
 #' @aliases dataCheck
 #'
 setMethod(
-  "show", "dataCheck",
+  "show", "datacheck_single",
   function(object) {
     message(
       " Data check is used to:\n\t",
-      object@meta@description$Main, "\n",
+      object@description$Main, "\n",
       "This data check answers following question:\n\t",
-      object@meta@description$Question, "\n",
+      object@description$Question, "\n",
       "Target (column) that this data checks operates on is:\n\t",
       object@input$Target,
       "\n"
@@ -196,7 +193,7 @@ setMethod("exportDataCheck", "dataCheckFlag", function(object) {
 #' @aliases performDC
 #'
 setMethod(
-  "performDC", "dataCheck",
+  "performDC", "datacheck_single",
   function(DC, DATA) {
     options(scipen = 999)
     # TARGETS
@@ -246,6 +243,7 @@ setMethod(
       }
       DEPENDS <- ls(pattern = "DEPEND\\d+")
     }
-    eval(DC@func)()
+    # Here we will need to pass targets
+    get(paste0("dc_", DC@name))()
   }
 )
