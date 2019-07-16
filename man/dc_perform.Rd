@@ -4,15 +4,13 @@
 \alias{dc_perform}
 \title{Perform Data Checks}
 \usage{
-dc_perform(data = NULL, DConly = NULL, verbose = TRUE)
+dc_perform(data = NULL, DConly = NULL)
 }
 \arguments{
 \item{data}{Data set to perform data checks}
 
 \item{DConly}{Character vector of names for data checks that should be performed
 (ie perform only these data checks)}
-
-\item{verbose}{Message which data check is being performed}
 }
 \value{
 Object of a dataCheckFlag class (combined result for all performed
