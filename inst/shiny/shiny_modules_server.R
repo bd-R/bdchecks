@@ -52,7 +52,9 @@ module_uploaddata <- function(input, output, session, rv) {
             duration = 6
           )
         }
-        rv$data_original <- data[[input$query_db]]$data[[1]]
+        rv$data_original <- as.data.frame(
+          data[[input$query_db]]$data[[1]]
+        )
       }
     })
   })

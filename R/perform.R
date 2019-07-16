@@ -6,7 +6,6 @@
 #' @param data Data set to perform data checks
 #' @param DConly Character vector of names for data checks that should be performed
 #' (ie perform only these data checks)
-#' @param verbose Message which data check is being performed
 #'
 #' @importFrom methods new
 #'
@@ -17,9 +16,7 @@
 #' dc_perform(data_bats)
 #' @export
 #'
-dc_perform <- function(data = NULL,
-                       DConly = NULL,
-                       verbose = TRUE) {
+dc_perform <- function(data = NULL, DConly = NULL) {
 
   # All data checks to perform
   if (!is.null(DConly)) {
@@ -28,13 +25,15 @@ dc_perform <- function(data = NULL,
     DCall <- data.checks@dc_name
   }
 
-  wanted_dc <- sub("^DC_", "", DCall)
+  wanted_dc <- DCall
   performed_dc <- character(length(DCall))
-
   result_dc <- list()
+
   while (!all(wanted_dc %in% performed_dc)) {
     for (i in seq_along(DCall)) {
-      DCcurrent <- data.checks@dc_body[[i]]
+      idx <- which(data.checks@dc_name == DCall[i])
+      stopifnot(length(idx) == 1)
+      DCcurrent <- data.checks@dc_body[[idx]]
 
       # If there are no dependencies then it's safe to run DC
       DCsafe <- is.null(DCcurrent@input$Dependency$DataChecks)

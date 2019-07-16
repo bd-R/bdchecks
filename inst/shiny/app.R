@@ -72,7 +72,7 @@ server <- function(input, output, session) {
   shiny::observe({
     if (nrow(rv$data_original) > 0) {
       darwinizer <- bdDwC::darwinize_names(
-        rv$data_original,
+        as.data.frame(rv$data_original),
         bdDwC:::data_darwin_cloud$data
       )
       fixed <- darwinizer[darwinizer$match_type == "Darwinized", ]

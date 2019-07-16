@@ -1,5 +1,5 @@
 dc_result <- shiny::eventReactive(input$select_dc, {
-  bdchecks::dc_perform(rv$data_original, DConly = paste0("DC_", dc_selected()))
+  bdchecks::dc_perform(rv$data_original, dc_selected())
 })
 dc_result_summary <- shiny::reactive({
   if (is.null(dc_result())) {

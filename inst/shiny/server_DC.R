@@ -1,30 +1,19 @@
 dc_groups <- shiny::reactive({
-  # All available data checks
-  # Safe way to retun all available DC's as other packages might also have
-  # variable with `^DC_`
-  dc_return <- function() {
-      library(bdchecks)
-      ls(pos = ("package:bdchecks"), pattern = "^DC_")
-  }
-  dc_all <- dc_return()
   # Add data check group (user specified category) to it's name
-  dc_group <- lapply(dc_all, function(x) {
-    meta <- `@`(get(x), meta)
+  dc_group <- lapply(bdchecks:::data.checks@dc_body, function(x) {
     if (input$dc_groups_vailable == "DarwinCoreClass") {
       data.frame(
-        DC = x,
-        group = gsub("_", " ", meta@description$DarwinCoreClass)
+        DC = x@name,
+        group = gsub("_", " ", x@description$DarwinCoreClass)
       )
     } else {
       data.frame(
-        DC = x,
-        group = gsub("_", " ", meta@flags[[input$dc_groups_vailable]])
+        DC = x@name,
+        group = gsub("_", " ", x@flags[[input$dc_groups_vailable]])
       )
     }
   })
-  dc_group <- do.call(rbind, dc_group)
-  dc_group$DC <- sub("^DC_", "", dc_group$DC)
-  dc_group
+  do.call(rbind, dc_group)
 })
 
 # Extract all available checkbox IDs
@@ -51,7 +40,7 @@ output$dc_groups_check_box <- shiny::renderUI({
     for (i in subset(dc_groups(), group == i)$DC) {
       chkbox <- gsub(
         paste0("<span>", i, "</span>"),
-        paste0("<span id=\"DC_", i, "\">", i, "</span>"),
+        paste0("<span id=\"", i, "\">", i, "</span>"),
         chkbox
       )
     }
@@ -60,27 +49,13 @@ output$dc_groups_check_box <- shiny::renderUI({
   result
 })
 
-output$selected_DC <- shiny::renderText({
-  dc_selected()
-})
-
-create_hover_text <- function(object) {
-  object@meta@description$Main
-}
 hover_info <- shiny::eventReactive(input$dc_groups_vailable, {
-  dc_all <- ls(pos = ("package:bdchecks"), pattern = "^DC_")
-  result <- list()
-  for (i in dc_all) {
-    result[[i]] <- shinyBS::bsTooltip(
-      i,
-      create_hover_text(get(i)),
-      "top", "hover"
-    )
-  }
-  do.call(shiny::tagList, result)
-})
-output$dc_check_box_hover <- shiny::renderUI({
-  hover_info()
+  output$dc_check_box_hover <- shiny::renderUI({
+    result <- lapply(bdchecks:::data.checks@dc_body, function(x) {
+      shinyBS::bsTooltip(x@name, x@description$Main, "top", "hover")
+    })
+    do.call(shiny::tagList, result)
+  })
 })
 
 shiny::observeEvent(input$select_dc, {

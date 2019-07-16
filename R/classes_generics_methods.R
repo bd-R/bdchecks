@@ -225,6 +225,7 @@ setMethod(
     }
 
     # DEPENDENCIES
+    # This is probably not needed as packages will come with namespace
     if (!is.null(DC@input$Dependency$Rpackages)) {
       if (!require(DC@input$Dependency$Rpackages,
         character.only = TRUE
@@ -244,6 +245,18 @@ setMethod(
       DEPENDS <- ls(pattern = "DEPEND\\d+")
     }
     # Here we will need to pass targets
-    get(paste0("dc_", DC@name))(TARGET)
+    if (DC@name %in% "countryMismatch") {
+      res <- get(paste0("dc_", DC@name))(TARGET1, TARGET2, DEPEND1, DEPEND2)
+    } else if (DC@name %in% c("countryNameUnknown", "coordinatePrecisionMismatch")) {
+      res <- get(paste0("dc_", DC@name))(TARGET, DEPEND)
+    } else if (length(TARGETS) == 1) {
+      res <- get(paste0("dc_", DC@name))(TARGET)
+    } else {
+      res <- list()
+      for (k in seq_along(TARGETS)) {
+        res[[k]] <- get(paste0("dc_", DC@name))(get(TARGETS[k]))
+      }
+    }
+    return(res)
   }
 )
