@@ -1,0 +1,166 @@
+yearMissing:
+  data:
+    - [yearMissing, type, expected]
+    - [2019, correct value, pass]
+    - ['', value lacking, fail]
+    - [Orange, irrelevent value, fail]
+    - [19', wrong format, fail]
+    - [20 10, space, fail]
+  comment:
+eventDateInFuture:
+  data:
+    - [eventDate, type, expected]
+    - [1987-06-23, correct value, pass]
+    - ['', value lacking, fail]
+    - [2100-12-01, value in future, fail]
+  comment:
+elevationOutOfRange:
+  data:
+    - [minimumElevationInMeters, maximumElevationInMeters, type, expected]
+    - [100, 600, '', pass]
+    - [-400, 100, '', fail]
+    - [100, 10001, '', fail]
+  comment:
+depthOutOfRange:
+  data:
+    - [minimumDepthInMeters, maximumDepthInMeters, type, expected]
+    - [0, 200, '', pass]
+    - [-100, 600, '', fail]
+    - [100, 11500, '', fail]
+    - [100, 700, '', fail]
+    - ['', 200, '', fail]
+  comment:
+dateNull:
+  data:
+    - [eventDate, year, verbatimEventDate, type, expected]
+    - ['', 2000, 2000.01.01, '', fail]
+    - [2000.01.01, '', 2000.01.02, '', fail]
+    - [2000.01.01, 2001, '', '', fail]
+    - ['', '', '', '', fail]
+    - [2002.01.01, 2001, 2001.01.01, '', pass]
+  comment:
+countryMismatch:
+  data:
+    - [Country, countryCode, type, expected]
+    - [Australia, AU, Match, pass]
+    - [Israel, US, Mismatch, fail]
+    - ['', AU, data missing, fail]
+    - [Australia, '', data missing, fail]
+  comment:
+coordinatesZero:
+  data:
+    - [decimalLatitude decimalLongitude, type, expected]
+    - [1, 1, '', pass]
+    - [0, 0, '', fail]
+    - [0, 1, '', fail]
+    - [0, 1, '', fail]
+  comment:
+coordinatePrecisionMismatch:
+  data:
+    - [coordinatePrecision decimalLatitude decimalLongitude, type, expected]
+    - [0.5, -35.123456, fail]
+    - [1.00e-05, -35.123, pass]
+  comment:
+countryNameUnknown:
+  data:
+    - [Country, type, expected]
+    - [Australia, correct - Capital, pass]
+    - [Israel,  correct - not capital, pass]
+    - [Europe, continent, fail]
+    - [Waradia, non existant, fail]
+  comment:
+classUnknown:
+  data:
+    - [Class, type, expected]
+    - [Birds, exists - capital, pass]
+    - [birds, exists - no Capital, pass]
+    - [Foxy, typo, fail]
+    - [Unicorns, non-existant, fail]
+  comment:
+basisOfRecordBadlyFormated:
+  data:
+    - [basisOfRecord, type, expected]
+    - [Orange, keyword lack, fail]
+    - [HumenObservation, keyword mis-spelled, fail]
+    - [Humanobservation, case sensative, fail]
+    - [Human Observation, space, fail]
+    - [HumanObservation, keyword, pass]
+    - [PreservedSpecimen, keyword, pass]
+    - [FossilSpecimen, keyword, pass]
+    - [MachineObservation, keyword, pass]
+    - [LivingSpecimen, keyword, pass]
+  comment:
+precisionRangeMismatch:
+  data:
+    - [coordinatePrecision, type, expected]
+    - [3, not in range, fail]
+    - [-1, not in range, fail]
+    - [0.0000000001, in range, pass]
+    - [1e-1, in range, pass]
+    - [0.5, in range, pass]
+  comment:
+uncertaintyRangeMismatch:
+  data:
+    - [coordinateUncertaintyInMeters, type, expected]
+    - [-3, not in range, fail]
+    - [0, not in range, fail]
+    - [0.0002, decimal, '']
+    - [1, in range, pass]
+    - [1000, in range, pass]
+  comment:
+individualCountInvalid:
+  data:
+    - [individualCount, type, expected]
+    - [0, zero, fail]
+    - [0.5, not integer, fail]
+    - [-1, negative, fail]
+    - [1, in racnge, pass]
+    - [10000000, in range, pass]
+    - [1e6, in range, pass]
+  comment:
+dayInvalid:
+  data:
+    - [day, type, expected]
+    - [0, zero, fail]
+    - [0.5, not integer, fail]
+    - [-1, negative, fail]
+    - [33, out of range, fail]
+    - [27, in range, pass]
+  comment:
+monthIvalid:
+  data:
+    - [month, type, expected]
+    - [0, zero, fail]
+    - [0.5, not integer, fail]
+    - [-1, negative, fail]
+    - [13, out of range, fail]
+    - [6, in range, pass]
+    - [Inf, '', pass]
+    - [NA, '', pass]
+    - [NULL, '', pass]
+  comment:
+namePublishedYearInFuture:
+  data:
+    - [year, type, expected]
+    - [2500, future, fail]
+    - [1987, past, pass]
+  comment:
+identifiedDateImprobable:
+  data:
+    - [dateIdentified, type, expected]
+    - [1573-02-14, before Linneus, fail]
+    - [3000-01-01, future, fail]
+    - [2000-01-01, probable, pass]
+  comment:
+dateIdentifiedInFuture:
+  data:
+    - [dateIdentified, type, expected]
+    - [3000-01-01, future, fail]
+    - [2000-01-01, probable, pass]
+  comment:
+modifiedInFuture:
+  data:
+    - [modified, type, expected]
+    - [2230-12-31, future, fail]
+    - [2000-01-01, probable, pass]
+  comment:
