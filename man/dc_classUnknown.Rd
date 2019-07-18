@@ -4,7 +4,7 @@
 \name{dc_classUnknown}
 \alias{dc_classUnknown}
 \title{Data check classUnknown}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_classUnknown(TARGET)
 }
@@ -32,7 +32,7 @@ class
 }
 
 \examples{
-performDC(DC = dc_classUnknown, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$classUnknown, data_bats)
 }
 \references{
 None

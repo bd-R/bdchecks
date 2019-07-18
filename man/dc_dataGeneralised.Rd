@@ -4,7 +4,7 @@
 \name{dc_dataGeneralised}
 \alias{dc_dataGeneralised}
 \title{Data check dataGeneralised}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_dataGeneralised()
 }
@@ -32,7 +32,7 @@ dataGeneralizations
 }
 
 \examples{
-performDC(DC = dc_dataGeneralised, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$dataGeneralised, data_bats)
 }
 \references{
 None

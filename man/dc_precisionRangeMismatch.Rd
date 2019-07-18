@@ -4,7 +4,7 @@
 \name{dc_precisionRangeMismatch}
 \alias{dc_precisionRangeMismatch}
 \title{Data check precisionRangeMismatch}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_precisionRangeMismatch(TARGET)
 }
@@ -32,7 +32,7 @@ coordinatePrecision
 }
 
 \examples{
-performDC(DC = dc_precisionRangeMismatch, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$precisionRangeMismatch, data_bats)
 }
 \references{
 None

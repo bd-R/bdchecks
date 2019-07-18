@@ -4,7 +4,7 @@
 \name{dc_monthInvalid}
 \alias{dc_monthInvalid}
 \title{Data check monthInvalid}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_monthInvalid(TARGET)
 }
@@ -32,7 +32,7 @@ month
 }
 
 \examples{
-performDC(DC = dc_monthInvalid, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$monthInvalid, data_bats)
 }
 \references{
 None

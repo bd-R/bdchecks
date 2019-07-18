@@ -22,7 +22,7 @@ dc_perform <- function(data = NULL, DConly = NULL) {
   if (!is.null(DConly)) {
     DCall <- DConly
   } else {
-    DCall <- data.checks@dc_name
+    DCall <- names(data.checks@dc_body)
   }
 
   wanted_dc <- DCall
@@ -31,7 +31,7 @@ dc_perform <- function(data = NULL, DConly = NULL) {
 
   while (!all(wanted_dc %in% performed_dc)) {
     for (i in seq_along(DCall)) {
-      idx <- which(data.checks@dc_name == DCall[i])
+      idx <- which(names(data.checks@dc_body) == DCall[i])
       stopifnot(length(idx) == 1)
       DCcurrent <- data.checks@dc_body[[idx]]
 

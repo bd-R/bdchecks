@@ -4,7 +4,7 @@
 \name{dc_eventDateInFuture}
 \alias{dc_eventDateInFuture}
 \title{Data check eventDateInFuture}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_eventDateInFuture(TARGET)
 }
@@ -32,7 +32,7 @@ eventDate
 }
 
 \examples{
-performDC(DC = dc_eventDateInFuture, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$eventDateInFuture, data_bats)
 }
 \references{
 None

@@ -4,7 +4,7 @@
 \name{dc_uncertaintyRangeMismatch}
 \alias{dc_uncertaintyRangeMismatch}
 \title{Data check uncertaintyRangeMismatch}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_uncertaintyRangeMismatch(TARGET)
 }
@@ -32,7 +32,7 @@ coordinateUncertaintyInMeters
 }
 
 \examples{
-performDC(DC = dc_uncertaintyRangeMismatch, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$uncertaintyRangeMismatch, data_bats)
 }
 \references{
 None

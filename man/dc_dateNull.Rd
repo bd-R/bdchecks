@@ -3,7 +3,7 @@
 \name{dc_dateNull}
 \alias{dc_dateNull}
 \title{Data check dateNull}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_dateNull(TARGET)
 }
@@ -31,7 +31,7 @@ eventDate,year,verbatimEventDate
 }
 
 \examples{
-performDC(DC = dc_dateNull, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$dateNull, data_bats)
 }
 \references{
 None

@@ -33,11 +33,8 @@ datacheck_info_export <- function(
       pseudocode = DCyaml[[i]]$meta$Pseudocode
     )
   }
-  result <- methods::new(
-    "datacheck",
-    dc_name = sapply(DCclass, "slot", "name"),
-    dc_body = DCclass
-  )
+  names(DCclass) <- sapply(DCclass, "slot", "name")
+  result <- methods::new("datacheck", dc_body = DCclass)
   return(result)
 }
 
@@ -59,15 +56,9 @@ roxygen_comment_generate <- function(DC) {
     "#'",
     "longDesc",
     "#' @name",
-    paste(
-      "#' @format An object of class \\code{\"dataCheck\"},",
-      "see \\code{\\link{dataCheck}} for details."
-    ),
+    "#' @format An object of class function to perform a specific data check.",
     "#' @references None",
-    paste(
-      "#' @examples \n#' performDC(DC = EXAMPLE@name,",
-      "DATA = bdchecks::data_bats)"
-    ),
+    "#' @examples \n#' performDC(EXAMPLE@name, data_bats)",
     "#' @section samplePassData:\n#' FIELDPASS",
     "#' @section sampleFailData:\n#' FIELDFAIL",
     "#' @section targetDWCField:\n#' FIELDTARGET",
@@ -106,7 +97,11 @@ roxygen_comment_generate <- function(DC) {
     skeleton
   )
   # Add additional fiels for the bdclean
-  skeleton <- sub("EXAMPLE@name", paste0("dc_", DC$name), skeleton)
+  skeleton <- sub(
+    "EXAMPLE@name",
+    paste0("data.checks@dc_body$", DC$name),
+    skeleton
+  )
 
   # Add name
   skeleton <- sub("@name", paste("@name", paste0("dc_", DC$name)), skeleton)

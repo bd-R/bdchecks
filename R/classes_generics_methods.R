@@ -6,10 +6,7 @@
 #'
 datacheck <- setClass(
   "datacheck",
-  slots = c(
-    dc_name = "vector",
-    dc_body = "list"
-  )
+  slots = c(dc_body = "list")
 )
 
 #' Create Data Check Class

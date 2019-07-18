@@ -4,7 +4,7 @@
 \name{dc_namePublishedYearInFuture}
 \alias{dc_namePublishedYearInFuture}
 \title{Data check namePublishedYearInFuture}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_namePublishedYearInFuture(TARGET)
 }
@@ -32,7 +32,7 @@ namePublishedInYear
 }
 
 \examples{
-performDC(DC = dc_namePublishedYearInFuture, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$namePublishedYearInFuture, data_bats)
 }
 \references{
 None

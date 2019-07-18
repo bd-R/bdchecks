@@ -3,7 +3,7 @@
 \name{dc_dayInvalid}
 \alias{dc_dayInvalid}
 \title{Data check dayInvalid}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_dayInvalid(TARGET)
 }
@@ -31,7 +31,7 @@ day
 }
 
 \examples{
-performDC(DC = dc_dayInvalid, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$dayInvalid, data_bats)
 }
 \references{
 None

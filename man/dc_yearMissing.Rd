@@ -3,7 +3,7 @@
 \name{dc_yearMissing}
 \alias{dc_yearMissing}
 \title{Data check yearMissing}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_yearMissing(TARGET)
 }
@@ -31,7 +31,7 @@ year
 }
 
 \examples{
-performDC(DC = dc_yearMissing, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$yearMissing, data_bats)
 }
 \references{
 None

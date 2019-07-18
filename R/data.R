@@ -5,6 +5,7 @@
 #'
 #' @name data_bats
 #' @docType data
+#' @export
 #'
 NULL
 

@@ -4,7 +4,7 @@
 \name{dc_coordinatesZero}
 \alias{dc_coordinatesZero}
 \title{Data check coordinatesZero}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_coordinatesZero(TARGET)
 }
@@ -32,7 +32,7 @@ decimalLatitude,decimalLongitude
 }
 
 \examples{
-performDC(DC = dc_coordinatesZero, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$coordinatesZero, data_bats)
 }
 \references{
 None

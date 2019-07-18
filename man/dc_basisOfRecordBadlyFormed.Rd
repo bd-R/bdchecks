@@ -4,7 +4,7 @@
 \name{dc_basisOfRecordBadlyFormed}
 \alias{dc_basisOfRecordBadlyFormed}
 \title{Data check basisOfRecordBadlyFormed}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_basisOfRecordBadlyFormed(TARGET)
 }
@@ -32,7 +32,7 @@ basisOfRecord
 }
 
 \examples{
-performDC(DC = dc_basisOfRecordBadlyFormed, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$basisOfRecordBadlyFormed, data_bats)
 }
 \references{
 None

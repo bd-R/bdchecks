@@ -4,7 +4,7 @@
 \name{dc_modifiedInFuture}
 \alias{dc_modifiedInFuture}
 \title{Data check modifiedInFuture}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_modifiedInFuture(TARGET)
 }
@@ -32,7 +32,7 @@ modified
 }
 
 \examples{
-performDC(DC = dc_modifiedInFuture, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$modifiedInFuture, data_bats)
 }
 \references{
 None

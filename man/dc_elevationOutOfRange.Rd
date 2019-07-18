@@ -4,7 +4,7 @@
 \name{dc_elevationOutOfRange}
 \alias{dc_elevationOutOfRange}
 \title{Data check elevationOutOfRange}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_elevationOutOfRange(TARGETS, minE = 0, maxE = 10000)
 }
@@ -32,7 +32,7 @@ minimumElevationinMeters,maximumElevationInMeters
 }
 
 \examples{
-performDC(DC = dc_elevationOutOfRange, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$elevationOutOfRange, data_bats)
 }
 \references{
 None

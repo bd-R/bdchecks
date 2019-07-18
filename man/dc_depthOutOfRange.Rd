@@ -4,7 +4,7 @@
 \name{dc_depthOutOfRange}
 \alias{dc_depthOutOfRange}
 \title{Data check depthOutOfRange}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_depthOutOfRange(TARGETS, minD = 0, maxD = 11000)
 }
@@ -32,7 +32,7 @@ minimumDepthInMeters,maximumDepthInMeters
 }
 
 \examples{
-performDC(DC = dc_depthOutOfRange, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$depthOutOfRange, data_bats)
 }
 \references{
 None

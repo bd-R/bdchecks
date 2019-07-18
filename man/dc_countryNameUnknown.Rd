@@ -4,7 +4,7 @@
 \name{dc_countryNameUnknown}
 \alias{dc_countryNameUnknown}
 \title{Data check countryNameUnknown}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_countryNameUnknown(TARGET, DEPEND)
 }
@@ -32,7 +32,7 @@ country
 }
 
 \examples{
-performDC(DC = dc_countryNameUnknown, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$countryNameUnknown, data_bats)
 }
 \references{
 None

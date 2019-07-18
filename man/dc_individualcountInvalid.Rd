@@ -4,7 +4,7 @@
 \name{dc_individualcountInvalid}
 \alias{dc_individualcountInvalid}
 \title{Data check individualcountInvalid}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_individualcountInvalid(TARGET)
 }
@@ -32,7 +32,7 @@ individualCount
 }
 
 \examples{
-performDC(DC = dc_individualcountInvalid, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$individualcountInvalid, data_bats)
 }
 \references{
 None

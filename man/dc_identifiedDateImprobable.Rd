@@ -4,7 +4,7 @@
 \name{dc_identifiedDateImprobable}
 \alias{dc_identifiedDateImprobable}
 \title{Data check identifiedDateImprobable}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_identifiedDateImprobable(TARGET)
 }
@@ -32,7 +32,7 @@ dateIdentified
 }
 
 \examples{
-performDC(DC = dc_identifiedDateImprobable, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$identifiedDateImprobable, data_bats)
 }
 \references{
 None

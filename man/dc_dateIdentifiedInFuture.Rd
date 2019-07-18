@@ -4,7 +4,7 @@
 \name{dc_dateIdentifiedInFuture}
 \alias{dc_dateIdentifiedInFuture}
 \title{Data check dateIdentifiedInFuture}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_dateIdentifiedInFuture(TARGET)
 }
@@ -32,7 +32,7 @@ dateIdentified
 }
 
 \examples{
-performDC(DC = dc_dateIdentifiedInFuture, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$dateIdentifiedInFuture, data_bats)
 }
 \references{
 None

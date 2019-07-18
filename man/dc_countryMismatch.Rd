@@ -4,7 +4,7 @@
 \name{dc_countryMismatch}
 \alias{dc_countryMismatch}
 \title{Data check countryMismatch}
-\format{An object of class \code{"dataCheck"}, see \code{\link{dataCheck}} for details.}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_countryMismatch(TARGET1, TARGET2, DEPEND1, DEPEND2)
 }
@@ -32,7 +32,7 @@ country,countryCode
 }
 
 \examples{
-performDC(DC = dc_countryMismatch, DATA = bdchecks::data_bats)
+performDC(data.checks@dc_body$countryMismatch, data_bats)
 }
 \references{
 None
