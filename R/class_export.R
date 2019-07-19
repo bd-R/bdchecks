@@ -24,7 +24,7 @@ datacheck_info_export <- function(
       paste0(path_rd, id_rd, DCyaml[[i]]$name, ".R")
     )
     DCclass[[i]] <- methods::new(
-      "datacheck_single",
+      "DataCheck",
       name = DCyaml[[i]]$name,
       input = DCyaml[[i]]$Input,
       description = DCyaml[[i]]$meta$Description,
@@ -34,7 +34,7 @@ datacheck_info_export <- function(
     )
   }
   names(DCclass) <- sapply(DCclass, "slot", "name")
-  result <- methods::new("datacheck", dc_body = DCclass)
+  result <- methods::new("DataCheckSet", dc_body = DCclass)
   return(result)
 }
 

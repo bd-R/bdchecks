@@ -1,29 +1,31 @@
 #' Create Data Check Class
 #'
-#' @name datacheck-class
-#' @rdname datacheck-class
+#' @name DataCheckSet-class
+#' @rdname DataCheckSet-class
 #' @export
 #'
-datacheck <- setClass(
-  "datacheck",
+#' @slot dc_body Set of all available data checks
+#' 
+DataCheckSet <- setClass(
+  "DataCheckSet",
   slots = c(dc_body = "list")
 )
 
 #' Create Data Check Class
 #'
-#' @name datacheck_single-class
-#' @rdname datacheck_single-class
+#' @name DataCheck-class
+#' @rdname DataCheck-class
 #' @export
 #'
-#' @slot name of a data check
-#' @slot input options for a data check
-#' @slot description of data check
-#' @slot flags for specific data check
-#' @slot pseudocode for this datachecks
-#' @slot source creators information
+#' @slot name Official name of biodiversity data check
+#' @slot input Additional options to perform a data check
+#' @slot description Information about the data check
+#' @slot flags Flagging type for specific data check
+#' @slot pseudocode R pseudocode for a data check
+#' @slot source Information about creators and maintenance 
 #'
-datacheck_single <- setClass(
-  "datacheck_single",
+DataCheck <- setClass(
+  "DataCheck",
   slots = c(
     name = "character",
     input = "list",
@@ -138,12 +140,12 @@ setGeneric("performDC", function(DC, DATA) {
 
 #' Show method for dataCheck objects
 #'
-#' @rdname dataCheck_single-class
+#' @rdname DataCheck-class
 #' @param object a dataCheck object
 #' @aliases dataCheck
 #'
 setMethod(
-  "show", "datacheck_single",
+  "show", "DataCheck",
   function(object) {
     message(
       " Data check is used to:\n\t",
@@ -190,7 +192,7 @@ setMethod("exportDataCheck", "dataCheckFlag", function(object) {
 #' @aliases performDC
 #'
 setMethod(
-  "performDC", "datacheck_single",
+  "performDC", "DataCheck",
   function(DC, DATA) {
     options(scipen = 999)
     # TARGETS

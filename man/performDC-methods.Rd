@@ -3,12 +3,12 @@
 \docType{methods}
 \name{performDC}
 \alias{performDC}
-\alias{performDC,datacheck_single-method}
+\alias{performDC,DataCheck-method}
 \title{Perform Data Checks}
 \usage{
 performDC(DC, DATA)
 
-\S4method{performDC}{datacheck_single}(DC, DATA)
+\S4method{performDC}{DataCheck}(DC, DATA)
 }
 \arguments{
 \item{DC}{A data check as a dataCheck class object}
