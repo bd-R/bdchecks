@@ -1,4 +1,9 @@
 #' @rdname dc_countryMismatch
+#' @param TARGET1 first vector of country names
+#' @param TARGET2 second vector of country names
+#' @param DEPEND1 first vector of country codes
+#' @param DEPEND2 second vector of country codes
+#' 
 dc_countryMismatch <- function(TARGET1, TARGET2, DEPEND1, DEPEND2) {
   result <- sapply(seq_along(TARGET1), function(i) {
     if (is.na(TARGET1[i]) | is.na(TARGET2[i])) {

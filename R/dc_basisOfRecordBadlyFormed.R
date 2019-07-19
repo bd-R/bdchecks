@@ -1,4 +1,6 @@
 #' @rdname dc_basisOfRecordBadlyFormed
+#' @param TARGET a vector to perform data check
+#' 
 dc_basisOfRecordBadlyFormed <- function(TARGET) {
   VOCABULARY <- c(
     "PreservedSpecimen", 

@@ -1,4 +1,6 @@
 #' @rdname dc_dataGeneralised
-dc_dataGeneralised <- function() {
+#' @param TARGET a vector to perform data check
+#' 
+dc_dataGeneralised <- function(TARGET) {
   is.na(TARGET)
 }

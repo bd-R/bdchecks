@@ -8,6 +8,15 @@
 \usage{
 dc_countryMismatch(TARGET1, TARGET2, DEPEND1, DEPEND2)
 }
+\arguments{
+\item{TARGET1}{first vector of country names}
+
+\item{TARGET2}{second vector of country names}
+
+\item{DEPEND1}{first vector of country codes}
+
+\item{DEPEND2}{second vector of country codes}
+}
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
 }
