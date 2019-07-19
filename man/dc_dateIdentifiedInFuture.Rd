@@ -35,7 +35,7 @@ dateIdentified
 }
 
 \examples{
-performDC(data.checks@dc_body$dateIdentifiedInFuture, data_bats)
+perform_dc(data_bats, 'dateIdentifiedInFuture')
 }
 \references{
 None

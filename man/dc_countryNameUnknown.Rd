@@ -37,7 +37,7 @@ country
 }
 
 \examples{
-performDC(data.checks@dc_body$countryNameUnknown, data_bats)
+perform_dc(data_bats, 'countryNameUnknown')
 }
 \references{
 None

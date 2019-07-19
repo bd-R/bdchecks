@@ -35,7 +35,7 @@ individualCount
 }
 
 \examples{
-performDC(data.checks@dc_body$individualcountInvalid, data_bats)
+perform_dc(data_bats, 'individualcountInvalid')
 }
 \references{
 None

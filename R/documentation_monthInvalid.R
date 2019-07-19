@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$monthInvalid, data_bats)
+#' perform_dc(data_bats, 'monthInvalid')
 #' @section samplePassData:
 #' The event month is between 1 and 12
 #' @section sampleFailData:

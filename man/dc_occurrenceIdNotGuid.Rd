@@ -35,7 +35,7 @@ occurrenceID
 }
 
 \examples{
-performDC(data.checks@dc_body$occurrenceIdNotGuid, data_bats)
+perform_dc(data_bats, 'occurrenceIdNotGuid')
 }
 \references{
 None

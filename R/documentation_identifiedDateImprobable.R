@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$identifiedDateImprobable, data_bats)
+#' perform_dc(data_bats, 'identifiedDateImprobable')
 #' @section samplePassData:
 #' The date of identification (dwc:dateIdentified) is post Linnaeus (1753) to the current date
 #' @section sampleFailData:

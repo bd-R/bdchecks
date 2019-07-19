@@ -39,7 +39,7 @@ minimumElevationinMeters,maximumElevationInMeters
 }
 
 \examples{
-performDC(data.checks@dc_body$elevationOutOfRange, data_bats)
+perform_dc(data_bats, 'elevationOutOfRange')
 }
 \references{
 None

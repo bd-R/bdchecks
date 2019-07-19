@@ -34,7 +34,7 @@ day
 }
 
 \examples{
-performDC(data.checks@dc_body$dayInvalid, data_bats)
+perform_dc(data_bats, 'dayInvalid')
 }
 \references{
 None

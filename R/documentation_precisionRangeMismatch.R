@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$precisionRangeMismatch, data_bats)
+#' perform_dc(data_bats, 'precisionRangeMismatch')
 #' @section samplePassData:
 #' The coordinate precision (dwc:coordinatePrecision) is between zero (minimum) and one (maximum)
 #' @section sampleFailData:

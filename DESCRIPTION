@@ -1,7 +1,7 @@
 Package: bdchecks
 Title: Biodiversity Data Checks
 Description: Supplies a Shiny app and a set of functions to perform and managing data checks for biodiversity data. 
-Version: 0.1.17
+Version: 0.1.18
 Date: 2019-07-19
 License: GPL-3 | file LICENSE
 URL: https://github.com/bd-R/bdchecks

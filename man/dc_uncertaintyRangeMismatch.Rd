@@ -35,7 +35,7 @@ coordinateUncertaintyInMeters
 }
 
 \examples{
-performDC(data.checks@dc_body$uncertaintyRangeMismatch, data_bats)
+perform_dc(data_bats, 'uncertaintyRangeMismatch')
 }
 \references{
 None

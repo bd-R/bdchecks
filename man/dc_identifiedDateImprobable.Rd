@@ -35,7 +35,7 @@ dateIdentified
 }
 
 \examples{
-performDC(data.checks@dc_body$identifiedDateImprobable, data_bats)
+perform_dc(data_bats, 'identifiedDateImprobable')
 }
 \references{
 None

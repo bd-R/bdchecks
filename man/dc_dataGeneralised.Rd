@@ -35,7 +35,7 @@ dataGeneralizations
 }
 
 \examples{
-performDC(data.checks@dc_body$dataGeneralised, data_bats)
+perform_dc(data_bats, 'dataGeneralised')
 }
 \references{
 None

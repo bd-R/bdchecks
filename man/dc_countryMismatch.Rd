@@ -41,7 +41,7 @@ country,countryCode
 }
 
 \examples{
-performDC(data.checks@dc_body$countryMismatch, data_bats)
+perform_dc(data_bats, 'countryMismatch')
 }
 \references{
 None

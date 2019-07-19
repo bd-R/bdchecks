@@ -35,7 +35,7 @@ basisOfRecord
 }
 
 \examples{
-performDC(data.checks@dc_body$basisOfRecordBadlyFormed, data_bats)
+perform_dc(data_bats, 'basisOfRecordBadlyFormed')
 }
 \references{
 None

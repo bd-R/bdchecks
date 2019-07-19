@@ -14,7 +14,7 @@
 #' @importFrom knitr kable
 #'
 #' @examples
-#' result <- dc_perform(data_bats)
+#' result <- perform_dc(data_bats)
 #' # Fancy summary table (for usage in reports)
 #' dc_summary(result)
 #' # object of class used for data filtering data.frame

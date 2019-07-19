@@ -35,7 +35,7 @@ coordinatePrecision
 }
 
 \examples{
-performDC(data.checks@dc_body$precisionRangeMismatch, data_bats)
+perform_dc(data_bats, 'precisionRangeMismatch')
 }
 \references{
 None

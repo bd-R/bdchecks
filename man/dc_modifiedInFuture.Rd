@@ -35,7 +35,7 @@ modified
 }
 
 \examples{
-performDC(data.checks@dc_body$modifiedInFuture, data_bats)
+perform_dc(data_bats, 'modifiedInFuture')
 }
 \references{
 None

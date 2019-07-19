@@ -34,7 +34,7 @@ eventDate,year,verbatimEventDate
 }
 
 \examples{
-performDC(data.checks@dc_body$dateNull, data_bats)
+perform_dc(data_bats, 'dateNull')
 }
 \references{
 None

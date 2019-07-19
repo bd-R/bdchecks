@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$depthOutOfRange, data_bats)
+#' perform_dc(data_bats, 'depthOutOfRange')
 #' @section samplePassData:
 #' Minimum depth is greater than or equal to zero (0) and maximum depth is less than 11,000 meters
 #' @section sampleFailData:

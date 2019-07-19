@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$uncertaintyRangeMismatch, data_bats)
+#' perform_dc(data_bats, 'uncertaintyRangeMismatch')
 #' @section samplePassData:
 #' Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) is a whole number and greater than zero (meters)
 #' @section sampleFailData:

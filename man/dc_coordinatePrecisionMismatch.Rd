@@ -37,7 +37,7 @@ decimalLatitude,decimalLongitude
 }
 
 \examples{
-performDC(data.checks@dc_body$coordinatePrecisionMismatch, data_bats)
+perform_dc(data_bats, 'coordinatePrecisionMismatch')
 }
 \references{
 None

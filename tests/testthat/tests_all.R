@@ -7,9 +7,9 @@ context("Summary Functions")
 test_that("dc_summary", {
   # Data checks on example data
   # We expect warnings as not all columns are present
-  result <- expect_warning(dc_perform(data_bats))
+  result <- expect_warning(perform_dc(data_bats))
   # Check if output is valid
-  expect_s4_class(result, "dataCheckFlag")
+  expect_s4_class(result, "DataCheckFlagSet")
 
   # Summary output 1
   foo <- dc_summary(result, fancy = FALSE, filtering_dt = FALSE)
@@ -31,23 +31,23 @@ test_that("dc_summary", {
 
 # Test summary functions
 context("Data Checks")
-# test dc_perform
+# test perform_dc
 # performs data checks on a given data set
-test_that("dc_perform", {
+test_that("perform_dc", {
   # No data set provided will give warnings and null
-  result <- expect_warning(dc_perform())
+  result <- expect_warning(perform_dc())
   expect_true(is.null(result))
 
-  result <- expect_warning(dc_perform(data_bats))
-  # we should have at least 20 performed DCs
-  expect_gt(length(result@DC), 20)
+  result <- expect_warning(perform_dc(data_bats))
+  # we should have at least 18 performed DCs
+  expect_gt(length(result@DC), 10)
 })
 # test performDC
 # performs one data check on a given data set
-test_that("performDC", {
+test_that("perform_dc", {
   # No arguments provided
-  expect_error(performDC())
-  expect_warning(performDC(data.checks@dc_body$monthInvalid, mtcars))
+  expect_warning(perform_dc())
+  expect_warning(perform_dc(mtcars, "monthInvalid"))
   # This will depend on data version
-  expect_equal(sum(performDC(data.checks@dc_body$monthInvalid, data_bats)), 1000)
+  expect_equal(sum(perform_dc(data_bats, "monthInvalid")@flags[[1]]@result), 1e3)
 })

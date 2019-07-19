@@ -23,7 +23,7 @@ checks passed. It's main input is an object of a DataCheckFlagSet class and outp
 is a summary table.
 }
 \examples{
-result <- dc_perform(data_bats)
+result <- perform_dc(data_bats)
 # Fancy summary table (for usage in reports)
 dc_summary(result)
 # object of class used for data filtering data.frame

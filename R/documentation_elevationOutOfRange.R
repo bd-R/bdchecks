@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$elevationOutOfRange, data_bats)
+#' perform_dc(data_bats, 'elevationOutOfRange')
 #' @section samplePassData:
 #' Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters
 #' @section sampleFailData:

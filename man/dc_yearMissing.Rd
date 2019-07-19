@@ -34,7 +34,7 @@ year
 }
 
 \examples{
-performDC(data.checks@dc_body$yearMissing, data_bats)
+perform_dc(data_bats, 'yearMissing')
 }
 \references{
 None

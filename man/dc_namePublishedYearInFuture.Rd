@@ -35,7 +35,7 @@ namePublishedInYear
 }
 
 \examples{
-performDC(data.checks@dc_body$namePublishedYearInFuture, data_bats)
+perform_dc(data_bats, 'namePublishedYearInFuture')
 }
 \references{
 None

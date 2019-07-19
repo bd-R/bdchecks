@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$individualcountInvalid, data_bats)
+#' perform_dc(data_bats, 'individualcountInvalid')
 #' @section samplePassData:
 #' The count of individuals is a valid integer
 #' @section sampleFailData:

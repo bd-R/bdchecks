@@ -39,7 +39,7 @@ minimumDepthInMeters,maximumDepthInMeters
 }
 
 \examples{
-performDC(data.checks@dc_body$depthOutOfRange, data_bats)
+perform_dc(data_bats, 'depthOutOfRange')
 }
 \references{
 None

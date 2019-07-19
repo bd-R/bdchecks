@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$coordinatePrecisionMismatch, data_bats)
+#' perform_dc(data_bats, 'coordinatePrecisionMismatch')
 #' @section samplePassData:
 #' The number of decimal places of latitude (dwc:decimalLatitude) and longitude (dwc:decimalLongitude) is in agreement with the supplied coordinate precision (dwc:coordinatePrecision)
 #' @section sampleFailData:

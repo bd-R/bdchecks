@@ -35,7 +35,7 @@ eventDate
 }
 
 \examples{
-performDC(data.checks@dc_body$eventDateInFuture, data_bats)
+perform_dc(data_bats, 'eventDateInFuture')
 }
 \references{
 None

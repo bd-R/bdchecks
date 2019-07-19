@@ -103,27 +103,6 @@ setGeneric("exportDataCheck", function(object) {
 })
 
 
-#' Perform Data Checks
-#'
-#' Method that performs data check on a given dataset
-#'
-#' @param DC A data check as a dataCheck class object
-#' @param DATA a data frame to perform data check on
-#'
-#' @return A vector of logical values that determine if data check was passed on
-#' specific entry in a given DATA object
-#'
-#' @importFrom utils install.packages
-#'
-#' @export
-#' @docType methods
-#' @rdname performDC-methods
-#'
-setGeneric("performDC", function(DC, DATA) {
-  standardGeneric("performDC")
-})
-
-
 ################################################################################
 ################################################################################
 #                               METHODS
@@ -176,78 +155,3 @@ setMethod(
 setMethod("exportDataCheck", "DataCheckFlagSet", function(object) {
   return(object@dataMod)
 })
-
-
-
-#' @rdname performDC-methods
-#'
-#' @aliases performDC
-#'
-setMethod(
-  "performDC", "DataCheck",
-  function(DC, DATA) {
-    options(scipen = 999)
-    # TARGETS
-    target_names <- unlist(strsplit(DC@input$Target, ","))
-    for (j in seq_along(target_names)) {
-      if (!target_names[j] %in% colnames(DATA)) {
-        warning(
-          "Target ", target_names[j],
-          " doesn't exists in a given dataset,\ncheck ", DC@name,
-          " can't be performed"
-        )
-        TARGET1 <- NULL
-        TARGET <- NULL
-      } else if (j == 1) {
-        assign("TARGET", DATA[, target_names[j], drop = TRUE])
-        assign("TARGET1", DATA[, target_names[j], drop = TRUE])
-      } else {
-        assign(
-          paste0("TARGET", j),
-          DATA[, target_names[j],
-            drop = TRUE
-          ]
-        )
-      }
-    }
-    TARGETS <- ls(pattern = "TARGET\\d+")
-    if (is.null(TARGETS) | is.null(TARGET)) {
-      return(NULL)
-    }
-
-    # DEPENDENCIES
-    # This is probably not needed as packages will come with namespace
-    if (!is.null(DC@input$Dependency$Rpackages)) {
-      if (!require(DC@input$Dependency$Rpackages,
-        character.only = TRUE
-      )) {
-        install.packages(DC@input$Dependency$Rpackages)
-      }
-      library(DC@input$Dependency$Rpackages, character.only = TRUE)
-    }
-    if (!is.null(DC@input$Dependency$Data)) {
-      dependencies <- unlist(strsplit(DC@input$Dependency$Data, ","))
-      for (j in seq_along(dependencies)) {
-        assign(paste0("DEPEND", j), eval(parse(text = dependencies[j])))
-        if (j == 1) {
-          assign("DEPEND", eval(parse(text = dependencies[j])))
-        }
-      }
-      DEPENDS <- ls(pattern = "DEPEND\\d+")
-    }
-    # Here we will need to pass targets
-    if (DC@name %in% "countryMismatch") {
-      res <- get(paste0("dc_", DC@name))(TARGET1, TARGET2, DEPEND1, DEPEND2)
-    } else if (DC@name %in% c("countryNameUnknown", "coordinatePrecisionMismatch")) {
-      res <- get(paste0("dc_", DC@name))(TARGET, DEPEND)
-    } else if (length(TARGETS) == 1) {
-      res <- get(paste0("dc_", DC@name))(TARGET)
-    } else {
-      res <- list()
-      for (k in seq_along(TARGETS)) {
-        res[[k]] <- get(paste0("dc_", DC@name))(get(TARGETS[k]))
-      }
-    }
-    return(res)
-  }
-)

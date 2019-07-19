@@ -24,8 +24,7 @@ create_testdata <- function(
     data_current <- d[[i]]$data
     stopifnot(!is.null(data_current))
     stopifnot(all(c("type", "expected") %in% data_current[[1]]))
-    data_test[[i]] <- lapply(data_current[-1], as.character) %>%
-      do.call(rbind, .) %>%
+    data_test[[i]] <- do.call(rbind, lapply(data_current[-1], as.character)) %>%
       data.frame(stringsAsFactors = FALSE)
     colnames(data_test[[i]]) <- data_current[[1]]
   }

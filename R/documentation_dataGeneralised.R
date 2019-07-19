@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$dataGeneralised, data_bats)
+#' perform_dc(data_bats, 'dataGeneralised')
 #' @section samplePassData:
 #' Latitude and longitude values have not been generalized as indicated by dwc:dataGeneralizations is NULL
 #' @section sampleFailData:

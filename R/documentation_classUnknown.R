@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$classUnknown, data_bats)
+#' perform_dc(data_bats, 'classUnknown')
 #' @section samplePassData:
 #' Taxonomic rank Class was interpreted correctly
 #' @section sampleFailData:

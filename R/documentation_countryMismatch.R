@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$countryMismatch, data_bats)
+#' perform_dc(data_bats, 'countryMismatch')
 #' @section samplePassData:
 #' Country name (dwc:country) and ISO country code (dwc:countryCode) match
 #' @section sampleFailData:

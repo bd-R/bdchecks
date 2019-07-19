@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$basisOfRecordBadlyFormed, data_bats)
+#' perform_dc(data_bats, 'basisOfRecordBadlyFormed')
 #' @section samplePassData:
 #' dwc:basisOfRecord was matched to vocabulary
 #' @section sampleFailData:

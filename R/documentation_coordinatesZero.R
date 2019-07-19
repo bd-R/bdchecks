@@ -6,7 +6,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' performDC(data.checks@dc_body$coordinatesZero, data_bats)
+#' perform_dc(data_bats, 'coordinatesZero')
 #' @section samplePassData:
 #' Decimal latitude and longitude are not zero (0) degrees
 #' @section sampleFailData:

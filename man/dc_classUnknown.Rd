@@ -35,7 +35,7 @@ class
 }
 
 \examples{
-performDC(data.checks@dc_body$classUnknown, data_bats)
+perform_dc(data_bats, 'classUnknown')
 }
 \references{
 None

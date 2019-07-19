@@ -35,7 +35,7 @@ decimalLatitude,decimalLongitude
 }
 
 \examples{
-performDC(data.checks@dc_body$coordinatesZero, data_bats)
+perform_dc(data_bats, 'coordinatesZero')
 }
 \references{
 None

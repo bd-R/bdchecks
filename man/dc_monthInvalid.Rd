@@ -35,7 +35,7 @@ month
 }
 
 \examples{
-performDC(data.checks@dc_body$monthInvalid, data_bats)
+perform_dc(data_bats, 'monthInvalid')
 }
 \references{
 None

@@ -58,7 +58,7 @@ roxygen_comment_generate <- function(DC) {
     "#' @name",
     "#' @format An object of class function to perform a specific data check.",
     "#' @references None",
-    "#' @examples \n#' performDC(EXAMPLE@name, data_bats)",
+    "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name')",
     "#' @section samplePassData:\n#' FIELDPASS",
     "#' @section sampleFailData:\n#' FIELDFAIL",
     "#' @section targetDWCField:\n#' FIELDTARGET",
@@ -97,11 +97,7 @@ roxygen_comment_generate <- function(DC) {
     skeleton
   )
   # Add additional fiels for the bdclean
-  skeleton <- sub(
-    "EXAMPLE@name",
-    paste0("data.checks@dc_body$", DC$name),
-    skeleton
-  )
+  skeleton <- sub("EXAMPLE@name", DC$name, skeleton)
 
   # Add name
   skeleton <- sub("@name", paste("@name", paste0("dc_", DC$name)), skeleton)
