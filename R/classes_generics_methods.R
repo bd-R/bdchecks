@@ -36,6 +36,27 @@ DataCheckSet <- setClass(
   slots = c(dc_body = "list")
 )
 
+#' Show method for dataCheck objects
+#'
+#' @rdname DataCheck-class
+#' @param object a dataCheck object
+#' @aliases dataCheck
+#'
+setMethod(
+  "show", "DataCheck",
+  function(object) {
+    message(
+      "Data check is used to:\n   ",
+      object@description$Main, "\n",
+      "This data check answers following question:\n   ",
+      object@description$Question, "\n",
+      "Target columns that this data check operates on:\n   ",
+      object@input$Target,
+      "\n"
+    )
+  }
+)
+
 #' Single Data Check Flag Class
 #'
 #' @name DataCheckFlag-class
@@ -78,34 +99,6 @@ DataCheckFlagSet <- setClass(
   )
 )
 
-
-################################################################################
-################################################################################
-#                               METHODS
-################################################################################
-################################################################################
-
-#' Show method for dataCheck objects
-#'
-#' @rdname DataCheck-class
-#' @param object a dataCheck object
-#' @aliases dataCheck
-#'
-setMethod(
-  "show", "DataCheck",
-  function(object) {
-    message(
-      " Data check is used to:\n\t",
-      object@description$Main, "\n",
-      "This data check answers following question:\n\t",
-      object@description$Question, "\n",
-      "Target (column) that this data checks operates on is:\n\t",
-      object@input$Target,
-      "\n"
-    )
-  }
-)
-
 #' Show method for DataCheckFlagSet objects
 #'
 #' @rdname DataCheckFlagSet-class
@@ -119,6 +112,6 @@ setMethod(
       data.frame(check = x@name, target = x@target)
     })
     res <- do.call(rbind, res)
-    message(paste(res$check, "->", res$target))
+    message(paste(res$check, "->", res$target, "\n"))
   }
 )

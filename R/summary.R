@@ -1,6 +1,6 @@
 #' Summarise Data Checks
 #'
-#' `dc_summary()` is a function that calculated statistics for how many data
+#' `summary_dc()` is a function that calculated statistics for how many data
 #' checks passed. It's main input is an object of a DataCheckFlagSet class and output
 #' is a summary table.
 #'
@@ -16,28 +16,28 @@
 #' @examples
 #' result <- perform_dc(data_bats)
 #' # Fancy summary table (for usage in reports)
-#' dc_summary(result)
+#' summary_dc(result)
 #' # object of class used for data filtering data.frame
-#' dc_summary(result, fancy = FALSE, filtering_dt = TRUE)
+#' summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
 #' @export
 #'
-dc_summary <- function(input_flag, fancy = TRUE, filtering_dt = FALSE) {
+summary_dc <- function(input_flag, fancy = TRUE, filtering_dt = FALSE) {
   res <- lapply(input_flag@flags, function(x) {
     if (length(x@result) == 0) {
       return(NULL)
     } else {
       data.frame(
-        check = x@name, target = x@target,
+        check = x@name,
+        target = x@target,
         passed = sum(x@result, na.rm = TRUE) / length(x@result),
         failed = sum(!x@result, na.rm = TRUE) / length(x@result),
-        missing = mean(is.na(x@result))
+        missing = mean(is.na(x@result)),
+        stringsAsFactors = FALSE
       )
     }
   })
   res <- do.call(rbind, res)
-  res$check <- as.character(res$check)
-  res$target <- as.character(res$target)
-  res <- res[order(res$failed, decreasing = TRUE), ]
+  res <- res[order(res$check, res$target), ]
   rownames(res) <- NULL
   if (!fancy & !filtering_dt) {
     return(res)

@@ -5,7 +5,7 @@ dc_result_summary <- shiny::reactive({
   if (is.null(dc_result())) {
     return(NULL)
   } else {
-    bdchecks::dc_summary(dc_result(), fancy = FALSE, filtering_dt = TRUE)
+    bdchecks::summary_dc(dc_result(), fancy = FALSE, filtering_dt = TRUE)
   }
 })
 output$table_dc <- DT::renderDT(

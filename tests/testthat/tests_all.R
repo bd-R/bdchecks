@@ -4,7 +4,7 @@ library(bdchecks)
 context("Summary Functions")
 # test dc_summary
 # outputs summary table for passed/failed data checks
-test_that("dc_summary", {
+test_that("summary_dc", {
   # Data checks on example data
   # We expect warnings as not all columns are present
   result <- expect_warning(perform_dc(data_bats))
@@ -12,22 +12,20 @@ test_that("dc_summary", {
   expect_s4_class(result, "DataCheckFlagSet")
 
   # Summary output 1
-  foo <- dc_summary(result, fancy = FALSE, filtering_dt = FALSE)
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = FALSE)
   expect_s3_class(foo, "data.frame")
   # expect_equal(nrow(foo), 22)
   expect_equal(ncol(foo), 5)
   expect_equal(ncol(foo), 5)
 
-  foo <- dc_summary(result, fancy = FALSE, filtering_dt = TRUE)
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   expect_s3_class(foo, "data.frame")
   expect_match(colnames(foo)[3:5], "%")
 
   # Summary output 2
-  foo <- dc_summary(result)
+  foo <- summary_dc(result)
   expect_s3_class(foo, "knitr_kable")
 })
-
-
 
 # Test summary functions
 context("Data Checks")
