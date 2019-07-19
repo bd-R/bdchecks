@@ -8,7 +8,7 @@ dc_filter_generate(dc_result_summary, cell_selected, filters = c("P",
   "F", "M"))
 }
 \arguments{
-\item{dc_result_summary}{Summary table for a dataCheckFlag class
+\item{dc_result_summary}{Summary table for a DataCheckFlagSet class
 (must be filterable in `DT`)}
 
 \item{cell_selected}{Cells selected in `DT::datatable`}

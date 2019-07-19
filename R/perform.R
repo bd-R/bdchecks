@@ -9,7 +9,7 @@
 #'
 #' @importFrom methods new
 #'
-#' @return Object of a dataCheckFlag class (combined result for all performed
+#' @return Object of a DataCheckFlagSet class (combined result for all performed
 #' data checks)
 #'
 #' @examples
@@ -63,7 +63,7 @@ dc_perform <- function(data = NULL, DConly = NULL) {
           for (j in seq_along(current_result)) {
             if (!is.null(current_result)) {
               result_dc[[length(result_dc) + 1]] <-
-                methods::new("dataCheckFlag_SINGLE",
+                methods::new("DataCheckFlag",
                   name = DCcurrent@name,
                   target = unlist(strsplit(
                     DCcurrent@input$Target, ","
@@ -76,7 +76,7 @@ dc_perform <- function(data = NULL, DConly = NULL) {
         } else {
           if (!is.null(current_result)) {
             result_dc[[length(result_dc) + 1]] <- methods::new(
-              "dataCheckFlag_SINGLE",
+              "DataCheckFlag",
               name = DCcurrent@name,
               target = DCcurrent@input$Target,
               result = current_result,
@@ -91,7 +91,7 @@ dc_perform <- function(data = NULL, DConly = NULL) {
     }
   }
   if (length(result_dc) > 0) {
-    result_dc <- methods::new("dataCheckFlag",
+    result_dc <- methods::new("DataCheckFlagSet",
       DC = as.character(lapply(
         result_dc,
         function(x) `@`(x, name)

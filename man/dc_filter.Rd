@@ -7,7 +7,7 @@
 dc_filter(dc_result, dc_filts)
 }
 \arguments{
-\item{dc_result}{Object of a dataCheckFlag generated with `perforDataCheck()`}
+\item{dc_result}{Object of a DataCheckFlagSet generated with `perforDataCheck()`}
 
 \item{dc_filts}{A list containing filtering targets and status generated with
 `dc_filter_generate()`}

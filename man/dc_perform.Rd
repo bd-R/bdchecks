@@ -13,7 +13,7 @@ dc_perform(data = NULL, DConly = NULL)
 (ie perform only these data checks)}
 }
 \value{
-Object of a dataCheckFlag class (combined result for all performed
+Object of a DataCheckFlagSet class (combined result for all performed
 data checks)
 }
 \description{

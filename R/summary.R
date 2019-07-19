@@ -1,10 +1,10 @@
 #' Summarise Data Checks
 #'
 #' `dc_summary()` is a function that calculated statistics for how many data
-#' checks passed. It's main input is an object of a dataCheckFlag class and output
+#' checks passed. It's main input is an object of a DataCheckFlagSet class and output
 #' is a summary table.
 #'
-#' @param input_flag Object of a dataCheckFlag class
+#' @param input_flag Object of a DataCheckFlagSet class
 #' @param fancy Should ouput be returned in a rst format
 #' @param filtering_dt Should output be returned as a summary table that could
 #' be parsed with a `DT` pacakge

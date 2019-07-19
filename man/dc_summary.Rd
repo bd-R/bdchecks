@@ -7,7 +7,7 @@
 dc_summary(input_flag, fancy = TRUE, filtering_dt = FALSE)
 }
 \arguments{
-\item{input_flag}{Object of a dataCheckFlag class}
+\item{input_flag}{Object of a DataCheckFlagSet class}
 
 \item{fancy}{Should ouput be returned in a rst format}
 
@@ -19,7 +19,7 @@ A data.frame or rst table with summary statistics
 }
 \description{
 `dc_summary()` is a function that calculated statistics for how many data
-checks passed. It's main input is an object of a dataCheckFlag class and output
+checks passed. It's main input is an object of a DataCheckFlagSet class and output
 is a summary table.
 }
 \examples{

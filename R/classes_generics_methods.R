@@ -1,18 +1,5 @@
 #' Create Data Check Class
 #'
-#' @name DataCheckSet-class
-#' @rdname DataCheckSet-class
-#' @export
-#'
-#' @slot dc_body Set of all available data checks
-#' 
-DataCheckSet <- setClass(
-  "DataCheckSet",
-  slots = c(dc_body = "list")
-)
-
-#' Create Data Check Class
-#'
 #' @name DataCheck-class
 #' @rdname DataCheck-class
 #' @export
@@ -36,10 +23,23 @@ DataCheck <- setClass(
   )
 )
 
+#' Create Data Check Class
+#'
+#' @name DataCheckSet-class
+#' @rdname DataCheckSet-class
+#' @export
+#'
+#' @slot dc_body Set of all available data checks
+#' 
+DataCheckSet <- setClass(
+  "DataCheckSet",
+  slots = c(dc_body = "list")
+)
+
 #' Single Data Check Flag Class
 #'
-#' @name dataCheckFlag_SINGLE-class
-#' @rdname dataCheckFlag_SINGLE-class
+#' @name DataCheckFlag-class
+#' @rdname DataCheckFlag-class
 #' @export
 #'
 #' @slot name of performed data check
@@ -47,8 +47,8 @@ DataCheck <- setClass(
 #' @slot flag class
 #' @slot result logical vector
 #'
-dataCheckFlag_SINGLE <- setClass(
-  "dataCheckFlag_SINGLE",
+DataCheckFlag <- setClass(
+  "DataCheckFlag",
   slots = c(
     name = "character",
     target = "character",
@@ -59,17 +59,17 @@ dataCheckFlag_SINGLE <- setClass(
 
 #' Combined Data Checks Class
 #'
-#' @name dataCheckFlag-class
-#' @rdname dataCheckFlag-class
+#' @name DataCheckFlagSet-class
+#' @rdname DataCheckFlagSet-class
 #' @export
 #'
 #' @slot DC names of performed data checks
-#' @slot flags list of performed data checks in a dataCheckFlag_SINGLE class
+#' @slot flags list of performed data checks in a DataCheckFlagSet class
 #' @slot dataOrig original data before data checks
 #' @slot dataMod modified data after data checks
 #'
-dataCheckFlag <- setClass(
-  "dataCheckFlag",
+DataCheckFlagSet <- setClass(
+  "DataCheckFlagSet",
   slots = c(
     DC = "vector",
     flags = "list",
@@ -79,14 +79,11 @@ dataCheckFlag <- setClass(
 )
 
 
-
-
 ################################################################################
 ################################################################################
 #                               GENERICS
 ################################################################################
 ################################################################################
-
 
 #' Export Data Checks
 #'
@@ -94,8 +91,8 @@ dataCheckFlag <- setClass(
 #'
 #' @param object A result of data checks (data check flag class)
 #'
-#' @return A data.frame that contains original users data.frame modified according
-#' to data checks
+#' @return A data.frame that contains original users data.frame modified
+#' according to data checks
 #'
 #' @export
 #' @docType methods
@@ -127,16 +124,11 @@ setGeneric("performDC", function(DC, DATA) {
 })
 
 
-
-
-
 ################################################################################
 ################################################################################
 #                               METHODS
 ################################################################################
 ################################################################################
-
-
 
 #' Show method for dataCheck objects
 #'
@@ -159,14 +151,14 @@ setMethod(
   }
 )
 
-#' Show method for dataCheckFlag objects
+#' Show method for DataCheckFlagSet objects
 #'
-#' @rdname dataCheckFlag-class
-#' @param object a dataCheckFlag object
-#' @aliases dataCheckFlag
+#' @rdname DataCheckFlagSet-class
+#' @param object a DataCheckFlagSet object
+#' @aliases DataCheckFlagSet
 #'
 setMethod(
-  "show", "dataCheckFlag",
+  "show", "DataCheckFlagSet",
   function(object) {
     res <- lapply(object@flags, function(x) {
       data.frame(check = x@name, target = x@target)
@@ -181,7 +173,7 @@ setMethod(
 #'
 #' @aliases exportDataCheck
 #'
-setMethod("exportDataCheck", "dataCheckFlag", function(object) {
+setMethod("exportDataCheck", "DataCheckFlagSet", function(object) {
   return(object@dataMod)
 })
 

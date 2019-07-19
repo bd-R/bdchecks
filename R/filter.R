@@ -3,7 +3,7 @@
 #' `dc_filter_generate()` is a function that generates vector for filtering data
 #' checks result table according to `DT::datatable()` `selectCells` object.
 #'
-#' @param dc_result_summary Summary table for a dataCheckFlag class
+#' @param dc_result_summary Summary table for a DataCheckFlagSet class
 #' (must be filterable in `DT`)
 #' @param cell_selected Cells selected in `DT::datatable`
 #' @param filters Vector that contains names for passed, failed and missing
@@ -37,7 +37,7 @@ dc_filter_generate <- function(dc_result_summary,
 #' `dc_filter()` is a function that filters data check result according
 #'  to filtering vector.
 #'
-#' @param dc_result Object of a dataCheckFlag generated with `perforDataCheck()`
+#' @param dc_result Object of a DataCheckFlagSet generated with `perforDataCheck()`
 #' @param dc_filts A list containing filtering targets and status generated with
 #' `dc_filter_generate()`
 #'
