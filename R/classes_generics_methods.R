@@ -81,30 +81,6 @@ DataCheckFlagSet <- setClass(
 
 ################################################################################
 ################################################################################
-#                               GENERICS
-################################################################################
-################################################################################
-
-#' Export Data Checks
-#'
-#' Method that exports data checks
-#'
-#' @param object A result of data checks (data check flag class)
-#'
-#' @return A data.frame that contains original users data.frame modified
-#' according to data checks
-#'
-#' @export
-#' @docType methods
-#' @rdname exportDataCheck-methods
-#'
-setGeneric("exportDataCheck", function(object) {
-  standardGeneric("exportDataCheck")
-})
-
-
-################################################################################
-################################################################################
 #                               METHODS
 ################################################################################
 ################################################################################
@@ -146,12 +122,3 @@ setMethod(
     message(paste(res$check, "->", res$target))
   }
 )
-
-
-#' @rdname exportDataCheck-methods
-#'
-#' @aliases exportDataCheck
-#'
-setMethod("exportDataCheck", "DataCheckFlagSet", function(object) {
-  return(object@dataMod)
-})
