@@ -6,14 +6,14 @@
 \title{Data check elevationOutOfRange}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_elevationOutOfRange(TARGETS, minE = 0, maxE = 10000)
+dc_elevationOutOfRange(TARGET, min_ele = 0, max_ele = 10000)
 }
 \arguments{
-\item{TARGETS}{a list of vectors to perform data check}
+\item{TARGET}{a vector of numeric values for elevation}
 
-\item{minE}{a numeric values specifying minimum elevation}
+\item{min_ele}{a numeric value specifying minimum elevation}
 
-\item{maxE}{a numeric values specifying maximum elevation}
+\item{max_ele}{a numeric value specifying maximum elevation}
 }
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.

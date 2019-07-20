@@ -1,11 +1,20 @@
 #' @rdname dc_elevationOutOfRange
-#' @param TARGETS a list of vectors to perform data check
-#' @param minE a numeric values specifying minimum elevation
-#' @param maxE a numeric values specifying maximum elevation
-#'
-dc_elevationOutOfRange <- function(TARGETS, minE = 0, maxE = 1e4) {
-  elevationOutOfRange <- function(TARGET) {
-    get(TARGET) >= minE & get(TARGET) <= maxE 
-  }
-  lapply(TARGETS, elevationOutOfRange)
+#' 
+#' @param TARGET a vector of numeric values for elevation
+#' @param min_ele a numeric value specifying minimum elevation
+#' @param max_ele a numeric value specifying maximum elevation
+#' 
+#' @importFrom magrittr "%>%"
+#' 
+dc_elevationOutOfRange <- function(TARGET, min_ele = 0, max_ele = 1e4) {
+  # Turns values to numeric (incase of 1e3)
+  result <- as.numeric(TARGET)
+  # Main part - check if value is within range
+  result <- result >= min_ele & result <= max_ele 
+
+  # Turn failed values to FALSE
+  result[is.na(result)] <- FALSE
+  # Get original missing values
+  result[is.na(TARGET) | TARGET == ""] <- NA
+  return(result)
 }

@@ -32,10 +32,17 @@ eventDateInFuture:
   comment:
 elevationOutOfRange:
   data:
-    - [minimumElevationInMeters, maximumElevationInMeters, type, expected]
-    - [100, 600, '', pass]
-    - [-400, 100, '', fail]
-    - [100, 10001, '', fail]
+    - [minimumElevationInMeters, type, expected]
+    - [0, correct, pass]
+    - [0.1, correct, pass]
+    - [1000, correct, pass]
+    - [1e3, correct, pass]
+    - [' 1000 ', space, pass]
+    - [-1000, incorrect, fail]
+    - [10001, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 depthOutOfRange:
   data:
