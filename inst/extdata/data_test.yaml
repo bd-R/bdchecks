@@ -12,14 +12,23 @@ yearMissing:
     - [Orange, irrelevent, fail]
     - ['', missing, fail]
     - [NA, missing, fail]
-    - [NULL, missing, fail]
   comment:
 eventDateInFuture:
   data:
     - [eventDate, type, expected]
-    - [1987-06-23, correct value, pass]
-    - ['', value lacking, fail]
-    - [2100-12-01, value in future, fail]
+    - [1987-06-23, correct, pass]
+    - [2000-01-01, correct, pass]
+    - [1987.06.23, correct, pass]
+    - [2000 01 01, correct, pass]
+    - [' 2000-01-01 ', space, pass]
+    - [2200-12-01, incorrect, fail]
+    - [-2000.01.01, incorrect, fail]
+    - [1000, irrelevent, fail]
+    - [3000, irrelevent, fail]
+    - [0, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 elevationOutOfRange:
   data:

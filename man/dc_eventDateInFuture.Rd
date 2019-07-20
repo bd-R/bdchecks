@@ -6,10 +6,13 @@
 \title{Data check eventDateInFuture}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_eventDateInFuture(TARGET)
+dc_eventDateInFuture(TARGET, date_separator = "\\\\.| ")
 }
 \arguments{
-\item{TARGET}{a vector to perform data check}
+\item{TARGET}{a vector of event date information}
+
+\item{date_separator}{regex string to turn date separators,
+e.g., dot into "-"}
 }
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.

@@ -10,6 +10,7 @@ dc_yearMissing <- function(TARGET) {
     as.numeric() # This is main criteria - value must be turned numeric
   # Year must be possitive and probably contain for digits
   result <- result > 0 & nchar(result) == 4
+
   # Turn failed values to FALSE
   result[is.na(result)] <- FALSE
   # Get original missing values
