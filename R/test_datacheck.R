@@ -31,3 +31,17 @@ create_testdata <- function(
   names(data_test) <- names(d)
   return(data_test)
 }
+
+perform_testdata <- function(data_test = NULL) {
+  data_test <- create_testdata()
+  for (i in seq_along(data_test)) {
+    check <- names(data_test)[i]
+    data_test[[i]]$observed <- apply(
+      subset(data_test[[i]], select = -c(type, expected)),
+      2,
+      get(paste0("dc_", check))
+    ) %>%
+      ifelse("pass", "fail") %>%
+      as.character()
+  }
+}
