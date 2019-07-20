@@ -32,16 +32,43 @@ create_testdata <- function(
   return(data_test)
 }
 
+#' Perform tests datachecks
+#'
+#' @param data_test List objects of data sets to perform tests
+#'
+#' @importFrom magrittr "%>%"
+#'
+#' @export
+#'
 perform_testdata <- function(data_test = NULL) {
-  data_test <- create_testdata()
+  data_test <- create_testdata("inst/extdata/data_test.yaml")
   for (i in seq_along(data_test)) {
     check <- names(data_test)[i]
-    data_test[[i]]$observed <- apply(
-      subset(data_test[[i]], select = -c(type, expected)),
-      2,
-      get(paste0("dc_", check))
-    ) %>%
-      ifelse("pass", "fail") %>%
-      as.character()
+    result_test <- get(paste0("dc_", check))(data_test[[i]][, 1])
+    data_test[[i]]$observed <- ifelse(
+      (is.na(result_test) | result_test == FALSE),
+      "fail", "pass"
+    )
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
