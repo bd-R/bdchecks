@@ -6,14 +6,14 @@
 \title{Data check depthOutOfRange}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_depthOutOfRange(TARGETS, minD = 0, maxD = 11000)
+dc_depthOutOfRange(TARGET, min_dep = 0, max_dep = 11000)
 }
 \arguments{
-\item{TARGETS}{a list of vectors to perform data check}
+\item{TARGET}{a vector of numeric values for depth}
 
-\item{minD}{a numeric value specifying minimum depth}
+\item{min_dep}{a numeric value specifying minimum depth}
 
-\item{maxD}{a numeric value specifying maximum depth}
+\item{max_dep}{a numeric value specifying maximum depth}
 }
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
