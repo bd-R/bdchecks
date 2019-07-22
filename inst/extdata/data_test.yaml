@@ -46,12 +46,17 @@ elevationOutOfRange:
   comment:
 depthOutOfRange:
   data:
-    - [minimumDepthInMeters, maximumDepthInMeters, type, expected]
-    - [0, 200, '', pass]
-    - [-100, 600, '', fail]
-    - [100, 11500, '', fail]
-    - [100, 700, '', fail]
-    - ['', 200, '', fail]
+    - [minimumDepthInMeters, type, expected]
+    - [0, correct, pass]
+    - [0.1, correct, pass]
+    - [11000, correct, pass]
+    - [11e3, correct, pass]
+    - [' 1000 ', space, pass]
+    - [-1000, incorrect, fail]
+    - [11001, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 dateNull:
   data:

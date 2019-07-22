@@ -1,11 +1,20 @@
 #' @rdname dc_depthOutOfRange
-#' @param TARGETS a list of vectors to perform data check
-#' @param minD a numeric value specifying minimum depth
-#' @param maxD a numeric value specifying maximum depth
+#' 
+#' @param TARGET a vector of numeric values for depth
+#' @param min_dep a numeric value specifying minimum depth
+#' @param max_dep a numeric value specifying maximum depth
+#' 
+#' @importFrom magrittr "%>%"
+#' 
+dc_depthOutOfRange <- function(TARGET, min_dep = 0, max_dep = 11e3) {
+  # Turns values to numeric (incase of 1e3)
+  result <- as.numeric(TARGET)
+  # Main part - check if value is within range
+  result <- result >= min_dep & result <= max_dep 
 
-dc_depthOutOfRange <- function(TARGETS, minD = 0, maxD = 11e3) {
-  depthOutOfRange <- function(TARGET) {
-    get(TARGET) >= minD & get(TARGET) <= maxD 
-  }
-  lapply(TARGETS, depthOutOfRange)
+  # Turn failed values to FALSE
+  result[is.na(result)] <- FALSE
+  # Get original missing values
+  result[is.na(TARGET) | TARGET == ""] <- NA
+  return(result)
 }
