@@ -6,10 +6,13 @@
 \title{Data check classUnknown}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_classUnknown(TARGET)
+dc_classUnknown(TARGET, classes = c("mammalia", "mammals", "aves",
+  "birds", "reptilia", "reptiles", "amphibia", "amphibians"))
 }
 \arguments{
-\item{TARGET}{a vector to perform data check}
+\item{TARGET}{a vector of species classes}
+
+\item{classes}{a vector of reference classes}
 }
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.

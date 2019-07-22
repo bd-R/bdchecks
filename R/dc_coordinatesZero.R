@@ -1,12 +1,10 @@
 #' @rdname dc_coordinatesZero
 #' 
-#' @param TARGET a vector of event date information
-#' @param date_format a string for full date format
+#' @param TARGET a vector of coordinate information
 #' 
 #' @importFrom magrittr "%>%"
 #' 
 dc_coordinatesZero <- function(TARGET) {
-  TARGET != 0
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace
     as.numeric() # Value must be turned numeric

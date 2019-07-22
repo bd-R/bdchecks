@@ -9,9 +9,7 @@
 dc_coordinatesZero(TARGET)
 }
 \arguments{
-\item{TARGET}{a vector of event date information}
-
-\item{date_format}{a string for full date format}
+\item{TARGET}{a vector of coordinate information}
 }
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.

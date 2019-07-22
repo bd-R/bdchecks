@@ -87,27 +87,19 @@ coordinatesZero:
     - ['', missing, fail]
     - [NA, missing, fail]
   comment:
-coordinatePrecisionMismatch:
-  data:
-    - [coordinatePrecision decimalLatitude decimalLongitude, type, expected]
-    - [0.5, -35.123456, fail]
-    - [1.00e-05, -35.123, pass]
-  comment:
-countryNameUnknown:
-  data:
-    - [Country, type, expected]
-    - [Australia, correct - Capital, pass]
-    - [Israel,  correct - not capital, pass]
-    - [Europe, continent, fail]
-    - [Waradia, non existant, fail]
-  comment:
 classUnknown:
   data:
     - [Class, type, expected]
-    - [Birds, exists - capital, pass]
-    - [birds, exists - no Capital, pass]
-    - [Foxy, typo, fail]
-    - [Unicorns, non-existant, fail]
+    - [Birds, correct, pass]
+    - [birds, correct, pass]
+    - [bird, correct, pass]
+    - [aves, correct, pass]
+    - [ave, correct, pass]
+    - [' reptiles ', space, pass]
+    - [Foxy, incorrects, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 basisOfRecordBadlyFormated:
   data:
