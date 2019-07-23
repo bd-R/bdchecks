@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of publishing year
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_namePublishedYearInFuture <- function(TARGET) {
   current_year <- format(Sys.Date(), "%Y")
   result <- TARGET %>%

@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of uncertainty
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_uncertaintyRangeMismatch <- function(TARGET) {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

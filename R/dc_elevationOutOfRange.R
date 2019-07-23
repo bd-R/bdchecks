@@ -4,8 +4,6 @@
 #' @param min_ele a numeric value specifying minimum elevation
 #' @param max_ele a numeric value specifying maximum elevation
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_elevationOutOfRange <- function(TARGET, min_ele = 0, max_ele = 1e4) {
   # Turns values to numeric (incase of 1e3)
   result <- as.numeric(TARGET)

@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of number of individuals
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_individualCountInvalid <- function(TARGET) {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

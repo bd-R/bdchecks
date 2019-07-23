@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of precision range
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_precisionRangeMismatch <- function(TARGET) {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

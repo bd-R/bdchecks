@@ -3,8 +3,6 @@
 #' @param TARGET a vector of event date information
 #' @param date_format a string for full date format
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_dateNull <- function(TARGET, date_format = "%Y-%m-%d") {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

@@ -15,6 +15,7 @@
 #' dataGeneralizations
 #' @section checkCategory:
 #'  Record_level Terms
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

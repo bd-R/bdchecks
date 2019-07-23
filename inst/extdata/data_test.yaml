@@ -180,7 +180,6 @@ dayInvalid:
 monthInvalid:
   data:
     - [month, type, expected]
-    - [day, type, expected]
     - [1, correct, pass]
     - [12, correct, pass]
     - [1 1, correct, pass]

@@ -15,6 +15,7 @@
 #' decimalLatitude,decimalLongitude
 #' @section checkCategory:
 #'  Location
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

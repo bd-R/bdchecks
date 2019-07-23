@@ -15,6 +15,7 @@
 #' dateIdentified
 #' @section checkCategory:
 #'  Identification
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

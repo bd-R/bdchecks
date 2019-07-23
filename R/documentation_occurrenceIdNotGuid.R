@@ -15,6 +15,7 @@
 #' occurrenceID
 #' @section checkCategory:
 #'  Occurrence
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

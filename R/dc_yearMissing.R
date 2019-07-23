@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of year information
 #' 
-#' @importFrom magrittr "%>%"
-#'
 dc_yearMissing <- function(TARGET) {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

@@ -3,8 +3,6 @@
 #' @param TARGET a vector of a date
 #' @param date_format a string for full date format
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_dateIdentifiedInFuture <- function(TARGET, date_format = "%Y-%m-%d") {
 
   result <- TARGET %>%

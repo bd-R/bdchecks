@@ -15,6 +15,7 @@
 #' class
 #' @section checkCategory:
 #'  Taxon
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of coordinate information
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_coordinatesZero <- function(TARGET) {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

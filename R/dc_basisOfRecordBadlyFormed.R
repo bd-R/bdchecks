@@ -3,8 +3,6 @@
 #' @param TARGET a vector of records
 #' @param records a vector of reference records
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_basisOfRecordBadlyFormed <- function(
   TARGET,
   records = c(

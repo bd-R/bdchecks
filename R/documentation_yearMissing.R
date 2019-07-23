@@ -15,6 +15,7 @@
 #' year
 #' @section checkCategory:
 #'  Event
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

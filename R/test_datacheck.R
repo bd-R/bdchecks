@@ -41,7 +41,7 @@ create_testdata <- function(
 #' @export
 #'
 perform_testdata <- function(data_test = NULL) {
-  data_test <- create_testdata("inst/extdata/data_test.yaml")
+  data_test <- create_testdata()
   for (i in seq_along(data_test)) {
     check <- names(data_test)[i]
     result_test <- get(paste0("dc_", check))(data_test[[i]][, 1])
@@ -50,4 +50,5 @@ perform_testdata <- function(data_test = NULL) {
       "fail", "pass"
     )
   }
+  return(data_test)
 }

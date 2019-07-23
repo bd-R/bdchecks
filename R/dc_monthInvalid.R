@@ -2,7 +2,6 @@
 #' 
 #' @param TARGET a vector of a month
 #' 
-#' @importFrom magrittr "%>%"
 dc_monthInvalid <- function(TARGET) {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

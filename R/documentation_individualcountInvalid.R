@@ -15,6 +15,7 @@
 #' individualCount
 #' @section checkCategory:
 #'  Occurrence
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

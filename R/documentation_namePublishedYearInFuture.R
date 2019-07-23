@@ -15,6 +15,7 @@
 #' namePublishedInYear
 #' @section checkCategory:
 #'  Taxon
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

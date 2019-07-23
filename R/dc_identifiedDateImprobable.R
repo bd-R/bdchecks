@@ -4,8 +4,6 @@
 #' @param date_Linnaeus a date for Linnaeus to start counting from
 #' @param date_format a string for full date format
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_identifiedDateImprobable <- function(
   TARGET,
   date_Linnaeus = "1753-01-01",

@@ -6,10 +6,15 @@
 \title{Data check identifiedDateImprobable}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_identifiedDateImprobable(TARGET)
+dc_identifiedDateImprobable(TARGET, date_Linnaeus = "1753-01-01",
+  date_format = "\%Y-\%m-\%d")
 }
 \arguments{
-\item{TARGET}{a vector to perform data check}
+\item{TARGET}{a vector of a date}
+
+\item{date_Linnaeus}{a date for Linnaeus to start counting from}
+
+\item{date_format}{a string for full date format}
 }
 \description{
 This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.

@@ -2,8 +2,6 @@
 #' 
 #' @param TARGET a vector of a day
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_dayInvalid <- function(TARGET) {
   result <- TARGET %>%
     gsub(" ", "", .) %>% # Remove possible spaces

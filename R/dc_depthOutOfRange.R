@@ -4,8 +4,6 @@
 #' @param min_dep a numeric value specifying minimum depth
 #' @param max_dep a numeric value specifying maximum depth
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_depthOutOfRange <- function(TARGET, min_dep = 0, max_dep = 11e3) {
   # Turns values to numeric (incase of 1e3)
   result <- as.numeric(TARGET)

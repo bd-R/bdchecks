@@ -63,6 +63,7 @@ roxygen_comment_generate <- function(DC) {
     "#' @section sampleFailData:\n#' FIELDFAIL",
     "#' @section targetDWCField:\n#' FIELDTARGET",
     "#' @section checkCategory:\n#'  FIELDCATERGORY",
+    "#' @importFrom magrittr %>%",
     "#' @export"
   )
 

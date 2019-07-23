@@ -4,8 +4,6 @@
 #' @param date_separator regex string to turn date separators,
 #' e.g., dot into "-"
 #' 
-#' @importFrom magrittr "%>%"
-#' 
 dc_eventDateInFuture <- function(TARGET, date_separator = "\\.| ") {
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace

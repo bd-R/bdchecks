@@ -15,6 +15,7 @@
 #' eventDate,year,verbatimEventDate
 #' @section checkCategory:
 #'  Event
+#' @importFrom magrittr %>%
 #' @export
 
 NULL

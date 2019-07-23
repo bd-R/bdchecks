@@ -15,6 +15,7 @@
 #' country,countryCode
 #' @section checkCategory:
 #'  Location
+#' @importFrom magrittr %>%
 #' @export
 
 NULL
