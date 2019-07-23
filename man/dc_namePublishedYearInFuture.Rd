@@ -9,7 +9,8 @@
 dc_namePublishedYearInFuture(TARGET)
 }
 \arguments{
-\item{TARGET}{a vector of publishing year}
+\item{TARGET}{a vector of publishing year information. To pass it must be
+a numeric, positive, four digit value, less or equal to current year.}
 }
 \description{
 This data check answers: "Is publication year not in the future?" question.\cr Data check will pass if \strong{dwc:namePublishedInYear is valid} and will fail if \strong{dwc:namePublishedInYear is in the future}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{namePublishedInYear=2000}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{namePublishedInYear=2230}, such data check would return \code{Failed}.

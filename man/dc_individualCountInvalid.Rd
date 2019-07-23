@@ -9,7 +9,8 @@
 dc_individualCountInvalid(TARGET)
 }
 \arguments{
-\item{TARGET}{a vector of number of individuals}
+\item{TARGET}{a vector of number of individuals. To pass must be a positive
+interger.}
 }
 \description{
 This data check answers: "Is number of individuals a positive integer?" question.\cr Data check will pass if \strong{The count of individuals is a valid integer} and will fail if \strong{The count of individuals is not an integer and therefore invalid}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{individualCount=1}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{individualCount=0.3,individualCount=-1,individualCount=0}, such data check would return \code{Failed}.

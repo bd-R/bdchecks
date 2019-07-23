@@ -12,7 +12,7 @@
 #' @section sampleFailData:
 #' Country name (dwc:country) and ISO country code (dwc:countryCode) do not match
 #' @section targetDWCField:
-#' country,countryCode
+#' country
 #' @section checkCategory:
 #'  Location
 #' @importFrom magrittr %>%

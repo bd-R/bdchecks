@@ -1,11 +1,12 @@
 #' @rdname dc_dateNull
 #' 
-#' @param TARGET a vector of event date information
-#' @param date_format a string for full date format
+#' @param TARGET a vector of event date information. To pass must match given
+#' date format.
+#' @param date_format a string for full date format.
 #' 
 dc_dateNull <- function(TARGET, date_format = "%Y-%m-%d") {
   result <- TARGET %>%
-    trimws() %>% # Trim extra whitespace
+    gsub(" ", "", .) %>% # Remove possible spaces
     gsub("\\.", "-", .) # Turn wrong seprators into relevant -
   # Try to check if only year is present
   result_year <- dc_yearMissing(ifelse(nchar(result) == 4, result, NA))

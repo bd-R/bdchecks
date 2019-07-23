@@ -9,9 +9,10 @@
 dc_modifiedInFuture(TARGET, date_format = "\%Y-\%m-\%d")
 }
 \arguments{
-\item{TARGET}{a vector of a date}
+\item{TARGET}{a vector of a date information. To pass must be a valid format
+in the past.}
 
-\item{date_format}{a string for full date format}
+\item{date_format}{a string for full date format.}
 }
 \description{
 This data check answers: "Is modification date not in the future?" question.\cr Data check will pass if \strong{dcterms:modified date is valid} and will fail if \strong{dcterms:modified is in the future}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{dcterms:modified=2000-01-01}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{dcterms:modified=2230-12-31}, such data check would return \code{Failed}.

@@ -6,10 +6,14 @@
 \title{Data check occurrenceIdNotGuid Check if an identifier for the occurrence is a globally uniquely identifier (currently we use regex pattern solution is implemented)}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_occurrenceIdNotGuid(TARGET)
+dc_occurrenceIdNotGuid(TARGET,
+  guid = "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[0-9a-f]{4}-[0-9a-f]{12}$")
 }
 \arguments{
-\item{TARGET}{a vector to perform data check}
+\item{TARGET}{a vector of globally uniquely identifier. To pass must match
+provided regex.}
+
+\item{guid}{regex string used to capture globally uniquely identifier.}
 }
 \description{
 This data check answers: "Is occurence ID and GUID?" question.\cr Data check will pass if \strong{occurrenceID is a globally uninique identifier (GUID)} and will fail if \strong{occurrenceID is an integer, assuring that it is not a globally uninique identifier (GUID)}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{3cfe9ab4-79f8-4afd-8da5-723183ef16a3}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{occurrenceID=42}, such data check would return \code{Failed}.

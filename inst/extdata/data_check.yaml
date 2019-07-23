@@ -277,12 +277,12 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
       ModificationDate: 2019-06-12
       ModificationHist:
   Input:
-    Target: country,countryCode
+    Target: country
     Dependency:
       DependencyType: Internal
       DataChecks:
-      Rpackages: rgbif 
-      Data: isocodes$name,isocodes$code
+      Rpackages:
+      Data: countryCode
 DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
   name: coordinatesZero
   meta:

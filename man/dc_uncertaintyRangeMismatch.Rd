@@ -9,7 +9,8 @@
 dc_uncertaintyRangeMismatch(TARGET)
 }
 \arguments{
-\item{TARGET}{a vector of uncertainty}
+\item{TARGET}{a vector of coordinate uncertainty. To pass it must be a
+positive integer.}
 }
 \description{
 This data check answers: "Is uncertainty mismatch is an intiger greater than zero?" question.\cr Data check will pass if \strong{Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) is a whole number and greater than zero (meters)} and will fail if \strong{Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) should be a whole number and greater than zero (meters)}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{coordinateUncertaintyInMeters=1}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{coordinateUncertaintyInMeters=0.002,coordinateUncertaintyInMeters=-1,coordinateUncertaintyInMeters=0}, such data check would return \code{Failed}.

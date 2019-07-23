@@ -8,9 +8,10 @@
 dc_dateNull(TARGET, date_format = "\%Y-\%m-\%d")
 }
 \arguments{
-\item{TARGET}{a vector of event date information}
+\item{TARGET}{a vector of event date information. To pass must match given
+date format.}
 
-\item{date_format}{a string for full date format}
+\item{date_format}{a string for full date format.}
 }
 \description{
 This data check answers: "Is eventDate, year or verbatimEventDate not NULL?" question.\cr Data check will pass if \strong{Date information is present} and will fail if \strong{No date information}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{year=2000 + eventDate=2000.01.01 + verbatimEventDate=2000.01.01}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{year=NULL + eventDate=NULL + verbatimEventDate=NULL}, such data check would return \code{Failed}.

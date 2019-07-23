@@ -1,7 +1,7 @@
 #' @rdname dc_basisOfRecordBadlyFormed
 #' 
-#' @param TARGET a vector of records
-#' @param records a vector of reference records
+#' @param TARGET a vector of records. To pass must be within given records set.
+#' @param records a vector of reference records.
 #' 
 dc_basisOfRecordBadlyFormed <- function(
   TARGET,
@@ -14,8 +14,8 @@ dc_basisOfRecordBadlyFormed <- function(
   )
 ) {
   result <- TARGET %>%
-    gsub(" ", "", .) %>% # Trim extra whitespace & possible space
-    tolower() # Match case
+    tolower() %>%
+    gsub(" ", "", .) # Remove possible spaces
   result <- result %in% tolower(records)
   return(perform_dc_missing(result, TARGET))
 }

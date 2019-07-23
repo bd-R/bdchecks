@@ -9,11 +9,12 @@
 dc_depthOutOfRange(TARGET, min_dep = 0, max_dep = 11000)
 }
 \arguments{
-\item{TARGET}{a vector of numeric values for depth}
+\item{TARGET}{a vector of numeric values for depth. To pass must be between
+min_dep and max_dep.}
 
-\item{min_dep}{a numeric value specifying minimum depth}
+\item{min_dep}{a numeric value specifying minimum depth.}
 
-\item{max_dep}{a numeric value specifying maximum depth}
+\item{max_dep}{a numeric value specifying maximum depth.}
 }
 \description{
 This data check answers: "Is depth within range?" question.\cr Data check will pass if \strong{Minimum depth is greater than or equal to zero (0) and maximum depth is less than 11,000 meters} and will fail if \strong{Minimum depth is less than zero (0) or maximum depth is greater than 11,000 meters}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumDepthInMeters=1,maximumDepthInMeters=100}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{maximumDepthInMeters=19380}, such data check would return \code{Failed}.

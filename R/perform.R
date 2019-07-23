@@ -42,10 +42,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
         )
         target_result[[j]] <- NULL
       } else {
-        if (dc@name %in% "countryMismatch") {
-          # res <- get(paste0("dc_", dc@name))(TARGET1, TARGET2, DEPEND1, DEPEND2)
-          target_result[[j]] <- NULL
-        } else if (dc@name %in% c("coordinatePrecisionMismatch")) {
+        if (dc@name %in% c("countryMismatch", "coordinatePrecisionMismatch")) {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
             data[, j, drop = TRUE],
             data[, dc@input$Dependency$Data, drop = TRUE]

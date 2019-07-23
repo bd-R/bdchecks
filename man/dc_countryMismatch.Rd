@@ -6,16 +6,17 @@
 \title{Data check countryMismatch Check if given country match given country code.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_countryMismatch(TARGET1, TARGET2, DEPEND1, DEPEND2)
+dc_countryMismatch(TARGET, DEPEND,
+  path_reference = system.file("extdata/isocodes.csv", package =
+  "bdchecks"))
 }
 \arguments{
-\item{TARGET1}{first vector of country names}
+\item{TARGET}{a vector of country names. To pass it's name must match
+country code in reference set.}
 
-\item{TARGET2}{second vector of country names}
+\item{DEPEND}{a vector of country codes.}
 
-\item{DEPEND1}{first vector of country codes}
-
-\item{DEPEND2}{second vector of country codes}
+\item{path_reference}{path to reference set of country names.}
 }
 \description{
 This data check answers: "Does country and country code match?" question.\cr Data check will pass if \strong{Country name (dwc:country) and ISO country code (dwc:countryCode) match} and will fail if \strong{Country name (dwc:country) and ISO country code (dwc:countryCode) do not match}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{country=Australia, countryCode=AU}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{country=Australia, countryCode=4}, such data check would return \code{Failed}.
@@ -32,7 +33,7 @@ Country name (dwc:country) and ISO country code (dwc:countryCode) do not match
 
 \section{targetDWCField}{
 
-country,countryCode
+country
 }
 
 \section{checkCategory}{

@@ -10,9 +10,9 @@ dc_classUnknown(TARGET, classes = c("mammalia", "mammals", "aves",
   "birds", "reptilia", "reptiles", "amphibia", "amphibians"))
 }
 \arguments{
-\item{TARGET}{a vector of species classes}
+\item{TARGET}{a vector of classes. To pass must be within given classes set.}
 
-\item{classes}{a vector of reference classes}
+\item{classes}{a vector of reference classes.}
 }
 \description{
 This data check answers: "Is scientific name of the class known?" question.\cr Data check will pass if \strong{Taxonomic rank Class was interpreted correctly} and will fail if \strong{Taxonomic rank Class value cannot be interpreted}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{class=Unicorns}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{class=Birds}, such data check would return \code{Failed}.

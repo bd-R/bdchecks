@@ -1,6 +1,9 @@
 #' @rdname dc_dataGeneralised
-#' @param TARGET a vector to perform data check
+#' 
+#' @param TARGET a vector of data generalization value. To pass must a an empty
+#' value.
 #' 
 dc_dataGeneralised <- function(TARGET) {
-  is.na(TARGET)
+  result <- is.na(TARGET) | TARGET == ""
+  return(result)
 }

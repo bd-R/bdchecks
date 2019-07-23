@@ -9,9 +9,10 @@
 dc_dateIdentifiedInFuture(TARGET, date_format = "\%Y-\%m-\%d")
 }
 \arguments{
-\item{TARGET}{a vector of a date}
+\item{TARGET}{a vector of a date information. To pass must be a valid format
+in the past.}
 
-\item{date_format}{a string for full date format}
+\item{date_format}{a string for full date format.}
 }
 \description{
 This data check answers: "Is record identified in the past?" question.\cr Data check will pass if \strong{Date (dwc:dateIdentified) is not in the future} and will fail if \strong{Date (dwc:dateIdentified) is in the future}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{dateIdentified <= TODAY}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{dateIdentified > TODAY}, such data check would return \code{Failed}.
