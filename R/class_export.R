@@ -11,7 +11,7 @@
 #' @importFrom yaml yaml.load_file
 #'
 datacheck_info_export <- function(
-  path_yaml = "./inst/extdata/dataChecks.yaml",
+  path_yaml = system.file("extdata/data_check.yaml", package = "bdchecks"),
   path_rd = "./R/",
   id_rd = "documentation_"
 ) {

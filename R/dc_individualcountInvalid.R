@@ -1,4 +1,4 @@
-#' @rdname dc_individualcountInvalid
+#' @rdname dc_individualCountInvalid
 #' 
 #' @param TARGET a vector of number of individuals
 #' 
