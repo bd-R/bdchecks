@@ -2,7 +2,7 @@
 % Please edit documentation in R/dc_dateNull.R, R/documentation_dateNull.R
 \name{dc_dateNull}
 \alias{dc_dateNull}
-\title{Data check dateNull}
+\title{Data check dateNull Check if eventDate, year, verbatimEventDate are not NULL}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_dateNull(TARGET, date_format = "\%Y-\%m-\%d")
@@ -13,7 +13,7 @@ dc_dateNull(TARGET, date_format = "\%Y-\%m-\%d")
 \item{date_format}{a string for full date format}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is eventDate, year or verbatimEventDate not NULL?" question.\cr Data check will pass if \strong{Date information is present} and will fail if \strong{No date information}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{year=2000 + eventDate=2000.01.01 + verbatimEventDate=2000.01.01}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{year=NULL + eventDate=NULL + verbatimEventDate=NULL}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

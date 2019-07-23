@@ -3,7 +3,7 @@
 %   R/documentation_countryMismatch.R
 \name{dc_countryMismatch}
 \alias{dc_countryMismatch}
-\title{Data check countryMismatch}
+\title{Data check countryMismatch Check if given country match given country code.}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_countryMismatch(TARGET1, TARGET2, DEPEND1, DEPEND2)
@@ -18,7 +18,7 @@ dc_countryMismatch(TARGET1, TARGET2, DEPEND1, DEPEND2)
 \item{DEPEND2}{second vector of country codes}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Does country and country code match?" question.\cr Data check will pass if \strong{Country name (dwc:country) and ISO country code (dwc:countryCode) match} and will fail if \strong{Country name (dwc:country) and ISO country code (dwc:countryCode) do not match}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{country=Australia, countryCode=AU}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{country=Australia, countryCode=4}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

@@ -3,7 +3,7 @@
 %   R/documentation_dataGeneralised.R
 \name{dc_dataGeneralised}
 \alias{dc_dataGeneralised}
-\title{Data check dataGeneralised}
+\title{Data check dataGeneralised Chech if dataGeneralizations is a NULL column (ie, latitude and longitude were not generalized)}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_dataGeneralised(TARGET)
@@ -12,7 +12,7 @@ dc_dataGeneralised(TARGET)
 \item{TARGET}{a vector to perform data check}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is dataGeneralizations NULL?" question.\cr Data check will pass if \strong{Latitude and longitude values have not been generalized as indicated by dwc:dataGeneralizations is NULL} and will fail if \strong{Latitude and longitude values may have been generalized as indicated by dwc:dataGeneralizations is not NULL}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{dataGeneralizations=}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{dataGeneralizations=record placed on 0.1 degree grid}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

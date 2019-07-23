@@ -70,30 +70,30 @@ roxygen_comment_generate <- function(DC) {
   # Add short description
   skeleton <- sub(
     "shortDesc",
-    paste("#' Data check", DC$name, DC$meta$description$Main),
+    paste("#' Data check", DC$name, DC$meta$Description$Main),
     skeleton
   )
 
   # Add long description
   skeleton <- sub(
     "longDesc", paste0(
-      "#'     This data check answers: \"", DC$meta$description$InputQuestion,
-      "?\" question.",
+      "#'     This data check answers: \"", DC$meta$Description$Question,
+      "\" question.",
       "\\\\cr Data check will pass if \\\\strong{",
-      DC$meta$description$Example$Pass, "}",
+      DC$meta$Description$Example$Pass, "}",
       " and will fail if \\\\strong{",
-      DC$meta$description$Example$Fail, "}.",
+      DC$meta$Description$Example$Fail, "}.",
       "\\\\cr Dimension of this data check is \\\\strong{",
       DC$meta$flags$Dimension, "}",
       " and it's flagging type is: \\\\strong{FLAG}",
       "\\\\cr Example of entries that will pass: \\\\code{",
-      DC$meta$description$Example$InputPass, "},",
+      DC$meta$Description$Example$InputPass, "},",
       " such data check would return \\\\code{",
-      DC$meta$description$Example$OutputPass, "}.",
+      DC$meta$Description$Example$OutputPass, "}.",
       "\\\\cr Example of entries that will fail: \\\\code{",
-      DC$meta$description$Example$InputFail, "},",
+      DC$meta$Description$Example$InputFail, "},",
       " such data check would return \\\\code{",
-      DC$meta$description$Example$OutputFail, "}."
+      DC$meta$Description$Example$OutputFail, "}."
     ),
     skeleton
   )
@@ -105,8 +105,8 @@ roxygen_comment_generate <- function(DC) {
   # Add keywords
   skeleton <- c(
     skeleton,
-    ifelse(!is.null(DC$meta$description$keywords),
-      paste("#' @keywords", DC$meta$description$keywords),
+    ifelse(!is.null(DC$meta$Description$keywords),
+      paste("#' @keywords", DC$meta$Description$keywords),
       ""
     )
   )

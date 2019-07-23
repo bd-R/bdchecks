@@ -1,7 +1,7 @@
 #'
-#' Data check dateIdentifiedInFuture 
+#' Data check dateIdentifiedInFuture Check if record identification date is not in the future
 #'
-#'     This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+#'     This data check answers: "Is record identified in the past?" question.\cr Data check will pass if \strong{Date (dwc:dateIdentified) is not in the future} and will fail if \strong{Date (dwc:dateIdentified) is in the future}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{dateIdentified <= TODAY}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{dateIdentified > TODAY}, such data check would return \code{Failed}.
 #' @name dc_dateIdentifiedInFuture
 #' @format An object of class function to perform a specific data check.
 #' @references None

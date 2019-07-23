@@ -3,7 +3,7 @@ DC_c09ecbf9-34e3-4f3e-b74a-8796af15e59f:
   meta:
     Description:
       Main: Check if year information is not missing
-      InputQuestion: Is year information present?
+      Question: Is year information present?
       Example:
         Fail: The value for dwc:year is NULL
         Pass: The value for dwc:year is valid
@@ -83,7 +83,7 @@ DC_0bb8297d-8f8a-42d2-80c1-558f29efe798:
   meta:
     Description:
       Main: Check if elevationOutOfRange is not out of range.
-      InputQuestion: Is elevation within range?
+      Question: Is elevation within range?
       Example:
         Fail: Minimum elevation in meters is less than zero and/or maximum elevation in meters is greater than 10,000
         Pass: Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters
@@ -123,7 +123,7 @@ DC_04b2c8f3-c71b-4e95-8e43-f70374c5fb92:
   meta:
     Description:
       Main: Check if depthOutOfRange is not out of range.
-      InputQuestion: Is depth within range?
+      Question: Is depth within range?
       Example:
         Fail: Minimum depth is less than zero (0) or maximum depth is greater than
           11,000 meters
@@ -165,7 +165,7 @@ DC_41267642-60ff-4116-90eb-499fee2cd83f:
   meta:
     Description:
       Main: Check if eventDate, year, verbatimEventDate are not NULL
-      InputQuestion: Is eventDate, year or verbatimEventDate not NULL?
+      Question: Is eventDate, year or verbatimEventDate not NULL?
       Example:
         Fail: No date information
         Pass: Date information is present
@@ -205,7 +205,7 @@ DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
   meta:
     Description:
       Main: Chech if dataGeneralizations is a NULL column (ie, latitude and longitude were not generalized)
-      InputQuestion: Is dataGeneralizations NULL?
+      Question: Is dataGeneralizations NULL?
       Example:
         Fail: Latitude and longitude values may have been generalized as indicated
           by dwc:dataGeneralizations is not NULL
@@ -247,7 +247,7 @@ DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
   meta:
     Description:
       Main: Check if given country match given country code.
-      InputQuestion: Does country and country code match?
+      Question: Does country and country code match?
       Example:
         Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
           not match
@@ -288,7 +288,7 @@ DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
   meta:
     Description:
       Main: Check if decimal values given in decimalLatitude and decimalLongitude are not zero 
-      InputQuestion: Is decimal number in langitude and latitude not zero?
+      Question: Is decimal number in langitude and latitude not zero?
       Example:
         Fail: Decimal latitude and longitude are both zero (0) degrees
         Pass: Decimal latitude and longitude are not zero (0) degrees
@@ -328,7 +328,7 @@ DC_65f962aa-c474-4392-9176-028bf0b86a2e:
   meta:
     Description:
       Main: Check if decimal values given in decimalLatitude and decimalLongitude does agree witha a decimal representation of the precision of the coordinates (coordinatePrecision)
-      InputQuestion: Is decimal number in langitude and latitude not smaller than a given decimal precision?
+      Question: Is decimal number in langitude and latitude not smaller than a given decimal precision?
       Example:
         Fail: The number of decimal places of latitude (dwc:decimalLatitude) or longitude
           (dwc:decimalLongitude) is not in agreement with the supplied coordinate
@@ -372,7 +372,7 @@ DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
   meta:
     Description:
       Main: Check if the name of the country or major administrative unit in which the location occurs is within given vocabulary
-      InputQuestion: Is country known?
+      Question: Is country known?
       Example:
         Fail: Country name (dwc:country) not in vocabulary
         Pass: Country name (dwc:country) is in vocabulary
@@ -412,7 +412,7 @@ DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
   meta:
     Description:
       Main: The full scientific name of the class in which the taxon is classified is within given vocabulary
-      InputQuestion: Is scientific name of the class known?
+      Question: Is scientific name of the class known?
       Example:
         Fail: Taxonomic rank Class value cannot be interpreted
         Pass: Taxonomic rank Class was interpreted correctly
@@ -452,7 +452,7 @@ DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
   meta:
     Description:
       Main: Check if the specific nature of the data record is within controlled vocabulary
-      InputQuestion: Is basis of record within controlled vocabulary?
+      Question: Is basis of record within controlled vocabulary?
       Example:
         Fail: dwc:basisOfRecord could not be unambiguously matched to vocabulary
         Pass: dwc:basisOfRecord was matched to vocabulary

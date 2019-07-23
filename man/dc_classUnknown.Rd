@@ -3,7 +3,7 @@
 %   R/documentation_classUnknown.R
 \name{dc_classUnknown}
 \alias{dc_classUnknown}
-\title{Data check classUnknown}
+\title{Data check classUnknown The full scientific name of the class in which the taxon is classified is within given vocabulary}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_classUnknown(TARGET, classes = c("mammalia", "mammals", "aves",
@@ -15,7 +15,7 @@ dc_classUnknown(TARGET, classes = c("mammalia", "mammals", "aves",
 \item{classes}{a vector of reference classes}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is scientific name of the class known?" question.\cr Data check will pass if \strong{Taxonomic rank Class was interpreted correctly} and will fail if \strong{Taxonomic rank Class value cannot be interpreted}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{class=Unicorns}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{class=Birds}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

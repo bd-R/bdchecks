@@ -3,7 +3,7 @@
 %   R/documentation_individualCountInvalid.R
 \name{dc_individualCountInvalid}
 \alias{dc_individualCountInvalid}
-\title{Data check individualCountInvalid}
+\title{Data check individualCountInvalid Check if the number of individuals represented present at the time of the occurrence is and intiger}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_individualCountInvalid(TARGET)
@@ -12,7 +12,7 @@ dc_individualCountInvalid(TARGET)
 \item{TARGET}{a vector of number of individuals}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is number of individuals a positive integer?" question.\cr Data check will pass if \strong{The count of individuals is a valid integer} and will fail if \strong{The count of individuals is not an integer and therefore invalid}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{individualCount=1}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{individualCount=0.3,individualCount=-1,individualCount=0}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

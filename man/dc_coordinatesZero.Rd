@@ -3,7 +3,7 @@
 %   R/documentation_coordinatesZero.R
 \name{dc_coordinatesZero}
 \alias{dc_coordinatesZero}
-\title{Data check coordinatesZero}
+\title{Data check coordinatesZero Check if decimal values given in decimalLatitude and decimalLongitude are not zero}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_coordinatesZero(TARGET)
@@ -12,7 +12,7 @@ dc_coordinatesZero(TARGET)
 \item{TARGET}{a vector of coordinate information}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is decimal number in langitude and latitude not zero?" question.\cr Data check will pass if \strong{Decimal latitude and longitude are not zero (0) degrees} and will fail if \strong{Decimal latitude and longitude are both zero (0) degrees}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{decimalLatitude=-1, decimalLongitude=1}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{decimalLatitude=0, decimalLongitude=0}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

@@ -1,7 +1,7 @@
 #'
-#' Data check depthOutOfRange 
+#' Data check depthOutOfRange Check if depthOutOfRange is not out of range.
 #'
-#'     This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+#'     This data check answers: "Is depth within range?" question.\cr Data check will pass if \strong{Minimum depth is greater than or equal to zero (0) and maximum depth is less than 11,000 meters} and will fail if \strong{Minimum depth is less than zero (0) or maximum depth is greater than 11,000 meters}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumDepthInMeters=1,maximumDepthInMeters=100}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{maximumDepthInMeters=19380}, such data check would return \code{Failed}.
 #' @name dc_depthOutOfRange
 #' @format An object of class function to perform a specific data check.
 #' @references None

@@ -3,7 +3,7 @@
 %   R/documentation_elevationOutOfRange.R
 \name{dc_elevationOutOfRange}
 \alias{dc_elevationOutOfRange}
-\title{Data check elevationOutOfRange}
+\title{Data check elevationOutOfRange Check if elevationOutOfRange is not out of range.}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_elevationOutOfRange(TARGET, min_ele = 0, max_ele = 10000)
@@ -16,7 +16,7 @@ dc_elevationOutOfRange(TARGET, min_ele = 0, max_ele = 10000)
 \item{max_ele}{a numeric value specifying maximum elevation}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is elevation within range?" question.\cr Data check will pass if \strong{Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters} and will fail if \strong{Minimum elevation in meters is less than zero and/or maximum elevation in meters is greater than 10,000}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumElevationInMeters=1,maximumElevationInMeters=100}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{maximumElevationInMeters=19375}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 

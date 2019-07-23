@@ -3,7 +3,7 @@
 %   R/documentation_basisOfRecordBadlyFormed.R
 \name{dc_basisOfRecordBadlyFormed}
 \alias{dc_basisOfRecordBadlyFormed}
-\title{Data check basisOfRecordBadlyFormed}
+\title{Data check basisOfRecordBadlyFormed Check if the specific nature of the data record is within controlled vocabulary}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_basisOfRecordBadlyFormed(TARGET, records = c("HumanObservation",
@@ -16,7 +16,7 @@ dc_basisOfRecordBadlyFormed(TARGET, records = c("HumanObservation",
 \item{records}{a vector of reference records}
 }
 \description{
-This data check answers: "?" question.\cr Data check will pass if \strong{} and will fail if \strong{}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{}, such data check would return \code{}.\cr Example of entries that will fail: \code{}, such data check would return \code{}.
+This data check answers: "Is basis of record within controlled vocabulary?" question.\cr Data check will pass if \strong{dwc:basisOfRecord was matched to vocabulary} and will fail if \strong{dwc:basisOfRecord could not be unambiguously matched to vocabulary}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{basisOfRecord=HumanObservation,basisOfRecord=LIVING_SPECIMEN}, such data check would return \code{Passed}.\cr Example of entries that will fail: \code{basisOfRecord=Human specimen}, such data check would return \code{Failed}.
 }
 \section{samplePassData}{
 
