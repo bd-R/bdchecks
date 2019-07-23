@@ -613,7 +613,7 @@ DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
       Rpackages:
       Data:
 DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
-  name: individualcountInvalid
+  name: individualCountInvalid
   meta:
     Description:
       Main: Check if the number of individuals represented present at the time of the occurrence is and intiger

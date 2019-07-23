@@ -150,12 +150,17 @@ uncertaintyRangeMismatch:
 individualCountInvalid:
   data:
     - [individualCount, type, expected]
-    - [0, zero, fail]
-    - [0.5, not integer, fail]
-    - [-1, negative, fail]
-    - [1, in racnge, pass]
-    - [10000000, in range, pass]
-    - [1e6, in range, pass]
+    - [1, correct, pass]
+    - [11, correct, pass]
+    - [1 1, correct, pass]
+    - [' 1 ', space, pass]
+    - [0, incorrect, fail]
+    - [-1, incorrect, fail]
+    - [0.1, incorrect, fail]
+    - [-0.1, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 dayInvalid:
   data:
