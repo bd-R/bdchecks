@@ -3,9 +3,9 @@
 #' @param TARGET a vector of a day
 #' 
 #' @importFrom magrittr "%>%"
+#' 
 dc_dayInvalid <- function(TARGET) {
   result <- TARGET %>%
-    trimws() %>% # Trim extra whitespace
     gsub(" ", "", .) %>% # Remove possible spaces
     as.numeric() # This is main criteria - value must be turned numeric
   # Day must be an integer between 1 and 31

@@ -210,9 +210,13 @@ namePublishedYearInFuture:
 identifiedDateImprobable:
   data:
     - [dateIdentified, type, expected]
-    - [1573-02-14, before Linneus, fail]
-    - [3000-01-01, future, fail]
-    - [2000-01-01, probable, pass]
+    - [2000-01-01, correct, pass]
+    - [2000.01.01, correct, pass]
+    - [1573-02-14, incorrect, fail]
+    - [3000-01-01, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 dateIdentifiedInFuture:
   data:
