@@ -134,11 +134,18 @@ precisionRangeMismatch:
 uncertaintyRangeMismatch:
   data:
     - [coordinateUncertaintyInMeters, type, expected]
-    - [-3, not in range, fail]
-    - [0, not in range, fail]
-    - [0.0002, decimal, '']
-    - [1, in range, pass]
-    - [1000, in range, pass]
+    - [1, correct, pass]
+    - [1e3, correct, pass]
+    - [11, correct, pass]
+    - [1 1, correct, pass]
+    - [' 1 ', space, pass]
+    - [0, incorrect, fail]
+    - [-1, incorrect, fail]
+    - [0.1, incorrect, fail]
+    - [-0.1, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 individualCountInvalid:
   data:
