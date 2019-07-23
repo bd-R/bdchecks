@@ -8,10 +8,5 @@ dc_coordinatesZero <- function(TARGET) {
     as.numeric() # Value must be turned numeric
   # Main part - check if value is equal to one
   result <- result == 1
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

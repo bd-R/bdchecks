@@ -9,10 +9,5 @@ dc_uncertaintyRangeMismatch <- function(TARGET) {
     as.numeric() # This is main criteria - value must be turned numeric
   # Precesion must be an integer greater than 0
   result <- result %% 1 == 0 & result > 0
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

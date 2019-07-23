@@ -14,6 +14,7 @@
 #'
 #' @examples
 #' perform_dc(data_bats)
+#' 
 #' @export
 #'
 perform_dc <- function(data = NULL, wanted_dc = NULL) {
@@ -77,4 +78,22 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
   } else {
     return(NULL)
   }
+}
+
+#' Find Missing Values
+#'
+#' Internal function that deals with missing values. For original missing values
+#' ("" or NA) it returns NA. For generated NA values it returns NA.
+#'
+#' @param result Data check modified TARGET vector
+#' @param TARGET Original TARGET column that's submitted to datacheck
+#'
+#' @return result vector with inserted NA and FALSE values
+#'
+perform_dc_missing <- function(result, TARGET) {
+  # Turn failed values to FALSE
+  result[is.na(result)] <- FALSE
+  # Get original missing values
+  result[is.na(TARGET) | TARGET == ""] <- NA
+  return(result)
 }

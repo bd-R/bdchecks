@@ -11,10 +11,5 @@ dc_eventDateInFuture <- function(TARGET, date_separator = "\\.| ") {
     as.Date(origin = "1970-01-01") # Turn or correct values into a date
   # Main part - check if date is less than current time
   result <- result <= Sys.Date()
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

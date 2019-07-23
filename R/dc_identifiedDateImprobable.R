@@ -9,7 +9,6 @@ dc_identifiedDateImprobable <- function(
   date_Linnaeus = "1753-01-01",
   date_format = "%Y-%m-%d"
 ) {
-
   result <- TARGET %>%
     trimws() %>% # Trim extra whitespace
     gsub("\\.", "-", .) # Turn wrong seprators into relevant -
@@ -18,10 +17,5 @@ dc_identifiedDateImprobable <- function(
   result_1 <- result >= as.Date(date_Linnaeus, origin = "1970-01-01")
   result_2 <- result <= Sys.Date()
   result <- result_1 & result_2
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

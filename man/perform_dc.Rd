@@ -22,4 +22,5 @@ on a give data set
 }
 \examples{
 perform_dc(data_bats)
+
 }

@@ -9,10 +9,5 @@ dc_elevationOutOfRange <- function(TARGET, min_ele = 0, max_ele = 1e4) {
   result <- as.numeric(TARGET)
   # Main part - check if value is within range
   result <- result >= min_ele & result <= max_ele 
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

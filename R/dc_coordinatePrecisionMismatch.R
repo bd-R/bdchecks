@@ -17,10 +17,5 @@ dc_coordinatePrecisionMismatch <- function(TARGET, DEPEND) {
     nchar()
   # Main part - check if country is real
   result <- n_target <= n_depend
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

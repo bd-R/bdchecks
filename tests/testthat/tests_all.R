@@ -16,7 +16,6 @@ test_that("summary_dc", {
   expect_s3_class(foo, "data.frame")
   # expect_equal(nrow(foo), 22)
   expect_equal(ncol(foo), 5)
-  expect_equal(ncol(foo), 5)
 
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   expect_s3_class(foo, "data.frame")
@@ -39,13 +38,13 @@ test_that("perform_dc", {
   result <- expect_warning(perform_dc(data_bats))
   # we should have at least 18 performed DCs
   expect_gt(length(result@DC), 10)
-})
-# test performDC
-# performs one data check on a given data set
-test_that("perform_dc", {
+
+  # performs one data check on a given data set
+  test_that("perform_dc", {
   # No arguments provided
   expect_warning(perform_dc())
   expect_warning(perform_dc(mtcars, "monthInvalid"))
   # This will depend on data version
   expect_equal(sum(perform_dc(data_bats, "monthInvalid")@flags[[1]]@result), 1e3)
 })
+

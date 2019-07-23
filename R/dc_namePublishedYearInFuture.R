@@ -9,10 +9,5 @@ dc_namePublishedYearInFuture <- function(TARGET) {
     as.numeric() # This is main criteria - value must be turned numeric
   # Year must be possitive and probably contain for digits
   result <- result > 0 & nchar(result) == 4 & result <= current_year
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

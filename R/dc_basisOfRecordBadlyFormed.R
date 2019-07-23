@@ -17,10 +17,5 @@ dc_basisOfRecordBadlyFormed <- function(
     gsub(" ", "", .) %>% # Trim extra whitespace & possible space
     tolower() # Match case
   result <- result %in% tolower(records)
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

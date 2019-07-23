@@ -8,10 +8,5 @@ dc_precisionRangeMismatch <- function(TARGET) {
     as.numeric() # This is main criteria - value must be turned numeric
   # Precesion must be between 0 & 1
   result <- result >= 0 & result <= 1
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }

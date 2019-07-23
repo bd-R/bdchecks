@@ -9,10 +9,5 @@ dc_modifiedInFuture <- function(TARGET, date_format = "%Y-%m-%d") {
     trimws() %>% # Trim extra whitespace
     gsub("\\.", "-", .) # Turn wrong seprators into relevant -
   result <- as.Date(result, origin = "1970-01-01") <= Sys.Date()
-
-  # Turn failed values to FALSE
-  result[is.na(result)] <- FALSE
-  # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
-  return(result)
+  return(perform_dc_missing(result, TARGET))
 }
