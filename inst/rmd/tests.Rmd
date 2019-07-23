@@ -1,0 +1,30 @@
+---
+title: 'Data check tests report'
+date: "`r date()`"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: true
+---
+
+```{r, results = "asis", echo = FALSE}
+for (i in unique(result_test$dc)) {
+  cat(paste("\n\n#", i, "\n"))
+  d <- result_test[result_test$dc == i]
+  d$dc <- NULL
+  d %>%
+    knitr::kable() %>%
+    kableExtra::kable_styling(
+      full_width = FALSE,
+      bootstrap_options = "striped"
+    ) %>%
+    kableExtra::row_spec(
+      which(d$observed == "pass"), background = c("#bce4b4")
+    ) %>%
+    kableExtra::row_spec(
+      which(d$observed == "fail"), background = c("#c09697")
+    ) %>%
+    print()
+}
+```
