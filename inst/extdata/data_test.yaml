@@ -177,17 +177,21 @@ dayInvalid:
     - ['', missing, fail]
     - [NA, missing, fail]
   comment:
-monthIvalid:
+monthInvalid:
   data:
     - [month, type, expected]
-    - [0, zero, fail]
-    - [0.5, not integer, fail]
-    - [-1, negative, fail]
-    - [13, out of range, fail]
-    - [6, in range, pass]
-    - [Inf, '', pass]
-    - [NA, '', pass]
-    - [NULL, '', pass]
+    - [day, type, expected]
+    - [1, correct, pass]
+    - [12, correct, pass]
+    - [1 1, correct, pass]
+    - [' 1 ', space, pass]
+    - [0, incorrect, fail]
+    - [13, incorrect, fail]
+    - [-1, incorrect, fail]
+    - [0.1, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 namePublishedYearInFuture:
   data:
