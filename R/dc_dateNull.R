@@ -1,4 +1,4 @@
-#' @rdname dc_eventDateInFuture
+#' @rdname dc_dateNull
 #' 
 #' @param TARGET a vector of event date information
 #' @param date_format a string for full date format
