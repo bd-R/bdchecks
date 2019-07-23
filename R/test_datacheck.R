@@ -10,11 +10,6 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom yaml read_yaml
 #'
-#' @examples
-#' data_test <- create_testdata()
-#' 
-#' @export
-#'
 create_testdata <- function(
   path_datatest = system.file("extdata/data_test.yaml", package = "bdchecks")
 ) { 
@@ -33,6 +28,8 @@ create_testdata <- function(
 }
 
 #' Perform tests datachecks
+#' 
+#' Performs tests for datachecks and creates report
 #'
 #' @param report A logical value idicating if html report should be rendered
 #'
@@ -40,10 +37,13 @@ create_testdata <- function(
 #' @importFrom knitr kable
 #' @importFrom kableExtra kable_styling row_spec
 #' @importFrom rmarkdown render
-#'
+#' 
+#' @examples
+#' data_test <- perform_test_dc()
+#' 
 #' @export
 #'
-perform_testdata <- function(report = FALSE) {
+perform_test_dc <- function(report = FALSE) {
   data_test <- create_testdata()
   for (i in seq_along(data_test)) {
     check <- names(data_test)[i]
@@ -57,8 +57,7 @@ perform_testdata <- function(report = FALSE) {
     try(rmarkdown::render(
         system.file("rmd/tests.Rmd", package = "bdchecks"),
         quiet = TRUE,
-        # output_dir = tempdir()
-        output_dir = "~/Desktop/"
+        output_dir = tempdir()
     ))
   }
   return(data_test)

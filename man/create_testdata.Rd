@@ -17,7 +17,3 @@ expected result
 \description{
 Loads, parses and outputs datasets to test data checks
 }
-\examples{
-data_test <- create_testdata()
-
-}
