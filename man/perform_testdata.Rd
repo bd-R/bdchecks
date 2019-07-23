@@ -4,10 +4,10 @@
 \alias{perform_testdata}
 \title{Perform tests datachecks}
 \usage{
-perform_testdata(data_test = NULL)
+perform_testdata(report = FALSE)
 }
 \arguments{
-\item{data_test}{List objects of data sets to perform tests}
+\item{report}{A logical value idicating if html report should be rendered}
 }
 \description{
 Perform tests datachecks

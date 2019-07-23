@@ -34,13 +34,16 @@ create_testdata <- function(
 
 #' Perform tests datachecks
 #'
-#' @param data_test List objects of data sets to perform tests
+#' @param report A logical value idicating if html report should be rendered
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr %>%
+#' @importFrom knitr kable
+#' @importFrom kableExtra kable_styling row_spec
+#' @importFrom rmarkdown render
 #'
 #' @export
 #'
-perform_testdata <- function(data_test = NULL) {
+perform_testdata <- function(report = FALSE) {
   data_test <- create_testdata()
   for (i in seq_along(data_test)) {
     check <- names(data_test)[i]
@@ -50,29 +53,13 @@ perform_testdata <- function(data_test = NULL) {
       "fail", "pass"
     )
   }
+  if (report) {
+    try(rmarkdown::render(
+        system.file("rmd/tests.Rmd", package = "bdchecks"),
+        quiet = TRUE,
+        # output_dir = tempdir()
+        output_dir = "~/Desktop/"
+    ))
+  }
   return(data_test)
-}
-
-#' Perform tests datachecks and generate report
-#'
-#' @param data_test List objects of data sets to perform tests
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom data.table rbindlist
-#' @importFrom knitr kable
-#' @importFrom kableExtra kable_styling row_spec
-#' @importFrom rmarkdown render
-#'
-#' @export
-#'
-perform_testdata_report <- function(data_test = NULL) {
-  result_test <- perform_testdata(data_test) %>%
-    data.table::rbindlist(idcol = "dc")
-  try(rmarkdown::render(
-      system.file("rmd/tests.Rmd", package = "bdchecks"),
-      quiet = TRUE,
-      # output_dir = tempdir()
-      output_dir = "~/Desktop"
-  ))
-  return(NULL)
 }

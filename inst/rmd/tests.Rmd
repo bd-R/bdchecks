@@ -9,10 +9,9 @@ output:
 ---
 
 ```{r, results = "asis", echo = FALSE}
-for (i in unique(result_test$dc)) {
-  cat(paste("\n\n#", i, "\n"))
-  d <- result_test[result_test$dc == i]
-  d$dc <- NULL
+for (i in seq_along(data_test)) {
+  cat(paste("\n\n#", names(data_test)[i], "\n"))
+  d <- data_test[[i]]
   d %>%
     knitr::kable() %>%
     kableExtra::kable_styling(
@@ -20,10 +19,10 @@ for (i in unique(result_test$dc)) {
       bootstrap_options = "striped"
     ) %>%
     kableExtra::row_spec(
-      which(d$observed == "pass"), background = c("#bce4b4")
+      which(d$observed == "pass"), background = "#bce4b4"
     ) %>%
     kableExtra::row_spec(
-      which(d$observed == "fail"), background = c("#c09697")
+      which(d$observed == "fail"), background = "#c09697"
     ) %>%
     print()
 }
