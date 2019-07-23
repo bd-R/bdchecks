@@ -3,6 +3,8 @@
 #' @param TARGET a vector of species classes
 #' @param classes a vector of reference classes
 #' 
+#' @importFrom magrittr "%>%"
+#' 
 dc_classUnknown <- function(
   TARGET,
   classes = c(

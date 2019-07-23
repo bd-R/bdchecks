@@ -1,14 +1,28 @@
 #' @rdname dc_basisOfRecordBadlyFormed
-#' @param TARGET a vector to perform data check
 #' 
-dc_basisOfRecordBadlyFormed <- function(TARGET) {
-  VOCABULARY <- c(
-    "PreservedSpecimen", 
-    "FossilSpecimen", 
-    "LivingSpecimen", 
-    "HumanObservation", 
-    "MachineObservation"
+#' @param TARGET a vector of records
+#' @param records a vector of reference records
+#' 
+#' @importFrom magrittr "%>%"
+#' 
+dc_basisOfRecordBadlyFormed <- function(
+  TARGET,
+  records = c(
+    "HumanObservation",
+    "FossilSpecimen",
+    "LivingSpecimen",
+    "MachineObservation",
+    "PreservedSpecimen"
   )
-  TARGETmod <- gsub("_| ", "", TARGET)
-  tolower(TARGETmod) %in% tolower(VOCABULARY)
+) {
+  result <- TARGET %>%
+    gsub(" ", "", .) %>% # Trim extra whitespace & possible space
+    tolower() # Match case
+  result <- result %in% tolower(records)
+
+  # Turn failed values to FALSE
+  result[is.na(result)] <- FALSE
+  # Get original missing values
+  result[is.na(TARGET) | TARGET == ""] <- NA
+  return(result)
 }
