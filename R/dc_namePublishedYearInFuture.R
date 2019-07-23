@@ -1,6 +1,20 @@
 #' @rdname dc_namePublishedYearInFuture
-#' @param TARGET a vector to perform data check
+#' 
+#' @param TARGET a vector of publishing year
+#' 
+#' @importFrom magrittr "%>%"
 #' 
 dc_namePublishedYearInFuture <- function(TARGET) {
-  format(as.Date(ifelse(TARGET == "", NA, TARGET), origin = "1970-01-01"), "%Y") <= format(Sys.Date(), "%Y")
+  current_year <- format(Sys.Date(), "%Y")
+  result <- TARGET %>%
+    gsub(" ", "", .) %>% # Trim extra whitespace
+    as.numeric() # This is main criteria - value must be turned numeric
+  # Year must be possitive and probably contain for digits
+  result <- result > 0 & nchar(result) == 4 & result <= current_year
+
+  # Turn failed values to FALSE
+  result[is.na(result)] <- FALSE
+  # Get original missing values
+  result[is.na(TARGET) | TARGET == ""] <- NA
+  return(result)
 }

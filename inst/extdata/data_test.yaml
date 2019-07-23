@@ -196,8 +196,16 @@ monthInvalid:
 namePublishedYearInFuture:
   data:
     - [year, type, expected]
-    - [2500, future, fail]
-    - [1987, past, pass]
+    - [1987, correct, pass]
+    - [2000, correct, pass]
+    - [2e3, correct, pass]
+    - [20 00, correct, pass]
+    - [' 2000 ', space, pass]
+    - [2500, incorrect, fail]
+    - [-2000, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ['', missing, fail]
+    - [NA, missing, fail]
   comment:
 identifiedDateImprobable:
   data:
