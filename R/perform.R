@@ -30,38 +30,42 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
     stopifnot(length(idx) == 1)
     dc <- data.checks@dc_body[[idx]]
 
-      target_names <- unlist(strsplit(dc@input$Target, ","))
-      target_result <- vector("list", length(target_names))
-      names(target_result) <- target_names
-      for (i in target_names) {
-        if (!i %in% colnames(data)) {
-          warning(
-            "Column ", i, " does not exist in a given dataset;",
-            " skipping data check ", dc@name, " for it."
+    target_names <- unlist(strsplit(dc@input$Target, ","))
+    target_result <- vector("list", length(target_names))
+    names(target_result) <- target_names
+    for (j in target_names) {
+      if (!j %in% colnames(data)) {
+        warning(
+          "Column ", j, " does not exist in a given dataset;",
+          " skipping data check ", dc@name, " for it."
+        )
+        target_result[[j]] <- NULL
+      } else {
+        if (dc@name %in% "countryMismatch") {
+          # res <- get(paste0("dc_", dc@name))(TARGET1, TARGET2, DEPEND1, DEPEND2)
+          target_result[[j]] <- NULL
+        } else if (dc@name %in% c("coordinatePrecisionMismatch")) {
+          target_result[[j]] <- get(paste0("dc_", dc@name))(
+            data[, j, drop = TRUE],
+            data[, dc@input$Dependency$Data, drop = TRUE]
           )
-          target_result[[i]] <- NULL
         } else {
-          if (dc@name %in% "countryMismatch") {
-            target_result[[i]] <- NULL
-            # res <- get(paste0("dc_", dc@name))(TARGET1, TARGET2, DEPEND1, DEPEND2)
-          } else if (dc@name %in% c("countryNameUnknown", "coordinatePrecisionMismatch")) {
-            target_result[[i]] <- NULL
-            # res <- get(paste0("dc_", dc@name))(TARGET, DEPEND)
-          } else {
-            target_result[[i]] <- get(paste0("dc_", dc@name))(data[, i, drop = TRUE])
-          }
+          target_result[[j]] <- get(paste0("dc_", dc@name))(
+            data[, j, drop = TRUE]
+          )
         }
       }
-      for (j in seq_along(target_result)) {
-        result_dc[[length(result_dc) + 1]] <-
-          methods::new("DataCheckFlag",
-            name = dc@name,
-            target = names(target_result)[j],
-            result = target_result[[j]],
-            flag = ""
-          )
-      }
+    }
+    for (j in seq_along(target_result)) {
+      result_dc[[length(result_dc) + 1]] <-
+        methods::new("DataCheckFlag",
+          name = dc@name,
+          target = names(target_result)[j],
+          result = target_result[[j]]
+        )
+    }
   }
+
   if (length(result_dc) > 0) {
     result_dc <- methods::new("DataCheckFlagSet",
       DC = as.character(lapply(result_dc, function(x) `@`(x, name))),

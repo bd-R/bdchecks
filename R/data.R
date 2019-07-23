@@ -19,3 +19,13 @@ NULL
 #' @export
 #'
 NULL
+
+#' Countries
+#'
+#' A vector of country names
+#'
+#' @name countries
+#' @docType data
+#' @export
+#'
+NULL

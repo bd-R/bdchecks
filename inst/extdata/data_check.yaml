@@ -366,7 +366,7 @@ DC_65f962aa-c474-4392-9176-028bf0b86a2e:
       DependencyType: Internal
       DataChecks: 
       Rpackages:
-      Data: DATA$coordinatePrecision
+      Data: coordinatePrecision
 DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
   name: countryNameUnknown
   meta:
