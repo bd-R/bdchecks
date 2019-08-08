@@ -9,6 +9,8 @@ matrix:
     env: bdverse='github'
     after_success:
       - Rscript -e 'covr::codecov()'
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
     r_github_packages:
       - bd-R/bdDwC
   - name: "Release R CRAN"
