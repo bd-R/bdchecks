@@ -15,7 +15,7 @@ Single Data Check Flag Class
 
 \item{\code{target}}{column for performed data check}
 
-\item{\code{flag}}{class}
+\item{\code{flag}}{standard flag information}
 
 \item{\code{result}}{logical vector}
 }}

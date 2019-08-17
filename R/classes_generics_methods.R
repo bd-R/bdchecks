@@ -67,7 +67,7 @@ setMethod(
 #'
 #' @slot name of performed data check
 #' @slot target column for performed data check
-#' @slot flag class
+#' @slot flag standard flag information
 #' @slot result logical vector
 #'
 DataCheckFlag <- setClass(

@@ -15,8 +15,6 @@ datacheck_info_export <- function(
   path_rd = "./R/",
   id_rd = "documentation_"
 ) {
-  #!
-  path_yaml <- "inst/extdata/data_check.yaml"
   data_yaml <- yaml::yaml.load_file(path_yaml)
   data_class <- list()
   for (i in seq_along(data_yaml)) {
