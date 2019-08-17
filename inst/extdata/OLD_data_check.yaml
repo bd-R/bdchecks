@@ -1,0 +1,896 @@
+DC_c09ecbf9-34e3-4f3e-b74a-8796af15e59f:
+  name: yearMissing
+  meta:
+    Description:
+      Main: Check if year information is not missing
+      Question: Is year information present?
+      Example:
+        Fail: The value for dwc:year is NULL
+        Pass: The value for dwc:year is valid
+        InputFail: year=
+        InputPass: year=2000
+        OutputFail: Faield
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: year,null
+      guid: c09ecbf9-34e3-4f3e-b74a-8796af15e59f
+    Flags:
+      Severity: Error
+      Warning: Invalid
+      Output: Validation
+      Dimension: Completeness
+    Pseudocode: |
+      is.na($year)
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: year
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_3cff4dc4-72e9-4abe-9bf3-8a30f1618432:
+  name: eventDateInFuture
+  meta:
+    Description:
+      Main: Check if event date is not in the future
+      Question: Is event date not in the future?
+      Example:
+        Fail: dwc:eventDate is in the future
+        Pass: dwc:eventDate is valid
+        InputFail: eventDate=2230-12-31
+        InputPass: eventDate=2001-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,event
+      guid: 3cff4dc4-72e9-4abe-9bf3-8a30f1618432
+    Flags:
+      Severity: Error
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $eventDate <= $dateToday
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: eventDate
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_0bb8297d-8f8a-42d2-80c1-558f29efe798:
+  name: elevationOutOfRange
+  meta:
+    Description:
+      Main: Check if elevationOutOfRange is not out of range.
+      Question: Is elevation within range?
+      Example:
+        Fail: Minimum elevation in meters is less than zero and/or maximum elevation in meters is greater than 10,000
+        Pass: Minimum elevation in meters is greater or equal to zero and maximum elevation in meters is less than 10,000 meters
+        InputFail: maximumElevationInMeters=19375
+        InputPass: minimumElevationInMeters=1,maximumElevationInMeters=100
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,elevation
+      guid: 0bb8297d-8f8a-42d2-80c1-558f29efe798
+    Flags:
+      Severity: Warning
+      Warning: Unlikely
+      Output: Validation
+      Dimension: Likeliness
+    Pseudocode: |
+       0 <= $minimumElevationInMeters <= 10000
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: minimumElevationinMeters,maximumElevationInMeters
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_04b2c8f3-c71b-4e95-8e43-f70374c5fb92:
+  name: depthOutOfRange
+  meta:
+    Description:
+      Main: Check if depthOutOfRange is not out of range.
+      Question: Is depth within range?
+      Example:
+        Fail: Minimum depth is less than zero (0) or maximum depth is greater than
+          11,000 meters
+        Pass: Minimum depth is greater than or equal to zero (0) and maximum depth
+          is less than 11,000 meters
+        InputFail: maximumDepthInMeters=19380
+        InputPass: minimumDepthInMeters=1,maximumDepthInMeters=100
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,depth
+      guid: 04b2c8f3-c71b-4e95-8e43-f70374c5fb92
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Likeliness
+    Pseudocode: |
+       0 <= $minimumDepthInMeters <= 11000
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: minimumDepthInMeters,maximumDepthInMeters
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_41267642-60ff-4116-90eb-499fee2cd83f:
+  name: dateNull
+  meta:
+    Description:
+      Main: Check if eventDate, year, verbatimEventDate are not NULL
+      Question: Is eventDate, year or verbatimEventDate not NULL?
+      Example:
+        Fail: No date information
+        Pass: Date information is present
+        InputFail: year=NULL + eventDate=NULL + verbatimEventDate=NULL
+        InputPass: year=2000 + eventDate=2000.01.01 + verbatimEventDate=2000.01.01 
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Event
+      Keywords: date,null
+      guid: 41267642-60ff-4116-90eb-499fee2cd83f
+    Flags:
+      Severity: Error
+      Warning: Invalid
+      Output: Validation
+      Dimension: Completeness
+    Pseudocode: |
+      is.na($eventDate)
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: eventDate,year,verbatimEventDate
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_13d5a10e-188e-40fd-a22c-dbaa87b91df2:
+  name: dataGeneralised
+  meta:
+    Description:
+      Main: Chech if dataGeneralizations is a NULL column (ie, latitude and longitude were not generalized)
+      Question: Is dataGeneralizations NULL?
+      Example:
+        Fail: Latitude and longitude values may have been generalized as indicated
+          by dwc:dataGeneralizations is not NULL
+        Pass: Latitude and longitude values have not been generalized as indicated
+          by dwc:dataGeneralizations is NULL
+        InputFail: dataGeneralizations=record placed on 0.1 degree grid
+        InputPass: dataGeneralizations=
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: longitude,latitude,null
+      guid: 13d5a10e-188e-40fd-a22c-dbaa87b91df2
+    Flags:
+      Severity: Warning
+      Warning: Amended
+      Output: Validation
+      Dimension: Resolution
+    Pseudocode: |
+      is.na($dataGeneralised)
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: dataGeneralizations
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_b23110e7-1be7-444a-a677-cdee0cf4330c:
+  name: countryMismatch
+  meta:
+    Description:
+      Main: Check if given country match given country code.
+      Question: Does country and country code match?
+      Example:
+        Fail: Country name (dwc:country) and ISO country code (dwc:countryCode) do
+          not match
+        Pass: Country name (dwc:country) and ISO country code (dwc:countryCode) match
+        InputFail: country=Australia, countryCode=4
+        InputPass: country=Australia, countryCode=AU
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,iso,country
+      guid: b23110e7-1be7-444a-a677-cdee0cf4330c
+    Flags:
+      Severity: Warning
+      Warning: Inconsistent
+      Output: Validation
+      Dimension: Consistency
+    Pseudocode: |
+      get.Country($countryCode) == $country
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: country
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data: countryCode
+DC_1bf0e210-6792-4128-b8cc-ab6828aa4871:
+  name: coordinatesZero
+  meta:
+    Description:
+      Main: Check if decimal values given in decimalLatitude and decimalLongitude are not zero 
+      Question: Is decimal number in langitude and latitude not zero?
+      Example:
+        Fail: Decimal latitude and longitude are both zero (0) degrees
+        Pass: Decimal latitude and longitude are not zero (0) degrees
+        InputFail: decimalLatitude=0, decimalLongitude=0
+        InputPass: decimalLatitude=-1, decimalLongitude=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location
+      guid: 1bf0e210-6792-4128-b8cc-ab6828aa4871
+    Flags:
+      Severity: Warning
+      Warning: Unlikely
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $decimalLatitude != 0
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-27
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: decimalLatitude,decimalLongitude
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_65f962aa-c474-4392-9176-028bf0b86a2e:
+  name: coordinatePrecisionMismatch
+  meta:
+    Description:
+      Main: Check if decimal values given in decimalLatitude and decimalLongitude does agree witha a decimal representation of the precision of the coordinates (coordinatePrecision)
+      Question: Is decimal number in langitude and latitude not smaller than a given decimal precision?
+      Example:
+        Fail: The number of decimal places of latitude (dwc:decimalLatitude) or longitude
+          (dwc:decimalLongitude) is not in agreement with the supplied coordinate
+          precision (dwc:coordinatePrecision)
+        Pass: The number of decimal places of latitude (dwc:decimalLatitude) and longitude
+          (dwc:decimalLongitude) is in agreement with the supplied coordinate precision
+          (dwc:coordinatePrecision)
+        InputFail: coordinatePrecision=0.5, decimalLatitude=-35.123456
+        InputPass: coordinatePrecision=1e-5, decimalLatitude=-35.123
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: MultiTerm
+      DarwinCoreClass: Location
+      Keywords: location,precision
+      guid: 65f962aa-c474-4392-9176-028bf0b86a2e
+    Flags:
+      Severity: Warning
+      Warning: Inconsistent
+      Output: Validation
+      Dimension: Consistency
+    Pseudocode: |
+      numberOfDecimals($decimalLatitude) <= coordinatePrecision
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: decimalLatitude,decimalLongitude
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages:
+      Data: coordinatePrecision
+DC_69b2efdc-6269-45a4-aecb-4cb99c2ae134:
+  name: countryNameUnknown
+  meta:
+    Description:
+      Main: Check if the name of the country or major administrative unit in which the location occurs is within given vocabulary
+      Question: Is country known?
+      Example:
+        Fail: Country name (dwc:country) not in vocabulary
+        Pass: Country name (dwc:country) is in vocabulary
+        InputFail: country=Austend
+        InputPass:  country=Australia
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Location
+      Keywords: geo,location,country
+      guid: 69b2efdc-6269-45a4-aecb-4cb99c2ae134
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $country %IN% VOCABULARY
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: country
+    Dependency:
+      DependencyType: External
+      DataChecks: 
+      Rpackages: rgbif 
+      Data: isocodes$name
+DC_2cd6884e-3d14-4476-94f7-1191cfff309b:
+  name: classUnknown
+  meta:
+    Description:
+      Main: The full scientific name of the class in which the taxon is classified is within given vocabulary
+      Question: Is scientific name of the class known?
+      Example:
+        Fail: Taxonomic rank Class value cannot be interpreted
+        Pass: Taxonomic rank Class was interpreted correctly
+        InputFail: class=Birds
+        InputPass: class=Unicorns
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Taxon
+      Keywords: taxon,class
+      guid: 2cd6884e-3d14-4476-94f7-1191cfff309b
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $class %IN% VOCABULARY
+    Source:
+      Reference:     
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: class
+    Dependency:
+      DependencyType: External
+      DataChecks:     
+      Rpackages:        
+      Data:         
+DC_24899475-7c8a-45d1-9d7f-cfc620c9460a:
+  name: basisOfRecordBadlyFormed
+  meta:
+    Description:
+      Main: Check if the specific nature of the data record is within controlled vocabulary
+      Question: Is basis of record within controlled vocabulary?
+      Example:
+        Fail: dwc:basisOfRecord could not be unambiguously matched to vocabulary
+        Pass: dwc:basisOfRecord was matched to vocabulary
+        InputFail: basisOfRecord=Human specimen
+        InputPass: basisOfRecord=HumanObservation,basisOfRecord=LIVING_SPECIMEN
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: record
+      guid: 24899475-7c8a-45d1-9d7f-cfc620c9460a
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $basisOfRecord %IN% vocabulary
+    Source:
+      Reference: http://gbif.github.io/parsers/apidocs/org/gbif/api/vocabulary/BasisOfRecord.html,https://github.com/iobis/gbif-marine/issues/10,http://rs.tdwg.org/dwc/terms/#basisOfRecord
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-25
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: basisOfRecord
+    Dependency:
+      DependencyType: External
+      DataChecks: 
+      Rpackages: 
+      Data: 
+DC_3cfe9ab4-79f8-4afd-8da5-723183ef16a3:
+  name: occurrenceIdNotGuid
+  meta:
+    Description:
+      Main: Check if an identifier for the occurrence is a globally uniquely identifier (currently we use regex pattern solution is implemented)
+      Question: Is occurence ID and GUID?
+      Example:
+        Fail: occurrenceID is an integer, assuring that it is not a globally uninique
+          identifier (GUID)
+        Pass: occurrenceID is a globally uninique identifier (GUID)
+        InputFail: occurrenceID=42
+        InputPass: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Occurrence
+      Keywords: guid,occurence
+      guid: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      grep(patternGUID, $occurrenceID)
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: occurrenceID
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_11203926-165d-4b5a-a6c6-55fb0bedfaed:
+  name: precisionRangeMismatch
+  meta:
+    Description:
+      Main: Check if precision range mismatch is between 0 and 1
+      Question: Is range mismatch between 0 and 1?
+      Example:
+        Fail: The coordinate precision (dwc:coordinatePrecision), as a decimal representation,
+          is outside the range of zero (minimum) and one (maximum)
+        Pass: The coordinate precision (dwc:coordinatePrecision) is between zero (minimum)
+          and one (maximum)
+        InputFail: coordinatePrecision=3,coordinatePrecision=-1
+        InputPass: coordinatePrecision=0,coordinatePrecision=0.5,coordinatePrecision=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Location
+      Keywords: location,uncertainty,mismatch,decimal
+      guid: 11203926-165d-4b5a-a6c6-55fb0bedfaed
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      0 <= $coordinatePrecision <= 1
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: coordinatePrecision
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages:
+      Data:
+DC_c6adf2ea-3051-4498-97f4-4b2f8a105f57:
+  name: uncertaintyRangeMismatch
+  meta:
+    Description:
+      Main: Check if geopoint uncertainty range mismatch is a positive integer (meters).
+      Question: Is uncertainty mismatch is an intiger greater than zero?
+      Example:
+        Fail: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) should be a
+          whole number and greater than zero (meters)
+        Pass: Geopoint uncertainty (dwc:coordinateUncertaintyInMeters) is a whole
+          number and greater than zero (meters)
+        InputFail: coordinateUncertaintyInMeters=0.002,coordinateUncertaintyInMeters=-1,coordinateUncertaintyInMeters=0
+        InputPass: coordinateUncertaintyInMeters=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Location
+      Keywords: location,uncertainty,mismatch,integer
+      guid: c6adf2ea-3051-4498-97f4-4b2f8a105f57
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      is.integer($uncertainty) AND $uncertainty > 0
+    Source:
+      Reference: https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/UNCERTAINTY_NOT_SPECIFIED
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: coordinateUncertaintyInMeters
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages:
+      Data:
+DC_6939b2c7-fd81-4f2d-9282-ff8eeba81301:
+  name: individualCountInvalid
+  meta:
+    Description:
+      Main: Check if the number of individuals represented present at the time of the occurrence is and intiger
+      Question: Is number of individuals a positive integer?
+      Example:
+        Fail: The count of individuals is not an integer and therefore invalid
+        Pass: The count of individuals is a valid integer
+        InputFail: individualCount=0.3,individualCount=-1,individualCount=0
+        InputPass: individualCount=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Occurrence
+      Keywords: count,integer
+      guid: 6939b2c7-fd81-4f2d-9282-ff8eeba81301
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      is.integer($individualCount) AND $individualCount > 0
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: individualCount
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+DC_48aa7d66-36d1-4662-a503-df170f11b03f:
+  name: dayInvalid
+  meta:
+    Description:
+      Main: Check if event day is valid (1 <= integer <= 31)
+      Question: Is event day valid?
+      Example:
+        Fail: The value given for event day is less than 1 or greater than 31
+        Pass: The value given for event day is between 1 and 31
+        InputFail: day=32,day=0,day=1.1,day=-1
+        InputPass: day=1,day=31
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,day,event,integer
+      guid: 48aa7d66-36d1-4662-a503-df170f11b03f
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $day >= 1 AND $day <= 31 & is.integer($day)
+    Source:
+      Reference: https://github.com/tdwg/bdq/issues/125
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: day
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+DC_01c6dafa-0886-4b7e-9881-2c3018c98bdc:
+  name: monthInvalid
+  meta:
+    Description:
+      Main: Check if event month is valid (1 <= integer <= 12)
+      Question: Is event month valid?
+      Example:
+        Fail: The event month is less than 1 or is greater than 12
+        Pass: The event month is between 1 and 12
+        InputFail: month=14,month=0
+        InputPass: month=1
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Event
+      Keywords: date,month,event,integer
+      guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $month >= 1 AND $month <= 12 AND is.integer($month)
+    Source:
+      Reference: https://github.com/tdwg/bdq/issues/126
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: month
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_399ef91d-425c-46f2-a6df-8a0fe4c3e86e:
+  name: namePublishedYearInFuture
+  meta:
+    Description:
+      Main: Check if year in which scientific name was published is not in the future
+      Question: Is publication year not in the future?
+      Example:
+        Fail: dwc:namePublishedInYear is in the future
+        Pass: dwc:namePublishedInYear is valid
+        InputFail: namePublishedInYear=2230
+        InputPass: namePublishedInYear=2000
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Taxon
+      Keywords: date,taxon
+      guid: 399ef91d-425c-46f2-a6df-8a0fe4c3e86e
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $namePublishedInYear <= $dateToday
+    Source:
+      Reference:
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: namePublishedInYear
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:
+DC_dc8aae4b-134f-4d75-8a71-c4186239178e:
+  name: identifiedDateImprobable
+  meta:
+    Description:
+      Main: Check if identification date is between Linnaeus and current date
+      Question: Is identification date possible (between Linnaeus and current date)?
+      Example:
+        Fail: The date of identification (dwc:dateIdentified) falls prior to Linnaeus
+          (1753) or after the current date.
+        Pass: The date of identification (dwc:dateIdentified) is post Linnaeus (1753)
+          to the current date
+        InputFail: dateidentified=1573-02-14,dateidentified=1000-01-01,dateidentified=3000-01-01
+        InputPass: dateidentified=2000-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Identification
+      Keywords: date,identification
+      guid: dc8aae4b-134f-4d75-8a71-c4186239178e
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $dateIdentified >= dateLinnaeus AND $dateIdentified <= $dateToday
+    Source:
+      Reference: https://github.com/tdwg/bdq/issues/76
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: dateIdentified
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+DC_7720f2c8-72b3-48b4-972c-9b30fd6aab6c:
+  name: dateIdentifiedInFuture
+  meta:
+    Description:
+      Main: Check if record identification date is not in the future
+      Question: Is record identified in the past?
+      Example:
+        Fail: Date (dwc:dateIdentified) is in the future
+        Pass: Date (dwc:dateIdentified) is not in the future
+        InputFail: dateIdentified > TODAY
+        InputPass: dateIdentified <= TODAY
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Identification
+      Keywords: date,identification
+      guid: 7720f2c8-72b3-48b4-972c-9b30fd6aab6c
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $RecordDate <= $TodayDate
+    Source:
+      Reference: https://github.com/tdwg/bdq/issues/76
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist: 
+  Input:
+    Target: dateIdentified
+    Dependency:
+      DependencyType: Internal
+      DataChecks: 
+      Rpackages: 
+      Data: 
+DC_5147823a-5c46-4b3d-88e8-244ddc96e749:
+  name: modifiedInFuture
+  meta:
+    Description:
+      Main: Check if date on which the resource was changed is not in the future
+      Question: Is modification date not in the future?
+      Example:
+        Fail: dcterms:modified is in the future
+        Pass: dcterms:modified date is valid
+        InputFail: dcterms:modified=2230-12-31
+        InputPass: dcterms:modified=2000-01-01
+        OutputFail: Failed
+        OutputPass: Passed
+      Resolution:
+        Record: SingleRecord
+        Term: SingleTerm
+      DarwinCoreClass: Record_level Terms
+      Keywords: date,modification
+      guid: 5147823a-5c46-4b3d-88e8-244ddc96e749
+    Flags:
+      Severity: Warning
+      Warning: Invalid
+      Output: Validation
+      Dimension: Conformance
+    Pseudocode: |
+      $dateModified <= $dateToday
+    Source:
+      Reference: 
+      CreatedBy: Povilas Gibas
+      MaintainedBy: Povilas Gibas
+      CreationDate: 2018-06-23
+      ModificationDate: 2019-06-12
+      ModificationHist:
+  Input:
+    Target: modified
+    Dependency:
+      DependencyType: Internal
+      DataChecks:
+      Rpackages:
+      Data:

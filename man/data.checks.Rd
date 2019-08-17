@@ -3,7 +3,7 @@
 \docType{data}
 \name{data.checks}
 \alias{data.checks}
-\title{Data checks}
+\title{Data Checks}
 \description{
 All data checks incorporated into bdchecks package.
 Create with \code{bdchecks:::datacheck_info_export}

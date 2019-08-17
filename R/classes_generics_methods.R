@@ -6,8 +6,9 @@
 #'
 #' @slot name Official name of biodiversity data check
 #' @slot input Additional options to perform a data check
-#' @slot description Information about the data check
-#' @slot flags Flagging type for specific data check
+#' @slot output Additional options to modify data check flags
+#' @slot information Information about the data check
+#' @slot example Example of input and corresponding output
 #' @slot pseudocode R pseudocode for a data check
 #' @slot source Information about creators and maintenance 
 #'
@@ -16,8 +17,9 @@ DataCheck <- setClass(
   slots = c(
     name = "character",
     input = "list",
-    description = "list",
-    flags = "list",
+    output = "list",
+    information = "list",
+    example = "list",
     pseudocode = "character",
     source = "list"
   )
@@ -47,11 +49,11 @@ setMethod(
   function(object) {
     message(
       "Data check is used to:\n   ",
-      object@description$Main, "\n",
+      object@information$description, "\n",
       "This data check answers following question:\n   ",
-      object@description$Question, "\n",
+      object@information$question, "\n",
       "Target columns that this data check operates on:\n   ",
-      object@input$Target,
+      object@input$target,
       "\n"
     )
   }
