@@ -48,7 +48,8 @@ Imports: bdDwC,
          shinydashboard,
          shinyjs,
          spocc,
-         yaml
+         yaml,
+         xml2
 LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
