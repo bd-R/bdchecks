@@ -6,7 +6,7 @@
 \title{Data check validation_taxonrank_notstandard Check if taxonRank is standard.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_taxonrank_notstandard(TARGET, language = "en",
+dc_validation_taxonrank_notstandard(TARGET = NULL, language = "en",
   alternative = FALSE, get_gbif_rank = FALSE,
   path_rank = "http://rs.gbif.org/vocabulary/gbif/rank.xml")
 }
@@ -14,7 +14,14 @@ dc_validation_taxonrank_notstandard(TARGET, language = "en",
 \item{TARGET}{a vector of taxon rank. To pass must be within given
 dictionary.}
 
-\item{classes}{a vector of reference classes.}
+\item{language}{language for terms (default is English 'en', but usage of
+all 'all' is also possible).}
+
+\item{alternative}{logical value - should alternative terms be used too.}
+
+\item{get_gbif_rank}{logical value - should update gbif dictionary.}
+
+\item{path_rank}{path to gbif dictionary}
 }
 \description{
 This data check answers: "Is taxonRank information standard?" question.\cr Data check will pass if \strong{The value for taxonRank is standard.} and will fail if \strong{The value for taxonRank is missing or not standard.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{taxonRank=domain}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{taxonRank=realm}, such data check would return \code{FALSE}.

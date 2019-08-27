@@ -6,22 +6,23 @@ context("Data Checks")
 # performs data checks on a given data set
 test_that("perform_dc", {
   # No data set provided will give warnings and null
-  result <- expect_warning(perform_dc())
-  expect_true(is.null(result))
+  result <- expect_error(perform_dc())
   result <- expect_warning(perform_dc(data_bats))
   # we should have at least 18 performed DCs
   expect_gt(length(result@DC), 1)
   # No arguments provided
-  expect_warning(perform_dc())
-  expect_warning(perform_dc(mtcars, "monthInvalid"))
+  expect_warning(perform_dc(data_bats))
+  expect_warning(perform_dc(mtcars, "validation_taxonrank_empty"))
   # This will depend on data version
-  expect_equal(sum(perform_dc(data_bats, "monthInvalid")@flags[[1]]@result), 1e3)
+  expect_equal(sum(
+    perform_dc(data_bats, "validation_taxonrank_empty")@flags[[1]]@result
+  ), 1e3)
 })
 
 # Test data checks
 context("Test Data Checks")
 test_that("perform_test_dc", {
-  result <- expect_warning(perform_test_dc())
+  result <- expect_silent(perform_test_dc())
   foo <- function(result) {
       res <- list()
       for (i in seq_along(result)) {
