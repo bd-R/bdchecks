@@ -116,9 +116,6 @@ DC_validation_taxonrank_empty:
       input_fail: taxonRank=
       output_pass: TRUE
       output_fail: FALSE
-      output_standard_pass: compliant
-      output_standard_fail: not_compliant 
-      output_standard_missing:
     pseudocode: |
       !is.na(TARGET) & TARGET != ""
     source:
@@ -165,9 +162,6 @@ DC_validation_taxonrank_notstandard:
       input_fail: taxonRank=realm
       output_pass: TRUE
       output_fail: FALSE
-      output_standard_pass: compliant
-      output_standard_fail: not_compliant 
-      output_standard_missing: internal_prerequisites_not_met
     pseudocode: |
       !is.na(TARGET) & TARGET != ""
     source:
@@ -190,4 +184,53 @@ DC_validation_taxonrank_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_scientificname_empty:
+  name: validation_scientificname_empty
+  meta:
+    information:
+      description: Check if scientificname exists and is not empty.
+      question: Is scientificname information present?
+      darwin_core_class: taxon
+      data_quality_dimension: completeness
+      dimension: name
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation,completness,missing,incomplete
+      guid: 7c4b9498-a8d9-4ebb-85f1-9f200c788595
+    example:
+      pass: The value for scientificName is present.
+      fail: The value for scientificName is missing.
+      input_pass: scientificName=banana
+      input_fail: scientificName=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/82
+      reference: ALA,GBIF,OBIS
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: Paula Zermoglio - The specification here is tricky. It might perfectly be that sciName is empty and that genus and specificEp are filled in. As it stands, it could only run AFTER sciName has been inferred from genus+spEp.
+      2: Paul Morris - Name needs to change. Unavailable means something other than not supplied to taxonomists.. dwc:taxonId should be included, it also specifies the name
+      3: Paul Morris - Name, definitions, and specification are inconsistent. It isn;t clear if this is a measure of multiple terms or a test for conformance against a vocabulary.
+  input:
+    target: scientificName
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
     merge_targets: FALSE

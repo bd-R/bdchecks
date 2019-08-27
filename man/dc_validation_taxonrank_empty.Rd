@@ -6,7 +6,7 @@
 \title{Data check validation_taxonrank_empty Check if taxonRank exists and is not empty.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_taxonrank_empty(TARGET)
+dc_validation_taxonrank_empty(TARGET = NULL)
 }
 \arguments{
 \item{TARGET}{a vector of taxonrank information. To pass it must be non-empty

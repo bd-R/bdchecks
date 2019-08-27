@@ -6,7 +6,7 @@
 \title{Data check validation_taxon_empty Check if at least one field needed to determine the taxon of the entity exists and is not empty.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_taxon_empty(TARGET)
+dc_validation_taxon_empty(TARGET = NULL)
 }
 \arguments{
 \item{TARGET}{a vector of taxon information. To pass it must be non-empty

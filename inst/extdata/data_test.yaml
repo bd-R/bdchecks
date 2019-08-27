@@ -34,3 +34,11 @@ validation_taxonrank_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_scientificname_empty:
+  data:
+    - [scientificname, type, expected]
+    - [Canis lupus, correct, pass]
+    - [Felis catus, correct, pass]
+    - [' Canis lupus familiaris ', correct, pass]
+    - ["", incorrect, fail]
+  comment:

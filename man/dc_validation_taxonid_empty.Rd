@@ -6,7 +6,7 @@
 \title{Data check validation_taxonid_empty Check if taxonID exists and is not empty.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_taxonid_empty(TARGET)
+dc_validation_taxonid_empty(TARGET = NULL)
 }
 \arguments{
 \item{TARGET}{a vector of taxonid information. To pass it must be non-empty
