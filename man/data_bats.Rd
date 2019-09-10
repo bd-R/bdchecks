@@ -5,6 +5,5 @@
 \alias{data_bats}
 \title{Australian bats biodiversity data}
 \description{
-A dataset of Australian bats (\emph{chiroptera}) (1000 records) downloaded using
-\code{rgbif} package.
+A dataset of Australian bats (\emph{chiroptera}) (1000 records).
 }
