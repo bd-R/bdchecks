@@ -42,3 +42,19 @@ validation_scientificname_empty:
     - [' Canis lupus familiaris ', correct, pass]
     - ["", incorrect, fail]
   comment:
+
+# kingdom
+foo1 <- c("Animalia", "animalia", "ANIMALIA", "   Animalia  ", "Chromista", "Plantae", "Fungi", "Protozoa")
+# phylum
+foo2 <- c("Chordata", "Hemichordata", "Nematoda", "Mollusca")
+# class
+foo3 <- c("Reptilia",  "Mammalia", "Aves")
+# order
+foo4 <- c("Artiodactyla", "Carnivora", "Cetacea", "Chiroptera", "Dermoptera", "Lagomorpha", "Monotremata", "Perissodactyla", Primates", Rodentia", Tubulidentata")
+# family
+foo5 <- c("Lemuridae", "Lorisidae", "Tarsiidae", "Callitrichidae", "Cebidae", "Cercopithecidae", "Hylobatidae", "Pongidae", "Hominidae")
+# genus
+foo6 <- c("Macaca", "Cercocebus", "Procolobus", "Daptrius", "Caracara")
+foo <- c(foo1, foo2, foo3, foo4)
+tax_available_name(gsub(" ", "", foo6), "genus")
+

@@ -189,8 +189,8 @@ DC_validation_scientificname_empty:
   name: validation_scientificname_empty
   meta:
     information:
-      description: Check if scientificname exists and is not empty.
-      question: Is scientificname information present?
+      description: Check if scientificName exists and is not empty.
+      question: Is scientificName information present?
       darwin_core_class: taxon
       data_quality_dimension: completeness
       dimension: name
@@ -233,4 +233,286 @@ DC_validation_scientificname_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing:
+    merge_targets: FALSE
+DC_validation_kingdom_notfound:
+  name: validation_kingdom_notfound
+  meta:
+    information:
+      description: Check if kingdom was found as a value at the rank of kingdom by the specified source authority service.
+      question: Is kingdom information present?
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation
+      guid: 125b5493-052d-4a0d-a3e1-ed5bf792689e
+    example:
+      pass: The value for kingdom is present and correct.
+      fail: The value for kingdom is missing or incorrect.
+      input_pass: kingdom=Animalia
+      input_fail: phylum=birds
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/81
+      reference: GBIF
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
+  input:
+    target: kingdom
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_phylum_notfound:
+  name: validation_phylum_notfound
+  meta:
+    information:
+      description: Check if phylum was found as a value at the rank of phylum by the specified source authority service.
+      question: Is phylum information present?
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation
+      guid: eaad41c5-1d46-4917-a08b-4fd1d7ff5c0f
+    example:
+      pass: The value for phylum is present and correct.
+      fail: The value for phylum is missing or incorrect.
+      input_pass: phylum=Chordate
+      input_fail: phylum=birds
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/22
+      reference: iDigBio
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
+  input:
+    target: phylum
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_class_notfound:
+  name: validation_class_notfound
+  meta:
+    information:
+      description: Check if class was found as a value at the rank of class by the specified source authority service.
+      question: Is class information present?
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation
+      guid: 2cd6884e-3d14-4476-94f7-1191cfff309b
+    example:
+      pass: The value for class is present and correct.
+      fail: The value for class is missing or incorrect.
+      input_pass: class=Herps
+      input_fail: class=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/77
+      reference:
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
+  input:
+    target: class
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_order_notfound:
+  name: validation_order_notfound
+  meta:
+    information:
+      description: Check if order was found as a value at the rank of order by the specified source authority service.
+      question: Is order information present?
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation
+      guid: 81cc974d-43cc-4c0f-a5e0-afa23b455aa3
+    example:
+      pass: The value for order is present and correct.
+      fail: The value for order is missing or incorrect.
+      input_pass: order=Crocodilia
+      input_fail: order=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/83
+      reference: iDigBio
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
+  input:
+    target: order
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_family_notfound:
+  name: validation_family_notfound
+  meta:
+    information:
+      description: Check if family was found as a value at the rank of family by the specified source authority service.
+      question: Is family information present?
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation
+      guid: 3667556d-d8f5-454c-922b-af8af38f613c
+    example:
+      pass: The value for family is present and correct.
+      fail: The value for family is missing or incorrect.
+      input_pass: family=Felidae
+      input_fail: family=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/28
+      reference: iDigBio
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
+  input:
+    target: family
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_genus_notfound:
+  name: validation_genus_notfound
+  meta:
+    information:
+      description: Check if genus was found as a value at the rank of genus by the specified source authority service.
+      question: Is genus information present?
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation
+      guid: 3667556d-d8f5-454c-922b-af8af38f613c
+    example:
+      pass: The value for genus is present and correct.
+      fail: The value for genus is missing or incorrect.
+      input_pass: genus=Canis
+      input_fail: genus=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/122
+      reference: iDigBio
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-08-27
+    notes:
+      1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
+  input:
+    target: genus
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE

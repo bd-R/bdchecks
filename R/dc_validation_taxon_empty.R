@@ -6,6 +6,6 @@
 dc_validation_taxon_empty <- function(TARGET = NULL) {
   result <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
-  result <- !is.na(result) & result != "" # Must be a some string present
+  result <- !is.na(result) & result != "" # Check if not empty
   return(result)
 }
