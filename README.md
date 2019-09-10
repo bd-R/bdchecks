@@ -4,7 +4,6 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/bdchecks)](https://cran.r-project.org/package=bdchecks) 
 [![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/grand-total/bdchecks)](https://cran.r-project.org/package=bdchecks) 
 
-
 # bdchecks
 Managing all data checks
 
@@ -16,41 +15,67 @@ Or for development version:
 
     devtools::install_github("bd-R/bdchecks")
 
-
 Load with:
     
     library(bdchecks)
-
-Run `shiny` app with:
-
-    runbdchecks()
 
 ## Performing data checks
 
 Perform data checks (not exported yet):
 
-    resultDC <- bdchecks::performDataCheck(dataBats)
+    result <- bdchecks::perform_dc(data_bats)
 
 Check what data checks were performed (default show method):
 
-    resultDC
-
-Export data after data checks (file or R object) (not exported yet):  
-
-    bdchecks::exportDataCheck(resultDC)
+    result
 
 Quick glance at data check result (% of records that passed) (not exported yet):  
 
     # Nice summary
-    summary_DC(resultDC)
+    summary_dc(result)
 
+## Dealing with new data checks
 
-## Dealing with data checks
+This is a recommended workflow to add new data checks:
 
-Load data checks (DC) into `R` using `getDC()` function. Needs local [`yaml` file](https://github.com/bd-R/bdchecks/blob/master/inst/extdata/dataChecks.yaml):
+1. Load libraries 
 
-    DC <- getDC(pathToYAML)
+```{r}
+library(bdchecks)
+library(devtools) # To install new version of a package
+library(usethis) # To export data.checks object
+```
 
-Export DCs from a given `yaml` file to rda and `roxygen2` comments:
+2. Check if original build works
 
-    bdchecks:::exportDC(pathToYAML)
+```{r}
+check()
+```
+
+3. Create new data check  
+
+3.1 Add meta information to `./inst/extdata/data_check.yaml` file  
+3.2 Add data check function to `./R/` directory (file should be named after a data check, e.g. `dc_checkthis.R`). First argument to a data check function must be a vector (column) to perform data check on.  
+3.3 Add test data to `./inst/extdata/data_test.yaml`
+
+4. Export new dat check
+
+```{r}
+install() # To have new check in `system.file("extdata/data_check.yaml")`
+data.checks <- bdchecks:::datacheck_info_export() # export documentation and combines new check with old ones
+use_data(data_taxonrank, data.checks, data_bats, overwrite = TRUE, internal = TRUE) # exports old (and new data checks)
+document() # document new check to `Rd`
+install() # install package with a new check
+```
+
+5. Test if everything works
+
+```{r}
+perform_test_dc() # perform tests for data checks
+check() # perform general check
+```
+
+6. Post-incorporation
+
+6.1 Increase version (and date) in `DESCRIPTON`  
+6.2 Run `git add` and `git commit` with message: "v0.x.x Added name_of_check data check"
