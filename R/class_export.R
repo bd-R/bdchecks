@@ -15,26 +15,26 @@ datacheck_info_export <- function(
   path_rd = "./R/",
   id_rd = "documentation_"
 ) {
-
-  DCyaml <- yaml::yaml.load_file(path_yaml)
-  DCclass <- list()
-  for (i in seq_along(DCyaml)) {
+  data_yaml <- yaml::yaml.load_file(path_yaml)
+  data_class <- list()
+  for (i in seq_along(data_yaml)) {
     writeLines(
-      roxygen_comment_generate(DCyaml[[i]]),
-      paste0(path_rd, id_rd, DCyaml[[i]]$name, ".R")
+      roxygen_comment_generate(data_yaml[[i]]),
+      paste0(path_rd, id_rd, data_yaml[[i]]$name, ".R")
     )
-    DCclass[[i]] <- methods::new(
+    data_class[[i]] <- methods::new(
       "DataCheck",
-      name = DCyaml[[i]]$name,
-      input = DCyaml[[i]]$Input,
-      description = DCyaml[[i]]$meta$Description,
-      flags = DCyaml[[i]]$meta$Flags,
-      source = DCyaml[[i]]$meta$Source,
-      pseudocode = DCyaml[[i]]$meta$Pseudocode
+      name = data_yaml[[i]]$name,
+      input = data_yaml[[i]]$input,
+      output = data_yaml[[i]]$output,
+      information = data_yaml[[i]]$meta$information,
+      example = data_yaml[[i]]$meta$example,
+      source = data_yaml[[i]]$meta$source,
+      pseudocode = data_yaml[[i]]$meta$pseudocode
     )
   }
-  names(DCclass) <- sapply(DCclass, "slot", "name")
-  result <- methods::new("DataCheckSet", dc_body = DCclass)
+  names(data_class) <- sapply(data_class, "slot", "name")
+  result <- methods::new("DataCheckSet", dc_body = data_class)
   return(result)
 }
 
@@ -70,30 +70,30 @@ roxygen_comment_generate <- function(DC) {
   # Add short description
   skeleton <- sub(
     "shortDesc",
-    paste("#' Data check", DC$name, DC$meta$Description$Main),
+    paste("#' Data check", DC$name, DC$meta$information$description),
     skeleton
   )
 
   # Add long description
   skeleton <- sub(
     "longDesc", paste0(
-      "#'     This data check answers: \"", DC$meta$Description$Question,
+      "#'     This data check answers: \"", DC$meta$information$question,
       "\" question.",
       "\\\\cr Data check will pass if \\\\strong{",
-      DC$meta$Description$Example$Pass, "}",
+      DC$meta$example$pass, "}",
       " and will fail if \\\\strong{",
-      DC$meta$Description$Example$Fail, "}.",
+      DC$meta$example$fail, "}.",
       "\\\\cr Dimension of this data check is \\\\strong{",
-      DC$meta$flags$Dimension, "}",
+      DC$meta$dimension, "}",
       " and it's flagging type is: \\\\strong{FLAG}",
       "\\\\cr Example of entries that will pass: \\\\code{",
-      DC$meta$Description$Example$InputPass, "},",
+      DC$meta$example$input_pass, "},",
       " such data check would return \\\\code{",
-      DC$meta$Description$Example$OutputPass, "}.",
+      DC$meta$example$output_pass, "}.",
       "\\\\cr Example of entries that will fail: \\\\code{",
-      DC$meta$Description$Example$InputFail, "},",
+      DC$meta$example$input_fail, "},",
       " such data check would return \\\\code{",
-      DC$meta$Description$Example$OutputFail, "}."
+      DC$meta$example$output_fail, "}."
     ),
     skeleton
   )
@@ -105,18 +105,18 @@ roxygen_comment_generate <- function(DC) {
   # Add keywords
   skeleton <- c(
     skeleton,
-    ifelse(!is.null(DC$meta$Description$keywords),
-      paste("#' @keywords", DC$meta$Description$keywords),
+    ifelse(!is.null(DC$meta$information$keywords),
+      paste("#' @keywords", DC$meta$information$keywords),
       ""
     )
   )
 
-  skeleton <- sub("FIELDPASS", DC$meta$Description$Example$Pass, skeleton)
-  skeleton <- sub("FIELDFAIL", DC$meta$Description$Example$Fail, skeleton)
-  skeleton <- sub("FIELDTARGET", DC$Input$Target, skeleton)
+  skeleton <- sub("FIELDPASS", DC$meta$example$pass, skeleton)
+  skeleton <- sub("FIELDFAIL", DC$meta$example$fail, skeleton)
+  skeleton <- sub("FIELDTARGET", DC$input$target, skeleton)
   skeleton <- sub(
     "FIELDCATERGORY",
-    DC$meta$Description$DarwinCoreClass,
+    DC$meta$information$darwin_core_class,
     skeleton
   )
 

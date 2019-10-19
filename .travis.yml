@@ -9,20 +9,32 @@ matrix:
     env: bdverse='github'
     after_success:
       - Rscript -e 'covr::codecov()'
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
     r_github_packages:
       - bd-R/bdDwC
   - name: "Release R CRAN"
     r: release
     env: bdverse='CRAN'
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
   - name: "Release R github OSX"
     r: release
     env: bdverse='github'
     r_github_packages:
       - bd-R/bdDwC
     os: osx
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
   - r: devel
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
   - r: oldrel
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
   - r: 3.4
+    after_failure:
+      - "cat /home/travis/build/bd-R/bdchecks/bdchecks.Rcheck/00check.log"
 
 addons:
   apt:

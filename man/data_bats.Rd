@@ -3,7 +3,7 @@
 \docType{data}
 \name{data_bats}
 \alias{data_bats}
-\title{Australian bats biodiversity data}
+\title{Australian Bats Biodiversity Data}
 \description{
 A dataset of Australian bats (\emph{chiroptera}) (1000 records).
 }

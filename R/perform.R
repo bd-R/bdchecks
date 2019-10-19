@@ -31,7 +31,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
     stopifnot(length(idx) == 1)
     dc <- data.checks@dc_body[[idx]]
 
-    target_names <- unlist(strsplit(dc@input$Target, ","))
+    target_names <- unlist(strsplit(dc@input$target, ","))
     target_result <- vector("list", length(target_names))
     names(target_result) <- target_names
     for (j in target_names) {
@@ -45,7 +45,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
         if (dc@name %in% c("countryMismatch", "coordinatePrecisionMismatch")) {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
             data[, j, drop = TRUE],
-            data[, dc@input$Dependency$Data, drop = TRUE]
+            data[, dc@input$dependency$data, drop = TRUE]
           )
         } else {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
@@ -54,11 +54,23 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
         }
       }
     }
+    if (dc@output$merge_targets) {
+      target_result <- list(merged_targets = 
+        rowSums(do.call("cbind", target_result)) > 0
+      )
+    }
     for (j in seq_along(target_result)) {
+      flag <- ifelse(
+        target_result[[j]],
+        dc@output$output_standard_pass,
+        dc@output$output_standard_fail
+      )
+      flag[is.na(flag)] <- dc@output$output_standard_missing
       result_dc[[length(result_dc) + 1]] <-
         methods::new("DataCheckFlag",
           name = dc@name,
           target = names(target_result)[j],
+          flag = flag,
           result = target_result[[j]]
         )
     }

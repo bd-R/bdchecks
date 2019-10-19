@@ -25,9 +25,11 @@ Show method for dataCheck objects
 
 \item{\code{input}}{Additional options to perform a data check}
 
-\item{\code{description}}{Information about the data check}
+\item{\code{output}}{Additional options to modify data check flags}
 
-\item{\code{flags}}{Flagging type for specific data check}
+\item{\code{information}}{Information about the data check}
+
+\item{\code{example}}{Example of input and corresponding output}
 
 \item{\code{pseudocode}}{R pseudocode for a data check}
 
