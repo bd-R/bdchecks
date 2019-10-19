@@ -42,19 +42,87 @@ validation_scientificname_empty:
     - [' Canis lupus familiaris ', correct, pass]
     - ["", incorrect, fail]
   comment:
-
-# kingdom
-foo1 <- c("Animalia", "animalia", "ANIMALIA", "   Animalia  ", "Chromista", "Plantae", "Fungi", "Protozoa")
-# phylum
-foo2 <- c("Chordata", "Hemichordata", "Nematoda", "Mollusca")
-# class
-foo3 <- c("Reptilia",  "Mammalia", "Aves")
-# order
-foo4 <- c("Artiodactyla", "Carnivora", "Cetacea", "Chiroptera", "Dermoptera", "Lagomorpha", "Monotremata", "Perissodactyla", Primates", Rodentia", Tubulidentata")
-# family
-foo5 <- c("Lemuridae", "Lorisidae", "Tarsiidae", "Callitrichidae", "Cebidae", "Cercopithecidae", "Hylobatidae", "Pongidae", "Hominidae")
-# genus
-foo6 <- c("Macaca", "Cercocebus", "Procolobus", "Daptrius", "Caracara")
-foo <- c(foo1, foo2, foo3, foo4)
-tax_available_name(gsub(" ", "", foo6), "genus")
-
+validation_kingdom_notfound:
+  data:
+    - [kingdom, type, expected]
+    - [Animalia, correct, pass]
+    - [' Animalia ', correct, pass]
+    - [Chromista, correct, pass]
+    - [Plantae, correct, pass]
+    - [Fungi, correct, pass]
+    - [Protozoa, correct, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_phylum_notfound:
+  data:
+    - [phylum, type, expected]
+    - [Hemichordata, correct, pass]
+    - [' Hemichordata ', correct, pass]
+    - [Chordata, correct, pass]
+    - [Nematoda, correct, pass]
+    - [Mollusca, correct, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_class_notfound:
+  data:
+    - [class, type, expected]
+    - [Mammalia, correct, pass]
+    - [' Mammalia ', correct, pass]
+    - [Reptilia, correct, pass]
+    - [Aves, correct, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_order_notfound:
+  data:
+    - [order, type, expected]
+    - [Carnivora, correct, pass]
+    - [' Carnivora ', correct, pass]
+    - [Cetacea, correct, pass]
+    - [Chiroptera, correct, pass]
+    - [Dermoptera, correct, pass]
+    - [Lagomorpha, correct, pass]
+    - [Monotremata, correct, pass]
+    - [Perissodactyla, correct, pass]
+    - [Primates, correct, pass]
+    - [Rodentia, correct, pass]
+    - [Tubulidentata, correct, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_family_notfound:
+  data:
+    - [family, type, expected]
+    - [Lemuridae, correct, pass]
+    - [' Lemuridae ', correct, pass]
+    - [Lorisidae, correct, pass]
+    - [Tarsiidae, correct, pass]
+    - [Callitrichidae, correct, pass]
+    - [Cebidae, correct, pass]
+    - [Cercopithecidae, correct, pass]
+    - [Hylobatidae, correct, pass]
+    - [Pongidae, correct, pass]
+    - [Hominidae, correct, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_genus_notfound:
+  data:
+    - [genus, type, expected]
+    - [Macaca, correct, pass]
+    - [' Macaca ', correct, pass]
+    - [Cercocebus, correct, pass]
+    - [Procolobus, correct, pass]
+    - [Daptrius, correct, pass]
+    - [Caracara, correct, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

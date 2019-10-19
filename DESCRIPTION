@@ -1,8 +1,8 @@
 Package: bdchecks
 Title: Biodiversity Data Checks
-Description: Supplies a Shiny app and a set of functions to perform and managing data checks for biodiversity data. 
-Version: 0.1.25
-Date: 2019-07-24
+Description: Supplies a set of functions to perform and manage data checks for biodiversity data. 
+Version: 0.1.4
+Date: 2019-10-19
 License: GPL-3 | file LICENSE
 URL: https://github.com/bd-R/bdchecks
 BugReports: https://github.com/bd-R/bdchecks/issues
@@ -35,19 +35,11 @@ Authors@R: c(
 Depends: R (>= 3.4)
 Imports: bdDwC,
          DT,
-         data.table,
-         finch,
          methods,
          magrittr,
          kableExtra,
          knitr,
-         rgbif,
          rmarkdown,
-         shiny,
-         shinyBS,
-         shinydashboard,
-         shinyjs,
-         spocc,
          taxize,
          yaml,
          xml2
@@ -55,4 +47,4 @@ LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
 Suggests: testthat,
-    covr
+          covr

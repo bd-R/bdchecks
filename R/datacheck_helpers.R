@@ -14,12 +14,15 @@
 #'
 #' @importFrom magrittr "%>%"
 #' @importFrom taxize classification
+#' @importFrom stats na.omit
 #'
 #' @examples
 #' my_name <- c("Animalia", "Chordata", "Aves", "Mammalia")
 #' my_rank <- "class"
 #' tax_available_name(my_name, my_rank)
-#' 
+#'
+#' @export
+#'
 tax_available_name <- function(name = NULL, rank_orig = "class", db = "gbif") {
   data <- name %>%
     # This is a must modification as the ONLY accepted format is
