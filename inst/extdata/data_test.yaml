@@ -185,3 +185,13 @@ validation_eventtemporal_empty:
     - [' 1999 ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_eventdate_empty:
+  data:
+    - [eventDate, type, expected]
+    - [2000, correct, pass]
+    - [2000.01, correct, pass]
+    - [2000.01.01, correct, pass]
+    - [' 2010-01-17T09:26Z ', correct, pass]
+    - ['  2009-02-12/2009-10-08 ', correct, pass]
+    - ["", missing, fail]
+  comment:
