@@ -177,3 +177,11 @@ validation_countrycode_empty:
     - [' BE ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_eventtemporal_empty:
+  data:
+    - [year, type, expected]
+    - [2000, correct, pass]
+    - [1999, correct, pass]
+    - [' 1999 ', correct, pass]
+    - ["", missing, fail]
+  comment:

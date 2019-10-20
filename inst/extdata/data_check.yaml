@@ -791,3 +791,48 @@ DC_validation_countrycode_empty:
     output_standard_fail: not_compliant 
     output_standard_missing:
     merge_targets: FALSE
+DC_validation_eventtemporal_empty:
+  name: validation_eventtemporal_empty
+  meta:
+    information:
+      description: Check if at least one field needed to determine event temporal of the entity exists and is not empty.
+      question: Is event temporal information present?
+      darwin_core_class: location
+      data_quality_dimension: completeness
+      dimension: space
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+        term: multi_term
+      keywords: location,validation,completness,missing,incomplete
+      guid: 41267642-60ff-4116-90eb-499fee2cd83f
+    example:
+      pass: The value for at least one term for event temporal is present.
+      fail: The value for all terms organized for event temporal are NULL.
+      input_pass: year=2000
+      input_fail: year=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/88
+      reference:
+      creator: Lee Belbin
+      creation: 
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+  input:
+    target: day, endDayOfYear, eventDate, month, startDayOfYear, verbatimEventDate, year
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: TRUE
