@@ -4,7 +4,7 @@ validation_taxon_empty:
     - [animal, correct, pass]
     - [plant, correct, pass]
     - [' plant ', correct, pass]
-    - ["", incorrect, fail]
+    - ["", missing, fail]
   comment:
 validation_taxonid_empty:
   data:
@@ -12,7 +12,7 @@ validation_taxonid_empty:
     - [0001, correct, pass]
     - [0101, correct, pass]
     - [' 0101 ', correct, pass]
-    - ["", incorrect, fail]
+    - ["", missing, fail]
   comment:
 validation_taxonrank_empty:
   data:
@@ -20,7 +20,7 @@ validation_taxonrank_empty:
     - [order, correct, pass]
     - [genus, correct, pass]
     - [' genus ', correct, pass]
-    - ["", incorrect, fail]
+    - ["", missing, fail]
   comment:
 validation_taxonrank_notstandard:
   data:
@@ -40,7 +40,7 @@ validation_scientificname_empty:
     - [Canis lupus, correct, pass]
     - [Felis catus, correct, pass]
     - [' Canis lupus familiaris ', correct, pass]
-    - ["", incorrect, fail]
+    - ["", missing, fail]
   comment:
 validation_kingdom_notfound:
   data:
@@ -124,5 +124,12 @@ validation_genus_notfound:
     - [Caracara, correct, pass]
     - [-2000, irrelevent, fail]
     - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_location_empty:
+  data:
+    - [countryCode, type, expected]
+    - [AU, correct, pass]
+    - [' AU ', correct, pass]
     - ["", missing, fail]
   comment:

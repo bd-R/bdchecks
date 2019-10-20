@@ -516,3 +516,52 @@ DC_validation_genus_notfound:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_location_empty:
+  name: validation_location_empty
+  meta:
+    information:
+      description: Check if at least one field needed to determine location of the entity exists and is not empty.
+      question: Is location information present?
+      darwin_core_class: location
+      data_quality_dimension: completeness
+      dimension: space
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+        term: multi_term
+      keywords: location,validation,completness,missing,incomplete
+      guid: 58486cb6-1114-4a8a-ba1e-bd89cfe887e9
+    example:
+      pass: The value for at least one term for location is present.
+      fail: The value for all terms organized for location are NULL.
+      input_pass: countryCode=AU
+      input_fail: countryCode=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/40
+      reference:
+      creator: Lee Belbin
+      creation: 
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+      1: Paula Zermoglio - I believe DwC terms should include some more, e.g., island, islandGroup, waterbody, county, municipality, continent, countryCode.
+      2: Arthur Chapman - This is a complicated test - needs more work to document. Not georeferenced or not georeferenceable.. Need to add many dwc:terms. If all relevant spatial terms are blank or uninterpretable.
+      3: Paul J. Morris - Extensive discussion in the meeting - has georeference or is georeferencable is one possible interpretation, but a very complex one to implement, and supported by other more granular tests. We decided to constrain this test to a simple test of minimal presence of some sort of spatial data.
+  input:
+    target: country, countryCode, county, decimalLatitude, decimalLongitude, footprintWKT, higherGeography, higherGeographyID, island, islandGroup, locality, locationID, municipality, stateProvince, verbatimCoordinates, verbatimLatitude, verbatimLocality, verbatimLongitude, waterBody
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: TRUE
