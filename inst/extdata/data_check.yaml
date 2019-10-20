@@ -1068,3 +1068,52 @@ DC_validation_basisofrecord_empty:
     output_standard_fail: not_compliant 
     output_standard_missing:
     merge_targets: FALSE
+DC_validation_occurrencestatus_empty:
+  name: validation_occurrencestatus_empty
+  meta:
+    information:
+      description: Check if occurrenceStatus exists and is not empty.
+      question: Is occurrenceStatus information present?
+      darwin_core_class: Record-level Terms
+      data_quality_dimension: completeness
+      dimension: other
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+      keywords: other,validation,completness,missing,incomplete
+      guid: eb4a17f6-6bea-4cdd-93dd-d5a7e9d1eccf
+    example:
+      pass: The value for occurrenceStatus is present.
+      fail: The value for occurrenceStatus is missing.
+      input_pass: occurrenceStatus=present
+      input_fail: occurrenceStatus=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/117
+      reference:
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+      1: Lee Belbin - Why did I put NOT_CORE? It seems a simple easy to test and useful FLAG right now. As a VALIDATION, it would also add meaningfully to #135 but it also shapes like a NOTIFICATION as per #58?
+      2: Arthur Chapman - I think it was one of those that is empty 90% of the time so would create millions of flags. Thinking back - wasn't there some problem with how people were using occurrenceStatus (i.e. to be more than just Present/Absent? One, I guess, assumes if it is blank, then it is present. Because of this, I think we agreed that it shouldn't be CORE
+      3: Lee Belbin - This relates to an existing ALA test of the type we would call NOTIFICATION that says "occurrence status is empty so we are assuming "present". This still seems like a wise thing to me. Yes, it will be flagged a lot, but in this case (as we discussed in Gainesville) - sometimes we need to make a point :) "Please PUT THE OCCURRENCE STATUS IN!"
+      4: Arthur Chapman - I believe this is a VALIDATION not a NOTIFICATION. However, because we have #75 I believe we can delete this one altogether as #75 states that if it is EMPTY then replace with "Present". In spite of @Tasilee's argument above - I think just having an Annotation that says something like "basisOfRecord was EMPTY and it has thus been assumed to be Present" I don't believe (especially in interests of keeping it Simple and the number of annotations as few as possible) I think this is redundant and thus NOT CORE
+  input:
+    target: occurrenceStatus
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: FALSE
