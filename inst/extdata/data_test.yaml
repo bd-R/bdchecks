@@ -155,3 +155,18 @@ validation_decimallongitude_empty:
     - [' 41.1 ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_geodeticdatum_empty:
+  data:
+    - [geodeticDatum, type, expected]
+    - [WGS84, correct, pass]
+    - [NAD27, correct, pass]
+    - [' European 1950 ', correct, pass]
+    - ["", missing, fail]
+  comment:
+validation_country_empty:
+  data:
+    - [country, type, expected]
+    - [Australia, correct, pass]
+    - [' Norway ', correct, pass]
+    - ["", missing, fail]
+  comment:

@@ -625,7 +625,7 @@ DC_validation_decimallongitude_empty:
       resolution:
         record: single_record
       keywords: location,validation,completness,missing,incomplete
-      guid: 7d2485d5-1ba7-4f25-90cb-f4480ff1a275
+      guid: 9beb9442-d942-4f42-8b6a-fcea01ee086a
     example:
       pass: The value for decimalLongitude is present.
       fail: The value for decimalLongitude is missing.
@@ -645,6 +645,97 @@ DC_validation_decimallongitude_empty:
     notes:
   input:
     target: decimalLongitude
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: FALSE
+DC_validation_geodeticdatum_empty:
+  name: validation_geodeticdatum_empty
+  meta:
+    information:
+      description: Check if geodeticDatum exists and is not empty.
+      question: Is geodeticDatum information present?
+      darwin_core_class: location
+      data_quality_dimension: completeness
+      dimension: space
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+      keywords: location,validation,completness,missing,incomplete
+      guid: 239ec40e-a729-4a8e-ba69-e0bf03ac1c44
+    example:
+      pass: The value for geodeticDatum is present.
+      fail: The value for geodeticDatum is missing.
+      input_pass: geodeticDatum=WGS84
+      input_fail: geodeticDatum=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/78
+      reference:
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+  input:
+    target: geodeticDatum
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: FALSE
+DC_validation_country_empty:
+  name: validation_country_empty
+  meta:
+    information:
+      description: Check if country exists and is not empty.
+      question: Is country information present?
+      darwin_core_class: location
+      data_quality_dimension: completeness
+      dimension: space
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+      keywords: location,validation,completness,missing,incomplete
+      guid: 6ce2b2b4-6afe-4d13-82a0-390d31ade01c
+    example:
+      pass: The value for country is present.
+      fail: The value for country is missing.
+      input_pass: country=Australia
+      input_fail: country=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/42
+      reference:
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+      1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that the original assessment of the core nature of the test was correct based on consistency with other tests and participation in dependencies for other tests.
+  input:
+    target: country
     dependency:
       dependency_type: internal
       data_checks:
