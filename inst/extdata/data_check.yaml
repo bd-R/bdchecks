@@ -929,3 +929,50 @@ DC_validation_year_empty:
     output_standard_fail: not_compliant 
     output_standard_missing:
     merge_targets: FALSE
+DC_validation_type_empty:
+  name: validation_type_empty
+  meta:
+    information:
+      description: Check if type exists and is not empty.
+      question: Is type information present?
+      darwin_core_class: Record-level Terms
+      data_quality_dimension: completeness
+      dimension: other
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+      keywords: event,time,validation,completness,missing,incomplete
+      guid: 374b091a-fc90-4791-91e5-c1557c649169
+    example:
+      pass: The value for type is present.
+      fail: The value for type is missing.
+      input_pass: type=Image
+      input_fail: type=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/103
+      reference: https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/2002-07-13/
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+      1: Arthur Chapman - This has been labelled non-core, but discussions at Gainesville suggested it was a good test. We disn't disscuss Sunday TDWG208 - should we re-install or not
+      2: Paul J. Morris - One argument for imposing an expectation that dcterms:type (populated with IRIs from DCMI Type Vocabulary) or dc:type (populated with string literals) be non-empty is that this term helps make occurrence data more broadly reusable in other communities. See the table in the TDWG RDF guide:http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#3.3_Imported_Dublin_Core_terms_that_have_non-literal_objects_and. A second argument (that @ pzermoglio made this evening) is that populating basisOfRecord entails an expectation that dc:type will be popluated with an appropriate parallel value. These are likely to be important discriminators for the nature of vouchers, particularly of observations, where dc:type may contain key information about the nature (image, video, audio) of the voucher. On this basis, I'd advocate including a test for whether dc:type is empty in core.
+  input:
+    target: type
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: FALSE

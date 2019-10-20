@@ -203,3 +203,11 @@ validation_year_empty:
     - [' 1999 ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_type_empty:
+  data:
+    - [type, type, expected]
+    - [image, correct, pass]
+    - [collection, correct, pass]
+    - [' collection ', correct, pass]
+    - ["", missing, fail]
+  comment:
