@@ -213,9 +213,20 @@ validation_type_empty:
   comment:
 validation_license_empty:
   data:
-    - [license, type, expected]
-    - [GPL, correct, pass]
+    - [basisOfRecord, type, expected]
+    - [LivingSpecimen1, correct, pass]
     - [GFDL, correct, pass]
     - [' Open-Document ', correct, pass]
+    - ["", missing, fail]
+  comment:
+validation_basisofrecord_empty:
+  data:
+    - [license, type, expected]
+    - [FossilSpecimen, correct, pass]
+    - [LivingSpecimen, correct, pass]
+    - [HumanObservation, correct, pass]
+    - [MachineObservation, correct, pass]
+    - [PreservedSpecimen, correct, pass]
+    - [' PreservedSpecimen ', correct, pass]
     - ["", missing, fail]
   comment:

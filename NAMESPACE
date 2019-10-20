@@ -3,6 +3,7 @@
 export(data.checks)
 export(data_bats)
 export(data_taxonrank)
+export(dc_validation_basisofrecord_empty)
 export(dc_validation_class_notfound)
 export(dc_validation_country_empty)
 export(dc_validation_countrycode_empty)
