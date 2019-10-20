@@ -17,5 +17,5 @@
 #'  Record-level Terms
 #' @importFrom magrittr %>%
 #' @export
-#' @keywords event,time,validation,completness,missing,incomplete
+#' @keywords other,validation,completness,missing,incomplete
 NULL

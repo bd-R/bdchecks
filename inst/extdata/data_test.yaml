@@ -211,3 +211,11 @@ validation_type_empty:
     - [' collection ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_license_empty:
+  data:
+    - [license, type, expected]
+    - [GPL, correct, pass]
+    - [GFDL, correct, pass]
+    - [' Open-Document ', correct, pass]
+    - ["", missing, fail]
+  comment:
