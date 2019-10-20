@@ -133,3 +133,25 @@ validation_location_empty:
     - [' AU ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_decimallatitude_empty:
+  data:
+    - [decimalLatitude, type, expected]
+    - [-41.0983423, correct, pass]
+    - [41.0983423, correct, pass]
+    - [-41.1, correct, pass]
+    - [41.1, correct, pass]
+    - [' -41.1 ', correct, pass]
+    - [' 41.1 ', correct, pass]
+    - ["", missing, fail]
+  comment:
+validation_decimallongitude_empty:
+  data:
+    - [decimalLongitude, type, expected]
+    - [-41.0983423, correct, pass]
+    - [41.0983423, correct, pass]
+    - [-41.1, correct, pass]
+    - [41.1, correct, pass]
+    - [' -41.1 ', correct, pass]
+    - [' 41.1 ', correct, pass]
+    - ["", missing, fail]
+  comment:
