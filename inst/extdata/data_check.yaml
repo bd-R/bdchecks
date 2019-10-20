@@ -850,7 +850,7 @@ DC_validation_eventdate_empty:
       warning: incomplete
       resolution:
         record: single_record
-      keywords: event,validation,completness,missing,incomplete
+      keywords: event,time,validation,completness,missing,incomplete
       guid: f51e15a6-a67d-4729-9c28-3766299d2985
     example:
       pass: The value for eventDate is present.
@@ -873,6 +873,52 @@ DC_validation_eventdate_empty:
       2: Arthur Chapman - This test is a prerequisite for amendments #61, #86, #93, #132 - if these amendments are run and fail, then eventDate would still be empty, and thus on the re validation, this test will remain an important test.
   input:
     target: eventDate
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: FALSE
+DC_validation_year_empty:
+  name: validation_year_empty
+  meta:
+    information:
+      description: Check if year exists and is not empty.
+      question: Is year information present?
+      darwin_core_class: event
+      data_quality_dimension: completeness
+      dimension: time
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+      keywords: event,time,validation,completness,missing,incomplete
+      guid: c09ecbf9-34e3-4f3e-b74a-8796af15e59f
+    example:
+      pass: The value for year is present.
+      fail: The value for year is missing.
+      input_pass: year=2001-01-01
+      input_fail: year=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/49
+      reference:
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+      1: Paula Zermoglio - This would tell us something if the test was run BEFORE interpretation of day, month, year from eventDate (test DATE_FROM_EVENTDATE). It would only make sense if eventDate was null.
+  input:
+    target: year
     dependency:
       dependency_type: internal
       data_checks:

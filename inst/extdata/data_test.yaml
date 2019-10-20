@@ -195,3 +195,11 @@ validation_eventdate_empty:
     - ['  2009-02-12/2009-10-08 ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_year_empty:
+  data:
+    - [year, type, expected]
+    - [2000, correct, pass]
+    - [1999, correct, pass]
+    - [' 1999 ', correct, pass]
+    - ["", missing, fail]
+  comment:
