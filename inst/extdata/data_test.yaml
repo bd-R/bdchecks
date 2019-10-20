@@ -241,3 +241,10 @@ validation_occurrencestatus_empty:
     - [' rare ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_occurrenceid_empty:
+  data:
+    - [occurrenceID, type, expected]
+    - ['urn:lsid:nhm.ku.edu:Herps:32', type, pass]
+    - [' urn:catalog:FMNH:Mammal:145732 ', type, pass]
+    - ["", missing, fail]
+  comment:

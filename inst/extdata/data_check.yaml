@@ -1117,3 +1117,52 @@ DC_validation_occurrencestatus_empty:
     output_standard_fail: not_compliant 
     output_standard_missing:
     merge_targets: FALSE
+DC_validation_occurrenceid_empty:
+  name: validation_occurrenceid_empty
+  meta:
+    information:
+      description: Check if occurrenceID exists and is not empty.
+      question: Is occurrenceID information present?
+      darwin_core_class: Record-level Terms
+      data_quality_dimension: completeness
+      dimension: other
+      output: validation
+      severity:
+      warning: incomplete
+      resolution:
+        record: single_record
+      keywords: other,validation,completness,missing,incomplete
+      guid: c486546c-e6e5-48a7-b286-eba7f5ca56c4
+    example:
+      pass: The value for occurrenceID is present.
+      fail: The value for occurrenceID is missing.
+      input_pass: occurrenceID=urn:lsid:nhm.ku.edu:Herps:32
+      input_fail: occurrenceID=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/47
+      reference:
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-10-01
+    notes:
+      1: Lee Belbin - I thought this was against our policy?
+      2: John Wieczorek - This has particular applicability for GBIF in publishing an Occurrence data set.
+      3: Paul Morris - Important for testing data in pre-aggregation phases, and for assessing data collected by researchers from various sources.
+      4: John Wieczorek - I believe the name of this test should be changed. OCCURRENCE_IS_NULL is vague and ambiguous, and does not match names of similar tests. I propose OCCURRENCEID_IS_NULL for consistency.
+  input:
+    target: occurrenceID
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing:
+    merge_targets: FALSE
