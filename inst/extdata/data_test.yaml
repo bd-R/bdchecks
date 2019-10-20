@@ -170,3 +170,10 @@ validation_country_empty:
     - [' Norway ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_countrycode_empty:
+  data:
+    - [countryCode, type, expected]
+    - [AU, correct, pass]
+    - [' BE ', correct, pass]
+    - ["", missing, fail]
+  comment:
