@@ -11,15 +11,6 @@
 #' 
 #' @return A data.frame that contains title, url, data information of a given
 #' project
-#' 
-#' @examples
-#' get_github_project(
-#'   repo = "tdwg/bdq",
-#'   project = "Core Tests and Assertions (TG2)",
-#'   header = c("Accept" = "application/vnd.github.inertia-preview+json")
-#' )
-#' 
-#' @export
 #'
 get_github_project <- function(repo = NULL, project = NULL, header = NULL) {
   # Get all projects
