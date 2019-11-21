@@ -4,8 +4,11 @@
 \alias{datacheck_info_export}
 \title{Export data checks as R objects}
 \usage{
-datacheck_info_export(path_yaml = system.file("extdata/data_check.yaml",
-  package = "bdchecks"), path_rd = "./R/", id_rd = "documentation_")
+datacheck_info_export(
+  path_yaml = system.file("extdata/data_check.yaml", package = "bdchecks"),
+  path_rd = "./R/",
+  id_rd = "documentation_"
+)
 }
 \arguments{
 \item{path_yaml}{Path to a YAML file.}

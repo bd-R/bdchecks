@@ -28,4 +28,5 @@ result <- perform_dc(data_bats)
 summary_dc(result)
 # object of class used for data filtering data.frame
 summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
+
 }

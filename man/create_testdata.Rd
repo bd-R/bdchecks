@@ -4,8 +4,9 @@
 \alias{create_testdata}
 \title{Create a dataset to test datachecks}
 \usage{
-create_testdata(path_datatest = system.file("extdata/data_test.yaml",
-  package = "bdchecks"))
+create_testdata(
+  path_datatest = system.file("extdata/data_test.yaml", package = "bdchecks")
+)
 }
 \arguments{
 \item{path_datatest}{String that specifies path to test data in yaml format}

@@ -19,6 +19,7 @@
 #' summary_dc(result)
 #' # object of class used for data filtering data.frame
 #' summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
+#' 
 #' @export
 #'
 summary_dc <- function(input_flag, fancy = TRUE, filtering_dt = FALSE) {
