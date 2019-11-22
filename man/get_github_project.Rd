@@ -21,11 +21,3 @@ project
 `get_github_project()` is a function for retrieve information for a given github
 project
 }
-\examples{
-get_github_project(
-  repo = "tdwg/bdq",
-  project = "Core Tests and Assertions (TG2)",
-  header = c("Accept" = "application/vnd.github.inertia-preview+json")
-)
-
-}
