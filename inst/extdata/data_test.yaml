@@ -260,3 +260,16 @@ notification_establishmentmeans_notempty:
     - [cultivated, correct, pass]
     - ["", missing, fail]
   comment:
+validation_occurrenceid_notstandard:
+  data:
+    - [occurrenceID, type, expected]
+    - ['36003c56-5f53-484f-8022-d0a5dc64968a', correct, pass]
+    - ['623956a3-edb6-4f77-b95b-3ff7a382bae8', correct, pass]
+    - [' 623956a3-edb6-4f77-b95b-3ff7a382bae8 ', correct, pass]
+    - ['623956a3-edb6-4f77-b95b', incorrect, pass]
+    - ['edb6-4f77-b95b-3ff7a382bae8', incorrect, pass]
+    - ['623956a3000-edb6-4f77-b95b-3ff7a382bae8', incorrect, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
