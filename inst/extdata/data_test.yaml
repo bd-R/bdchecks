@@ -248,3 +248,9 @@ validation_occurrenceid_empty:
     - [' urn:catalog:FMNH:Mammal:145732 ', type, pass]
     - ["", missing, fail]
   comment:
+notification_datageneralizations_notempty:
+  data:
+    - [dataGeneralizations, type, expected]
+    - ['record placed on 0.1 degree grid', correct, pass]
+    - ["", missing, fail]
+  comment:

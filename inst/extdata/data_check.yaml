@@ -1166,3 +1166,57 @@ DC_validation_occurrenceid_empty:
     output_standard_fail: not_compliant 
     output_standard_missing:
     merge_targets: FALSE
+
+DC_notification_datageneralizations_notempty:
+  name: notification_datageneralizations_notempty
+  meta:
+    information:
+      description: Check if dataGeneralizations is not empty.
+      question: Is dataGeneralizations information present?
+      darwin_core_class: Record-level Terms
+      data_quality_dimension: space,time,name
+      dimension: resolution
+      output: notification
+      severity:
+      warning: notification
+      resolution:
+        record: 
+      keywords: notificaton,resolition,space,time,name
+      guid: 13d5a10e-188e-40fd-a22c-dbaa87b91df2
+    example:
+      pass: The value for dataGeneralizations is not empty.
+      fail: The value for dataGeneralizations is not reported.
+      input_pass: dataGeneralizations=record placed on 0.1 degree grid
+      input_fail: dataGeneralizations=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: https://github.com/tdwg/bdq/issues/72
+      reference:
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-11-24
+    notes:
+      1: This is not specific to spatial data, any value in the dwc:dataGeneralizations field will cause this flag to be raised, but the primary use case is expected to be that dwc:dataGeneralizations demonstrates obfuscated locations.
+      2: Paula Zermoglio - Data generalizations can apply to non-geographic data, maybe the description of this test could be changed to match a more general approach, more in line with the name of the test.
+      3: Arthur Chapman - Perhaps this needs to be split inter several - e.g. LOCALITY_GENERALIZED, DATE_GENERALIZED, ?NAME_GENERALIZED - does that ever happen?
+      4: Arthur Chapman - Maybe someone doesn't want people to know where they were on a particular day? In our data sensitivity document I don't think we considered TIME. But there may be some that don't want it known what days certain animals hatch - turtles on a particular beach, for example. Not sure, but if it is the one tests does it hurt to include?
+      5: Arthur Chapman - In this record - the Dimension - should be "Other" and not "Space, Time, Name" - as although it does refer to data generalizations in those three "Dimensions" the actual dwc Element it refers to (dwc:dataGeneralizations falls into the "Other" category. See separate Issue I am posting shortly
+      6: Tasilee - My feeling is that we are using Dimension as a way of summarising the coverage of the tests, so while the term dwc:dataGeneralizations could be considered agnostic based on http://rs.tdwg.org/dwc/terms/#dataGeneralizations, we agreed to specifically allow this test to cover name, space and time. I find that a more useful strategy - and this is an issue for the Darwin Core Maintenance Group to review.
+      7: Tasilee - I was wondering if the recent acceptance of dwc:dataGeneralisations to name, time beyond space would benefit from being more explicit? I also seem to remember that we did have a few (non github) issues from Gainesville for DwC? Chasing...
+      8: Tucotuco - Darwin Core does not have these concepts of Dimension, nor is dwc:dataGeneralizations limited to those three data quality concepts. I see the data quality standard as a layer applied on top of Darwin Core (or other standards where the terms are equivalent), and that Darwin Core itself must remain defined independently of that layer.
+  input:
+    target: dataGeneralizations
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: not_empty
+    output_standard_fail: not_reported
+    output_standard_missing: not_reported
+    merge_targets: FALSE
