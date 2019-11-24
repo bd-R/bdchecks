@@ -254,3 +254,9 @@ notification_datageneralizations_notempty:
     - ['record placed on 0.1 degree grid', correct, pass]
     - ["", missing, fail]
   comment:
+notification_establishmentmeans_notempty:
+  data:
+    - [establishmentMeans, type, expected]
+    - [cultivated, correct, pass]
+    - ["", missing, fail]
+  comment:
