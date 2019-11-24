@@ -1407,3 +1407,49 @@ DC_validation_year_outofrange:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_month_notstandard:
+  name: validation_month_notstandard
+  meta:
+    information:
+      description: Check if month is an interget between 1 & 12.
+      question: Is month an integer between 1 & 12?
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: time,validation,conformance
+      guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
+    example:
+      pass: The value for month within given numbers.
+      fail: The value for month is not within given numbers.
+      input_pass: month=6
+      input_fail: month=13
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= 1 AND TARGET <= 12 AND is.integer(TARGET)
+    source:
+      resource: https://github.com/tdwg/bdq/issues/126
+      reference: http://rs.tdwg.org/dwc/terms/index.htm#month
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-11-24
+    notes:
+      1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that this test is correct as written and that another test to validate the month (TG2-VALIDATION_MONTH_NOTSTANDARD) is necessary to be able to know if the prerequisite is met. That test specifically tests that the month is an integer.
+  input:
+    target: month
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE

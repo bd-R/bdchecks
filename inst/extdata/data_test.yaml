@@ -285,13 +285,26 @@ validation_eventdate_outofrange:
   comment:
 validation_year_outofrange:
   data:
-    - [eventDate, type, expected]
+    - [year, type, expected]
     - ['1600', correct, pass]
     - ['2001', correct, pass]
     - ['2019', correct, pass]
     - ['1000', incorrect, fail]
     - ['3000', incorrect, fail]
     - ['-2000', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_month_notstandard:
+  data:
+    - [month, type, expected]
+    - ['1', correct, pass]
+    - ['2', correct, pass]
+    - [' 3 ', correct, pass]
+    - [' 12 ', correct, pass]
+    - ['0', incorrect, fail]
+    - ['13', incorrect, fail]
+    - ['-12', incorrect, fail]
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
