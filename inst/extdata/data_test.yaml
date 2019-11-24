@@ -266,9 +266,20 @@ validation_occurrenceid_notstandard:
     - ['36003c56-5f53-484f-8022-d0a5dc64968a', correct, pass]
     - ['623956a3-edb6-4f77-b95b-3ff7a382bae8', correct, pass]
     - [' 623956a3-edb6-4f77-b95b-3ff7a382bae8 ', correct, pass]
-    - ['623956a3-edb6-4f77-b95b', incorrect, pass]
-    - ['edb6-4f77-b95b-3ff7a382bae8', incorrect, pass]
-    - ['623956a3000-edb6-4f77-b95b-3ff7a382bae8', incorrect, pass]
+    - ['623956a3-edb6-4f77-b95b', incorrect, fail]
+    - ['edb6-4f77-b95b-3ff7a382bae8', incorrect, fail]
+    - ['623956a3000-edb6-4f77-b95b-3ff7a382bae8', incorrect, fail]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_eventdate_outofrange:
+  data:
+    - [eventDate, type, expected]
+    - ['2001-12-12', correct, pass]
+    - ['1601-12-12', correct, pass]
+    - ['1001-12-12', incorrect, fail]
+    - ['2999-12-12', incorrect, fail]
     - [-2000, irrelevent, fail]
     - [Orange, irrelevent, fail]
     - ["", missing, fail]

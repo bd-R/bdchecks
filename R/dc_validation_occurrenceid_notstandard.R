@@ -1,7 +1,6 @@
 #' @rdname dc_validation_occurrenceid_notstandard
 #' 
-#' @param TARGET a vector of taxon rank. To pass must be within given
-#' dictionary.
+#' @param TARGET a vector of occurence ID. To pass must be match a GUID style.
 #' 
 dc_validation_occurrenceid_notstandard <- function(TARGET = NULL) {
   result <- TARGET %>%

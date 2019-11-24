@@ -1269,7 +1269,6 @@ DC_notification_establishmentmeans_notempty:
     output_standard_fail: not_reported
     output_standard_missing: not_reported
     merge_targets: FALSE
-
 DC_validation_occurrenceid_notstandard:
   name: validation_occurrenceid_notstandard
   meta:
@@ -1306,6 +1305,52 @@ DC_validation_occurrenceid_notstandard:
       1: Paul Morris - This one feels like it should assert that the occurrenceID conforms to a well known IRI scheme, and should reference the Darwin Core RDF guide. http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers I'd support OCCURRENCEID_CONFORMS_TO_WELLKNOWN_IRI_SCHEME. See http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers
   input:
     target: occurrenceID
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_eventdate_outofrange:
+  name: validation_eventdate_outofrange
+  meta:
+    information:
+      description: Check if eventDate is not empty and is within given earliest and latest dates.
+      question: Is eventDate within given dates?
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: time,validation,conformance
+      guid: 3cff4dc4-72e9-4abe-9bf3-8a30f1618432
+    example:
+      pass: The value for eventDate within given dates.
+      fail: The value for eventDate is not within given dates.
+      input_pass: eventDate=2001-01-01
+      input_fail: eventDate=2230-12-31
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
+    source:
+      resource: https://github.com/tdwg/bdq/issues/36
+      reference: https://en.wikipedia.org/wiki/ISO_8601
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-11-24
+    notes:
+      1: The results of this test are time-dependent A invalid date for tomorrow will be valid tomorrow. This test provides for a default earliest date, which for specimen records should be 1600-01-01 by convention.
+  input:
+    target: eventDate
     dependency:
       dependency_type: internal
       data_checks:
