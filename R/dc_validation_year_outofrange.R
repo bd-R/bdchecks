@@ -10,9 +10,11 @@ dc_validation_year_outofrange <- function(
   date_start = "1600",
   date_end = format(Sys.Date(), "%Y")
 ) {
-  result <- TARGET %>%
-    gsub(" ", "", .) %>% # Remove possible spaces
-    as.numeric()
+  suppressWarnings(
+    result <- TARGET %>%
+      gsub(" ", "", .) %>% # Remove possible spaces
+      as.numeric()
+  )
   result <- (result >= as.numeric(date_start) & result <= as.numeric(date_end))
   return(perform_dc_missing(result, TARGET))
 }

@@ -4,9 +4,11 @@
 #' between 1 and 12.
 #' 
 dc_validation_month_notstandard <- function(TARGET = NULL) {
-  result <- TARGET %>%
-    gsub(" ", "", .) %>% # Remove possible spaces
-    as.numeric()
+  suppressWarnings(
+    result <- TARGET %>%
+      gsub(" ", "", .) %>% # Remove possible spaces
+      as.numeric()
+  )
   result <- result %% 1 == 0 & result >= 1 & result <= 12
   return(perform_dc_missing(result, TARGET))
 }
