@@ -929,12 +929,12 @@ DC_validation_year_empty:
     output_standard_fail: not_compliant 
     output_standard_missing:
     merge_targets: FALSE
-DC_validation_type_empty:
-  name: validation_type_empty
+DC_validation_dctype_empty:
+  name: validation_dctype_empty
   meta:
     information:
-      description: Check if type exists and is not empty.
-      question: Is type information present?
+      description: Check if dctype exists and is not empty.
+      question: Is dctype information present?
       darwin_core_class: Record-level Terms
       data_quality_dimension: completeness
       dimension: other
@@ -946,10 +946,10 @@ DC_validation_type_empty:
       keywords: other,validation,completness,missing,incomplete
       guid: 374b091a-fc90-4791-91e5-c1557c649169
     example:
-      pass: The value for type is present.
-      fail: The value for type is missing.
-      input_pass: type=Image
-      input_fail: type=
+      pass: The value for dctype is present.
+      fail: The value for dctype is missing.
+      input_pass: dctype=Image
+      input_fail: dctype=
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
