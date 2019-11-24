@@ -12,7 +12,11 @@
 #' @return A data.frame that contains title, url, data information of a given
 #' project
 #'
-get_github_project <- function(repo = NULL, project = NULL, header = NULL) {
+get_github_project <- function(
+  repo = "tdwg/bdq",
+  project = "Core Tests and Assertions (TG2)",
+  header = c("Accept" = "application/vnd.github.inertia-preview+json")
+) {
   # Get all projects
   projects <- gh::gh(
     paste0("/repos/", repo, "/projects"),
