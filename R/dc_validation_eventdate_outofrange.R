@@ -15,7 +15,7 @@ dc_validation_eventdate_outofrange <- function(
   result <- ifelse(result == "", NA, result) %>%
     as.Date(origin = "1970-01-01")
   result <- (
-    result >= as.Date(date_start, origin = "1970-01-01") && 
+    result >= as.Date(date_start, origin = "1970-01-01") & 
     result <= as.Date(date_end, origin = "1970-01-01")
   )
   return(perform_dc_missing(result, TARGET))
