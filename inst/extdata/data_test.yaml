@@ -330,3 +330,15 @@ validation_basisofrecord_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_coordinates_zero:
+  data:
+    - [decimalLongitude, type, expected]
+    - [0, correct, pass]
+    - [' 0 ', correct, pass]
+    - [' 0.0 ', correct, pass]
+    - [1, incorrect, fail]
+    - ['01', incorrect, fail]
+    - [-2000, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

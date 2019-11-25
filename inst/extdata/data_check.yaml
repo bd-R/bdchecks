@@ -1499,3 +1499,49 @@ DC_validation_basisofrecord_notstandard:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_coordinates_zero:
+  name: validation_coordinates_zero
+  meta:
+    information:
+      description: Check if decimalLatitude or decimalLongitude are zeroes.
+      question: Are coordinates equal to zero.
+      darwin_core_class: location
+      data_quality_dimension: likelihood
+      dimension: space
+      output: validation
+      severity:
+      warning: unlikely
+      resolution:
+        record: single_record
+        term: multi_term
+      keywords: space,likelihood,validation
+      guid: 1bf0e210-6792-4128-b8cc-ab6828aa4871
+    example:
+      pass: The value for decimalLatitude is equal to 0.
+      fail: The value for decimalLatitude is not equal to 0.
+      input_pass: decimalLatitude=0
+      input_fail: decimalLatitude=1
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET == 0
+    source:
+      resource: https://github.com/tdwg/bdq/issues/87
+      reference: 
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-11-25
+    notes:
+  input:
+    target: decimalLatitude,decimalLongitude
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: TRUE
