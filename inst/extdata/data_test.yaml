@@ -342,3 +342,17 @@ validation_coordinates_zero:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_coordinateuncertainty_outofrange:
+  data:
+    - [coordinateUncertaintyInMeters, type, expected]
+    - [1, correct, pass]
+    - [' 1 ', correct, pass]
+    - [1.1, correct, pass]
+    - [10, correct, fail]
+    - [1.00001, correct, fail]
+    - [1e6, correct, fail]
+    - [-2000, incorrect, fail]
+    - [0, incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

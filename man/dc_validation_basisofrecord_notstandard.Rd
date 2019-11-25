@@ -16,6 +16,8 @@ dc_validation_basisofrecord_notstandard(
 \arguments{
 \item{TARGET}{a vector of basisOfRecord information. To pass it must be
 within given reference dictionary.}
+
+\item{sources}{a vector of available sources.}
 }
 \description{
 This data check answers: "Is basisOfRecord within given source authority list?" question.\cr Data check will pass if \strong{The value for basisOfRecord is present and correct.} and will fail if \strong{The value for basisOfRecord is missing or incorrect.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{basisOfRecord=human_observation}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{basisOfRecord=photos}, such data check would return \code{FALSE}.

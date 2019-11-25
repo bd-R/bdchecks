@@ -1545,3 +1545,49 @@ DC_validation_coordinates_zero:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: TRUE
+DC_validation_coordinateuncertainty_outofrange:
+  name: validation_coordinateuncertainty_outofrange
+  meta:
+    information:
+      description: Check if coordinateUncertaintyInMeters is within given range.
+      question: Is coordinateUncertaintyInMeters between 1 and upper limit?
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: space,conformance,validation
+      guid: c6adf2ea-3051-4498-97f4-4b2f8a105f57
+    example:
+      pass: The value for coordinateUncertaintyInMeters is within given range.
+      fail: The value for coordinateUncertaintyInMeters is not within range.
+      input_pass: coordinateUncertaintyInMeters=1
+      input_fail: coordinateUncertaintyInMeters=-1
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= lowe_limit & TARGET <= upper_limit
+    source:
+      resource: https://github.com/tdwg/bdq/issues/109
+      reference: https://en.wikipedia.org/wiki/Great-circle_distance, https://www.gbif.org/document/80536/biogeomancer-guide-to-best-practices-in-georeferencing
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-11-25
+    notes:
+  input:
+    target: coordinateUncertaintyInMeters
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: TRUE

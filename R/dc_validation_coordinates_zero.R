@@ -8,5 +8,5 @@ dc_validation_coordinates_zero <- function(TARGET = NULL) {
   suppressWarnings(
     result <- as.numeric(TARGET) == 0
   )
-  # return(perform_dc_missing(result, TARGET))
+  return(perform_dc_missing(result, TARGET))
 }
