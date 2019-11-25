@@ -2,6 +2,7 @@
 
 export(data.checks)
 export(data_bats)
+export(data_countries)
 export(data_taxonrank)
 export(dc_notification_datageneralizations_notempty)
 export(dc_notification_establishmentmeans_notempty)

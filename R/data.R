@@ -29,3 +29,13 @@ NULL
 #' @export
 #'
 NULL
+
+#' Countries
+#'
+#' Set of countries and their code.
+#'
+#' @name data_countries
+#' @docType data
+#' @export
+#'
+NULL
