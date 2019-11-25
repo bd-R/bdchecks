@@ -13,7 +13,7 @@ dc_validation_kingdom_notfound(TARGET = NULL)
 gbif kingdom ranks.}
 }
 \description{
-This data check answers: "Is kingdom information present?" question.\cr Data check will pass if \strong{The value for kingdom is present and correct.} and will fail if \strong{The value for kingdom is missing or incorrect.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{kingdom=Animalia}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{phylum=birds}, such data check would return \code{FALSE}.
+This data check answers: "Is kingdom information present?" question.\cr Data check will pass if \strong{The value for kingdom is present and correct.} and will fail if \strong{The value for kingdom is missing or incorrect.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{kingdom=Animalia}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{kingdom=birds}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

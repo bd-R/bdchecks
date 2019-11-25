@@ -255,7 +255,7 @@ DC_validation_kingdom_notfound:
       pass: The value for kingdom is present and correct.
       fail: The value for kingdom is missing or incorrect.
       input_pass: kingdom=Animalia
-      input_fail: phylum=birds
+      input_fail: kingdom=birds
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
@@ -1443,6 +1443,52 @@ DC_validation_month_notstandard:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that this test is correct as written and that another test to validate the month (TG2-VALIDATION_MONTH_NOTSTANDARD) is necessary to be able to know if the prerequisite is met. That test specifically tests that the month is an integer.
   input:
     target: month
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_basisofrecord_notstandard:
+  name: validation_basisofrecord_notstandard
+  meta:
+    information:
+      description: Check if basisOfRecord is specified source authority service.
+      question: Is basisOfRecord within given source authority list?
+      darwin_core_class: Record-level Terms
+      data_quality_dimension: conformance
+      dimension: other
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: vocabulary,validation
+      guid: 42408a00-bf71-4892-a399-4325e2bc1fb8
+    example:
+      pass: The value for basisOfRecord is present and correct.
+      fail: The value for basisOfRecord is missing or incorrect.
+      input_pass: basisOfRecord=human_observation
+      input_fail: basisOfRecord=photos
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/104
+      reference: http://rs.tdwg.org/dwc/terms/index.htm#basisOfRecord
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-11-25
+    notes:
+  input:
+    target: basisOfRecord
     dependency:
       dependency_type: internal
       data_checks:

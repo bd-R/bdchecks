@@ -308,3 +308,25 @@ validation_month_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_basisofrecord_notstandard:
+  data:
+    - [basisOfRecord, type, expected]
+    - [PreservedSpecimen, correct, pass]
+    - [FossilSpecimen, correct, pass]
+    - [LivingSpecimen, correct, pass]
+    - [MaterialSample, correct, pass]
+    - [Event, correct, pass]
+    - [Taxon, correct, pass]
+    - [Occurrence, correct, pass]
+    - [MachineObservation, correct, pass]
+    - [HumanObservation, correct, pass]
+    - [' HumanObservation ', correct, pass]
+    - [HUMAN_OBSERVATION, correct, pass]
+    - [HUMAN.OBSERVATION, correct, pass]
+    - [human.observation, correct, pass]
+    - [human, correct, pass]
+    - [photos, incorrect, pass]
+    - [-2000, irrelevent, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
