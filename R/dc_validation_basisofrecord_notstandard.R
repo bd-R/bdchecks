@@ -17,6 +17,8 @@ dc_validation_basisofrecord_notstandard <- function(
     "materialsample",
     "occurrence",
     "preservedspecimen",
+    "photo",
+    "photos",
     "taxon"
   )
 ) {

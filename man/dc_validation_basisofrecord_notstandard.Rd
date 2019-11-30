@@ -10,7 +10,7 @@ dc_validation_basisofrecord_notstandard(
   TARGET = NULL,
   sources = c("event", "fossil", "fossilspecimen", "human", "humanobservation",
     "livingspecimen", "machineobservation", "materialsample", "occurrence",
-    "preservedspecimen", "taxon")
+    "preservedspecimen", "photo", "photos", "taxon")
 )
 }
 \arguments{
