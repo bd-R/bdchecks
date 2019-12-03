@@ -1,5 +1,5 @@
 #'
-#' Data check validation_minelevation_outofrange Check if minimumElevationInMeters is within parameter range>
+#' Data check validation_minelevation_outofrange Check if minimumElevationInMeters is within parameter range.
 #'
 #'     This data check answers: "Is minimumElevationInMeters within parameter range?" question.\cr Data check will pass if \strong{The value for minimumElevationInMeters within given numbers.} and will fail if \strong{The value for minimumElevationInMeters is not within given numbers.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumElevationInMeters=0}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{minimumElevationInMeters=9999}, such data check would return \code{FALSE}.
 #' @name dc_validation_minelevation_outofrange

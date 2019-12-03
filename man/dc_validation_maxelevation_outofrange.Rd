@@ -3,7 +3,7 @@
 %   R/documentation_validation_maxelevation_outofrange.R
 \name{dc_validation_maxelevation_outofrange}
 \alias{dc_validation_maxelevation_outofrange}
-\title{Data check validation_maxelevation_outofrange Check if maximumElevationInMeters is within parameter range>}
+\title{Data check validation_maxelevation_outofrange Check if maximumElevationInMeters is within parameter range.}
 \format{An object of class function to perform a specific data check.}
 \usage{
 dc_validation_maxelevation_outofrange(

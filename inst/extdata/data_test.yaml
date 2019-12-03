@@ -404,3 +404,19 @@ validation_maxelevation_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_decimallongitude_outofrange:
+  data:
+    - [decimalLongitude, type, expected]
+    - ['0', correct, pass]
+    - ['-180', correct, pass]
+    - ['180', correct, pass]
+    - ['-179', correct, pass]
+    - ['179', correct, pass]
+    - ['-179.999', correct, pass]
+    - ['179.999', correct, pass]
+    - [' 180 ', correct, pass]
+    - ['-181', incorrect, fail]
+    - ['181', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

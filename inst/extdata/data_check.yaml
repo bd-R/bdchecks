@@ -1693,7 +1693,7 @@ DC_validation_minelevation_outofrange:
   name: validation_minelevation_outofrange
   meta:
     information:
-      description: Check if minimumElevationInMeters is within parameter range>
+      description: Check if minimumElevationInMeters is within parameter range.
       question: Is minimumElevationInMeters within parameter range?
       darwin_core_class: location
       data_quality_dimension: conformance
@@ -1746,7 +1746,7 @@ DC_validation_maxelevation_outofrange:
   name: validation_maxelevation_outofrange
   meta:
     information:
-      description: Check if maximumElevationInMeters is within parameter range>
+      description: Check if maximumElevationInMeters is within parameter range.
       question: Is maximumElevationInMeters within parameter range?
       darwin_core_class: location
       data_quality_dimension: conformance
@@ -1777,6 +1777,51 @@ DC_validation_maxelevation_outofrange:
     notes:
   input:
     target: maximumElevationInMeters
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_decimallongitude_outofrange:
+  name: validation_decimallongitude_outofrange
+  meta:
+    information:
+      description: Check if decimalLongitude is within parameter range.
+      question: Is decimalLongitude within parameter range?
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: space,validation,conformance
+      guid: 0949110d-c06b-450e-9649-7c1374d940d1
+    example:
+      pass: The value for decimalLongitude within given numbers.
+      fail: The value for decimalLongitude is not within given numbers.
+      input_pass: decimalLongitude=0
+      input_fail: decimalLongitude=181
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= min_degree AND TARGET <= max_degree
+    source:
+      resource: https://github.com/tdwg/bdq/issues/30
+      reference: http://rs.tdwg.org/dwc/terms/index.htm#decimalLongitude
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-03
+    notes:
+  input:
+    target: decimalLongitude
     dependency:
       dependency_type: internal
       data_checks:
