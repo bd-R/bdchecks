@@ -13,8 +13,8 @@ dc_validation_minelevation_outofrange(
 )
 }
 \arguments{
-\item{TARGET}{a vector of coordinate uncertainty in meters. To pass it must
-be betwee lower and upper limit.}
+\item{TARGET}{a vector of minimum elevation meters. To pass it must
+be within lower and upper limits.}
 
 \item{lower_limit}{a numeric value for a lower limit.}
 

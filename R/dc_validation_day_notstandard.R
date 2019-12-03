@@ -1,7 +1,7 @@
 #' @rdname dc_validation_day_notstandard
 #' 
 #' @param TARGET a vector of day information. To pass must be an integer
-#' between 1 and 31.
+#' within 1 and 31.
 #' 
 dc_validation_day_notstandard <- function(TARGET = NULL) {
   suppressWarnings(

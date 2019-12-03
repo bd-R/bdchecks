@@ -15,7 +15,7 @@ dc_validation_coordinateuncertainty_outofrange(
 }
 \arguments{
 \item{TARGET}{a vector of coordinate uncertainty in meters. To pass it must
-be betwee lower and upper limit.}
+be within lower and upper limits.}
 
 \item{lower_limit}{a numeric value for a lower limit.}
 

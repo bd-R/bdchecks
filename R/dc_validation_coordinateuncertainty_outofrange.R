@@ -1,7 +1,7 @@
 #' @rdname dc_validation_coordinateuncertainty_outofrange
 #' 
 #' @param TARGET a vector of coordinate uncertainty in meters. To pass it must
-#' be betwee lower and upper limit.
+#' be within lower and upper limits.
 #' @param lower_limit a numeric value for a lower limit.
 #' @param upper_limit a numeric value for an upper limit.
 #' 

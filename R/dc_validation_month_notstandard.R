@@ -1,7 +1,7 @@
 #' @rdname dc_validation_month_notstandard
 #' 
 #' @param TARGET a vector of month information. To pass must be an integer
-#' between 1 and 12.
+#' within 1 and 12.
 #' 
 dc_validation_month_notstandard <- function(TARGET = NULL) {
   suppressWarnings(

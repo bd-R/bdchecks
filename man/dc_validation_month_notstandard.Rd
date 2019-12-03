@@ -10,7 +10,7 @@ dc_validation_month_notstandard(TARGET = NULL)
 }
 \arguments{
 \item{TARGET}{a vector of month information. To pass must be an integer
-between 1 and 12.}
+within 1 and 12.}
 }
 \description{
 This data check answers: "Is month an integer between 1 and 12 inclusive?" question.\cr Data check will pass if \strong{The value for month within given numbers.} and will fail if \strong{The value for month is not within given numbers.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{month=6}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{month=13}, such data check would return \code{FALSE}.
