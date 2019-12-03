@@ -367,3 +367,16 @@ validation_country_notstandard:
     - [-2000, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_day_notstandard:
+  data:
+    - [day, type, expected]
+    - ['1', correct, pass]
+    - ['2', correct, pass]
+    - [' 3 ', correct, pass]
+    - [' 31 ', correct, pass]
+    - ['0', incorrect, fail]
+    - ['32', incorrect, fail]
+    - ['-31', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

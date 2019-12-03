@@ -1411,8 +1411,8 @@ DC_validation_month_notstandard:
   name: validation_month_notstandard
   meta:
     information:
-      description: Check if month is an interget between 1 & 12.
-      question: Is month an integer between 1 & 12?
+      description: Check if month is an interget between 1 and 12 inclusive.
+      question: Is month an integer between 1 and 12 inclusive?
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -1631,6 +1631,54 @@ DC_validation_country_notstandard:
       4: Arthur Chapman - Discussion from Gainesville meeting - Should we be using current country? of country at time of collection? For may reasons, it was agreed that for this test, the country should be current country. For the Sequence - see Paula's comment above - run validations, run amendments - run validations again (Paul) Will handle a number of cases where concerned about sequence. John - do we require country to be a written out version of a country code or can be other political entity - for example United Kingdom.n Important test. Not necessarily an error, but a warning that the country is not a standard modern country. French Indo-China could mean any one of a number of current countries. Agreed to apply to current ISO countries. Question why ISO and not Getty Thesaurus. Geonames another suggestion. Getty Thesaurus has hierarchies. Test for now could just as "in a vocabulary" and what vocabulary could change over time. DwC mentions Getty as a recommended vocabulary. We could thus go that way to be consistent with DwC. Put the ISO test to ISO, and the human readable "Country" to the richer Getty Thesaurus.
   input:
     target: country
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_day_notstandard:
+  name: validation_day_notstandard
+  meta:
+    information:
+      description: Check if day is an interget between 1 and 31 inclusive.
+      question: Is day an integer between 1 and 31 inclusive?
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: time,validation,conformance
+      guid: 47ff73ba-0028-4f79-9ce1-ee7008d66498
+    example:
+      pass: The value for day within given numbers.
+      fail: The value for day is not within given numbers.
+      input_pass: day=6
+      input_fail: day=32
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= 1 AND TARGET <= 31 AND is.integer(TARGET)
+    source:
+      resource: https://github.com/tdwg/bdq/issues/147
+      reference: http://rs.tdwg.org/dwc/terms/index.htm#day
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-03
+    notes:
+      1: Arthur Chapman - We have changed the description of this from "is not an unambiguous value" to "is not an integer between 1 and 31 inclusive.
+      2: Paul Morris - Field not present as a prerequisite is a significant barrier for implemenations. An implementation of an atomic test as a method which takes values as parameters e.g. validateDayNotStandard(day), is very likely to be isolated from a larger framework which understands whether or not a term is present in an input data set or not. Bringing "is present" into the test definition conflates areas of concern. This gets back to the need for a definition of isEmpty - if we define isEmpty to include null values, empty strings, and cases where the term isn't present in the data set then we can consistently define prerequisites as being not empty. I thus propose that we change the element of the definition "INTERNAL_PREREQUISITES_NOT_MET if the field dwc:day is not present; " to "INTERNAL_PREREQUISITES_NOT_MET if the field dwc:day is EMPTY;", reference a standard definition of EMPTY, and propagate this change to all other test definitions.
+      3: John Wieczorek - I see what you mean about being able to abstract the test in code be independent of the record structure that it might act on. Defining EMPTY to include when a field isn't present seems an elegant simplification that I don't anticipate would cause any issues. I mean, once it comes to the test implementation, it doesn't much matter of there was a source value that was null or if there was no source field. Making the change would likely simplify all the descriptions that reference not present. Downside it means a review and rewrite of a bunch of tests - it looks like there might be 67 tests affected. I would not wish that on Lee or Arthur.
+  input:
+    target: day
     dependency:
       dependency_type: internal
       data_checks:
