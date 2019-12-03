@@ -380,3 +380,15 @@ validation_day_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_minelevation_outofrange:
+  data:
+    - [minelevation, type, expected]
+    - ['0', correct, pass]
+    - ['1', correct, pass]
+    - [' -400 ', correct, pass]
+    - [' 5000 ', correct, pass]
+    - ['-10000', incorrect, fail]
+    - ['10000', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

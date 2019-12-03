@@ -1411,7 +1411,7 @@ DC_validation_month_notstandard:
   name: validation_month_notstandard
   meta:
     information:
-      description: Check if month is an interget between 1 and 12 inclusive.
+      description: Check if month is an integer between 1 and 12 inclusive.
       question: Is month an integer between 1 and 12 inclusive?
       darwin_core_class: event
       data_quality_dimension: conformance
@@ -1645,7 +1645,7 @@ DC_validation_day_notstandard:
   name: validation_day_notstandard
   meta:
     information:
-      description: Check if day is an interget between 1 and 31 inclusive.
+      description: Check if day is an integer between 1 and 31 inclusive.
       question: Is day an integer between 1 and 31 inclusive?
       darwin_core_class: event
       data_quality_dimension: conformance
@@ -1679,6 +1679,59 @@ DC_validation_day_notstandard:
       3: John Wieczorek - I see what you mean about being able to abstract the test in code be independent of the record structure that it might act on. Defining EMPTY to include when a field isn't present seems an elegant simplification that I don't anticipate would cause any issues. I mean, once it comes to the test implementation, it doesn't much matter of there was a source value that was null or if there was no source field. Making the change would likely simplify all the descriptions that reference not present. Downside it means a review and rewrite of a bunch of tests - it looks like there might be 67 tests affected. I would not wish that on Lee or Arthur.
   input:
     target: day
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_minelevation_outofrange:
+  name: validation_minelevation_outofrange
+  meta:
+    information:
+      description: Check if minimumElevationInMeters is within parameter range>
+      question: Is minimumElevationInMeters within parameter range?
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: space,validation,conformance
+      guid: 0bb8297d-8f8a-42d2-80c1-558f29efe798
+    example:
+      pass: The value for minimumElevationInMeters within given numbers.
+      fail: The value for minimumElevationInMeters is not within given numbers.
+      input_pass: minimumElevationInMeters=0
+      input_fail: minimumElevationInMeters=9999
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= min_elevation AND TARGET <= max_elevation
+    source:
+      resource: https://github.com/tdwg/bdq/issues/39
+      reference: https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-03
+    notes:
+      1: Paula Zermoglio - Elevation CAN be less than 0, and I would not expect it to be more than 8,848m (Mt. Everist summit).
+      2: Ian Engelbrecht - 'if the value of the field dwc:maximumElevationInMeters is number between -423 and 8850 inclusive' -should that be dwc:minimumElevationInMeters? Also is there a reason for -423 as lower bound? I understand, possibly incorrectly, that the lowest is the Dead Sea shore at -413m.
+      3: Arthur Chapman - Thanks @ianengelbrecht - yes should be minimum and not maximum (I have fixed). Thanks for picking that up. I see that the reference we cite https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country has been updated and the Dead Sea has been changed from -423 to -428 (perhaps other references give different values). I have corrected that in the expected response above. Should we alter this to -430 (-450) or something to allow rounding. What do you think @tucotuco
+      4: Arthur Chapman - @tucotuco I see that the reference we cite has Mt Everest at 8848 m. We seem to have rounded that to 8850, so perhaps we should round the minimum to -430 especially as the Wikipedia footnote (34) states that it falls about 1 m per year and gives -428 as the 2014 level. I am also wondering if Wikipedia is the best reference here, or a more permanent reference?
+      5: Lee Belbin - Just back on deck. Thanks @ianengelbrecht and @ArthurChapman. I agree that we should round these limits out to -430 to +8850, but I wonder then if this one is 'Parameterized' so that installers/implementers could provide their own min/max?
+      6: Arthur Chapman - Interesting suggestion, @Tasilee. If it was parameterized (for example if someone was working in Australia and wanted to set the maximum and minimum for Australia) that would make sense. We would then default to -430 to +8850 as the default if parameter not set. Would need to rewrite and put a note to the effect that if the parameter is not set it reverts to -430 to +8850
+      7: John Wieczorek - I like the idea of rounding a bit beyond the extremes. It will avoid discussions (hopefully) of what different sources have to say. I really like the idea of a parametrized test. We could create a reference data set of extremes by country code as well.
+      8: Paul Morris - Data Quality Dimension isn't correct. This is a test of Likelihood, not Conformance, as there is no standard to conform to, just the distribution of likelyhood of occurrences against elevations within some region of interest. We should check all tests that assert a data quality dimension of Conformance to make sure that they do actually involve the data conforming to some standard rather than being a test of likely values in the real world.
+  input:
+    target: minimumElevationInMeters
     dependency:
       dependency_type: internal
       data_checks:
