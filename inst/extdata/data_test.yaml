@@ -420,3 +420,19 @@ validation_decimallongitude_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_decimallatitude_outofrange:
+  data:
+    - [decimalLongitude, type, expected]
+    - ['0', correct, pass]
+    - ['-90', correct, pass]
+    - ['90', correct, pass]
+    - ['-89', correct, pass]
+    - ['89', correct, pass]
+    - ['-89.999', correct, pass]
+    - ['89.999', correct, pass]
+    - [' 90 ', correct, pass]
+    - ['-91', incorrect, fail]
+    - ['91', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:

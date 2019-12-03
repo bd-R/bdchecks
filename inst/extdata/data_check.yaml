@@ -1832,3 +1832,48 @@ DC_validation_decimallongitude_outofrange:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_decimallatitude_outofrange:
+  name: validation_decimallatitude_outofrange
+  meta:
+    information:
+      description: Check if decimalLatitude is within parameter range.
+      question: Is decimalLatitude within parameter range?
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: space,validation,conformance
+      guid: b6ecda2a-ce36-437a-b515-3ae94948fe83
+    example:
+      pass: The value for decimalLatitude within given numbers.
+      fail: The value for decimalLatitude is not within given numbers.
+      input_pass: decimalLatitude=0
+      input_fail: decimalLatitude=91
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= min_degree AND TARGET <= max_degree
+    source:
+      resource: https://github.com/tdwg/bdq/issues/79
+      reference: http://rs.tdwg.org/dwc/terms/index.htm#decimalLatitude
+      creator:
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-03
+    notes:
+  input:
+    target: decimalLatitude
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
