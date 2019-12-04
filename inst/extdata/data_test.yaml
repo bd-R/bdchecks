@@ -436,3 +436,13 @@ validation_decimallatitude_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_country_countrycode_inconsistent:
+  data:
+    - [country, countryCode, type, expected]
+    - [Finland, FI, correct, pass]
+    - [Australia, AU, correct, pass]
+    - [Finland, AU, incorrect, fail]
+    - [Australia, FI, incorrect, fail]
+    - ["", AU, missing, fail]
+    - [Australia, "", missing, fail]
+  comment:

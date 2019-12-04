@@ -42,10 +42,10 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
         )
         target_result[[j]] <- NULL
       } else {
-        if (dc@name %in% c("countryMismatch", "coordinatePrecisionMismatch")) {
+        if (dc@name %in% c("validation_country_countrycode_inconsistent")) {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
             data[, j, drop = TRUE],
-            data[, dc@input$dependency$data, drop = TRUE]
+            data[, dc@input$target2, drop = TRUE]
           )
         } else {
           target_result[[j]] <- get(paste0("dc_", dc@name))(

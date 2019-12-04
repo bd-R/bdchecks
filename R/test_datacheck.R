@@ -47,7 +47,14 @@ perform_test_dc <- function(report = FALSE) {
   data_test <- create_testdata()
   for (i in seq_along(data_test)) {
     check <- names(data_test)[i]
-    result_test <- get(paste0("dc_", check))(data_test[[i]][, 1])
+    if (check %in% c("validation_country_countrycode_inconsistent")) {
+      result_test <- get(paste0("dc_", check))(
+        data_test[[i]][, 1],
+        data_test[[i]][,  data.checks@dc_body[[check]]@input$target2]
+      )
+    } else {
+      result_test <- get(paste0("dc_", check))(data_test[[i]][, 1])
+    }
     data_test[[i]]$observed <- ifelse(
       (is.na(result_test) | result_test == FALSE),
       "fail", "pass"
