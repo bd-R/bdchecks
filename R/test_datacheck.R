@@ -47,7 +47,7 @@ perform_test_dc <- function(report = FALSE) {
   data_test <- create_testdata()
   for (i in seq_along(data_test)) {
     check <- names(data_test)[i]
-    if (check %in% c("validation_country_countrycode_inconsistent")) {
+    if (!is.null(data.checks@dc_body[[check]]@input$target2)) {
       result_test <- get(paste0("dc_", check))(
         data_test[[i]][, 1],
         data_test[[i]][,  data.checks@dc_body[[check]]@input$target2]

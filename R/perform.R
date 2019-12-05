@@ -42,7 +42,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
         )
         target_result[[j]] <- NULL
       } else {
-        if (dc@name %in% c("validation_country_countrycode_inconsistent")) {
+        if (!is.null(dc@input$target2)) {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
             data[, j, drop = TRUE],
             data[, dc@input$target2, drop = TRUE]
