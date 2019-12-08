@@ -1963,3 +1963,53 @@ DC_validation_country_countrycode_inconsistent:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_mindepth_maxdepth_outofrange:
+  name: validation_mindepth_maxdepth_outofrange
+  meta:
+    information:
+      description: Check if minimumDepthInMeters and maximumDepthInMeters is within parameter range.
+      question: Are minimumDepthInMeters and maximumDepthInMeters within parameter range?
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term: multi_term
+      keywords: space,validation
+      guid: 04b2c8f3-c71b-4e95-8e43-f70374c5fb92
+    example:
+      pass: Values for minimumDepthInMeters and maximumDepthInMeters are within given numbers.
+      fail: Values for minimumDepthInMeters and maximumDepthInMeters are not within given numbers.
+      input_pass: maximumDepthInMeters=100
+      input_fail: maximumDepthInMeters=20000
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET >= min_depth AND TARGET <= max_depth
+    source:
+      resource: https://github.com/tdwg/bdq/issues/107
+      reference: https://en.wikipedia.org/wiki/Extreme_points_of_Earth
+      creator:
+      creation: 
+      maintainer: Povilas Gibas
+      modification: 2019-12-08
+    notes:
+      1: Paul Morris - Minumum depth should also be less than 11000m, and max depth should also be greater than or equal to 0 meters, as only a single depth might be provided. @pz, feels like likeliness rather than conformance, as it isn't a format problem, just the compliance of a range with expected reality.
+      2: Paul Morris - Aren't valid depth values less than zero possible, given the vertical datum? Near shore samples could be collected at a depth of -1 meter, relative to a horizontal datum of mean low tide, when collected under water at high tide. "below the local surface" leaves itself open to interpreation as relative to the water surface, or as relative to a particular horizontal datum defining the local surface. In collections made in nearshore environments, depths in reference to a defined horizontal datum as well as the actual water surface at the time of collection are both likely.
+      3: Paul Morris - As defined in Darwin Core, dwc:minimum/maximumDepthInMeters can not be less than 0, as it is defined in reference to the local surface.
+  input:
+    target: minimumDepthInMeters,maximumDepthInMeters
+    target2:
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: TRUE

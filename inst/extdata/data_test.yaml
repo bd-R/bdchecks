@@ -446,3 +446,16 @@ validation_country_countrycode_inconsistent:
     - ["", AU, missing, fail]
     - [Australia, "", missing, fail]
   comment:
+validation_mindepth_maxdepth_outofrange:
+  data:
+    - [minimumDepthInMeters, type, expected]
+    - ['0', correct, pass]
+    - ['11000', correct, pass]
+    - [' 10 ', correct, pass]
+    - ['10999.999', correct, pass]
+    - ['-1', incorrect, fail]
+    - ['12000', incorrect, fail]
+    - ['11000.01', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
