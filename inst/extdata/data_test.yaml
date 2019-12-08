@@ -468,3 +468,12 @@ validation_minelevation_greaterthan_maxelevation:
     - [100, 99, incorrect, fail]
     - ["", 100, missing, fail]
   comment:
+validation_mindepth_greaterthan_maxdepth:
+  data:
+    - [minimumDepthInMeters, maximumDepthInMeters, type, expected]
+    - [100, 200, correct, pass]
+    - [0, 1, correct, pass]
+    - [' 0 ', 0, correct, pass]
+    - [100, 99, incorrect, fail]
+    - ["", 100, missing, fail]
+  comment:

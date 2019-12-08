@@ -2059,3 +2059,54 @@ DC_validation_minelevation_greaterthan_maxelevation:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_mindepth_greaterthan_maxdepth:
+  name: validation_mindepth_greaterthan_maxdepth
+  meta:
+    information:
+      description: Check if minimumDepthInMeters is not greater than maximumDepthInMeters.
+      question: Is minimumDepthInMeters less or equal to maximumDepthInMeters?
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: space,validation,conformance
+      guid: 8f1e6e58-544b-4365-a569-fb781341644e
+    example:
+      pass: Given minimumDepthInMeters is not greater than maximumDepthInMeters.
+      fail: Given minimumDepthInMeters is greater than maximumDepthInMeters.
+      input_pass: minimumDepthInMeters="100",maximumDepthInMeters="200"
+      input_fail: minimumDepthInMeters="100",maximumDepthInMeters="20"
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      minimumDepthInMeters > maximumDepthInMeters
+    source:
+      resource: https://github.com/tdwg/bdq/issues/24
+      reference:
+      creator: ALA,GBIF,OBIS
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-08
+    notes:
+      1: Paula Zermoglio - This is assuming that depths are actually correct but transposed, rather than just one of them, maximum or minimum being just plainly wrong.
+      2: Paul Morris - Separate into a validation MIN_DEPTH_SHALLOWERTHAN_OR_EQ_MAX and an amendment MIN_MAX_DEPTHS_TRANSPOSED, to resolve the issue. There's a validation to find problematic depths, and an amendment which makes the explictit assumption that there is a transposition, make the transpostion, and leaves the consumer of the report free to decide whether or not to accept that assumption. A transposition ammendment could also be expected to be informed by a ocean depth model and only propose the transposition if it is reasonable for the location and geographic uncertainty. A nearshore depth where a minimum depth has an error in the form of a missing decimal point making it much larger than the maximum depth is a very plausible error on the line PZ considers.
+      3: Lee Belbin - Basically, the statement needs to be min max depths ok.
+      4: Paul Morris - Split into separate Validation and Amendment, Validation=1, amendment needs more specification.
+      5: Paul Morris - Splits have been accomplished. This test is now atomic so comments about splits have been satisfied.
+  input:
+    target: minimumDepthInMeters
+    target2: maximumDepthInMeters
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
