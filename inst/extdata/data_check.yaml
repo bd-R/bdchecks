@@ -2110,3 +2110,103 @@ DC_validation_mindepth_greaterthan_maxdepth:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_eventdate_notstandard:
+  name: validation_eventdate_notstandard
+  meta:
+    information:
+      description: Check if eventDate is a valid ISO 8601-1:2019 date.
+      question: Is eventDate a valid ISO 8601-1:2019 date?
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: time,validation,conformance
+      guid: 4f2bf8fd-fc5c-493f-a44c-e7b16153c803
+    example:
+      pass: Given eventDate is a valid ISO 8601-1:2019 date.
+      fail: Given eventDate is not a valid ISO 8601-1:2019 date.
+      input_pass: eventDate="02021981"
+      input_fail: eventDate="2018-02-02"
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      is.iso_date(eventDate)
+    source:
+      resource: https://github.com/tdwg/bdq/issues/66
+      reference: https://en.wikipedia.org/wiki/ISO_8601
+      creator: Paul Morris
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-22
+    notes:
+      1: Paul Morris - There are similar tests in this sheet for date modified and date identified, but this test on eventDate appears to be missing.
+      2: Paul Morris - Need clarification (perhaps from the standard (which we cant get at)) as to whether this should be a date which exists as well as a correctly formatted date (e.g. should February 29 not in a leap year fail). The event_date_qc library contains a test which references the guid f413594a-df57-41ea-a187-b8c6c6379b45 and VALIDATION_EVENT_DATE_EXISTS, with a specification "Compliant if dwc:eventDate can to parsed as an actual ISO date, otherwise not compliant. Internal prerequisites not met if dwc:eventDate is empty" This may be an implementation of an earlier form of VALIDATION_EVENTDATE_NOTSTANDARD from the spreadsheet. If we decide that VALIDATION_EVENTDATE_NOTSTANDARD includes testing whether the date existed or not, then the event_date_qc implementation would take the standard name and guid. We should note that correctly formatted dates in the ISO format include dates, date ranges, date ranges spanning a month, date ranges spanning a year, dates and date ranges specified with year-dayofyear, and dates and date ranges including time. The ISO date format also allows dates to be described as a recurring interval. Single dates, and date ranges in various forms are common in biodiversity data, dates with times and dates specified by year and day of year are less common.
+      3: Lee Belbin - As we have #36, we have valid dates covered? This one is "not standard" which I would assume to be not parseable as ISO. #36 covers "not possible". I guess that between all the test responses, the user should know that state of play. Any other comments? Does it need more work?
+      4: Paul Morris - #36 doesn't cover validity (possible or not possible) of dates - depending on the implementation, a date within the allowed range could be a date which does not exist. The parallel issue #69 specifies "The value of dwc:dateIdentified is not a valid ISO 8601:2004(E) date", different from the specification here. We should have similar specifications for NOT_STANDARD.
+      5: Lee Belbin -  I agree with you in regards a concise and consistent wording for NOT STANDARD. Are you suggesting "The value of dwc:eventDate is not correctly formatted to ISO 8601:2004(E) date." should be "The value of dwc:eventDate is not a valid ISO 8601:2004(E) date"? If so, go for it. I would say #36 SHOULD cover a 'not possible' date within a valid time range.
+      6: Arthur Chapman - Not sure @Tasilee if we want to make #36 more complicated. We seem to have enough problems now with trying to fit it into a range.
+      7: Ian Engelbrecht - Has anyone written code that can parse an ISO date range to it's constituent parts? Any language, but VBA might be good for individual taxonomists using Access for their projects. There's a link here to parsing ISO dates (not ranges) in VBA. Also Javascript here
+      8: Paul Morris - see the event_date_qc https //github.com/FilteredPush/event_date_qc library, written in java. It works with almost all forms of ISO date ranges and can parse a wide variety of verbatim date values into ISO date ranges. For some examples, see the unit tests here's an example in a low level verbatim event date parser test https://github.com/FilteredPush/event_date_qc/blob/7dd53bc59823f3d16ea18954d0be2e36118bded1/src/test/java/org/filteredpush/qc/date/DateUtilsTest.java#L804 and here's a case in a higher level test of a test with results framed in the concepts of the fittness for use framework https://github.com/FilteredPush/event_date_qc/blob/7dd53bc59823f3d16ea18954d0be2e36118bded1/src/test/java/org/filteredpush/qc/date/DwcEventDQTest.java#L1298
+  input:
+    target: eventDate
+    target2: 
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE
+DC_validation_dateidentified_notstandard:
+  name: validation_dateidentified_notstandard
+  meta:
+    information:
+      description: Check if dateIdentified is a valid ISO 8601-1:2019 date.
+      question: Is dateIdentified a valid ISO 8601-1:2019 date?
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      severity: 
+      warning: invalid
+      resolution:
+        record: 
+      keywords: time,validation,conformance
+      guid:   66269bdd-9271-4e76-b25c-7ab81eebe1d8
+    example:
+      pass: Given dateIdentified is a valid ISO 8601-1:2019 date.
+      fail: Given dateIdentified is not a valid ISO 8601-1:2019 date.
+      input_pass: dateIdentified="02021981"
+      input_fail: dateIdentified="2018-02-02"
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      is.iso_date(dateIdentified)
+    source:
+      resource: https://github.com/tdwg/bdq/issues/69
+      reference: https://en.wikipedia.org/wiki/ISO_8601
+      creator: Paul Morris
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-22
+    notes:
+  input:
+    target: dateIdentified
+    target2: 
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE

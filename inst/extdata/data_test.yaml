@@ -477,3 +477,21 @@ validation_mindepth_greaterthan_maxdepth:
     - [100, 99, incorrect, fail]
     - ["", 100, missing, fail]
   comment:
+validation_eventdate_notstandard:
+  data:
+    - [eventDate, type, expected]
+    - ['2018-02-02', correct, pass]
+    - ['02021981', incorrect, fail]
+    - ['20180202', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
+validation_dateidentified_notstandard:
+  data:
+    - [dateIdentified, type, expected]
+    - ['2018-02-02', correct, pass]
+    - ['02021981', incorrect, fail]
+    - ['20180202', incorrect, fail]
+    - [Orange, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
