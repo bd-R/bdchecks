@@ -12,7 +12,7 @@ test_that("perform_dc", {
   expect_gt(length(result@DC), 1)
   # No arguments provided
   expect_warning(perform_dc(data_bats))
-  expect_warning(perform_dc(mtcars, "validation_taxonrank_empty"))
+  expect_warning(perform_dc(mtcars))
   # This will depend on data version
   expect_equal(sum(
     perform_dc(data_bats, "validation_taxonrank_empty")@flags[[1]]@result

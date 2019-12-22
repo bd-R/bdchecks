@@ -45,7 +45,7 @@ DC_validation_taxon_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: TRUE
 DC_validation_taxonid_empty:
   name: validation_taxonid_empty
@@ -139,7 +139,7 @@ DC_validation_taxonrank_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_taxonrank_notstandard:
   name: validation_taxonrank_notstandard
@@ -237,7 +237,7 @@ DC_validation_scientificname_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_kingdom_notfound:
   name: validation_kingdom_notfound
@@ -575,7 +575,7 @@ DC_validation_location_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: TRUE
 DC_validation_decimallatitude_empty:
   name: validation_decimallatitude_empty
@@ -621,7 +621,7 @@ DC_validation_decimallatitude_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_decimallongitude_empty:
   name: validation_decimallongitude_empty
@@ -667,7 +667,7 @@ DC_validation_decimallongitude_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_geodeticdatum_empty:
   name: validation_geodeticdatum_empty
@@ -713,7 +713,7 @@ DC_validation_geodeticdatum_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_country_empty:
   name: validation_country_empty
@@ -760,7 +760,7 @@ DC_validation_country_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_countrycode_empty:
   name: validation_countrycode_empty
@@ -806,7 +806,7 @@ DC_validation_countrycode_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_eventtemporal_empty:
   name: validation_eventtemporal_empty
@@ -852,7 +852,7 @@ DC_validation_eventtemporal_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: TRUE
 DC_validation_eventdate_empty:
   name: validation_eventdate_empty
@@ -900,7 +900,7 @@ DC_validation_eventdate_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_year_empty:
   name: validation_year_empty
@@ -947,7 +947,7 @@ DC_validation_year_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_dctype_empty:
   name: validation_dctype_empty
@@ -995,7 +995,7 @@ DC_validation_dctype_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_license_empty:
   name: validation_license_empty
@@ -1042,7 +1042,7 @@ DC_validation_license_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_basisofrecord_empty:
   name: validation_basisofrecord_empty
@@ -1089,7 +1089,7 @@ DC_validation_basisofrecord_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_occurrencestatus_empty:
   name: validation_occurrencestatus_empty
@@ -1139,7 +1139,7 @@ DC_validation_occurrencestatus_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_validation_occurrenceid_empty:
   name: validation_occurrenceid_empty
@@ -1189,7 +1189,7 @@ DC_validation_occurrenceid_empty:
   output:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
-    output_standard_missing:
+    output_standard_missing: missing_data
     merge_targets: FALSE
 DC_notification_datageneralizations_notempty:
   name: notification_datageneralizations_notempty
@@ -1624,7 +1624,7 @@ DC_validation_coordinateuncertainty_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: TRUE
+    merge_targets: FALSE
 DC_validation_country_notstandard:
   name: validation_country_notstandard
   meta:

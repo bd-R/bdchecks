@@ -40,7 +40,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
           "Column ", j, " does not exist in a given dataset;",
           " skipping data check ", dc@name, " for it."
         )
-        target_result[[j]] <- NULL
+        target_result[[j]] <- rep(NA, nrow(data))
       } else {
         if (!is.null(dc@input$target2)) {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
