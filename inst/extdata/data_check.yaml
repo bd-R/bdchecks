@@ -2210,3 +2210,50 @@ DC_validation_dateidentified_notstandard:
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
     merge_targets: FALSE
+DC_validation_occurrencestatus_notstandard:
+  name: validation_occurrencestatus_notstandard
+  meta:
+    information:
+      description: Check if occurrenceStatus is specified source authority service.
+      question: Is occurrenceStatus within given source authority list?
+      darwin_core_class: occurrence
+      data_quality_dimension: conformance
+      dimension: other
+      output: validation
+      severity:
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: vocabulary,validation
+      guid: 7af25f1e-a4e2-4ff4-b161-d1f25a5c3e47
+    example:
+      pass: The value for occurrenceStatus is present and correct.
+      fail: The value for occurrenceStatus is missing or incorrect.
+      input_pass: occurrenceStatus=present
+      input_fail: occurrenceStatus=observed
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      occurrenceStatus %in% reference
+    source:
+      resource: https://github.com/tdwg/bdq/issues/116
+      reference: http://rs.tdwg.org/dwc/terms/index.htm#occurrenceStatus
+      creator: 
+      creation:
+      maintainer: Povilas Gibas
+      modification: 2019-12-22
+    notes:
+  input:
+    target: occurrenceStatus
+    target2:
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
+    merge_targets: FALSE

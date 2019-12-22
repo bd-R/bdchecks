@@ -495,3 +495,15 @@ validation_dateidentified_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_occurrencestatus_notstandard:
+  data:
+    - [occurrenceStatus, type, expected]
+    - [present, correct, pass]
+    - [absent, correct, pass]
+    - [Present, correct, pass]
+    - [ABSENT, correct, pass]
+    - [' present ', correct, pass]
+    - [Observed, incorrect, fail]
+    - [-2000, irrelevent, fail]
+    - ["", missing, fail]
+  comment:
