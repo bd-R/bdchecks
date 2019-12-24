@@ -12,7 +12,7 @@
 #' @section sampleFailData:
 #' The value for all terms organized in the Taxon class are NULL.
 #' @section targetDWCField:
-#' taxonID,scientificNameID,acceptedNameUsageID,parentNameUsageID,originalNameUsageID,taxonConceptID,scientificName,higherClassification,kingdom,phylum,class,order,family,genus,subgenus,specificEpithet,infraspecificEpithet,vernacularName
+#' taxonID, scientificNameID, acceptedNameUsageID, parentNameUsageID, originalNameUsageID, taxonConceptID, scientificName, higherClassification, kingdom, phylum, class, order, family, genus, subgenus, specificEpithet, infraspecificEpithet, vernacularName
 #' @section checkCategory:
 #'  taxon
 #' @importFrom magrittr %>%

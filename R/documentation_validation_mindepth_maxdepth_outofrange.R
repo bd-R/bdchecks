@@ -12,7 +12,7 @@
 #' @section sampleFailData:
 #' Values for minimumDepthInMeters and maximumDepthInMeters are not within given numbers.
 #' @section targetDWCField:
-#' minimumDepthInMeters,maximumDepthInMeters
+#' minimumDepthInMeters, maximumDepthInMeters
 #' @section checkCategory:
 #'  location
 #' @importFrom magrittr %>%

@@ -35,7 +35,7 @@ DC_validation_taxon_empty:
       1: Lee Belbin - This needs discussion. For example, would kingdom, phylum, class or order only be useful?
       2: JW - Would this test return true if there were data in the relevant Taxon-related fields was meaningless (effectively null)?
   input:
-    target: taxonID,scientificNameID,acceptedNameUsageID,parentNameUsageID,originalNameUsageID,taxonConceptID,scientificName,higherClassification,kingdom,phylum,class,order,family,genus,subgenus,specificEpithet,infraspecificEpithet,vernacularName
+    target: taxonID, scientificNameID, acceptedNameUsageID, parentNameUsageID, originalNameUsageID, taxonConceptID, scientificName, higherClassification, kingdom, phylum, class, order, family, genus, subgenus, specificEpithet, infraspecificEpithet, vernacularName
     target2:
     dependency:
       dependency_type: internal
@@ -591,6 +591,7 @@ DC_validation_decimallatitude_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: location,validation,completness,missing,incomplete
       guid: 7d2485d5-1ba7-4f25-90cb-f4480ff1a275
     example:
@@ -637,6 +638,7 @@ DC_validation_decimallongitude_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: location,validation,completness,missing,incomplete
       guid: 9beb9442-d942-4f42-8b6a-fcea01ee086a
     example:
@@ -683,6 +685,7 @@ DC_validation_geodeticdatum_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: location,validation,completness,missing,incomplete
       guid: 239ec40e-a729-4a8e-ba69-e0bf03ac1c44
     example:
@@ -729,6 +732,7 @@ DC_validation_country_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: location,validation,completness,missing,incomplete
       guid: 6ce2b2b4-6afe-4d13-82a0-390d31ade01c
     example:
@@ -776,6 +780,7 @@ DC_validation_countrycode_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: location,validation,completness,missing,incomplete
       guid: 853b79a2-b314-44a2-ae46-34a1e7ed85e4
     example:
@@ -868,6 +873,7 @@ DC_validation_eventdate_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: event,time,validation,completness,missing,incomplete
       guid: f51e15a6-a67d-4729-9c28-3766299d2985
     example:
@@ -916,6 +922,7 @@ DC_validation_year_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: event,time,validation,completness,missing,incomplete
       guid: c09ecbf9-34e3-4f3e-b74a-8796af15e59f
     example:
@@ -963,6 +970,7 @@ DC_validation_dctype_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: other,validation,completness,missing,incomplete
       guid: 374b091a-fc90-4791-91e5-c1557c649169
     example:
@@ -1011,6 +1019,7 @@ DC_validation_license_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: other,validation,completness,missing,incomplete
       guid: 15f78619-811a-4c6f-997a-a4c7888ad849
     example:
@@ -1058,7 +1067,8 @@ DC_validation_basisofrecord_empty:
       warning: incomplete
       resolution:
         record: single_record
-      keywords: other,validation,completness,missing,incomplete
+        term:
+      keywords: other, validation, completness, missing, incomplete
       guid: ac2b7648-d5f9-48ca-9b07-8ad5879a2536
     example:
       pass: The value for basisOfRecord is present.
@@ -1105,6 +1115,7 @@ DC_validation_occurrencestatus_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: other,validation,completness,missing,incomplete
       guid: eb4a17f6-6bea-4cdd-93dd-d5a7e9d1eccf
     example:
@@ -1155,6 +1166,7 @@ DC_validation_occurrenceid_empty:
       warning: incomplete
       resolution:
         record: single_record
+        term:
       keywords: other,validation,completness,missing,incomplete
       guid: c486546c-e6e5-48a7-b286-eba7f5ca56c4
     example:
@@ -1204,7 +1216,8 @@ DC_notification_datageneralizations_notempty:
       output: notification
       warning: notification
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: notificaton,resolution,space,time,name
       guid: 13d5a10e-188e-40fd-a22c-dbaa87b91df2
     example:
@@ -1258,7 +1271,8 @@ DC_notification_establishmentmeans_notempty:
       output: notification
       warning: notification
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: other,notificaton,completness
       guid: acc8dff2-d8d1-483a-946d-65a02a452700
     example:
@@ -1309,7 +1323,8 @@ DC_validation_occurrenceid_notstandard:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: other,validation,conformance,guid
       guid: 3cfe9ab4-79f8-4afd-8da5-723183ef16a3
     example:
@@ -1356,7 +1371,8 @@ DC_validation_eventdate_outofrange:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: time,validation,conformance
       guid: 3cff4dc4-72e9-4abe-9bf3-8a30f1618432
     example:
@@ -1403,7 +1419,8 @@ DC_validation_year_outofrange:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: time,validation,conformance
       guid: ad0c8855-de69-4843-a80c-a5387d20fbc8
     example:
@@ -1450,7 +1467,8 @@ DC_validation_month_notstandard:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: time,validation,conformance
       guid: 01c6dafa-0886-4b7e-9881-2c3018c98bdc
     example:
@@ -1566,7 +1584,7 @@ DC_validation_coordinates_zero:
       modification: 2019-11-25
     notes:
   input:
-    target: decimalLatitude,decimalLongitude
+    target: decimalLatitude, decimalLongitude
     target2:
     dependency:
       dependency_type: internal
@@ -1689,7 +1707,8 @@ DC_validation_day_notstandard:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: time,validation,conformance
       guid: 47ff73ba-0028-4f79-9ce1-ee7008d66498
     example:
@@ -1738,7 +1757,8 @@ DC_validation_minelevation_outofrange:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: space,validation,conformance
       guid: 0bb8297d-8f8a-42d2-80c1-558f29efe798
     example:
@@ -1792,7 +1812,8 @@ DC_validation_maxelevation_outofrange:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: space,validation,conformance
       guid: c971fe3f-84c1-4636-9f44-b1ec31fd63c7
     example:
@@ -1838,7 +1859,8 @@ DC_validation_decimallongitude_outofrange:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: space,validation,conformance
       guid: 0949110d-c06b-450e-9649-7c1374d940d1
     example:
@@ -1884,7 +1906,8 @@ DC_validation_decimallatitude_outofrange:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: space,validation,conformance
       guid: b6ecda2a-ce36-437a-b515-3ae94948fe83
     example:
@@ -1930,7 +1953,8 @@ DC_validation_country_countrycode_inconsistent:
       output: validation
       warning: inconsistent
       resolution:
-        record: 
+        record: multi_record
+        term:
       keywords: space,validation,conformance
       guid: b23110e7-1be7-444a-a677-cdee0cf4330c
     example:
@@ -2001,7 +2025,7 @@ DC_validation_mindepth_maxdepth_outofrange:
       2: Paul Morris - Aren't valid depth values less than zero possible, given the vertical datum? Near shore samples could be collected at a depth of -1 meter, relative to a horizontal datum of mean low tide, when collected under water at high tide. "below the local surface" leaves itself open to interpreation as relative to the water surface, or as relative to a particular horizontal datum defining the local surface. In collections made in nearshore environments, depths in reference to a defined horizontal datum as well as the actual water surface at the time of collection are both likely.
       3: Paul Morris - As defined in Darwin Core, dwc:minimum/maximumDepthInMeters can not be less than 0, as it is defined in reference to the local surface.
   input:
-    target: minimumDepthInMeters,maximumDepthInMeters
+    target: minimumDepthInMeters, maximumDepthInMeters
     target2:
     dependency:
       dependency_type: internal
@@ -2026,7 +2050,8 @@ DC_validation_minelevation_greaterthan_maxelevation:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: multi_record
+        term:
       keywords: space,validation,conformance
       guid: d708526b-6561-438e-aa1a-82cd80b06396
     example:
@@ -2072,7 +2097,8 @@ DC_validation_mindepth_greaterthan_maxdepth:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: multi_record
+        term:
       keywords: space,validation,conformance
       guid: 8f1e6e58-544b-4365-a569-fb781341644e
     example:
@@ -2123,7 +2149,8 @@ DC_validation_eventdate_notstandard:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: time,validation,conformance
       guid: 4f2bf8fd-fc5c-493f-a44c-e7b16153c803
     example:
@@ -2153,7 +2180,7 @@ DC_validation_eventdate_notstandard:
       8: Paul Morris - see the event_date_qc https //github.com/FilteredPush/event_date_qc library, written in java. It works with almost all forms of ISO date ranges and can parse a wide variety of verbatim date values into ISO date ranges. For some examples, see the unit tests here's an example in a low level verbatim event date parser test https://github.com/FilteredPush/event_date_qc/blob/7dd53bc59823f3d16ea18954d0be2e36118bded1/src/test/java/org/filteredpush/qc/date/DateUtilsTest.java#L804 and here's a case in a higher level test of a test with results framed in the concepts of the fittness for use framework https://github.com/FilteredPush/event_date_qc/blob/7dd53bc59823f3d16ea18954d0be2e36118bded1/src/test/java/org/filteredpush/qc/date/DwcEventDQTest.java#L1298
   input:
     target: eventDate
-    target2: 
+    target2:
     dependency:
       dependency_type: internal
       data_checks:
@@ -2177,7 +2204,8 @@ DC_validation_dateidentified_notstandard:
       output: validation
       warning: invalid
       resolution:
-        record: 
+        record: single_record
+        term:
       keywords: time,validation,conformance
       guid:   66269bdd-9271-4e76-b25c-7ab81eebe1d8
     example:
@@ -2199,7 +2227,7 @@ DC_validation_dateidentified_notstandard:
     notes:
   input:
     target: dateIdentified
-    target2: 
+    target2:
     dependency:
       dependency_type: internal
       data_checks:

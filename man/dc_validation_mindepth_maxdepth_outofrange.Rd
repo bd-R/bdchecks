@@ -35,7 +35,7 @@ Values for minimumDepthInMeters and maximumDepthInMeters are not within given nu
 
 \section{targetDWCField}{
 
-minimumDepthInMeters,maximumDepthInMeters
+minimumDepthInMeters, maximumDepthInMeters
 }
 
 \section{checkCategory}{

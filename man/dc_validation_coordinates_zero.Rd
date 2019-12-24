@@ -27,7 +27,7 @@ The value for decimalLatitude is not equal to 0.
 
 \section{targetDWCField}{
 
-decimalLatitude,decimalLongitude
+decimalLatitude, decimalLongitude
 }
 
 \section{checkCategory}{

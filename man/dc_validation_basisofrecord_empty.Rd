@@ -41,4 +41,8 @@ perform_dc(data_bats, 'validation_basisofrecord_empty')
 \references{
 None
 }
-\keyword{other,validation,completness,missing,incomplete}
+\keyword{completness,}
+\keyword{incomplete}
+\keyword{missing,}
+\keyword{other,}
+\keyword{validation,}
