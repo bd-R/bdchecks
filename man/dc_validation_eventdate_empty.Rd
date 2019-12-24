@@ -41,4 +41,4 @@ perform_dc(data_bats, 'validation_eventdate_empty')
 \references{
 None
 }
-\keyword{event,time,validation,completness,missing,incomplete}
+\keyword{event,time,validation,completeness,missing,incomplete}

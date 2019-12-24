@@ -13,7 +13,7 @@ DC_validation_taxon_empty:
       resolution:
         record: single_record
         term: multi_term
-      keywords: taxon,validation,completness,missing,incomplete
+      keywords: taxon,validation,completeness,missing,incomplete
       guid: 06851339-843f-4a43-8422-4e61b9a00e75
     example:
       pass: The value for at least one term in the Taxon class is present.
@@ -60,7 +60,7 @@ DC_validation_taxonid_empty:
       resolution:
         record: single_record
         term:
-      keywords: taxon,validation,completness,missing,incomplete
+      keywords: taxon,validation,completeness,missing,incomplete
       guid: 401bf207-9a55-4dff-88a5-abcd58ad97fa
     example:
       pass: The value for taxonID is present.
@@ -105,7 +105,7 @@ DC_validation_taxonrank_empty:
       resolution:
         record: single_record
         term:
-      keywords: taxon,validation,completness,missing,incomplete
+      keywords: taxon,validation,completeness,missing,incomplete
       guid: 14da5b87-8304-4b2b-911d-117e3c29e890
     example:
       pass: The value for taxonRank is present.
@@ -150,7 +150,7 @@ DC_validation_taxonrank_notstandard:
       resolution:
         record: single_record
         term:
-      keywords: taxon,validation,completness,missing,incomplete
+      keywords: taxon,validation,completeness,missing,incomplete
       guid: 7bdb13a4-8a51-4ee5-be7f-20693fdb183e
     example:
       pass: The value for taxonRank is standard.
@@ -196,7 +196,7 @@ DC_validation_scientificname_empty:
       resolution:
         record: single_record
         term:
-      keywords: taxon,validation,completness,missing,incomplete
+      keywords: taxon,validation,completeness,missing,incomplete
       guid: 7c4b9498-a8d9-4ebb-85f1-9f200c788595
     example:
       pass: The value for scientificName is present.
@@ -520,7 +520,7 @@ DC_validation_location_empty:
       resolution:
         record: single_record
         term: multi_term
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 58486cb6-1114-4a8a-ba1e-bd89cfe887e9
     example:
       pass: The value for at least one term for location is present.
@@ -568,7 +568,7 @@ DC_validation_decimallatitude_empty:
       resolution:
         record: single_record
         term:
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 7d2485d5-1ba7-4f25-90cb-f4480ff1a275
     example:
       pass: The value for decimalLatitude is present.
@@ -613,7 +613,7 @@ DC_validation_decimallongitude_empty:
       resolution:
         record: single_record
         term:
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 9beb9442-d942-4f42-8b6a-fcea01ee086a
     example:
       pass: The value for decimalLongitude is present.
@@ -658,7 +658,7 @@ DC_validation_geodeticdatum_empty:
       resolution:
         record: single_record
         term:
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 239ec40e-a729-4a8e-ba69-e0bf03ac1c44
     example:
       pass: The value for geodeticDatum is present.
@@ -703,7 +703,7 @@ DC_validation_country_empty:
       resolution:
         record: single_record
         term:
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 6ce2b2b4-6afe-4d13-82a0-390d31ade01c
     example:
       pass: The value for country is present.
@@ -749,7 +749,7 @@ DC_validation_countrycode_empty:
       resolution:
         record: single_record
         term:
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 853b79a2-b314-44a2-ae46-34a1e7ed85e4
     example:
       pass: The value for countryCode is present.
@@ -794,7 +794,7 @@ DC_validation_eventtemporal_empty:
       resolution:
         record: single_record
         term: multi_term
-      keywords: location,validation,completness,missing,incomplete
+      keywords: location,validation,completeness,missing,incomplete
       guid: 41267642-60ff-4116-90eb-499fee2cd83f
     example:
       pass: The value for at least one term for event temporal is present.
@@ -839,7 +839,7 @@ DC_validation_eventdate_empty:
       resolution:
         record: single_record
         term:
-      keywords: event,time,validation,completness,missing,incomplete
+      keywords: event,time,validation,completeness,missing,incomplete
       guid: f51e15a6-a67d-4729-9c28-3766299d2985
     example:
       pass: The value for eventDate is present.
@@ -886,7 +886,7 @@ DC_validation_year_empty:
       resolution:
         record: single_record
         term:
-      keywords: event,time,validation,completness,missing,incomplete
+      keywords: event,time,validation,completeness,missing,incomplete
       guid: c09ecbf9-34e3-4f3e-b74a-8796af15e59f
     example:
       pass: The value for year is present.
@@ -924,7 +924,7 @@ DC_validation_dctype_empty:
       description: Check if dctype exists and is not empty.
       question: Is dctype information present?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: completeness
       dimension: other
       output: validation
@@ -932,7 +932,7 @@ DC_validation_dctype_empty:
       resolution:
         record: single_record
         term:
-      keywords: other,validation,completness,missing,incomplete
+      keywords: other,validation,completeness,missing,incomplete
       guid: 374b091a-fc90-4791-91e5-c1557c649169
     example:
       pass: The value for dctype is present.
@@ -971,7 +971,7 @@ DC_validation_license_empty:
       description: Check if license exists and is not empty.
       question: Is license information present?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: completeness
       dimension: other
       output: validation
@@ -979,7 +979,7 @@ DC_validation_license_empty:
       resolution:
         record: single_record
         term:
-      keywords: other,validation,completness,missing,incomplete
+      keywords: other,validation,completeness,missing,incomplete
       guid: 15f78619-811a-4c6f-997a-a4c7888ad849
     example:
       pass: The value for license is present.
@@ -1017,7 +1017,7 @@ DC_validation_basisofrecord_empty:
       description: Check if basisOfRecord exists and is not empty.
       question: Is basisOfRecord information present?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: completeness
       dimension: other
       output: validation
@@ -1025,7 +1025,7 @@ DC_validation_basisofrecord_empty:
       resolution:
         record: single_record
         term:
-      keywords: other, validation, completness, missing, incomplete
+      keywords: other, validation, completeness, missing, incomplete
       guid: ac2b7648-d5f9-48ca-9b07-8ad5879a2536
     example:
       pass: The value for basisOfRecord is present.
@@ -1063,7 +1063,7 @@ DC_validation_occurrencestatus_empty:
       description: Check if occurrenceStatus exists and is not empty.
       question: Is occurrenceStatus information present?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: completeness
       dimension: other
       output: validation
@@ -1071,7 +1071,7 @@ DC_validation_occurrencestatus_empty:
       resolution:
         record: single_record
         term:
-      keywords: other,validation,completness,missing,incomplete
+      keywords: other,validation,completeness,missing,incomplete
       guid: eb4a17f6-6bea-4cdd-93dd-d5a7e9d1eccf
     example:
       pass: The value for occurrenceStatus is present.
@@ -1112,7 +1112,7 @@ DC_validation_occurrenceid_empty:
       description: Check if occurrenceID exists and is not empty.
       question: Is occurrenceID information present?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: completeness
       dimension: other
       output: validation
@@ -1120,7 +1120,7 @@ DC_validation_occurrenceid_empty:
       resolution:
         record: single_record
         term:
-      keywords: other,validation,completness,missing,incomplete
+      keywords: other,validation,completeness,missing,incomplete
       guid: c486546c-e6e5-48a7-b286-eba7f5ca56c4
     example:
       pass: The value for occurrenceID is present.
@@ -1161,7 +1161,7 @@ DC_notification_datageneralizations_notempty:
       description: Check if dataGeneralizations is not empty.
       question: Is dataGeneralizations information present?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: space,time,name
       dimension: resolution
       output: notification
@@ -1215,14 +1215,14 @@ DC_notification_establishmentmeans_notempty:
       question: Is establishmentMeans information present?
       check_type: tdwg_standard
       darwin_core_class: occurrence
-      data_quality_dimension: completness
+      data_quality_dimension: completeness
       dimension: other
       output: notification
       warning: notification
       resolution:
         record: single_record
         term:
-      keywords: other,notificaton,completness
+      keywords: other,notificaton,completeness
       guid: acc8dff2-d8d1-483a-946d-65a02a452700
     example:
       pass: The value for establishmentMeans is not empty.
@@ -1448,7 +1448,7 @@ DC_validation_basisofrecord_notstandard:
       description: Check if basisOfRecord is specified source authority service.
       question: Is basisOfRecord within given source authority list?
       check_type: tdwg_standard
-      darwin_core_class: Record-level Terms
+      darwin_core_class: record-level terms
       data_quality_dimension: conformance
       dimension: other
       output: validation
@@ -1603,8 +1603,8 @@ DC_validation_country_notstandard:
     pseudocode: |
       TARGET %in% reference
     source:
-      resource: http://www.getty.edu/research/tools/vocabularies/tgn/index.html
-      reference: GBIF
+      resource: https://github.com/tdwg/bdq/issues/21
+      reference: http://www.getty.edu/research/tools/vocabularies/tgn/index.html
       creator: 
       modifier: Povilas Gibas
       modification: 2019-12-24

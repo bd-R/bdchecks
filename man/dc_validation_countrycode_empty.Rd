@@ -41,4 +41,4 @@ perform_dc(data_bats, 'validation_countrycode_empty')
 \references{
 None
 }
-\keyword{location,validation,completness,missing,incomplete}
+\keyword{location,validation,completeness,missing,incomplete}

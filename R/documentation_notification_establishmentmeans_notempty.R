@@ -17,5 +17,5 @@
 #'  occurrence
 #' @importFrom magrittr %>%
 #' @export
-#' @keywords other,notificaton,completness
+#' @keywords other,notificaton,completeness
 NULL

@@ -32,7 +32,7 @@ license
 
 \section{checkCategory}{
 
- Record-level Terms
+ record-level terms
 }
 
 \examples{
@@ -41,4 +41,4 @@ perform_dc(data_bats, 'validation_license_empty')
 \references{
 None
 }
-\keyword{other,validation,completness,missing,incomplete}
+\keyword{other,validation,completeness,missing,incomplete}

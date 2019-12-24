@@ -17,5 +17,5 @@
 #'  location
 #' @importFrom magrittr %>%
 #' @export
-#' @keywords location,validation,completness,missing,incomplete
+#' @keywords location,validation,completeness,missing,incomplete
 NULL

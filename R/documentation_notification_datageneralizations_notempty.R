@@ -14,7 +14,7 @@
 #' @section targetDWCField:
 #' dataGeneralizations
 #' @section checkCategory:
-#'  Record-level Terms
+#'  record-level terms
 #' @importFrom magrittr %>%
 #' @export
 #' @keywords notificaton,resolution,space,time,name

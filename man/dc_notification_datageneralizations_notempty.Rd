@@ -31,7 +31,7 @@ dataGeneralizations
 
 \section{checkCategory}{
 
- Record-level Terms
+ record-level terms
 }
 
 \examples{

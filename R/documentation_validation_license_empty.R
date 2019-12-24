@@ -14,8 +14,8 @@
 #' @section targetDWCField:
 #' license
 #' @section checkCategory:
-#'  Record-level Terms
+#'  record-level terms
 #' @importFrom magrittr %>%
 #' @export
-#' @keywords other,validation,completness,missing,incomplete
+#' @keywords other,validation,completeness,missing,incomplete
 NULL

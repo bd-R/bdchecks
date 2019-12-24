@@ -41,4 +41,4 @@ perform_dc(data_bats, 'validation_scientificname_empty')
 \references{
 None
 }
-\keyword{taxon,validation,completness,missing,incomplete}
+\keyword{taxon,validation,completeness,missing,incomplete}

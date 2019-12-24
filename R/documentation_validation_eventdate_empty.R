@@ -17,5 +17,5 @@
 #'  event
 #' @importFrom magrittr %>%
 #' @export
-#' @keywords event,time,validation,completness,missing,incomplete
+#' @keywords event,time,validation,completeness,missing,incomplete
 NULL

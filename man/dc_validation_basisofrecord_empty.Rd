@@ -32,7 +32,7 @@ basisOfRecord
 
 \section{checkCategory}{
 
- Record-level Terms
+ record-level terms
 }
 
 \examples{
@@ -41,7 +41,7 @@ perform_dc(data_bats, 'validation_basisofrecord_empty')
 \references{
 None
 }
-\keyword{completness,}
+\keyword{completeness,}
 \keyword{incomplete}
 \keyword{missing,}
 \keyword{other,}

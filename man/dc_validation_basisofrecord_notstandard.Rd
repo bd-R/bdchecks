@@ -39,7 +39,7 @@ basisOfRecord
 
 \section{checkCategory}{
 
- Record-level Terms
+ record-level terms
 }
 
 \examples{

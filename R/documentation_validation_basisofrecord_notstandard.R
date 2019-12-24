@@ -14,7 +14,7 @@
 #' @section targetDWCField:
 #' basisOfRecord
 #' @section checkCategory:
-#'  Record-level Terms
+#'  record-level terms
 #' @importFrom magrittr %>%
 #' @export
 #' @keywords vocabulary,validation

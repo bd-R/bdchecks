@@ -17,5 +17,5 @@
 #'  taxon
 #' @importFrom magrittr %>%
 #' @export
-#' @keywords taxon,validation,completness,missing,incomplete
+#' @keywords taxon,validation,completeness,missing,incomplete
 NULL

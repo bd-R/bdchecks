@@ -40,4 +40,4 @@ perform_dc(data_bats, 'notification_establishmentmeans_notempty')
 \references{
 None
 }
-\keyword{other,notificaton,completness}
+\keyword{other,notificaton,completeness}
