@@ -14,7 +14,7 @@ dc_filter_generate(
 \item{dc_result_summary}{Summary table for a DataCheckFlagSet class
 (must be filterable in `DT`)}
 
-\item{cell_selected}{Cells selected in `DT::datatable`}
+\item{cell_selected}{Cells selected in filtering table.}
 
 \item{filters}{Vector that contains names for passed, failed and missing
 data checks}
@@ -25,5 +25,5 @@ filtering status
 }
 \description{
 `dc_filter_generate()` is a function that generates vector for filtering data
-checks result table according to `DT::datatable()` `selectCells` object.
+checks result table according to filtering table `selectCells` object.
 }

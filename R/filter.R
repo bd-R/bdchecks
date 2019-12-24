@@ -1,11 +1,11 @@
 #' Filter Data Checks
 #'
 #' `dc_filter_generate()` is a function that generates vector for filtering data
-#' checks result table according to `DT::datatable()` `selectCells` object.
+#' checks result table according to filtering table `selectCells` object.
 #'
 #' @param dc_result_summary Summary table for a DataCheckFlagSet class
 #' (must be filterable in `DT`)
-#' @param cell_selected Cells selected in `DT::datatable`
+#' @param cell_selected Cells selected in filtering table.
 #' @param filters Vector that contains names for passed, failed and missing
 #' data checks
 #'

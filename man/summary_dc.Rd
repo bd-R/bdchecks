@@ -7,12 +7,11 @@
 summary_dc(input_flag, fancy = TRUE, filtering_dt = FALSE)
 }
 \arguments{
-\item{input_flag}{Object of a DataCheckFlagSet class}
+\item{input_flag}{Object of a DataCheckFlagSet class.}
 
-\item{fancy}{Should ouput be returned in a rst format}
+\item{fancy}{Should ouput be returned in a rst format.}
 
-\item{filtering_dt}{Should output be returned as a summary table that could
-be parsed with a `DT` pacakge}
+\item{filtering_dt}{Should output be returned as a summary table.}
 }
 \value{
 A data.frame or rst table with summary statistics

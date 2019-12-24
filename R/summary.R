@@ -4,10 +4,9 @@
 #' checks passed. It's main input is an object of a DataCheckFlagSet class and output
 #' is a summary table.
 #'
-#' @param input_flag Object of a DataCheckFlagSet class
-#' @param fancy Should ouput be returned in a rst format
-#' @param filtering_dt Should output be returned as a summary table that could
-#' be parsed with a `DT` pacakge
+#' @param input_flag Object of a DataCheckFlagSet class.
+#' @param fancy Should ouput be returned in a rst format.
+#' @param filtering_dt Should output be returned as a summary table.
 #'
 #' @return A data.frame or rst table with summary statistics
 #'
