@@ -8,7 +8,6 @@ DC_validation_taxon_empty:
       data_quality_dimension: completeness
       dimension: name
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -57,7 +56,6 @@ DC_validation_taxonid_empty:
       data_quality_dimension: completeness
       dimension: name
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -104,7 +102,6 @@ DC_validation_taxonrank_empty:
       data_quality_dimension: completeness
       dimension: name
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -151,7 +148,6 @@ DC_validation_taxonrank_notstandard:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -199,7 +195,6 @@ DC_validation_scientificname_empty:
       data_quality_dimension: completeness
       dimension: name
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -249,7 +244,6 @@ DC_validation_kingdom_notfound:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -297,7 +291,6 @@ DC_validation_phylum_notfound:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -345,7 +338,6 @@ DC_validation_class_notfound:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -393,7 +385,6 @@ DC_validation_order_notfound:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -441,7 +432,6 @@ DC_validation_family_notfound:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -489,7 +479,6 @@ DC_validation_genus_notfound:
       data_quality_dimension: conformance
       dimension: name
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -537,7 +526,6 @@ DC_validation_location_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -587,7 +575,6 @@ DC_validation_decimallatitude_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -633,7 +620,6 @@ DC_validation_decimallongitude_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -679,7 +665,6 @@ DC_validation_geodeticdatum_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -725,7 +710,6 @@ DC_validation_country_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -772,7 +756,6 @@ DC_validation_countrycode_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -818,7 +801,6 @@ DC_validation_eventtemporal_empty:
       data_quality_dimension: completeness
       dimension: space
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -864,7 +846,6 @@ DC_validation_eventdate_empty:
       data_quality_dimension: completeness
       dimension: time
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -912,7 +893,6 @@ DC_validation_year_empty:
       data_quality_dimension: completeness
       dimension: time
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -959,7 +939,6 @@ DC_validation_dctype_empty:
       data_quality_dimension: completeness
       dimension: other
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -1007,7 +986,6 @@ DC_validation_license_empty:
       data_quality_dimension: completeness
       dimension: other
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -1054,7 +1032,6 @@ DC_validation_basisofrecord_empty:
       data_quality_dimension: completeness
       dimension: other
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -1101,7 +1078,6 @@ DC_validation_occurrencestatus_empty:
       data_quality_dimension: completeness
       dimension: other
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -1151,7 +1127,6 @@ DC_validation_occurrenceid_empty:
       data_quality_dimension: completeness
       dimension: other
       output: validation
-      severity:
       warning: incomplete
       resolution:
         record: single_record
@@ -1201,7 +1176,6 @@ DC_notification_datageneralizations_notempty:
       data_quality_dimension: space,time,name
       dimension: resolution
       output: notification
-      severity:
       warning: notification
       resolution:
         record: 
@@ -1255,7 +1229,6 @@ DC_notification_establishmentmeans_notempty:
       data_quality_dimension: completness
       dimension: other
       output: notification
-      severity:
       warning: notification
       resolution:
         record: 
@@ -1306,7 +1279,6 @@ DC_validation_occurrenceid_notstandard:
       data_quality_dimension: conformance
       dimension: other
       output: validation
-      severity: warning
       warning: invalid
       resolution:
         record: 
@@ -1353,7 +1325,6 @@ DC_validation_eventdate_outofrange:
       data_quality_dimension: conformance
       dimension: time
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1400,7 +1371,6 @@ DC_validation_year_outofrange:
       data_quality_dimension: conformance
       dimension: time
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1447,7 +1417,6 @@ DC_validation_month_notstandard:
       data_quality_dimension: conformance
       dimension: time
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1494,7 +1463,6 @@ DC_validation_basisofrecord_notstandard:
       data_quality_dimension: conformance
       dimension: other
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -1541,7 +1509,6 @@ DC_validation_coordinates_zero:
       data_quality_dimension: likelihood
       dimension: space
       output: validation
-      severity:
       warning: unlikely
       resolution:
         record: single_record
@@ -1588,7 +1555,6 @@ DC_validation_coordinateuncertainty_outofrange:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -1635,7 +1601,6 @@ DC_validation_country_notstandard:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -1686,7 +1651,6 @@ DC_validation_day_notstandard:
       data_quality_dimension: conformance
       dimension: time
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1735,7 +1699,6 @@ DC_validation_minelevation_outofrange:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1789,7 +1752,6 @@ DC_validation_maxelevation_outofrange:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1835,7 +1797,6 @@ DC_validation_decimallongitude_outofrange:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1881,7 +1842,6 @@ DC_validation_decimallatitude_outofrange:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -1927,7 +1887,6 @@ DC_validation_country_countrycode_inconsistent:
       data_quality_dimension: consistency
       dimension: space
       output: validation
-      severity: 
       warning: inconsistent
       resolution:
         record: 
@@ -1973,7 +1932,6 @@ DC_validation_mindepth_maxdepth_outofrange:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
@@ -2023,7 +1981,6 @@ DC_validation_minelevation_greaterthan_maxelevation:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -2069,7 +2026,6 @@ DC_validation_mindepth_greaterthan_maxdepth:
       data_quality_dimension: conformance
       dimension: space
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -2120,7 +2076,6 @@ DC_validation_eventdate_notstandard:
       data_quality_dimension: conformance
       dimension: time
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -2174,7 +2129,6 @@ DC_validation_dateidentified_notstandard:
       data_quality_dimension: conformance
       dimension: time
       output: validation
-      severity: 
       warning: invalid
       resolution:
         record: 
@@ -2220,7 +2174,6 @@ DC_validation_occurrencestatus_notstandard:
       data_quality_dimension: conformance
       dimension: other
       output: validation
-      severity:
       warning: invalid
       resolution:
         record: single_record
