@@ -28,9 +28,8 @@ DC_validation_taxon_empty:
       resource: https://github.com/tdwg/bdq/issues/105
       reference:
       creator: Lee Belbin
-      creation: 
-      maintainer: Povilas Gibas
-      modification: 2019-08-14
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Lee Belbin - This needs discussion. For example, would kingdom, phylum, class or order only be useful?
       2: JW - Would this test return true if there were data in the relevant Taxon-related fields was meaningless (effectively null)?
@@ -77,9 +76,8 @@ DC_validation_taxonid_empty:
       resource: https://github.com/tdwg/bdq/issues/120
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-14
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: taxonID
@@ -124,9 +122,8 @@ DC_validation_taxonrank_empty:
       resource: https://github.com/tdwg/bdq/issues/161
       reference: https://terms.tdwg.org/wiki/dwc:taxonRank
       creator: TDWG2018
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-14
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: taxonRank
@@ -171,9 +168,8 @@ DC_validation_taxonrank_notstandard:
       resource: https://github.com/tdwg/bdq/issues/162
       reference: http://rs.gbif.org/vocabulary/gbif/rank.xml
       creator: TDWG2018
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-14
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: PG - External data was downloaded as is provided within package.
   input:
@@ -219,9 +215,8 @@ DC_validation_scientificname_empty:
       resource: https://github.com/tdwg/bdq/issues/82
       reference: ALA,GBIF,OBIS
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paula Zermoglio - The specification here is tricky. It might perfectly be that sciName is empty and that genus and specificEp are filled in. As it stands, it could only run AFTER sciName has been inferred from genus+spEp.
       2: Paul Morris - Name needs to change. Unavailable means something other than not supplied to taxonomists.. dwc:taxonId should be included, it also specifies the name
@@ -269,9 +264,8 @@ DC_validation_kingdom_notfound:
       resource: https://github.com/tdwg/bdq/issues/81
       reference: GBIF
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -317,9 +311,8 @@ DC_validation_phylum_notfound:
       resource: https://github.com/tdwg/bdq/issues/22
       reference: iDigBio
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -365,9 +358,8 @@ DC_validation_class_notfound:
       resource: https://github.com/tdwg/bdq/issues/77
       reference:
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -413,9 +405,8 @@ DC_validation_order_notfound:
       resource: https://github.com/tdwg/bdq/issues/83
       reference: iDigBio
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -461,9 +452,8 @@ DC_validation_family_notfound:
       resource: https://github.com/tdwg/bdq/issues/28
       reference: iDigBio
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -509,9 +499,8 @@ DC_validation_genus_notfound:
       resource: https://github.com/tdwg/bdq/issues/122
       reference: iDigBio
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-08-27
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -557,9 +546,8 @@ DC_validation_location_empty:
       resource: https://github.com/tdwg/bdq/issues/40
       reference:
       creator: Lee Belbin
-      creation: 
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paula Zermoglio - I believe DwC terms should include some more, e.g., island, islandGroup, waterbody, county, municipality, continent, countryCode.
       2: Arthur Chapman - This is a complicated test - needs more work to document. Not georeferenced or not georeferenceable.. Need to add many dwc:terms. If all relevant spatial terms are blank or uninterpretable.
@@ -607,9 +595,8 @@ DC_validation_decimallatitude_empty:
       resource: https://github.com/tdwg/bdq/issues/119
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: decimalLatitude
@@ -654,9 +641,8 @@ DC_validation_decimallongitude_empty:
       resource: https://github.com/tdwg/bdq/issues/96
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: decimalLongitude
@@ -701,9 +687,8 @@ DC_validation_geodeticdatum_empty:
       resource: https://github.com/tdwg/bdq/issues/78
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: geodeticDatum
@@ -748,9 +733,8 @@ DC_validation_country_empty:
       resource: https://github.com/tdwg/bdq/issues/42
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that the original assessment of the core nature of the test was correct based on consistency with other tests and participation in dependencies for other tests.
   input:
@@ -796,9 +780,8 @@ DC_validation_countrycode_empty:
       resource: https://github.com/tdwg/bdq/issues/98
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: countryCode
@@ -843,9 +826,9 @@ DC_validation_eventtemporal_empty:
       resource: https://github.com/tdwg/bdq/issues/88
       reference:
       creator: Lee Belbin
-      creation: 
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
+    notes:
   input:
     target: day, endDayOfYear, eventDate, month, startDayOfYear, verbatimEventDate, year
     target2:
@@ -889,9 +872,8 @@ DC_validation_eventdate_empty:
       resource: https://github.com/tdwg/bdq/issues/33
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paul J. Morris - Noting for cross reference that we previously had a corresponding measure EVENT_DATE_COMPLETENESS 0a59e03f-ebb5-4df3-a802-2e444de525b5.
       2: Arthur Chapman - This test is a prerequisite for amendments #61, #86, #93, #132 - if these amendments are run and fail, then eventDate would still be empty, and thus on the re validation, this test will remain an important test.
@@ -938,9 +920,8 @@ DC_validation_year_empty:
       resource: https://github.com/tdwg/bdq/issues/49
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paula Zermoglio - This would tell us something if the test was run BEFORE interpretation of day, month, year from eventDate (test DATE_FROM_EVENTDATE). It would only make sense if eventDate was null.
   input:
@@ -986,9 +967,8 @@ DC_validation_dctype_empty:
       resource: https://github.com/tdwg/bdq/issues/103
       reference: https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/2002-07-13/
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Arthur Chapman - This has been labelled non-core, but discussions at Gainesville suggested it was a good test. We disn't disscuss Sunday TDWG208 - should we re-install or not
       2: Paul J. Morris - One argument for imposing an expectation that dcterms:type (populated with IRIs from DCMI Type Vocabulary) or dc:type (populated with string literals) be non-empty is that this term helps make occurrence data more broadly reusable in other communities. See the table in the TDWG RDF guide:http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#3.3_Imported_Dublin_Core_terms_that_have_non-literal_objects_and. A second argument (that @ pzermoglio made this evening) is that populating basisOfRecord entails an expectation that dc:type will be popluated with an appropriate parallel value. These are likely to be important discriminators for the nature of vouchers, particularly of observations, where dc:type may contain key information about the nature (image, video, audio) of the voucher. On this basis, I'd advocate including a test for whether dc:type is empty in core.
@@ -1035,9 +1015,8 @@ DC_validation_license_empty:
       resource: https://github.com/tdwg/bdq/issues/99
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The license at the record level might be derived from the license of the data set from which the record is retrieved
   input:
@@ -1083,9 +1062,8 @@ DC_validation_basisofrecord_empty:
       resource: https://github.com/tdwg/bdq/issues/58
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that the test is a Validation and the name TG2-VALIDATION_BASISOFRECORD_EMPTY is satisfactory.
   input:
@@ -1131,9 +1109,8 @@ DC_validation_occurrencestatus_empty:
       resource: https://github.com/tdwg/bdq/issues/117
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Lee Belbin - Why did I put NOT_CORE? It seems a simple easy to test and useful FLAG right now. As a VALIDATION, it would also add meaningfully to #135 but it also shapes like a NOTIFICATION as per #58?
       2: Arthur Chapman - I think it was one of those that is empty 90% of the time so would create millions of flags. Thinking back - wasn't there some problem with how people were using occurrenceStatus (i.e. to be more than just Present/Absent? One, I guess, assumes if it is blank, then it is present. Because of this, I think we agreed that it shouldn't be CORE
@@ -1182,9 +1159,8 @@ DC_validation_occurrenceid_empty:
       resource: https://github.com/tdwg/bdq/issues/47
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-10-01
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Lee Belbin - I thought this was against our policy?
       2: John Wieczorek - This has particular applicability for GBIF in publishing an Occurrence data set.
@@ -1233,9 +1209,8 @@ DC_notification_datageneralizations_notempty:
       resource: https://github.com/tdwg/bdq/issues/72
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-24
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: This is not specific to spatial data, any value in the dwc:dataGeneralizations field will cause this flag to be raised, but the primary use case is expected to be that dwc:dataGeneralizations demonstrates obfuscated locations.
       2: Paula Zermoglio - Data generalizations can apply to non-geographic data, maybe the description of this test could be changed to match a more general approach, more in line with the name of the test.
@@ -1288,9 +1263,8 @@ DC_notification_establishmentmeans_notempty:
       resource: https://github.com/tdwg/bdq/issues/94
       reference:
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-24
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Arthur Chapman - Wording should be "cultivated or captive" (i.e. Zoo) and these should be flagged as such a (warning) and are not necessarily an error - depends on use.
       2: John Wieczorek - All of this might change as a result of the work of the group interested in proposing Darwin Core changes to deal separately with invasivity.
@@ -1340,9 +1314,8 @@ DC_validation_occurrenceid_notstandard:
       resource: https://github.com/tdwg/bdq/issues/23
       reference: http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-24
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paul Morris - This one feels like it should assert that the occurrenceID conforms to a well known IRI scheme, and should reference the Darwin Core RDF guide. http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers I'd support OCCURRENCEID_CONFORMS_TO_WELLKNOWN_IRI_SCHEME. See http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers
   input:
@@ -1388,9 +1361,8 @@ DC_validation_eventdate_outofrange:
       resource: https://github.com/tdwg/bdq/issues/36
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-24
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The results of this test are time-dependent A invalid date for tomorrow will be valid tomorrow. This test provides for a default earliest date, which for specimen records should be 1600-01-01 by convention.
   input:
@@ -1436,9 +1408,8 @@ DC_validation_year_outofrange:
       resource: https://github.com/tdwg/bdq/issues/84
       reference: 
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-24
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: The results of this test are time-dependent. Next year is not valid now. Next year it will be. This test provides the option to designate lower and upper limits to the year. The upper limit, if not provided, should default to the year when the test is run. NB By convention, use 1600 as a lower limit for collecting dates of biological specimens.
   input:
@@ -1484,9 +1455,8 @@ DC_validation_month_notstandard:
       resource: https://github.com/tdwg/bdq/issues/126
       reference: http://rs.tdwg.org/dwc/terms/index.htm#month
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-24
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that this test is correct as written and that another test to validate the month (TG2-VALIDATION_MONTH_NOTSTANDARD) is necessary to be able to know if the prerequisite is met. That test specifically tests that the month is an integer.
   input:
@@ -1532,9 +1502,8 @@ DC_validation_basisofrecord_notstandard:
       resource: https://github.com/tdwg/bdq/issues/104
       reference: http://rs.tdwg.org/dwc/terms/index.htm#basisOfRecord
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-25
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: basisOfRecord
@@ -1579,9 +1548,8 @@ DC_validation_coordinates_zero:
       resource: https://github.com/tdwg/bdq/issues/87
       reference: 
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-25
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: decimalLatitude, decimalLongitude
@@ -1626,9 +1594,8 @@ DC_validation_coordinateuncertainty_outofrange:
       resource: https://github.com/tdwg/bdq/issues/109
       reference: https://en.wikipedia.org/wiki/Great-circle_distance, https://www.gbif.org/document/80536/biogeomancer-guide-to-best-practices-in-georeferencing
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-25
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: coordinateUncertaintyInMeters
@@ -1673,9 +1640,8 @@ DC_validation_country_notstandard:
       resource: http://www.getty.edu/research/tools/vocabularies/tgn/index.html
       reference: GBIF
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-11-25
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Non-country information such "high seas" will fail this test. Multiple values in the dwc:country field (whether to signify on a border or in a list of possibilities) will fail this test. Locations outside of a jurisdiction covered by a country code should not have a value in the field dwc:countryCode.
       2: Paula Zermoglio - In cases where there is no country, test only useful AFTER interpretation of country from coordinates.
@@ -1724,9 +1690,8 @@ DC_validation_day_notstandard:
       resource: https://github.com/tdwg/bdq/issues/147
       reference: http://rs.tdwg.org/dwc/terms/index.htm#day
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-03
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Arthur Chapman - We have changed the description of this from "is not an unambiguous value" to "is not an integer between 1 and 31 inclusive.
       2: Paul Morris - Field not present as a prerequisite is a significant barrier for implemenations. An implementation of an atomic test as a method which takes values as parameters e.g. validateDayNotStandard(day), is very likely to be isolated from a larger framework which understands whether or not a term is present in an input data set or not. Bringing "is present" into the test definition conflates areas of concern. This gets back to the need for a definition of isEmpty - if we define isEmpty to include null values, empty strings, and cases where the term isn't present in the data set then we can consistently define prerequisites as being not empty. I thus propose that we change the element of the definition "INTERNAL_PREREQUISITES_NOT_MET if the field dwc:day is not present; " to "INTERNAL_PREREQUISITES_NOT_MET if the field dwc:day is EMPTY;", reference a standard definition of EMPTY, and propagate this change to all other test definitions.
@@ -1774,9 +1739,8 @@ DC_validation_minelevation_outofrange:
       resource: https://github.com/tdwg/bdq/issues/39
       reference: https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-03
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paula Zermoglio - Elevation CAN be less than 0, and I would not expect it to be more than 8,848m (Mt. Everist summit).
       2: Ian Engelbrecht - 'if the value of the field dwc:maximumElevationInMeters is number between -423 and 8850 inclusive' -should that be dwc:minimumElevationInMeters? Also is there a reason for -423 as lower bound? I understand, possibly incorrectly, that the lowest is the Dead Sea shore at -413m.
@@ -1829,9 +1793,8 @@ DC_validation_maxelevation_outofrange:
       resource: https://github.com/tdwg/bdq/issues/112
       reference: https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-03
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: maximumElevationInMeters
@@ -1876,9 +1839,8 @@ DC_validation_decimallongitude_outofrange:
       resource: https://github.com/tdwg/bdq/issues/30
       reference: http://rs.tdwg.org/dwc/terms/index.htm#decimalLongitude
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-03
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: decimalLongitude
@@ -1923,9 +1885,8 @@ DC_validation_decimallatitude_outofrange:
       resource: https://github.com/tdwg/bdq/issues/79
       reference: http://rs.tdwg.org/dwc/terms/index.htm#decimalLatitude
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-03
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: decimalLatitude
@@ -1970,9 +1931,8 @@ DC_validation_country_countrycode_inconsistent:
       resource: https://github.com/tdwg/bdq/issues/62
       reference: https://restcountries.eu/#api-endpoints-list-of-codes
       creator:
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-04
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: country
@@ -2017,9 +1977,8 @@ DC_validation_mindepth_maxdepth_outofrange:
       resource: https://github.com/tdwg/bdq/issues/107
       reference: https://en.wikipedia.org/wiki/Extreme_points_of_Earth
       creator:
-      creation: 
-      maintainer: Povilas Gibas
-      modification: 2019-12-08
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paul Morris - Minumum depth should also be less than 11000m, and max depth should also be greater than or equal to 0 meters, as only a single depth might be provided. @pz, feels like likeliness rather than conformance, as it isn't a format problem, just the compliance of a range with expected reality.
       2: Paul Morris - Aren't valid depth values less than zero possible, given the vertical datum? Near shore samples could be collected at a depth of -1 meter, relative to a horizontal datum of mean low tide, when collected under water at high tide. "below the local surface" leaves itself open to interpreation as relative to the water surface, or as relative to a particular horizontal datum defining the local surface. In collections made in nearshore environments, depths in reference to a defined horizontal datum as well as the actual water surface at the time of collection are both likely.
@@ -2067,9 +2026,8 @@ DC_validation_minelevation_greaterthan_maxelevation:
       resource: https://github.com/tdwg/bdq/issues/108
       reference:
       creator: Lee Belbin
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-08
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: minimumElevationInMeters
@@ -2114,9 +2072,8 @@ DC_validation_mindepth_greaterthan_maxdepth:
       resource: https://github.com/tdwg/bdq/issues/24
       reference:
       creator: ALA,GBIF,OBIS
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-08
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paula Zermoglio - This is assuming that depths are actually correct but transposed, rather than just one of them, maximum or minimum being just plainly wrong.
       2: Paul Morris - Separate into a validation MIN_DEPTH_SHALLOWERTHAN_OR_EQ_MAX and an amendment MIN_MAX_DEPTHS_TRANSPOSED, to resolve the issue. There's a validation to find problematic depths, and an amendment which makes the explictit assumption that there is a transposition, make the transpostion, and leaves the consumer of the report free to decide whether or not to accept that assumption. A transposition ammendment could also be expected to be informed by a ocean depth model and only propose the transposition if it is reasonable for the location and geographic uncertainty. A nearshore depth where a minimum depth has an error in the form of a missing decimal point making it much larger than the maximum depth is a very plausible error on the line PZ considers.
@@ -2166,9 +2123,8 @@ DC_validation_eventdate_notstandard:
       resource: https://github.com/tdwg/bdq/issues/66
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator: Paul Morris
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-22
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
       1: Paul Morris - There are similar tests in this sheet for date modified and date identified, but this test on eventDate appears to be missing.
       2: Paul Morris - Need clarification (perhaps from the standard (which we cant get at)) as to whether this should be a date which exists as well as a correctly formatted date (e.g. should February 29 not in a leap year fail). The event_date_qc library contains a test which references the guid f413594a-df57-41ea-a187-b8c6c6379b45 and VALIDATION_EVENT_DATE_EXISTS, with a specification "Compliant if dwc:eventDate can to parsed as an actual ISO date, otherwise not compliant. Internal prerequisites not met if dwc:eventDate is empty" This may be an implementation of an earlier form of VALIDATION_EVENTDATE_NOTSTANDARD from the spreadsheet. If we decide that VALIDATION_EVENTDATE_NOTSTANDARD includes testing whether the date existed or not, then the event_date_qc implementation would take the standard name and guid. We should note that correctly formatted dates in the ISO format include dates, date ranges, date ranges spanning a month, date ranges spanning a year, dates and date ranges specified with year-dayofyear, and dates and date ranges including time. The ISO date format also allows dates to be described as a recurring interval. Single dates, and date ranges in various forms are common in biodiversity data, dates with times and dates specified by year and day of year are less common.
@@ -2221,9 +2177,8 @@ DC_validation_dateidentified_notstandard:
       resource: https://github.com/tdwg/bdq/issues/69
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator: Paul Morris
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-22
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: dateIdentified
@@ -2268,9 +2223,8 @@ DC_validation_occurrencestatus_notstandard:
       resource: https://github.com/tdwg/bdq/issues/116
       reference: http://rs.tdwg.org/dwc/terms/index.htm#occurrenceStatus
       creator: 
-      creation:
-      maintainer: Povilas Gibas
-      modification: 2019-12-22
+      modifier: Povilas Gibas
+      modification: 2019-12-24
     notes:
   input:
     target: occurrenceStatus
