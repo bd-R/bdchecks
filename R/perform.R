@@ -54,7 +54,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
         }
       }
     }
-    if (dc@output$merge_targets) {
+    if (!is.null(dc@information$resolution$term)) {
       target_result <- list(merged_targets = 
         rowSums(do.call("cbind", target_result)) > 0
       )

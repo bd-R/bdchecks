@@ -45,7 +45,6 @@ DC_validation_taxon_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: TRUE
 DC_validation_taxonid_empty:
   name: validation_taxonid_empty
   meta:
@@ -91,7 +90,6 @@ DC_validation_taxonid_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_taxonrank_empty:
   name: validation_taxonrank_empty
   meta:
@@ -137,7 +135,6 @@ DC_validation_taxonrank_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_taxonrank_notstandard:
   name: validation_taxonrank_notstandard
   meta:
@@ -184,7 +181,6 @@ DC_validation_taxonrank_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_scientificname_empty:
   name: validation_scientificname_empty
   meta:
@@ -233,7 +229,6 @@ DC_validation_scientificname_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_kingdom_notfound:
   name: validation_kingdom_notfound
   meta:
@@ -280,7 +275,6 @@ DC_validation_kingdom_notfound:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_phylum_notfound:
   name: validation_phylum_notfound
   meta:
@@ -327,7 +321,6 @@ DC_validation_phylum_notfound:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_class_notfound:
   name: validation_class_notfound
   meta:
@@ -374,7 +367,6 @@ DC_validation_class_notfound:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_order_notfound:
   name: validation_order_notfound
   meta:
@@ -421,7 +413,6 @@ DC_validation_order_notfound:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_family_notfound:
   name: validation_family_notfound
   meta:
@@ -468,7 +459,6 @@ DC_validation_family_notfound:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_genus_notfound:
   name: validation_genus_notfound
   meta:
@@ -515,7 +505,6 @@ DC_validation_genus_notfound:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_location_empty:
   name: validation_location_empty
   meta:
@@ -564,7 +553,6 @@ DC_validation_location_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: TRUE
 DC_validation_decimallatitude_empty:
   name: validation_decimallatitude_empty
   meta:
@@ -610,7 +598,6 @@ DC_validation_decimallatitude_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_decimallongitude_empty:
   name: validation_decimallongitude_empty
   meta:
@@ -656,7 +643,6 @@ DC_validation_decimallongitude_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_geodeticdatum_empty:
   name: validation_geodeticdatum_empty
   meta:
@@ -702,7 +688,6 @@ DC_validation_geodeticdatum_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_country_empty:
   name: validation_country_empty
   meta:
@@ -749,7 +734,6 @@ DC_validation_country_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_countrycode_empty:
   name: validation_countrycode_empty
   meta:
@@ -795,7 +779,6 @@ DC_validation_countrycode_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_eventtemporal_empty:
   name: validation_eventtemporal_empty
   meta:
@@ -841,7 +824,6 @@ DC_validation_eventtemporal_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: TRUE
 DC_validation_eventdate_empty:
   name: validation_eventdate_empty
   meta:
@@ -889,7 +871,6 @@ DC_validation_eventdate_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_year_empty:
   name: validation_year_empty
   meta:
@@ -936,7 +917,6 @@ DC_validation_year_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_dctype_empty:
   name: validation_dctype_empty
   meta:
@@ -984,7 +964,6 @@ DC_validation_dctype_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_license_empty:
   name: validation_license_empty
   meta:
@@ -1031,7 +1010,6 @@ DC_validation_license_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_basisofrecord_empty:
   name: validation_basisofrecord_empty
   meta:
@@ -1078,7 +1056,6 @@ DC_validation_basisofrecord_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_occurrencestatus_empty:
   name: validation_occurrencestatus_empty
   meta:
@@ -1128,7 +1105,6 @@ DC_validation_occurrencestatus_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_validation_occurrenceid_empty:
   name: validation_occurrenceid_empty
   meta:
@@ -1178,7 +1154,6 @@ DC_validation_occurrenceid_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
-    merge_targets: FALSE
 DC_notification_datageneralizations_notempty:
   name: notification_datageneralizations_notempty
   meta:
@@ -1232,7 +1207,6 @@ DC_notification_datageneralizations_notempty:
     output_standard_pass: not_empty
     output_standard_fail: not_reported
     output_standard_missing: not_reported
-    merge_targets: FALSE
 DC_notification_establishmentmeans_notempty:
   name: notification_establishmentmeans_notempty
   meta:
@@ -1283,7 +1257,6 @@ DC_notification_establishmentmeans_notempty:
     output_standard_pass: not_empty
     output_standard_fail: not_reported
     output_standard_missing: not_reported
-    merge_targets: FALSE
 DC_validation_occurrenceid_notstandard:
   name: validation_occurrenceid_notstandard
   meta:
@@ -1330,7 +1303,6 @@ DC_validation_occurrenceid_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_eventdate_outofrange:
   name: validation_eventdate_outofrange
   meta:
@@ -1377,7 +1349,6 @@ DC_validation_eventdate_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_year_outofrange:
   name: validation_year_outofrange
   meta:
@@ -1424,7 +1395,6 @@ DC_validation_year_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_month_notstandard:
   name: validation_month_notstandard
   meta:
@@ -1471,7 +1441,6 @@ DC_validation_month_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_basisofrecord_notstandard:
   name: validation_basisofrecord_notstandard
   meta:
@@ -1517,7 +1486,6 @@ DC_validation_basisofrecord_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_coordinates_zero:
   name: validation_coordinates_zero
   meta:
@@ -1563,7 +1531,6 @@ DC_validation_coordinates_zero:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: TRUE
 DC_validation_coordinateuncertainty_outofrange:
   name: validation_coordinateuncertainty_outofrange
   meta:
@@ -1609,7 +1576,6 @@ DC_validation_coordinateuncertainty_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_country_notstandard:
   name: validation_country_notstandard
   meta:
@@ -1659,7 +1625,6 @@ DC_validation_country_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_day_notstandard:
   name: validation_day_notstandard
   meta:
@@ -1708,7 +1673,6 @@ DC_validation_day_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_minelevation_outofrange:
   name: validation_minelevation_outofrange
   meta:
@@ -1762,7 +1726,6 @@ DC_validation_minelevation_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_maxelevation_outofrange:
   name: validation_maxelevation_outofrange
   meta:
@@ -1808,7 +1771,6 @@ DC_validation_maxelevation_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_decimallongitude_outofrange:
   name: validation_decimallongitude_outofrange
   meta:
@@ -1854,7 +1816,6 @@ DC_validation_decimallongitude_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_decimallatitude_outofrange:
   name: validation_decimallatitude_outofrange
   meta:
@@ -1900,7 +1861,6 @@ DC_validation_decimallatitude_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_country_countrycode_inconsistent:
   name: validation_country_countrycode_inconsistent
   meta:
@@ -1946,7 +1906,6 @@ DC_validation_country_countrycode_inconsistent:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_mindepth_maxdepth_outofrange:
   name: validation_mindepth_maxdepth_outofrange
   meta:
@@ -1995,7 +1954,6 @@ DC_validation_mindepth_maxdepth_outofrange:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: TRUE
 DC_validation_minelevation_greaterthan_maxelevation:
   name: validation_minelevation_greaterthan_maxelevation
   meta:
@@ -2041,7 +1999,6 @@ DC_validation_minelevation_greaterthan_maxelevation:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_mindepth_greaterthan_maxdepth:
   name: validation_mindepth_greaterthan_maxdepth
   meta:
@@ -2092,7 +2049,6 @@ DC_validation_mindepth_greaterthan_maxdepth:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_eventdate_notstandard:
   name: validation_eventdate_notstandard
   meta:
@@ -2146,7 +2102,6 @@ DC_validation_eventdate_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_dateidentified_notstandard:
   name: validation_dateidentified_notstandard
   meta:
@@ -2192,7 +2147,6 @@ DC_validation_dateidentified_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
 DC_validation_occurrencestatus_notstandard:
   name: validation_occurrencestatus_notstandard
   meta:
@@ -2238,4 +2192,3 @@ DC_validation_occurrencestatus_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
-    merge_targets: FALSE
