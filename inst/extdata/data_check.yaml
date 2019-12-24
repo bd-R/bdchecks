@@ -4,6 +4,7 @@ DC_validation_taxon_empty:
     information:
       description: Check if at least one field needed to determine the taxon of the entity exists and is not empty.
       question: Is taxon information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: completeness
       dimension: name
@@ -52,6 +53,7 @@ DC_validation_taxonid_empty:
     information:
       description: Check if taxonID exists and is not empty.
       question: Is taxonID information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: completeness
       dimension: name
@@ -98,6 +100,7 @@ DC_validation_taxonrank_empty:
     information:
       description: Check if taxonRank exists and is not empty.
       question: Is taxonRank information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: completeness
       dimension: name
@@ -144,6 +147,7 @@ DC_validation_taxonrank_notstandard:
     information:
       description: Check if taxonRank is standard.
       question: Is taxonRank information standard?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -191,6 +195,7 @@ DC_validation_scientificname_empty:
     information:
       description: Check if scientificName exists and is not empty.
       question: Is scientificName information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: completeness
       dimension: name
@@ -240,6 +245,7 @@ DC_validation_kingdom_notfound:
     information:
       description: Check if kingdom was found as a value at the rank of kingdom by the specified source authority service.
       question: Is kingdom information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -287,6 +293,7 @@ DC_validation_phylum_notfound:
     information:
       description: Check if phylum was found as a value at the rank of phylum by the specified source authority service.
       question: Is phylum information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -334,6 +341,7 @@ DC_validation_class_notfound:
     information:
       description: Check if class was found as a value at the rank of class by the specified source authority service.
       question: Is class information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -381,6 +389,7 @@ DC_validation_order_notfound:
     information:
       description: Check if order was found as a value at the rank of order by the specified source authority service.
       question: Is order information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -428,6 +437,7 @@ DC_validation_family_notfound:
     information:
       description: Check if family was found as a value at the rank of family by the specified source authority service.
       question: Is family information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -475,6 +485,7 @@ DC_validation_genus_notfound:
     information:
       description: Check if genus was found as a value at the rank of genus by the specified source authority service.
       question: Is genus information present?
+      check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
       dimension: name
@@ -522,6 +533,7 @@ DC_validation_location_empty:
     information:
       description: Check if at least one field needed to determine location of the entity exists and is not empty.
       question: Is location information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -571,6 +583,7 @@ DC_validation_decimallatitude_empty:
     information:
       description: Check if decimalLatitude exists and is not empty.
       question: Is decimalLatitude information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -616,6 +629,7 @@ DC_validation_decimallongitude_empty:
     information:
       description: Check if decimalLongitude exists and is not empty.
       question: Is decimalLongitude information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -661,6 +675,7 @@ DC_validation_geodeticdatum_empty:
     information:
       description: Check if geodeticDatum exists and is not empty.
       question: Is geodeticDatum information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -706,6 +721,7 @@ DC_validation_country_empty:
     information:
       description: Check if country exists and is not empty.
       question: Is country information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -752,6 +768,7 @@ DC_validation_countrycode_empty:
     information:
       description: Check if countryCode exists and is not empty.
       question: Is countryCode information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -797,6 +814,7 @@ DC_validation_eventtemporal_empty:
     information:
       description: Check if at least one field needed to determine event temporal of the entity exists and is not empty.
       question: Is event temporal information present?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: completeness
       dimension: space
@@ -842,6 +860,7 @@ DC_validation_eventdate_empty:
     information:
       description: Check if eventDate exists and is not empty.
       question: Is eventDate information present?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: completeness
       dimension: time
@@ -889,6 +908,7 @@ DC_validation_year_empty:
     information:
       description: Check if year exists and is not empty.
       question: Is year information present?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: completeness
       dimension: time
@@ -935,6 +955,7 @@ DC_validation_dctype_empty:
     information:
       description: Check if dctype exists and is not empty.
       question: Is dctype information present?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: completeness
       dimension: other
@@ -982,6 +1003,7 @@ DC_validation_license_empty:
     information:
       description: Check if license exists and is not empty.
       question: Is license information present?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: completeness
       dimension: other
@@ -1028,6 +1050,7 @@ DC_validation_basisofrecord_empty:
     information:
       description: Check if basisOfRecord exists and is not empty.
       question: Is basisOfRecord information present?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: completeness
       dimension: other
@@ -1074,6 +1097,7 @@ DC_validation_occurrencestatus_empty:
     information:
       description: Check if occurrenceStatus exists and is not empty.
       question: Is occurrenceStatus information present?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: completeness
       dimension: other
@@ -1123,6 +1147,7 @@ DC_validation_occurrenceid_empty:
     information:
       description: Check if occurrenceID exists and is not empty.
       question: Is occurrenceID information present?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: completeness
       dimension: other
@@ -1172,6 +1197,7 @@ DC_notification_datageneralizations_notempty:
     information:
       description: Check if dataGeneralizations is not empty.
       question: Is dataGeneralizations information present?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: space,time,name
       dimension: resolution
@@ -1225,6 +1251,7 @@ DC_notification_establishmentmeans_notempty:
     information:
       description: Check if establishmentMeans is not empty.
       question: Is establishmentMeans information present?
+      check_type: tdwg_standard
       darwin_core_class: occurrence
       data_quality_dimension: completness
       dimension: other
@@ -1275,6 +1302,7 @@ DC_validation_occurrenceid_notstandard:
     information:
       description: Check if occurrenceID is not empty and follows a format commonly associated with globally unique identifiers (GUID).
       question: Is occurrenceID a GUID?
+      check_type: tdwg_standard
       darwin_core_class: occurrence
       data_quality_dimension: conformance
       dimension: other
@@ -1321,6 +1349,7 @@ DC_validation_eventdate_outofrange:
     information:
       description: Check if eventDate is not empty and is within given earliest and latest dates.
       question: Is eventDate within given dates?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -1367,6 +1396,7 @@ DC_validation_year_outofrange:
     information:
       description: Check if year is not empty and is within given earliest and latest dates.
       question: Is year within given dates?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -1413,6 +1443,7 @@ DC_validation_month_notstandard:
     information:
       description: Check if month is an integer between 1 and 12 inclusive.
       question: Is month an integer between 1 and 12 inclusive?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -1459,6 +1490,7 @@ DC_validation_basisofrecord_notstandard:
     information:
       description: Check if basisOfRecord is specified source authority service.
       question: Is basisOfRecord within given source authority list?
+      check_type: tdwg_standard
       darwin_core_class: Record-level Terms
       data_quality_dimension: conformance
       dimension: other
@@ -1505,6 +1537,7 @@ DC_validation_coordinates_zero:
     information:
       description: Check if decimalLatitude or decimalLongitude are zeroes.
       question: Are coordinates equal to zero.
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: likelihood
       dimension: space
@@ -1551,6 +1584,7 @@ DC_validation_coordinateuncertainty_outofrange:
     information:
       description: Check if coordinateUncertaintyInMeters is within given range.
       question: Is coordinateUncertaintyInMeters between 1 and upper limit?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1597,6 +1631,7 @@ DC_validation_country_notstandard:
     information:
       description: Check if country is within a set of available country names.
       question: Is country information valid?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1647,6 +1682,7 @@ DC_validation_day_notstandard:
     information:
       description: Check if day is an integer between 1 and 31 inclusive.
       question: Is day an integer between 1 and 31 inclusive?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -1695,6 +1731,7 @@ DC_validation_minelevation_outofrange:
     information:
       description: Check if minimumElevationInMeters is within parameter range.
       question: Is minimumElevationInMeters within parameter range?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1748,6 +1785,7 @@ DC_validation_maxelevation_outofrange:
     information:
       description: Check if maximumElevationInMeters is within parameter range.
       question: Is maximumElevationInMeters within parameter range?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1793,6 +1831,7 @@ DC_validation_decimallongitude_outofrange:
     information:
       description: Check if decimalLongitude is within parameter range.
       question: Is decimalLongitude within parameter range?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1838,6 +1877,7 @@ DC_validation_decimallatitude_outofrange:
     information:
       description: Check if decimalLatitude is within parameter range.
       question: Is decimalLatitude within parameter range?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1883,6 +1923,7 @@ DC_validation_country_countrycode_inconsistent:
     information:
       description: Check if country matches country code.
       question: Does country matches country code?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: consistency
       dimension: space
@@ -1928,6 +1969,7 @@ DC_validation_mindepth_maxdepth_outofrange:
     information:
       description: Check if minimumDepthInMeters and maximumDepthInMeters is within parameter range.
       question: Are minimumDepthInMeters and maximumDepthInMeters within parameter range?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -1977,6 +2019,7 @@ DC_validation_minelevation_greaterthan_maxelevation:
     information:
       description: Check if minimumElevationInMeters is not greater than maximumElevationInMeters.
       question: Is minimumElevationInMeters less or equal to maximumElevationInMeters?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -2022,6 +2065,7 @@ DC_validation_mindepth_greaterthan_maxdepth:
     information:
       description: Check if minimumDepthInMeters is not greater than maximumDepthInMeters.
       question: Is minimumDepthInMeters less or equal to maximumDepthInMeters?
+      check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: conformance
       dimension: space
@@ -2072,6 +2116,7 @@ DC_validation_eventdate_notstandard:
     information:
       description: Check if eventDate is a valid ISO 8601-1:2019 date.
       question: Is eventDate a valid ISO 8601-1:2019 date?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -2125,6 +2170,7 @@ DC_validation_dateidentified_notstandard:
     information:
       description: Check if dateIdentified is a valid ISO 8601-1:2019 date.
       question: Is dateIdentified a valid ISO 8601-1:2019 date?
+      check_type: tdwg_standard
       darwin_core_class: event
       data_quality_dimension: conformance
       dimension: time
@@ -2170,6 +2216,7 @@ DC_validation_occurrencestatus_notstandard:
     information:
       description: Check if occurrenceStatus is specified source authority service.
       question: Is occurrenceStatus within given source authority list?
+      check_type: tdwg_standard
       darwin_core_class: occurrence
       data_quality_dimension: conformance
       dimension: other
