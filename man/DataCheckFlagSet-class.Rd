@@ -23,9 +23,5 @@ Show method for DataCheckFlagSet objects
 \item{\code{DC}}{names of performed data checks}
 
 \item{\code{flags}}{list of performed data checks in a DataCheckFlagSet class}
-
-\item{\code{dataOrig}}{original data before data checks}
-
-\item{\code{dataMod}}{modified data after data checks}
 }}
 

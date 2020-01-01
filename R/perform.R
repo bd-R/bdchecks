@@ -79,9 +79,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
   if (length(result_dc) > 0) {
     result_dc <- methods::new("DataCheckFlagSet",
       DC = as.character(lapply(result_dc, function(x) `@`(x, name))),
-      flags = result_dc,
-      dataOrig = data,
-      dataMod = data
+      flags = result_dc
     )
     return(result_dc)
   } else {

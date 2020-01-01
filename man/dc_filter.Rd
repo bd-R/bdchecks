@@ -4,9 +4,11 @@
 \alias{dc_filter}
 \title{Filter Data Checks}
 \usage{
-dc_filter(dc_result, dc_filts)
+dc_filter(data, dc_result, dc_filts)
 }
 \arguments{
+\item{data}{Data set on which data checks where performed}
+
 \item{dc_result}{Object of a DataCheckFlagSet generated with `perforDataCheck()`}
 
 \item{dc_filts}{A list containing filtering targets and status generated with

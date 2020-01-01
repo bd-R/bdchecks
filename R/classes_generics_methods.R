@@ -88,17 +88,10 @@ DataCheckFlag <- setClass(
 #'
 #' @slot DC names of performed data checks
 #' @slot flags list of performed data checks in a DataCheckFlagSet class
-#' @slot dataOrig original data before data checks
-#' @slot dataMod modified data after data checks
 #'
 DataCheckFlagSet <- setClass(
   "DataCheckFlagSet",
-  slots = c(
-    DC = "vector",
-    flags = "list",
-    dataOrig = "data.frame",
-    dataMod = "data.frame"
-  )
+  slots = c(DC = "vector", flags = "list")
 )
 
 #' Show method for DataCheckFlagSet objects

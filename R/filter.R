@@ -37,13 +37,14 @@ dc_filter_generate <- function(dc_result_summary,
 #' `dc_filter()` is a function that filters data check result according
 #'  to filtering vector.
 #'
+#' @param data Data set on which data checks where performed
 #' @param dc_result Object of a DataCheckFlagSet generated with `perforDataCheck()`
 #' @param dc_filts A list containing filtering targets and status generated with
 #' `dc_filter_generate()`
 #'
 #' @return A data.frame that is filtered according to given vector
 #'
-dc_filter <- function(dc_result, dc_filts) {
+dc_filter <- function(data, dc_result, dc_filts) {
   idx <- c()
   names <- sapply(dc_result@flags, function(x) `@`(x, name))
   targets <- sapply(dc_result@flags, function(x) `@`(x, target))
@@ -68,5 +69,5 @@ dc_filter <- function(dc_result, dc_filts) {
     }
   }
   idx <- unique(idx)
-  return(dc_result@dataMod[-idx, ])
+  return(data[-idx, ])
 }
