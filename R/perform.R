@@ -48,9 +48,16 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
             data[, dc@input$target2, drop = TRUE]
           )
         } else {
-          target_result[[j]] <- get(paste0("dc_", dc@name))(
-            data[, j, drop = TRUE]
-          )
+          # All targets in a given dataset
+          target_all <- data.frame(x = data[, j, drop = TRUE])
+          # Unique set of all targets
+          target_uniq <- data.frame(x = unique(target_all$x))
+          # Perform data check only on the unique set (smaller than all)
+          # And after this merge with all set (expand)
+          target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
+          target_result[[j]] <- merge(
+            target_all, target_uniq, "x", sort = FALSE
+          )$res
         }
       }
     }
