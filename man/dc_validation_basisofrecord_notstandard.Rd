@@ -6,12 +6,11 @@
 \title{Data check validation_basisofrecord_notstandard Check if basisOfRecord is specified source authority service.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_basisofrecord_notstandard(
-  TARGET = NULL,
-  sources = c("event", "fossil", "fossilspecimen", "human", "humanobservation",
-    "livingspecimen", "machineobservation", "materialsample", "occurrence",
-    "preservedspecimen", "photo", "photos", "taxon")
-)
+dc_validation_basisofrecord_notstandard(TARGET = NULL,
+  sources = c("event", "fossil", "fossilspecimen", "human",
+  "humanobservation", "livingspecimen", "machineobservation",
+  "materialsample", "occurrence", "preservedspecimen", "photo", "photos",
+  "taxon"))
 }
 \arguments{
 \item{TARGET}{a vector of basisOfRecord information. To pass it must be

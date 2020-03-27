@@ -6,11 +6,8 @@
 \title{Data check validation_maxelevation_outofrange Check if maximumElevationInMeters is within parameter range.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_maxelevation_outofrange(
-  TARGET = NULL,
-  lower_limit = -428,
-  upper_limit = 8850
-)
+dc_validation_maxelevation_outofrange(TARGET = NULL,
+  lower_limit = -428, upper_limit = 8850)
 }
 \arguments{
 \item{TARGET}{a vector of maximum elevation meters. To pass it must

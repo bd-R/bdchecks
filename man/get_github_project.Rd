@@ -4,11 +4,9 @@
 \alias{get_github_project}
 \title{Get Githb Project Information}
 \usage{
-get_github_project(
-  repo = "tdwg/bdq",
-  project = "Core Tests and Assertions (TG2)",
-  header = c(Accept = "application/vnd.github.inertia-preview+json")
-)
+get_github_project(repo = "tdwg/bdq",
+  project = "Core Tests and Assertions (TG2)", header = c(Accept =
+  "application/vnd.github.inertia-preview+json"))
 }
 \arguments{
 \item{repo}{Repository that we want to work on}

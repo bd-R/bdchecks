@@ -6,10 +6,8 @@
 \title{Data check validation_occurrencestatus_notstandard Check if occurrenceStatus is specified source authority service.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_occurrencestatus_notstandard(
-  TARGET = NULL,
-  sources = c("present", "absent")
-)
+dc_validation_occurrencestatus_notstandard(TARGET = NULL,
+  sources = c("present", "absent"))
 }
 \arguments{
 \item{TARGET}{a vector of occurrenceStatus information. To pass it must be

@@ -4,11 +4,8 @@
 \alias{dc_filter_generate}
 \title{Filter Data Checks}
 \usage{
-dc_filter_generate(
-  dc_result_summary,
-  cell_selected,
-  filters = c("P", "F", "M")
-)
+dc_filter_generate(dc_result_summary, cell_selected, filters = c("P",
+  "F", "M"))
 }
 \arguments{
 \item{dc_result_summary}{Summary table for a DataCheckFlagSet class

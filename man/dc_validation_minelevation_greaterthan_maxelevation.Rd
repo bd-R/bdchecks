@@ -7,10 +7,8 @@
 \title{Data check validation_minelevation_greaterthan_maxelevation Check if minimumElevationInMeters is not greater than maximumElevationInMeters.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_minelevation_greaterthan_maxelevation(
-  TARGET = NULL,
-  TARGET2 = NULL
-)
+dc_validation_minelevation_greaterthan_maxelevation(TARGET = NULL,
+  TARGET2 = NULL)
 }
 \arguments{
 \item{TARGET}{a vector of minimumElevationInMeters.}

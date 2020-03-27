@@ -7,11 +7,8 @@
 \title{Data check validation_coordinateuncertainty_outofrange Check if coordinateUncertaintyInMeters is within given range.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_coordinateuncertainty_outofrange(
-  TARGET = NULL,
-  lower_limit = 1,
-  upper_limit = 20037509
-)
+dc_validation_coordinateuncertainty_outofrange(TARGET = NULL,
+  lower_limit = 1, upper_limit = 20037509)
 }
 \arguments{
 \item{TARGET}{a vector of coordinate uncertainty in meters. To pass it must

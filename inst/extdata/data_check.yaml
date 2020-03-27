@@ -688,6 +688,51 @@ DC_validation_geodeticdatum_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
+DC_validation_continent_empty:
+  name: validation_continent_empty
+  meta:
+    information:
+      description: Check if continent exists and is not empty.
+      question: Is continent information present?
+      check_type: tdwg_standard
+      darwin_core_class: location
+      data_quality_dimension: completeness
+      dimension: space
+      output: validation
+      warning: incomplete
+      resolution:
+        record: single_record
+        term:
+      keywords: location,validation,completeness,missing,incomplete
+      guid: 
+    example:
+      pass: The value for continent is present.
+      fail: The value for continent is missing.
+      input_pass: continent=Australia
+      input_fail: continent=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: 
+      reference:
+      creator:
+      modifier: Martynas Jocys
+      modification: 2020-03-27
+    notes:
+  input:
+    target: continent
+    target2:
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: missing_data
 DC_validation_country_empty:
   name: validation_country_empty
   meta:

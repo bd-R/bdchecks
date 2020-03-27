@@ -6,11 +6,8 @@
 \title{Data check validation_eventdate_outofrange Check if eventDate is not empty and is within given earliest and latest dates.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_eventdate_outofrange(
-  TARGET = NULL,
-  date_start = "1600-01-01",
-  date_end = Sys.Date()
-)
+dc_validation_eventdate_outofrange(TARGET = NULL,
+  date_start = "1600-01-01", date_end = Sys.Date())
 }
 \arguments{
 \item{TARGET}{a vector of event date information. To pass must be within 

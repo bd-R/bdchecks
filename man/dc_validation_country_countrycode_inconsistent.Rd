@@ -7,7 +7,8 @@
 \title{Data check validation_country_countrycode_inconsistent Check if country matches country code.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_country_countrycode_inconsistent(TARGET = NULL, TARGET2 = NULL)
+dc_validation_country_countrycode_inconsistent(TARGET = NULL,
+  TARGET2 = NULL)
 }
 \arguments{
 \item{TARGET}{a vector of country information.

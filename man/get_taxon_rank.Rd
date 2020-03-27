@@ -4,7 +4,8 @@
 \alias{get_taxon_rank}
 \title{Retrieve Information about Taxon Rank}
 \usage{
-get_taxon_rank(path_rank = "http://rs.gbif.org/vocabulary/gbif/rank.xml")
+
+  get_taxon_rank(path_rank = "http://rs.gbif.org/vocabulary/gbif/rank.xml")
 }
 \arguments{
 \item{path_rank}{Path to a reference dictionary.}

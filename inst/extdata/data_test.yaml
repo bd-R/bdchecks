@@ -163,6 +163,13 @@ validation_geodeticdatum_empty:
     - [' European 1950 ', correct, pass]
     - ["", missing, fail]
   comment:
+validation_continent_empty:
+  data:
+    - [continent, type, expected]
+    - [OCEANIA, correct, pass]
+    - [Oceania, correct, pass]
+    - [' OCEANIA ', correct, pass]
+    - ["", missing, fail]
 validation_country_empty:
   data:
     - [country, type, expected]

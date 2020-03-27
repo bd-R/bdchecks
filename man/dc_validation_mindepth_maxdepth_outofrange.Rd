@@ -6,11 +6,8 @@
 \title{Data check validation_mindepth_maxdepth_outofrange Check if minimumDepthInMeters and maximumDepthInMeters is within parameter range.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_mindepth_maxdepth_outofrange(
-  TARGET = NULL,
-  lower_depth = 0,
-  upper_depth = 11000
-)
+dc_validation_mindepth_maxdepth_outofrange(TARGET = NULL,
+  lower_depth = 0, upper_depth = 11000)
 }
 \arguments{
 \item{TARGET}{a vector of minimum or maximum depth in meters. To pass it must

@@ -6,11 +6,8 @@
 \title{Data check validation_year_outofrange Check if year is not empty and is within given earliest and latest dates.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_year_outofrange(
-  TARGET = NULL,
-  date_start = "1600",
-  date_end = format(Sys.Date(), "\%Y")
-)
+dc_validation_year_outofrange(TARGET = NULL, date_start = "1600",
+  date_end = format(Sys.Date(), "\%Y"))
 }
 \arguments{
 \item{TARGET}{a vector of year information. To pass must be within 

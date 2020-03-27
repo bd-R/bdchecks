@@ -6,13 +6,9 @@
 \title{Data check validation_taxonrank_notstandard Check if taxonRank is standard.}
 \format{An object of class function to perform a specific data check.}
 \usage{
-dc_validation_taxonrank_notstandard(
-  TARGET = NULL,
-  language = "en",
-  alternative = FALSE,
-  get_gbif_rank = FALSE,
-  path_rank = "http://rs.gbif.org/vocabulary/gbif/rank.xml"
-)
+dc_validation_taxonrank_notstandard(TARGET = NULL, language = "en",
+  alternative = FALSE, get_gbif_rank = FALSE,
+  path_rank = "http://rs.gbif.org/vocabulary/gbif/rank.xml")
 }
 \arguments{
 \item{TARGET}{a vector of taxon rank. To pass must be within given
