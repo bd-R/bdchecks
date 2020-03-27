@@ -4,7 +4,9 @@
 \name{dc_validation_mindepth_maxdepth_outofrange}
 \alias{dc_validation_mindepth_maxdepth_outofrange}
 \title{Data check validation_mindepth_maxdepth_outofrange Check if minimumDepthInMeters and maximumDepthInMeters is within parameter range.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_mindepth_maxdepth_outofrange(
   TARGET = NULL,

@@ -4,7 +4,9 @@
 \name{dc_validation_eventtemporal_empty}
 \alias{dc_validation_eventtemporal_empty}
 \title{Data check validation_eventtemporal_empty Check if at least one field needed to determine event temporal of the entity exists and is not empty.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_eventtemporal_empty(TARGET = NULL)
 }

@@ -4,7 +4,9 @@
 \name{dc_validation_month_notstandard}
 \alias{dc_validation_month_notstandard}
 \title{Data check validation_month_notstandard Check if month is an integer between 1 and 12 inclusive.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_month_notstandard(TARGET = NULL)
 }

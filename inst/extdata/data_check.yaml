@@ -1441,6 +1441,51 @@ DC_validation_month_notstandard:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: internal_prerequisites_not_met
+DC_validation_month_empty:
+  name: validation_month_empty
+  meta:
+    information:
+      description: Check if month exists and is not empty.
+      question: Is month information present?
+      check_type: tdwg_standard
+      darwin_core_class: event
+      data_quality_dimension: completeness
+      dimension: time
+      output: validation
+      warning: incomplete
+      resolution:
+        record: single_record
+        term:
+      keywords: event,time,validation,completeness,missing,incomplete
+      guid: c09ecbf9-34e2-4f1e-b74a-8796af15e59f
+    example:
+      pass: The value for month is present.
+      fail: The value for month is missing.
+      input_pass: month=2001-01-01
+      input_fail: month=
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.na(TARGET) & TARGET != ""
+    source:
+      resource: 
+      reference:
+      creator:
+      modifier: 
+      modification: 2020-03-26
+    notes:
+  input:
+    target: month
+    target2:
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: missing_data
 DC_validation_basisofrecord_notstandard:
   name: validation_basisofrecord_notstandard
   meta:

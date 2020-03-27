@@ -4,7 +4,9 @@
 \name{dc_validation_phylum_notfound}
 \alias{dc_validation_phylum_notfound}
 \title{Data check validation_phylum_notfound Check if phylum was found as a value at the rank of phylum by the specified source authority service.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_phylum_notfound(TARGET = NULL)
 }

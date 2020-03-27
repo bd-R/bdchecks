@@ -4,7 +4,9 @@
 \name{dc_validation_occurrenceid_notstandard}
 \alias{dc_validation_occurrenceid_notstandard}
 \title{Data check validation_occurrenceid_notstandard Check if occurrenceID is not empty and follows a format commonly associated with globally unique identifiers (GUID).}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_occurrenceid_notstandard(TARGET = NULL)
 }

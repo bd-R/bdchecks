@@ -4,7 +4,9 @@
 \name{dc_validation_minelevation_outofrange}
 \alias{dc_validation_minelevation_outofrange}
 \title{Data check validation_minelevation_outofrange Check if minimumElevationInMeters is within parameter range.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_minelevation_outofrange(
   TARGET = NULL,

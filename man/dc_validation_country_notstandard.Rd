@@ -4,7 +4,9 @@
 \name{dc_validation_country_notstandard}
 \alias{dc_validation_country_notstandard}
 \title{Data check validation_country_notstandard Check if country is within a set of available country names.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_country_notstandard(TARGET = NULL)
 }

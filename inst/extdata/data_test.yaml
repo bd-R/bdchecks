@@ -308,6 +308,14 @@ validation_month_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
+validation_month_empty:
+  data:
+    - [month, type, expected]
+    - [2, correct, pass]
+    - [9, correct, pass]
+    - [' 9 ', correct, pass]
+    - ["", missing, fail]
+  comment:
 validation_basisofrecord_notstandard:
   data:
     - [basisOfRecord, type, expected]

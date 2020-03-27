@@ -5,7 +5,9 @@
 \name{dc_validation_country_countrycode_inconsistent}
 \alias{dc_validation_country_countrycode_inconsistent}
 \title{Data check validation_country_countrycode_inconsistent Check if country matches country code.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_country_countrycode_inconsistent(TARGET = NULL, TARGET2 = NULL)
 }

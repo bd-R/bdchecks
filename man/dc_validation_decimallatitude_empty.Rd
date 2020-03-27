@@ -4,7 +4,9 @@
 \name{dc_validation_decimallatitude_empty}
 \alias{dc_validation_decimallatitude_empty}
 \title{Data check validation_decimallatitude_empty Check if decimalLatitude exists and is not empty.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_decimallatitude_empty(TARGET = NULL)
 }

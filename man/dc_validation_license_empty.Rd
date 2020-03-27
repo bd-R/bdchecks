@@ -4,7 +4,9 @@
 \name{dc_validation_license_empty}
 \alias{dc_validation_license_empty}
 \title{Data check validation_license_empty Check if license exists and is not empty.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_license_empty(TARGET = NULL)
 }

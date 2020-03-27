@@ -4,7 +4,9 @@
 \name{dc_notification_datageneralizations_notempty}
 \alias{dc_notification_datageneralizations_notempty}
 \title{Data check notification_datageneralizations_notempty Check if dataGeneralizations is not empty.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_notification_datageneralizations_notempty(TARGET = NULL)
 }

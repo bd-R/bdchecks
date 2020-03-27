@@ -5,7 +5,9 @@
 \name{dc_validation_coordinateuncertainty_outofrange}
 \alias{dc_validation_coordinateuncertainty_outofrange}
 \title{Data check validation_coordinateuncertainty_outofrange Check if coordinateUncertaintyInMeters is within given range.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_coordinateuncertainty_outofrange(
   TARGET = NULL,

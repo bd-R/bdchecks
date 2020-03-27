@@ -4,7 +4,9 @@
 \name{dc_validation_mindepth_greaterthan_maxdepth}
 \alias{dc_validation_mindepth_greaterthan_maxdepth}
 \title{Data check validation_mindepth_greaterthan_maxdepth Check if minimumDepthInMeters is not greater than maximumDepthInMeters.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_mindepth_greaterthan_maxdepth(TARGET = NULL, TARGET2 = NULL)
 }

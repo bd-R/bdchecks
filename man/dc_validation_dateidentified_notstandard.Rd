@@ -4,7 +4,9 @@
 \name{dc_validation_dateidentified_notstandard}
 \alias{dc_validation_dateidentified_notstandard}
 \title{Data check validation_dateidentified_notstandard Check if dateIdentified is a valid ISO 8601-1:2019 date.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_dateidentified_notstandard(TARGET = NULL)
 }

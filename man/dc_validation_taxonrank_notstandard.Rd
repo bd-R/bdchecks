@@ -4,7 +4,9 @@
 \name{dc_validation_taxonrank_notstandard}
 \alias{dc_validation_taxonrank_notstandard}
 \title{Data check validation_taxonrank_notstandard Check if taxonRank is standard.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_taxonrank_notstandard(
   TARGET = NULL,

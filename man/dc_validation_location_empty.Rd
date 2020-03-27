@@ -4,7 +4,9 @@
 \name{dc_validation_location_empty}
 \alias{dc_validation_location_empty}
 \title{Data check validation_location_empty Check if at least one field needed to determine location of the entity exists and is not empty.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_location_empty(TARGET = NULL)
 }

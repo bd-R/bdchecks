@@ -4,7 +4,9 @@
 \name{dc_validation_occurrencestatus_empty}
 \alias{dc_validation_occurrencestatus_empty}
 \title{Data check validation_occurrencestatus_empty Check if occurrenceStatus exists and is not empty.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_occurrencestatus_empty(TARGET = NULL)
 }

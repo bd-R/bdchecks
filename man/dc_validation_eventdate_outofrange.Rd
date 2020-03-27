@@ -4,7 +4,9 @@
 \name{dc_validation_eventdate_outofrange}
 \alias{dc_validation_eventdate_outofrange}
 \title{Data check validation_eventdate_outofrange Check if eventDate is not empty and is within given earliest and latest dates.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_eventdate_outofrange(
   TARGET = NULL,

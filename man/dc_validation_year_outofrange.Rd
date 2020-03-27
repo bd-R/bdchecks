@@ -4,7 +4,9 @@
 \name{dc_validation_year_outofrange}
 \alias{dc_validation_year_outofrange}
 \title{Data check validation_year_outofrange Check if year is not empty and is within given earliest and latest dates.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_year_outofrange(
   TARGET = NULL,

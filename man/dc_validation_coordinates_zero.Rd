@@ -4,7 +4,9 @@
 \name{dc_validation_coordinates_zero}
 \alias{dc_validation_coordinates_zero}
 \title{Data check validation_coordinates_zero Check if decimalLatitude or decimalLongitude are zeroes.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_coordinates_zero(TARGET = NULL)
 }

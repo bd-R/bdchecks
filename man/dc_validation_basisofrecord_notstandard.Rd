@@ -4,7 +4,9 @@
 \name{dc_validation_basisofrecord_notstandard}
 \alias{dc_validation_basisofrecord_notstandard}
 \title{Data check validation_basisofrecord_notstandard Check if basisOfRecord is specified source authority service.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_basisofrecord_notstandard(
   TARGET = NULL,

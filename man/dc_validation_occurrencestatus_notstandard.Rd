@@ -4,7 +4,9 @@
 \name{dc_validation_occurrencestatus_notstandard}
 \alias{dc_validation_occurrencestatus_notstandard}
 \title{Data check validation_occurrencestatus_notstandard Check if occurrenceStatus is specified source authority service.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_occurrencestatus_notstandard(
   TARGET = NULL,

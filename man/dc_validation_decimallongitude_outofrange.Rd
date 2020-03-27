@@ -4,7 +4,9 @@
 \name{dc_validation_decimallongitude_outofrange}
 \alias{dc_validation_decimallongitude_outofrange}
 \title{Data check validation_decimallongitude_outofrange Check if decimalLongitude is within parameter range.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_decimallongitude_outofrange(TARGET = NULL)
 }

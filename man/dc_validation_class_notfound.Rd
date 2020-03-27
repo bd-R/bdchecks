@@ -4,7 +4,9 @@
 \name{dc_validation_class_notfound}
 \alias{dc_validation_class_notfound}
 \title{Data check validation_class_notfound Check if class was found as a value at the rank of class by the specified source authority service.}
-\format{An object of class function to perform a specific data check.}
+\format{
+An object of class function to perform a specific data check.
+}
 \usage{
 dc_validation_class_notfound(TARGET = NULL)
 }
