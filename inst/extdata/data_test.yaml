@@ -170,6 +170,15 @@ validation_continent_empty:
     - [Oceania, correct, pass]
     - [' OCEANIA ', correct, pass]
     - ["", missing, fail]
+validation_continent_notstandard:
+  data:
+    - [continent, type, expected]
+    - [EUROPE, correct, pass]
+    - [North America, correct, pass]
+    - [' asia ', correct, pass]
+    - [Europa, incorrect, fail]
+    - [North Europe, incorrect, fail]
+    - ["", missing, fail]
 validation_country_empty:
   data:
     - [country, type, expected]

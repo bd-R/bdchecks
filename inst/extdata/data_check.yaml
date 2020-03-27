@@ -733,6 +733,51 @@ DC_validation_continent_empty:
     output_standard_pass: compliant
     output_standard_fail: not_compliant 
     output_standard_missing: missing_data
+DC_validation_continent_notstandard:
+  name: validation_continent_notstandard
+  meta:
+    information:
+      description: Check if continent is within a set of available continent names.
+      question: Is continent information valid?
+      check_type: tdwg_standard
+      darwin_core_class: location
+      data_quality_dimension: conformance
+      dimension: space
+      output: validation
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: space,validation,vocabulary,parametrized
+      guid: 
+    example:
+      pass: The value for continent is present and correct.
+      fail: The value for continent is missing or incorrect.
+      input_pass: continent=Europe
+      input_fail: continent=North Europe
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      TARGET %in% reference
+    source:
+      resource: 
+      reference: 
+      creator: 
+      modifier: Martynas Jocys
+      modification: 2020-03-27
+    notes:
+  input:
+    target: continent
+    target2:
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_standard_pass: compliant
+    output_standard_fail: not_compliant 
+    output_standard_missing: internal_prerequisites_not_met
 DC_validation_country_empty:
   name: validation_country_empty
   meta:
