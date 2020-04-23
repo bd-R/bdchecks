@@ -1,10 +1,10 @@
-#' @rdname dc_validation_basisofrecord_notstandard
+#' @rdname dc_basisofrecord_standard
 #' 
 #' @param TARGET a vector of basisOfRecord information. To pass it must be
 #' within given reference dictionary.
 #' @param sources a vector of available sources.
 #' 
-dc_validation_basisofrecord_notstandard <- function(
+dc_basisofrecord_standard <- function(
   TARGET = NULL,
   sources = c(
     "event",

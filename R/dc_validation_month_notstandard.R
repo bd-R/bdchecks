@@ -1,9 +1,9 @@
-#' @rdname dc_validation_month_notstandard
+#' @rdname dc_month_standard
 #' 
 #' @param TARGET a vector of month information. To pass must be an integer
 #' within 1 and 12.
 #' 
-dc_validation_month_notstandard <- function(TARGET = NULL) {
+dc_month_standard <- function(TARGET = NULL) {
   suppressWarnings(
     result <- TARGET %>%
       gsub(" ", "", .) %>% # Remove possible spaces

@@ -1,9 +1,9 @@
-#' @rdname dc_validation_day_notstandard
+#' @rdname dc_day_standard
 #' 
 #' @param TARGET a vector of day information. To pass must be an integer
 #' within 1 and 31.
 #' 
-dc_validation_day_notstandard <- function(TARGET = NULL) {
+dc_day_standard <- function(TARGET = NULL) {
   suppressWarnings(
     result <- TARGET %>%
       gsub(" ", "", .) %>% # Remove possible spaces

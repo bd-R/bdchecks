@@ -1,11 +1,11 @@
-#' @rdname dc_validation_eventdate_outofrange
+#' @rdname dc_eventdate_inrange
 #' 
 #' @param TARGET a vector of event date information. To pass must be within 
 #' given dates (start and end).
 #' @param date_start earliest possible date.
 #' @param date_end latest possible date.
 #' 
-dc_validation_eventdate_outofrange <- function(
+dc_eventdate_inrange <- function(
   TARGET = NULL,
   date_start = "1600-01-01",
   date_end = Sys.Date()

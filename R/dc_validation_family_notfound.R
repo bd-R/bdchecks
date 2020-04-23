@@ -1,9 +1,9 @@
-#' @rdname dc_validation_family_notfound
+#' @rdname dc_family_valid
 #' 
 #' @param TARGET a vector of family information. To pass it must be within
 #' gbif family ranks.
 #' 
-dc_validation_family_notfound <- function(TARGET = NULL) {
+dc_family_valid <- function(TARGET = NULL) {
   TARGET <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- TARGET %in% tax_available_name(TARGET, "family")

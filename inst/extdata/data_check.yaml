@@ -23,13 +23,13 @@ DC_validation_taxon_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(value) & value != "" & value %in% taxonRanks
     source:
       resource: https://github.com/tdwg/bdq/issues/105
       reference:
       creator: Lee Belbin
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2019-04-13
     notes:
       1: Lee Belbin - This needs discussion. For example, would kingdom, phylum, class or order only be useful?
       2: JW - Would this test return true if there were data in the relevant Taxon-related fields was meaningless (effectively null)?
@@ -42,9 +42,9 @@ DC_validation_taxon_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_taxonid_empty:
   name: validation_taxonid_empty
   meta:
@@ -70,7 +70,7 @@ DC_validation_taxonid_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/120
       reference:
@@ -87,9 +87,9 @@ DC_validation_taxonid_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_taxonrank_empty:
   name: validation_taxonrank_empty
   meta:
@@ -115,7 +115,7 @@ DC_validation_taxonrank_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/161
       reference: https://terms.tdwg.org/wiki/dwc:taxonRank
@@ -132,9 +132,9 @@ DC_validation_taxonrank_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_taxonrank_notstandard:
   name: validation_taxonrank_notstandard
   meta:
@@ -160,7 +160,7 @@ DC_validation_taxonrank_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/162
       reference: http://rs.gbif.org/vocabulary/gbif/rank.xml
@@ -178,9 +178,9 @@ DC_validation_taxonrank_notstandard:
       rpackages:
       data: data_taxonrank
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_scientificname_empty:
   name: validation_scientificname_empty
   meta:
@@ -206,7 +206,7 @@ DC_validation_scientificname_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/82
       reference: ALA,GBIF,OBIS
@@ -226,9 +226,9 @@ DC_validation_scientificname_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_kingdom_notfound:
   name: validation_kingdom_notfound
   meta:
@@ -272,9 +272,9 @@ DC_validation_kingdom_notfound:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_phylum_notfound:
   name: validation_phylum_notfound
   meta:
@@ -318,9 +318,9 @@ DC_validation_phylum_notfound:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_class_notfound:
   name: validation_class_notfound
   meta:
@@ -364,9 +364,9 @@ DC_validation_class_notfound:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_order_notfound:
   name: validation_order_notfound
   meta:
@@ -410,9 +410,9 @@ DC_validation_order_notfound:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_family_notfound:
   name: validation_family_notfound
   meta:
@@ -456,9 +456,9 @@ DC_validation_family_notfound:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_genus_notfound:
   name: validation_genus_notfound
   meta:
@@ -502,9 +502,9 @@ DC_validation_genus_notfound:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_location_empty:
   name: validation_location_empty
   meta:
@@ -530,7 +530,7 @@ DC_validation_location_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/40
       reference:
@@ -550,9 +550,9 @@ DC_validation_location_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_decimallatitude_empty:
   name: validation_decimallatitude_empty
   meta:
@@ -578,7 +578,7 @@ DC_validation_decimallatitude_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/119
       reference:
@@ -595,9 +595,9 @@ DC_validation_decimallatitude_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_decimallongitude_empty:
   name: validation_decimallongitude_empty
   meta:
@@ -623,7 +623,7 @@ DC_validation_decimallongitude_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/96
       reference:
@@ -640,9 +640,9 @@ DC_validation_decimallongitude_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_geodeticdatum_empty:
   name: validation_geodeticdatum_empty
   meta:
@@ -668,7 +668,7 @@ DC_validation_geodeticdatum_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/78
       reference:
@@ -685,9 +685,9 @@ DC_validation_geodeticdatum_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_country_empty:
   name: validation_country_empty
   meta:
@@ -713,7 +713,7 @@ DC_validation_country_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/42
       reference:
@@ -731,9 +731,9 @@ DC_validation_country_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_countrycode_empty:
   name: validation_countrycode_empty
   meta:
@@ -759,7 +759,7 @@ DC_validation_countrycode_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/98
       reference:
@@ -776,9 +776,9 @@ DC_validation_countrycode_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_eventtemporal_empty:
   name: validation_eventtemporal_empty
   meta:
@@ -804,7 +804,7 @@ DC_validation_eventtemporal_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/88
       reference:
@@ -821,9 +821,9 @@ DC_validation_eventtemporal_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_eventdate_empty:
   name: validation_eventdate_empty
   meta:
@@ -849,7 +849,7 @@ DC_validation_eventdate_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/33
       reference:
@@ -868,9 +868,9 @@ DC_validation_eventdate_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_year_empty:
   name: validation_year_empty
   meta:
@@ -896,7 +896,7 @@ DC_validation_year_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/49
       reference:
@@ -914,9 +914,9 @@ DC_validation_year_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_dctype_empty:
   name: validation_dctype_empty
   meta:
@@ -942,7 +942,7 @@ DC_validation_dctype_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/103
       reference: https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/2002-07-13/
@@ -961,9 +961,9 @@ DC_validation_dctype_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_license_empty:
   name: validation_license_empty
   meta:
@@ -989,7 +989,7 @@ DC_validation_license_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/99
       reference:
@@ -1007,9 +1007,9 @@ DC_validation_license_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_basisofrecord_empty:
   name: validation_basisofrecord_empty
   meta:
@@ -1035,7 +1035,7 @@ DC_validation_basisofrecord_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/58
       reference:
@@ -1053,9 +1053,9 @@ DC_validation_basisofrecord_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_occurrencestatus_empty:
   name: validation_occurrencestatus_empty
   meta:
@@ -1081,7 +1081,7 @@ DC_validation_occurrencestatus_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/117
       reference:
@@ -1102,9 +1102,9 @@ DC_validation_occurrencestatus_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_validation_occurrenceid_empty:
   name: validation_occurrenceid_empty
   meta:
@@ -1130,7 +1130,7 @@ DC_validation_occurrenceid_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/47
       reference:
@@ -1151,9 +1151,9 @@ DC_validation_occurrenceid_empty:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: missing_data
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: missing_data
 DC_notification_datageneralizations_notempty:
   name: notification_datageneralizations_notempty
   meta:
@@ -1179,7 +1179,7 @@ DC_notification_datageneralizations_notempty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/72
       reference:
@@ -1204,9 +1204,9 @@ DC_notification_datageneralizations_notempty:
       rpackages:
       data:
   output:
-    output_standard_pass: not_empty
-    output_standard_fail: not_reported
-    output_standard_missing: not_reported
+    output_tdwg_standard_pass: not_empty
+    output_tdwg_standard_fail: not_reported
+    output_tdwg_standard_missing: not_reported
 DC_notification_establishmentmeans_notempty:
   name: notification_establishmentmeans_notempty
   meta:
@@ -1232,7 +1232,7 @@ DC_notification_establishmentmeans_notempty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != ""
+      !is.missing(TARGET) & TARGET != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/94
       reference:
@@ -1254,9 +1254,9 @@ DC_notification_establishmentmeans_notempty:
       rpackages:
       data:
   output:
-    output_standard_pass: not_empty
-    output_standard_fail: not_reported
-    output_standard_missing: not_reported
+    output_tdwg_standard_pass: not_empty
+    output_tdwg_standard_fail: not_reported
+    output_tdwg_standard_missing: not_reported
 DC_validation_occurrenceid_notstandard:
   name: validation_occurrenceid_notstandard
   meta:
@@ -1282,7 +1282,7 @@ DC_validation_occurrenceid_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != "" & is.guid(TAGET)
+      !is.missing(TARGET) & TARGET != "" & is.guid(TAGET)
     source:
       resource: https://github.com/tdwg/bdq/issues/23
       reference: http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers
@@ -1300,9 +1300,9 @@ DC_validation_occurrenceid_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_eventdate_outofrange:
   name: validation_eventdate_outofrange
   meta:
@@ -1328,7 +1328,7 @@ DC_validation_eventdate_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
+      !is.missing(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
     source:
       resource: https://github.com/tdwg/bdq/issues/36
       reference: https://en.wikipedia.org/wiki/ISO_8601
@@ -1346,9 +1346,9 @@ DC_validation_eventdate_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_year_outofrange:
   name: validation_year_outofrange
   meta:
@@ -1374,7 +1374,7 @@ DC_validation_year_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.na(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
+      !is.missing(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
     source:
       resource: https://github.com/tdwg/bdq/issues/84
       reference: 
@@ -1392,9 +1392,9 @@ DC_validation_year_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_month_notstandard:
   name: validation_month_notstandard
   meta:
@@ -1438,9 +1438,9 @@ DC_validation_month_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_basisofrecord_notstandard:
   name: validation_basisofrecord_notstandard
   meta:
@@ -1483,9 +1483,9 @@ DC_validation_basisofrecord_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_coordinates_zero:
   name: validation_coordinates_zero
   meta:
@@ -1528,9 +1528,9 @@ DC_validation_coordinates_zero:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_coordinateuncertainty_outofrange:
   name: validation_coordinateuncertainty_outofrange
   meta:
@@ -1573,9 +1573,9 @@ DC_validation_coordinateuncertainty_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_country_notstandard:
   name: validation_country_notstandard
   meta:
@@ -1622,9 +1622,9 @@ DC_validation_country_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_day_notstandard:
   name: validation_day_notstandard
   meta:
@@ -1670,9 +1670,9 @@ DC_validation_day_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_minelevation_outofrange:
   name: validation_minelevation_outofrange
   meta:
@@ -1723,9 +1723,9 @@ DC_validation_minelevation_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_maxelevation_outofrange:
   name: validation_maxelevation_outofrange
   meta:
@@ -1768,9 +1768,9 @@ DC_validation_maxelevation_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_decimallongitude_outofrange:
   name: validation_decimallongitude_outofrange
   meta:
@@ -1813,9 +1813,9 @@ DC_validation_decimallongitude_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_decimallatitude_outofrange:
   name: validation_decimallatitude_outofrange
   meta:
@@ -1858,9 +1858,9 @@ DC_validation_decimallatitude_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_country_countrycode_inconsistent:
   name: validation_country_countrycode_inconsistent
   meta:
@@ -1903,9 +1903,9 @@ DC_validation_country_countrycode_inconsistent:
       rpackages:
       data: data_countries
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_mindepth_maxdepth_outofrange:
   name: validation_mindepth_maxdepth_outofrange
   meta:
@@ -1951,9 +1951,9 @@ DC_validation_mindepth_maxdepth_outofrange:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_minelevation_greaterthan_maxelevation:
   name: validation_minelevation_greaterthan_maxelevation
   meta:
@@ -1996,9 +1996,9 @@ DC_validation_minelevation_greaterthan_maxelevation:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_mindepth_greaterthan_maxdepth:
   name: validation_mindepth_greaterthan_maxdepth
   meta:
@@ -2046,9 +2046,9 @@ DC_validation_mindepth_greaterthan_maxdepth:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_eventdate_notstandard:
   name: validation_eventdate_notstandard
   meta:
@@ -2099,9 +2099,9 @@ DC_validation_eventdate_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_dateidentified_notstandard:
   name: validation_dateidentified_notstandard
   meta:
@@ -2144,9 +2144,9 @@ DC_validation_dateidentified_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_validation_occurrencestatus_notstandard:
   name: validation_occurrencestatus_notstandard
   meta:
@@ -2189,6 +2189,6 @@ DC_validation_occurrencestatus_notstandard:
       rpackages:
       data:
   output:
-    output_standard_pass: compliant
-    output_standard_fail: not_compliant 
-    output_standard_missing: internal_prerequisites_not_met
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met

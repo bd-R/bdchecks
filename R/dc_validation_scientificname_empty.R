@@ -1,9 +1,9 @@
-#' @rdname dc_validation_scientificname_empty
+#' @rdname dc_scientificname_present
 #' 
 #' @param TARGET a vector of scientificname information. To pass it must be
 #' non-empty entry. 
 #' 
-dc_validation_scientificname_empty <- function(TARGET = NULL) {
+dc_scientificname_present <- function(TARGET = NULL) {
   result <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- !is.na(result) & result != "" # Check if not empty

@@ -1,9 +1,9 @@
-#' @rdname dc_validation_order_notfound
+#' @rdname dc_order_valid
 #' 
 #' @param TARGET a vector of order information. To pass it must be within
 #' gbif order ranks.
 #' 
-dc_validation_order_notfound <- function(TARGET = NULL) {
+dc_order_valid <- function(TARGET = NULL) {
   TARGET <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- TARGET %in% tax_available_name(TARGET, "order")
