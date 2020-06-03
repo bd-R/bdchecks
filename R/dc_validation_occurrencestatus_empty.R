@@ -1,9 +1,9 @@
-#' @rdname dc_validation_occurrencestatus_empty
+#' @rdname dc_occurrencestatus_present
 #' 
 #' @param TARGET a vector of occurrence status information. To pass it must be
 #' non-empty entry. 
 #' 
-dc_validation_occurrencestatus_empty <- function(TARGET = NULL) {
+dc_occurrencestatus_present <- function(TARGET = NULL) {
   result <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- !is.na(result) & result != "" # Check if not empty

@@ -1,9 +1,9 @@
-#' @rdname dc_validation_taxonrank_empty
+#' @rdname dc_taxonrank_present
 #' 
 #' @param TARGET a vector of taxonrank information. To pass it must be non-empty
 #' entry. 
 #' 
-dc_validation_taxonrank_empty <- function(TARGET = NULL) {
+dc_taxonrank_present <- function(TARGET = NULL) {
   result <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- !is.na(result) & result != "" # Check if not empty

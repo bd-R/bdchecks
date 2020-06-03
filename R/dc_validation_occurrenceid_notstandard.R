@@ -1,8 +1,8 @@
-#' @rdname dc_validation_occurrenceid_notstandard
+#' @rdname dc_occurrenceid_standard
 #' 
 #' @param TARGET a vector of occurence ID. To pass must be match a GUID style.
 #' 
-dc_validation_occurrenceid_notstandard <- function(TARGET = NULL) {
+dc_occurrenceid_standard <- function(TARGET = NULL) {
   result <- TARGET %>%
     tolower() %>%
     gsub(" ", "", .) %>% # Remove possible spaces

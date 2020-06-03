@@ -1,9 +1,9 @@
-#' @rdname dc_validation_phylum_notfound
+#' @rdname dc_phylum_valid
 #' 
 #' @param TARGET a vector of phylum information. To pass it must be within
 #' gbif phylum ranks.
 #' 
-dc_validation_phylum_notfound <- function(TARGET = NULL) {
+dc_phylum_valid <- function(TARGET = NULL) {
   TARGET <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- TARGET %in% tax_available_name(TARGET, "phylum")

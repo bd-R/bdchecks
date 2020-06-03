@@ -5,7 +5,7 @@
 #' 
 dc_validation_dateidentified_standard <- function(TARGET = NULL) {
   result <- TARGET %>%
-    as.Date() %>% # Convert to date first so that following call woul return NA
+    as.Date() %>% # Convert to date first so that following call would return NA
     as.POSIXct() %>% # Gives NA for non-valid date
     is.na()
   return(perform_dc_missing(!result, TARGET))

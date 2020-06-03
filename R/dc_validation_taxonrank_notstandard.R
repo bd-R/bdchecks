@@ -1,4 +1,4 @@
-#' @rdname dc_validation_taxonrank_notstandard
+#' @rdname dc_taxonrank_standard
 #' 
 #' @param TARGET a vector of taxon rank. To pass must be within given
 #' dictionary.
@@ -8,7 +8,7 @@
 #' @param get_gbif_rank logical value - should update gbif dictionary.
 #' @param path_rank path to gbif dictionary
 #' 
-dc_validation_taxonrank_notstandard <- function(
+dc_taxonrank_standard <- function(
   TARGET = NULL,
   language = "en",
   alternative = FALSE,

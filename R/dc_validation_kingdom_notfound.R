@@ -1,9 +1,9 @@
-#' @rdname dc_validation_kingdom_notfound
+#' @rdname dc_kingdom_valid
 #' 
 #' @param TARGET a vector of kingdom information. To pass it must be within
 #' gbif kingdom ranks.
 #' 
-dc_validation_kingdom_notfound <- function(TARGET = NULL) {
+dc_kingdom_valid <- function(TARGET = NULL) {
   TARGET <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- TARGET %in% tax_available_name(TARGET, "kingdom")

@@ -1,9 +1,9 @@
-#' @rdname dc_validation_country_empty
+#' @rdname dc_country_present
 #' 
 #' @param TARGET a vector of country information. To pass it must be
 #' non-empty entry. 
 #' 
-dc_validation_country_empty <- function(TARGET = NULL) {
+dc_country_present <- function(TARGET = NULL) {
   result <- TARGET %>%
     gsub(" ", "", .) # Remove possible spaces
   result <- !is.na(result) & result != "" # Check if not empty

@@ -1,10 +1,10 @@
-#' @rdname dc_validation_occurrencestatus_notstandard
+#' @rdname dc_occurrencestatus_standard
 #' 
 #' @param TARGET a vector of occurrenceStatus information. To pass it must be
 #' within given reference dictionary.
 #' @param sources a vector of available sources.
 #' 
-dc_validation_occurrencestatus_notstandard <- function(
+dc_occurrencestatus_standard <- function(
   TARGET = NULL,
   sources = c(
     "present",

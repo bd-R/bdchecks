@@ -1,9 +1,9 @@
-#' @rdname dc_validation_mindepth_greaterthan_maxdepth
+#' @rdname dc_mindepth_lessthan_maxdepth
 #' 
 #' @param TARGET a vector of minimumDepthInMeters.
 #' @param TARGET2 a vector of maximumDepthInMeters.
 #' 
-dc_validation_mindepth_greaterthan_maxdepth <- function(
+dc_mindepth_lessthan_maxdepth <- function(
   TARGET = NULL,
   TARGET2 = NULL
 ) {

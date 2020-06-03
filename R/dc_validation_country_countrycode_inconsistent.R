@@ -1,11 +1,11 @@
-#' @rdname dc_validation_country_countrycode_inconsistent
+#' @rdname dc_country_countrycode_consistent
 #' 
 #' @param TARGET a vector of country information.
 #' country name (checked against data_countries reference dataset).
 #' @param TARGET2 a vector of country code information.
 #' country name (checked against data_countries reference dataset).
 #' 
-dc_validation_country_countrycode_inconsistent <- function(
+dc_country_countrycode_consistent <- function(
   TARGET = NULL,
   TARGET2 = NULL
 ) {

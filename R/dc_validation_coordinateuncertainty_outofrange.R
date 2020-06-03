@@ -1,11 +1,11 @@
-#' @rdname dc_validation_coordinateuncertainty_outofrange
+#' @rdname dc_coordinateuncertainty_inrange
 #' 
 #' @param TARGET a vector of coordinate uncertainty in meters. To pass it must
 #' be within lower and upper limits.
 #' @param lower_limit a numeric value for a lower limit.
 #' @param upper_limit a numeric value for an upper limit.
 #' 
-dc_validation_coordinateuncertainty_outofrange <- function(
+dc_coordinateuncertainty_inrange <- function(
   TARGET = NULL,
   lower_limit = 1,
   upper_limit = 20037509

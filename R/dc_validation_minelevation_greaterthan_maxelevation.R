@@ -1,9 +1,9 @@
-#' @rdname dc_validation_minelevation_greaterthan_maxelevation
+#' @rdname dc_minelevation_lessthan_maxelevation
 #' 
 #' @param TARGET a vector of minimumElevationInMeters.
 #' @param TARGET2 a vector of maximumElevationInMeters.
 #' 
-dc_validation_minelevation_greaterthan_maxelevation <- function(
+dc_minelevation_lessthan_maxelevation <- function(
   TARGET = NULL,
   TARGET2 = NULL
 ) {

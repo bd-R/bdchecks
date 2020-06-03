@@ -1,9 +1,9 @@
-#' @rdname dc_validation_decimallatitude_outofrange
+#' @rdname dc__decimallatitude_inrange
 #' 
 #' @param TARGET a vector of latitude information. To pass it must
 #' be within -90 and 90 degrees.
 #' 
-dc_validation_decimallatitude_outofrange <- function(TARGET = NULL) {
+dc__decimallatitude_inrange <- function(TARGET = NULL) {
   # Supressing warnings if missing value is being turned into a numeric
   suppressWarnings(
     result <- as.numeric(TARGET)

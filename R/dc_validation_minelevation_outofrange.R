@@ -1,11 +1,11 @@
-#' @rdname dc_validation_minelevation_outofrange
+#' @rdname dc_minelevation_inrange
 #' 
 #' @param TARGET a vector of minimum elevation meters. To pass it must
 #' be within lower and upper limits.
 #' @param lower_limit a numeric value for a lower limit.
 #' @param upper_limit a numeric value for an upper limit.
 #' 
-dc_validation_minelevation_outofrange <- function(
+dc_minelevation_inrange <- function(
   TARGET = NULL,
   lower_limit = -428,
   upper_limit = 8850
