@@ -1,5 +1,7 @@
-DC_validation_taxon_empty:
-  name: validation_taxon_empty
+DC_taxon_present:
+  name:
+    clean: Taxon Present
+    original: validation_taxon_empty
   meta:
     information:
       description: Check if at least one field needed to determine the taxon of the entity exists and is not empty.
@@ -23,13 +25,13 @@ DC_validation_taxon_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(value) & value != "" & value %in% taxonRanks
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/105
       reference:
       creator: Lee Belbin
       modifier: Povilas Gibas
-      modification: 2019-04-13
+      modification: 2020-05-29
     notes:
       1: Lee Belbin - This needs discussion. For example, would kingdom, phylum, class or order only be useful?
       2: JW - Would this test return true if there were data in the relevant Taxon-related fields was meaningless (effectively null)?
@@ -45,8 +47,10 @@ DC_validation_taxon_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_taxonid_empty:
-  name: validation_taxonid_empty
+DC_taxonid_present:
+  name:
+    clean: Taxon Id Present
+    original: validation_taxonid_empty
   meta:
     information:
       description: Check if taxonID exists and is not empty.
@@ -70,13 +74,13 @@ DC_validation_taxonid_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/120
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: taxonID
@@ -90,8 +94,10 @@ DC_validation_taxonid_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_taxonrank_empty:
-  name: validation_taxonrank_empty
+DC_taxonrank_present:
+  name:
+    clean: Taxon Rank Present
+    original: validation_taxonrank_empty
   meta:
     information:
       description: Check if taxonRank exists and is not empty.
@@ -115,13 +121,13 @@ DC_validation_taxonrank_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/161
       reference: https://terms.tdwg.org/wiki/dwc:taxonRank
       creator: TDWG2018
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: taxonRank
@@ -135,8 +141,10 @@ DC_validation_taxonrank_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_taxonrank_notstandard:
-  name: validation_taxonrank_notstandard
+DC_taxonrank_standard:
+  name:
+    clean: Taxon Rank Standard
+    orignal: validation_taxonrank_notstandard
   meta:
     information:
       description: Check if taxonRank is standard.
@@ -160,13 +168,13 @@ DC_validation_taxonrank_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/162
       reference: http://rs.gbif.org/vocabulary/gbif/rank.xml
       creator: TDWG2018
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: PG - External data was downloaded as is provided within package.
   input:
@@ -181,8 +189,10 @@ DC_validation_taxonrank_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_scientificname_empty:
-  name: validation_scientificname_empty
+DC_scientificname_present:
+  name:
+    clean: Scientific Name Present
+    orignal: validation_scientificname_empty
   meta:
     information:
       description: Check if scientificName exists and is not empty.
@@ -206,13 +216,13 @@ DC_validation_scientificname_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/82
       reference: ALA,GBIF,OBIS
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paula Zermoglio - The specification here is tricky. It might perfectly be that sciName is empty and that genus and specificEp are filled in. As it stands, it could only run AFTER sciName has been inferred from genus+spEp.
       2: Paul Morris - Name needs to change. Unavailable means something other than not supplied to taxonomists.. dwc:taxonId should be included, it also specifies the name
@@ -229,12 +239,14 @@ DC_validation_scientificname_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_kingdom_notfound:
-  name: validation_kingdom_notfound
+DC_kingdom_valid:
+  name:
+    clean: Kingdom Valid
+    original: validation_kingdom_notfound
   meta:
     information:
       description: Check if kingdom was found as a value at the rank of kingdom by the specified source authority service.
-      question: Is kingdom information present?
+      question: Is kingdom information valid?
       check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
@@ -247,20 +259,20 @@ DC_validation_kingdom_notfound:
       keywords: taxon,validation
       guid: 125b5493-052d-4a0d-a3e1-ed5bf792689e
     example:
-      pass: The value for kingdom is present and correct.
-      fail: The value for kingdom is missing or incorrect.
+      pass: The value for kingdom is present and valid.
+      fail: The value for kingdom is missing or invalid.
       input_pass: kingdom=Animalia
       input_fail: kingdom=birds
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/81
       reference: GBIF
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -275,12 +287,14 @@ DC_validation_kingdom_notfound:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_phylum_notfound:
-  name: validation_phylum_notfound
+DC_phylum_valid:
+  name:
+    clean: Phylum Valid
+    original: validation_phylum_notfound
   meta:
     information:
       description: Check if phylum was found as a value at the rank of phylum by the specified source authority service.
-      question: Is phylum information present?
+      question: Is phylum information valid?
       check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
@@ -300,13 +314,13 @@ DC_validation_phylum_notfound:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/22
       reference: iDigBio
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -321,12 +335,14 @@ DC_validation_phylum_notfound:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_class_notfound:
-  name: validation_class_notfound
+DC_class_valid:
+  name:
+    clean: Class valid
+    original: validation_class_notfound
   meta:
     information:
       description: Check if class was found as a value at the rank of class by the specified source authority service.
-      question: Is class information present?
+      question: Is class information valid?
       check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
@@ -346,13 +362,13 @@ DC_validation_class_notfound:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/77
       reference:
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -367,12 +383,14 @@ DC_validation_class_notfound:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_order_notfound:
-  name: validation_order_notfound
+DC_order_valid:
+  name:
+    clean: Order Valid
+    original: validation_order_notfound
   meta:
     information:
       description: Check if order was found as a value at the rank of order by the specified source authority service.
-      question: Is order information present?
+      question: Is order information valid?
       check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
@@ -392,13 +410,13 @@ DC_validation_order_notfound:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/83
       reference: iDigBio
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -413,12 +431,14 @@ DC_validation_order_notfound:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_family_notfound:
-  name: validation_family_notfound
+DC_family_valid:
+  name:
+    clean: Family Valid
+    original: validation_family_notfound
   meta:
     information:
       description: Check if family was found as a value at the rank of family by the specified source authority service.
-      question: Is family information present?
+      question: Is family information valid?
       check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
@@ -438,13 +458,13 @@ DC_validation_family_notfound:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/28
       reference: iDigBio
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -459,12 +479,14 @@ DC_validation_family_notfound:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_genus_notfound:
-  name: validation_genus_notfound
+DC_genus_valid:
+  name:
+    clean: Genus Valid
+    original: validation_genus_notfound
   meta:
     information:
       description: Check if genus was found as a value at the rank of genus by the specified source authority service.
-      question: Is genus information present?
+      question: Is genus information valid?
       check_type: tdwg_standard
       darwin_core_class: taxon
       data_quality_dimension: conformance
@@ -484,13 +506,13 @@ DC_validation_genus_notfound:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/122
       reference: iDigBio
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The purpose of this test is to check whether the value is a name that is a result of a nomenclatural act at this rank. This excludes unpublished names, misspellings and vernacular names. It is expected that the test will designate the source authority against to check. The same test might return distinct results when using distinct source authorities.
   input:
@@ -505,8 +527,10 @@ DC_validation_genus_notfound:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_location_empty:
-  name: validation_location_empty
+DC_location_present:
+  name:
+    clean: Location Present
+    original: validation_location_empty
   meta:
     information:
       description: Check if at least one field needed to determine location of the entity exists and is not empty.
@@ -530,13 +554,13 @@ DC_validation_location_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/40
       reference:
       creator: Lee Belbin
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paula Zermoglio - I believe DwC terms should include some more, e.g., island, islandGroup, waterbody, county, municipality, continent, countryCode.
       2: Arthur Chapman - This is a complicated test - needs more work to document. Not georeferenced or not georeferenceable.. Need to add many dwc:terms. If all relevant spatial terms are blank or uninterpretable.
@@ -553,8 +577,10 @@ DC_validation_location_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_decimallatitude_empty:
-  name: validation_decimallatitude_empty
+DC_decimallatitude_present:
+  name:
+    clean: Decimal Latitude present
+    original: validation_decimallatitude_empty
   meta:
     information:
       description: Check if decimalLatitude exists and is not empty.
@@ -578,13 +604,13 @@ DC_validation_decimallatitude_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/119
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: decimalLatitude
@@ -598,8 +624,10 @@ DC_validation_decimallatitude_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_decimallongitude_empty:
-  name: validation_decimallongitude_empty
+DC_decimallongitude_present:
+  name:
+    clean: Decimal Longitude present
+    orignal: validation_decimallongitude_empty
   meta:
     information:
       description: Check if decimalLongitude exists and is not empty.
@@ -623,13 +651,13 @@ DC_validation_decimallongitude_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/96
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: decimalLongitude
@@ -643,8 +671,10 @@ DC_validation_decimallongitude_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_geodeticdatum_empty:
-  name: validation_geodeticdatum_empty
+DC_geodeticdatum_present:
+  name:
+    clean: Geodetic Datum Present
+    original: validation_geodeticdatum_empty
   meta:
     information:
       description: Check if geodeticDatum exists and is not empty.
@@ -668,13 +698,13 @@ DC_validation_geodeticdatum_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/78
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: geodeticDatum
@@ -688,8 +718,10 @@ DC_validation_geodeticdatum_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_country_empty:
-  name: validation_country_empty
+DC_country_present:
+  name:
+    clean: Country Present
+      original: validation_country_empty
   meta:
     information:
       description: Check if country exists and is not empty.
@@ -713,13 +745,13 @@ DC_validation_country_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/42
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that the original assessment of the core nature of the test was correct based on consistency with other tests and participation in dependencies for other tests.
   input:
@@ -734,8 +766,10 @@ DC_validation_country_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_countrycode_empty:
-  name: validation_countrycode_empty
+DC_countrycode_present:
+  name:
+    clean: Country Code Present
+      original: validation_countrycode_empty
   meta:
     information:
       description: Check if countryCode exists and is not empty.
@@ -759,13 +793,13 @@ DC_validation_countrycode_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/98
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: countryCode
@@ -779,8 +813,10 @@ DC_validation_countrycode_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_eventtemporal_empty:
-  name: validation_eventtemporal_empty
+DC_eventtemporal_present:
+  name:
+    clean: Event Temporal Present
+    original: validation_eventtemporal_empty
   meta:
     information:
       description: Check if at least one field needed to determine event temporal of the entity exists and is not empty.
@@ -804,13 +840,13 @@ DC_validation_eventtemporal_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/88
       reference:
       creator: Lee Belbin
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: day, endDayOfYear, eventDate, month, startDayOfYear, verbatimEventDate, year
@@ -824,8 +860,8 @@ DC_validation_eventtemporal_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_eventdate_empty:
-  name: validation_eventdate_empty
+DC_eventdate_present:
+  name: eventdate_present
   meta:
     information:
       description: Check if eventDate exists and is not empty.
@@ -849,13 +885,13 @@ DC_validation_eventdate_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/33
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paul J. Morris - Noting for cross reference that we previously had a corresponding measure EVENT_DATE_COMPLETENESS 0a59e03f-ebb5-4df3-a802-2e444de525b5.
       2: Arthur Chapman - This test is a prerequisite for amendments #61, #86, #93, #132 - if these amendments are run and fail, then eventDate would still be empty, and thus on the re validation, this test will remain an important test.
@@ -871,8 +907,8 @@ DC_validation_eventdate_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_year_empty:
-  name: validation_year_empty
+DC_year_present:
+  name: year_present
   meta:
     information:
       description: Check if year exists and is not empty.
@@ -896,13 +932,13 @@ DC_validation_year_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/49
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paula Zermoglio - This would tell us something if the test was run BEFORE interpretation of day, month, year from eventDate (test DATE_FROM_EVENTDATE). It would only make sense if eventDate was null.
   input:
@@ -917,8 +953,10 @@ DC_validation_year_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_dctype_empty:
-  name: validation_dctype_empty
+DC_dctype_present:
+  name:
+    clean: DC Type Present
+    original: validation_dctype_empty
   meta:
     information:
       description: Check if dctype exists and is not empty.
@@ -942,13 +980,13 @@ DC_validation_dctype_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/103
       reference: https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/2002-07-13/
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Arthur Chapman - This has been labelled non-core, but discussions at Gainesville suggested it was a good test. We disn't disscuss Sunday TDWG208 - should we re-install or not
       2: Paul J. Morris - One argument for imposing an expectation that dcterms:type (populated with IRIs from DCMI Type Vocabulary) or dc:type (populated with string literals) be non-empty is that this term helps make occurrence data more broadly reusable in other communities. See the table in the TDWG RDF guide:http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#3.3_Imported_Dublin_Core_terms_that_have_non-literal_objects_and. A second argument (that @ pzermoglio made this evening) is that populating basisOfRecord entails an expectation that dc:type will be popluated with an appropriate parallel value. These are likely to be important discriminators for the nature of vouchers, particularly of observations, where dc:type may contain key information about the nature (image, video, audio) of the voucher. On this basis, I'd advocate including a test for whether dc:type is empty in core.
@@ -964,8 +1002,10 @@ DC_validation_dctype_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_license_empty:
-  name: validation_license_empty
+DC_license_present:
+  name:
+    clean: License Present
+    original: validation_license_empty
   meta:
     information:
       description: Check if license exists and is not empty.
@@ -989,13 +1029,13 @@ DC_validation_license_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/99
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The license at the record level might be derived from the license of the data set from which the record is retrieved
   input:
@@ -1010,8 +1050,10 @@ DC_validation_license_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_basisofrecord_empty:
-  name: validation_basisofrecord_empty
+DC_basisofrecord_present:
+  name:
+    clean: Basis of Record Present
+    original: validation_basisofrecord_empty
   meta:
     information:
       description: Check if basisOfRecord exists and is not empty.
@@ -1035,13 +1077,13 @@ DC_validation_basisofrecord_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/58
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that the test is a Validation and the name TG2-VALIDATION_BASISOFRECORD_EMPTY is satisfactory.
   input:
@@ -1056,8 +1098,10 @@ DC_validation_basisofrecord_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_occurrencestatus_empty:
-  name: validation_occurrencestatus_empty
+DC_occurrencestatus_present:
+  name:
+    clean: Occurrence Status Present
+    original: validation_occurrencestatus_empty
   meta:
     information:
       description: Check if occurrenceStatus exists and is not empty.
@@ -1081,13 +1125,13 @@ DC_validation_occurrencestatus_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/117
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Lee Belbin - Why did I put NOT_CORE? It seems a simple easy to test and useful FLAG right now. As a VALIDATION, it would also add meaningfully to #135 but it also shapes like a NOTIFICATION as per #58?
       2: Arthur Chapman - I think it was one of those that is empty 90% of the time so would create millions of flags. Thinking back - wasn't there some problem with how people were using occurrenceStatus (i.e. to be more than just Present/Absent? One, I guess, assumes if it is blank, then it is present. Because of this, I think we agreed that it shouldn't be CORE
@@ -1105,8 +1149,10 @@ DC_validation_occurrencestatus_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_validation_occurrenceid_empty:
-  name: validation_occurrenceid_empty
+DC_occurrenceid_present:
+  name:
+    clean: Occurrence ID Present 
+    original: validation_occurrenceid_empty
   meta:
     information:
       description: Check if occurrenceID exists and is not empty.
@@ -1130,13 +1176,13 @@ DC_validation_occurrenceid_empty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/47
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Lee Belbin - I thought this was against our policy?
       2: John Wieczorek - This has particular applicability for GBIF in publishing an Occurrence data set.
@@ -1154,8 +1200,10 @@ DC_validation_occurrenceid_empty:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
-DC_notification_datageneralizations_notempty:
-  name: notification_datageneralizations_notempty
+DC_datageneralizations_present:
+  name:
+    clean: Data Generalizations Present
+    original: notification_datageneralizations_notempty
   meta:
     information:
       description: Check if dataGeneralizations is not empty.
@@ -1179,13 +1227,13 @@ DC_notification_datageneralizations_notempty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/72
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: This is not specific to spatial data, any value in the dwc:dataGeneralizations field will cause this flag to be raised, but the primary use case is expected to be that dwc:dataGeneralizations demonstrates obfuscated locations.
       2: Paula Zermoglio - Data generalizations can apply to non-geographic data, maybe the description of this test could be changed to match a more general approach, more in line with the name of the test.
@@ -1207,8 +1255,10 @@ DC_notification_datageneralizations_notempty:
     output_tdwg_standard_pass: not_empty
     output_tdwg_standard_fail: not_reported
     output_tdwg_standard_missing: not_reported
-DC_notification_establishmentmeans_notempty:
-  name: notification_establishmentmeans_notempty
+DC_establishmentmeans_present:
+  name:
+    clean: Establishment Means Present
+    original: notification_establishmentmeans_notempty
   meta:
     information:
       description: Check if establishmentMeans is not empty.
@@ -1232,13 +1282,13 @@ DC_notification_establishmentmeans_notempty:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != ""
+      !is.missing(value) & value != ""
     source:
       resource: https://github.com/tdwg/bdq/issues/94
       reference:
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Arthur Chapman - Wording should be "cultivated or captive" (i.e. Zoo) and these should be flagged as such a (warning) and are not necessarily an error - depends on use.
       2: John Wieczorek - All of this might change as a result of the work of the group interested in proposing Darwin Core changes to deal separately with invasivity.
@@ -1257,8 +1307,10 @@ DC_notification_establishmentmeans_notempty:
     output_tdwg_standard_pass: not_empty
     output_tdwg_standard_fail: not_reported
     output_tdwg_standard_missing: not_reported
-DC_validation_occurrenceid_notstandard:
-  name: validation_occurrenceid_notstandard
+DC_occurrenceid_standard:
+  name:
+    clean: Occurence ID Standard 
+    original: validation_occurrenceid_notstandard
   meta:
     information:
       description: Check if occurrenceID is not empty and follows a format commonly associated with globally unique identifiers (GUID).
@@ -1282,13 +1334,13 @@ DC_validation_occurrenceid_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != "" & is.guid(TAGET)
+      !is.missing(value) & value != "" & is.guid(TAGET)
     source:
       resource: https://github.com/tdwg/bdq/issues/23
       reference: http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paul Morris - This one feels like it should assert that the occurrenceID conforms to a well known IRI scheme, and should reference the Darwin Core RDF guide. http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers I'd support OCCURRENCEID_CONFORMS_TO_WELLKNOWN_IRI_SCHEME. See http://rs.tdwg.org/dwc/terms/guides/rdf/index.htm#1.3.2.1_Persistent_Identifiers
   input:
@@ -1303,8 +1355,8 @@ DC_validation_occurrenceid_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_eventdate_outofrange:
-  name: validation_eventdate_outofrange
+DC_eventdate_inrange:
+  name: eventdate_inrange
   meta:
     information:
       description: Check if eventDate is not empty and is within given earliest and latest dates.
@@ -1328,13 +1380,13 @@ DC_validation_eventdate_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
+      !is.missing(value) & value != "" & earlyDate <= value <= lateDate 
     source:
       resource: https://github.com/tdwg/bdq/issues/36
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The results of this test are time-dependent A invalid date for tomorrow will be valid tomorrow. This test provides for a default earliest date, which for specimen records should be 1600-01-01 by convention.
   input:
@@ -1349,8 +1401,8 @@ DC_validation_eventdate_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_year_outofrange:
-  name: validation_year_outofrange
+DC_year_inrange:
+  name: year_inrange
   meta:
     information:
       description: Check if year is not empty and is within given earliest and latest dates.
@@ -1374,13 +1426,13 @@ DC_validation_year_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      !is.missing(TARGET) & TARGET != "" & earlyDate <= TARGET <= lateDate 
+      !is.missing(value) & value != "" & earlyDate <= value <= lateDate 
     source:
       resource: https://github.com/tdwg/bdq/issues/84
       reference: 
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: The results of this test are time-dependent. Next year is not valid now. Next year it will be. This test provides the option to designate lower and upper limits to the year. The upper limit, if not provided, should default to the year when the test is run. NB By convention, use 1600 as a lower limit for collecting dates of biological specimens.
   input:
@@ -1395,8 +1447,8 @@ DC_validation_year_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_month_notstandard:
-  name: validation_month_notstandard
+DC_month_standard:
+  name: month_standard
   meta:
     information:
       description: Check if month is an integer between 1 and 12 inclusive.
@@ -1420,13 +1472,13 @@ DC_validation_month_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= 1 AND TARGET <= 12 AND is.integer(TARGET)
+      value >= 1 AND value <= 12 AND is.integer(value)
     source:
       resource: https://github.com/tdwg/bdq/issues/126
       reference: http://rs.tdwg.org/dwc/terms/index.htm#month
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: John Wieczorek - Agreed at TDWG 2018 DQIG meeting that this test is correct as written and that another test to validate the month (TG2-VALIDATION_MONTH_NOTSTANDARD) is necessary to be able to know if the prerequisite is met. That test specifically tests that the month is an integer.
   input:
@@ -1441,8 +1493,10 @@ DC_validation_month_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_basisofrecord_notstandard:
-  name: validation_basisofrecord_notstandard
+DC_basisofrecord_standard:
+  name:
+    clean: Basis of Record Standard 
+    original: validation_basisofrecord_notstandard
   meta:
     information:
       description: Check if basisOfRecord is specified source authority service.
@@ -1466,13 +1520,13 @@ DC_validation_basisofrecord_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/104
       reference: http://rs.tdwg.org/dwc/terms/index.htm#basisOfRecord
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: basisOfRecord
@@ -1486,12 +1540,12 @@ DC_validation_basisofrecord_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_coordinates_zero:
-  name: validation_coordinates_zero
+DC_coordinates_notzero:
+  name: coordinates_notzero
   meta:
     information:
-      description: Check if decimalLatitude or decimalLongitude are zeroes.
-      question: Are coordinates equal to zero.
+      description: Check if decimalLatitude or decimalLongitude are not zeroes.
+      question: Are coordinates not equal to zero.
       check_type: tdwg_standard
       darwin_core_class: location
       data_quality_dimension: likelihood
@@ -1504,20 +1558,20 @@ DC_validation_coordinates_zero:
       keywords: space,likelihood,validation
       guid: 1bf0e210-6792-4128-b8cc-ab6828aa4871
     example:
-      pass: The value for decimalLatitude is equal to 0.
-      fail: The value for decimalLatitude is not equal to 0.
-      input_pass: decimalLatitude=0
-      input_fail: decimalLatitude=1
+      pass: The value for decimalLatitude is not equal to 0.
+      fail: The value for decimalLatitude is equal to 0.
+      input_pass: decimalLatitude=1
+      input_fail: decimalLatitude=0
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET == 0
+      value != 0
     source:
       resource: https://github.com/tdwg/bdq/issues/87
       reference: 
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: decimalLatitude, decimalLongitude
@@ -1531,8 +1585,10 @@ DC_validation_coordinates_zero:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_coordinateuncertainty_outofrange:
-  name: validation_coordinateuncertainty_outofrange
+DC_coordinateuncertainty_inrange:
+  name:
+    clean: Coordinate Uncertainty in Range 
+    original: validation_coordinateuncertainty_outofrange
   meta:
     information:
       description: Check if coordinateUncertaintyInMeters is within given range.
@@ -1556,13 +1612,13 @@ DC_validation_coordinateuncertainty_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= lowe_limit & TARGET <= upper_limit
+      value >= lowe_limit & value <= upper_limit
     source:
       resource: https://github.com/tdwg/bdq/issues/109
       reference: https://en.wikipedia.org/wiki/Great-circle_distance, https://www.gbif.org/document/80536/biogeomancer-guide-to-best-practices-in-georeferencing
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: coordinateUncertaintyInMeters
@@ -1576,8 +1632,10 @@ DC_validation_coordinateuncertainty_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_country_notstandard:
-  name: validation_country_notstandard
+DC_country_standard:
+  name:
+    clean: Country Standard
+    original: validation_country_notstandard
   meta:
     information:
       description: Check if country is within a set of available country names.
@@ -1601,13 +1659,13 @@ DC_validation_country_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/21
       reference: http://www.getty.edu/research/tools/vocabularies/tgn/index.html
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Non-country information such "high seas" will fail this test. Multiple values in the dwc:country field (whether to signify on a border or in a list of possibilities) will fail this test. Locations outside of a jurisdiction covered by a country code should not have a value in the field dwc:countryCode.
       2: Paula Zermoglio - In cases where there is no country, test only useful AFTER interpretation of country from coordinates.
@@ -1625,8 +1683,8 @@ DC_validation_country_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_day_notstandard:
-  name: validation_day_notstandard
+DC_day_standard:
+  name: day_standard
   meta:
     information:
       description: Check if day is an integer between 1 and 31 inclusive.
@@ -1650,13 +1708,13 @@ DC_validation_day_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= 1 AND TARGET <= 31 AND is.integer(TARGET)
+      value >= 1 AND value <= 31 AND is.integer(value)
     source:
       resource: https://github.com/tdwg/bdq/issues/147
       reference: http://rs.tdwg.org/dwc/terms/index.htm#day
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Arthur Chapman - We have changed the description of this from "is not an unambiguous value" to "is not an integer between 1 and 31 inclusive.
       2: Paul Morris - Field not present as a prerequisite is a significant barrier for implemenations. An implementation of an atomic test as a method which takes values as parameters e.g. validateDayNotStandard(day), is very likely to be isolated from a larger framework which understands whether or not a term is present in an input data set or not. Bringing "is present" into the test definition conflates areas of concern. This gets back to the need for a definition of isEmpty - if we define isEmpty to include null values, empty strings, and cases where the term isn't present in the data set then we can consistently define prerequisites as being not empty. I thus propose that we change the element of the definition "INTERNAL_PREREQUISITES_NOT_MET if the field dwc:day is not present; " to "INTERNAL_PREREQUISITES_NOT_MET if the field dwc:day is EMPTY;", reference a standard definition of EMPTY, and propagate this change to all other test definitions.
@@ -1673,8 +1731,10 @@ DC_validation_day_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_minelevation_outofrange:
-  name: validation_minelevation_outofrange
+DC_minelevation_inrange:
+  name:
+    clean: Min Elevation in Range
+    original: validation_minelevation_outofrange
   meta:
     information:
       description: Check if minimumElevationInMeters is within parameter range.
@@ -1698,13 +1758,13 @@ DC_validation_minelevation_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= min_elevation AND TARGET <= max_elevation
+      value >= min_elevation AND value <= max_elevation
     source:
       resource: https://github.com/tdwg/bdq/issues/39
       reference: https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paula Zermoglio - Elevation CAN be less than 0, and I would not expect it to be more than 8,848m (Mt. Everist summit).
       2: Ian Engelbrecht - 'if the value of the field dwc:maximumElevationInMeters is number between -423 and 8850 inclusive' -should that be dwc:minimumElevationInMeters? Also is there a reason for -423 as lower bound? I understand, possibly incorrectly, that the lowest is the Dead Sea shore at -413m.
@@ -1726,8 +1786,10 @@ DC_validation_minelevation_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_maxelevation_outofrange:
-  name: validation_maxelevation_outofrange
+DC_maxelevation_inrange:
+  name:
+    clean: Max Elevation in Range
+    original: validation_maxelevation_outofrange
   meta:
     information:
       description: Check if maximumElevationInMeters is within parameter range.
@@ -1751,13 +1813,13 @@ DC_validation_maxelevation_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= min_elevation AND TARGET <= max_elevation
+      value >= min_elevation AND value <= max_elevation
     source:
       resource: https://github.com/tdwg/bdq/issues/112
       reference: https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: maximumElevationInMeters
@@ -1771,8 +1833,10 @@ DC_validation_maxelevation_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_decimallongitude_outofrange:
-  name: validation_decimallongitude_outofrange
+DC_decimallongitude_inrange:
+  name:
+    clean: Decimal Longitude in Range
+    original: validation_decimallongitude_outofrange
   meta:
     information:
       description: Check if decimalLongitude is within parameter range.
@@ -1796,13 +1860,13 @@ DC_validation_decimallongitude_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= min_degree AND TARGET <= max_degree
+      value >= min_degree AND value <= max_degree
     source:
       resource: https://github.com/tdwg/bdq/issues/30
       reference: http://rs.tdwg.org/dwc/terms/index.htm#decimalLongitude
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: decimalLongitude
@@ -1816,8 +1880,10 @@ DC_validation_decimallongitude_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_decimallatitude_outofrange:
-  name: validation_decimallatitude_outofrange
+DC_decimallatitude_inrange:
+  name:
+    clean: Decimal Latitude in Range 
+    original: validation_decimallatitude_outofrange
   meta:
     information:
       description: Check if decimalLatitude is within parameter range.
@@ -1841,13 +1907,13 @@ DC_validation_decimallatitude_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= min_degree AND TARGET <= max_degree
+      value >= min_degree AND value <= max_degree
     source:
       resource: https://github.com/tdwg/bdq/issues/79
       reference: http://rs.tdwg.org/dwc/terms/index.htm#decimalLatitude
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: decimalLatitude
@@ -1861,8 +1927,10 @@ DC_validation_decimallatitude_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_country_countrycode_inconsistent:
-  name: validation_country_countrycode_inconsistent
+DC_country_countrycode_consistent:
+  name:
+    clean: Country Country Code consistent
+    original: validation_country_countrycode_inconsistent
   meta:
     information:
       description: Check if country matches country code.
@@ -1881,8 +1949,8 @@ DC_validation_country_countrycode_inconsistent:
     example:
       pass: Given country matches country code. 
       fail: Given country doesn't match country code.
-      input_pass: country="Australia",countryCode="GM"
-      input_fail: country="Australia",countryCode="AU"
+      input_pass: country="Australia",countryCode="AU"
+      input_fail: country="Australia",countryCode="GM"
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
@@ -1892,7 +1960,7 @@ DC_validation_country_countrycode_inconsistent:
       reference: https://restcountries.eu/#api-endpoints-list-of-codes
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: country
@@ -1906,8 +1974,10 @@ DC_validation_country_countrycode_inconsistent:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_mindepth_maxdepth_outofrange:
-  name: validation_mindepth_maxdepth_outofrange
+DC_mindepth_maxdepth_inrange:
+  name:
+    clean: Min Depth Max Depth in Range 
+    original: validation_mindepth_maxdepth_outofrange
   meta:
     information:
       description: Check if minimumDepthInMeters and maximumDepthInMeters is within parameter range.
@@ -1931,13 +2001,13 @@ DC_validation_mindepth_maxdepth_outofrange:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      TARGET >= min_depth AND TARGET <= max_depth
+      value >= min_depth AND value <= max_depth
     source:
       resource: https://github.com/tdwg/bdq/issues/107
       reference: https://en.wikipedia.org/wiki/Extreme_points_of_Earth
       creator:
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paul Morris - Minumum depth should also be less than 11000m, and max depth should also be greater than or equal to 0 meters, as only a single depth might be provided. @pz, feels like likeliness rather than conformance, as it isn't a format problem, just the compliance of a range with expected reality.
       2: Paul Morris - Aren't valid depth values less than zero possible, given the vertical datum? Near shore samples could be collected at a depth of -1 meter, relative to a horizontal datum of mean low tide, when collected under water at high tide. "below the local surface" leaves itself open to interpreation as relative to the water surface, or as relative to a particular horizontal datum defining the local surface. In collections made in nearshore environments, depths in reference to a defined horizontal datum as well as the actual water surface at the time of collection are both likely.
@@ -1954,8 +2024,10 @@ DC_validation_mindepth_maxdepth_outofrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_minelevation_greaterthan_maxelevation:
-  name: validation_minelevation_greaterthan_maxelevation
+DC_minelevation_lessthan_maxelevation:
+  name:
+    clean: Min Elevation Less Than Max Elevation 
+    original: validation_minelevation_greaterthan_maxelevation
   meta:
     information:
       description: Check if minimumElevationInMeters is not greater than maximumElevationInMeters.
@@ -1979,13 +2051,13 @@ DC_validation_minelevation_greaterthan_maxelevation:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      minimumElevationInMeters > maximumElevationInMeters
+      value1 <= value2
     source:
       resource: https://github.com/tdwg/bdq/issues/108
       reference:
       creator: Lee Belbin
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: minimumElevationInMeters
@@ -1999,8 +2071,10 @@ DC_validation_minelevation_greaterthan_maxelevation:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_mindepth_greaterthan_maxdepth:
-  name: validation_mindepth_greaterthan_maxdepth
+DC_mindepth_lessthan_maxdepth:
+  name:
+    clean: Min Depth Less Than Max Depth 
+    original: validation_mindepth_greaterthan_maxdepth
   meta:
     information:
       description: Check if minimumDepthInMeters is not greater than maximumDepthInMeters.
@@ -2024,13 +2098,13 @@ DC_validation_mindepth_greaterthan_maxdepth:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      minimumDepthInMeters > maximumDepthInMeters
+      value1 <= value2
     source:
       resource: https://github.com/tdwg/bdq/issues/24
       reference:
       creator: ALA,GBIF,OBIS
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paula Zermoglio - This is assuming that depths are actually correct but transposed, rather than just one of them, maximum or minimum being just plainly wrong.
       2: Paul Morris - Separate into a validation MIN_DEPTH_SHALLOWERTHAN_OR_EQ_MAX and an amendment MIN_MAX_DEPTHS_TRANSPOSED, to resolve the issue. There's a validation to find problematic depths, and an amendment which makes the explictit assumption that there is a transposition, make the transpostion, and leaves the consumer of the report free to decide whether or not to accept that assumption. A transposition ammendment could also be expected to be informed by a ocean depth model and only propose the transposition if it is reasonable for the location and geographic uncertainty. A nearshore depth where a minimum depth has an error in the form of a missing decimal point making it much larger than the maximum depth is a very plausible error on the line PZ considers.
@@ -2049,8 +2123,8 @@ DC_validation_mindepth_greaterthan_maxdepth:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_eventdate_notstandard:
-  name: validation_eventdate_notstandard
+DC_eventdate_standard:
+  name: eventdate_standard
   meta:
     information:
       description: Check if eventDate is a valid ISO 8601-1:2019 date.
@@ -2074,13 +2148,13 @@ DC_validation_eventdate_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      is.iso_date(eventDate)
+      is.iso_date(value)
     source:
       resource: https://github.com/tdwg/bdq/issues/66
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator: Paul Morris
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
       1: Paul Morris - There are similar tests in this sheet for date modified and date identified, but this test on eventDate appears to be missing.
       2: Paul Morris - Need clarification (perhaps from the standard (which we cant get at)) as to whether this should be a date which exists as well as a correctly formatted date (e.g. should February 29 not in a leap year fail). The event_date_qc library contains a test which references the guid f413594a-df57-41ea-a187-b8c6c6379b45 and VALIDATION_EVENT_DATE_EXISTS, with a specification "Compliant if dwc:eventDate can to parsed as an actual ISO date, otherwise not compliant. Internal prerequisites not met if dwc:eventDate is empty" This may be an implementation of an earlier form of VALIDATION_EVENTDATE_NOTSTANDARD from the spreadsheet. If we decide that VALIDATION_EVENTDATE_NOTSTANDARD includes testing whether the date existed or not, then the event_date_qc implementation would take the standard name and guid. We should note that correctly formatted dates in the ISO format include dates, date ranges, date ranges spanning a month, date ranges spanning a year, dates and date ranges specified with year-dayofyear, and dates and date ranges including time. The ISO date format also allows dates to be described as a recurring interval. Single dates, and date ranges in various forms are common in biodiversity data, dates with times and dates specified by year and day of year are less common.
@@ -2102,8 +2176,8 @@ DC_validation_eventdate_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_dateidentified_notstandard:
-  name: validation_dateidentified_notstandard
+DC_dateidentified_standard:
+  name: dateidentified_standard
   meta:
     information:
       description: Check if dateIdentified is a valid ISO 8601-1:2019 date.
@@ -2127,13 +2201,13 @@ DC_validation_dateidentified_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      is.iso_date(dateIdentified)
+      is.iso_date(value)
     source:
       resource: https://github.com/tdwg/bdq/issues/69
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator: Paul Morris
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: dateIdentified
@@ -2147,8 +2221,10 @@ DC_validation_dateidentified_notstandard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
-DC_validation_occurrencestatus_notstandard:
-  name: validation_occurrencestatus_notstandard
+DC_occurrencestatus_standard:
+  name:
+    clean: Occurrence Status Standard 
+    original: validation_occurrencestatus_notstandard
   meta:
     information:
       description: Check if occurrenceStatus is specified source authority service.
@@ -2172,13 +2248,13 @@ DC_validation_occurrencestatus_notstandard:
       output_pass: TRUE
       output_fail: FALSE
     pseudocode: |
-      occurrenceStatus %in% reference
+      value %in% reference
     source:
       resource: https://github.com/tdwg/bdq/issues/116
       reference: http://rs.tdwg.org/dwc/terms/index.htm#occurrenceStatus
       creator: 
       modifier: Povilas Gibas
-      modification: 2019-12-24
+      modification: 2020-05-29
     notes:
   input:
     target: occurrenceStatus

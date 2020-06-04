@@ -279,7 +279,7 @@ occurrenceid_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-eventdate_outofrange:
+eventdate_inrange:
   data:
     - [eventDate, type, expected]
     - ['2001-12-12', correct, pass]
@@ -289,7 +289,7 @@ eventdate_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-year_outofrange:
+year_inrange:
   data:
     - [year, type, expected]
     - ['1600', correct, pass]
@@ -301,7 +301,7 @@ year_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-month_notstandard:
+month_standard:
   data:
     - [month, type, expected]
     - ['1', correct, pass]
@@ -336,19 +336,19 @@ basisofrecord_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-coordinates_zero:
+coordinates_notzero:
   data:
     - [decimalLongitude, type, expected]
-    - [0, correct, pass]
-    - [' 0 ', correct, pass]
-    - [' 0.0 ', correct, pass]
-    - [1, incorrect, fail]
-    - ['01', incorrect, fail]
-    - [-2000, incorrect, fail]
+    - [1, correct, pass]
+    - [1.1, correct, pass]
+    - [10, correct, pass]
+    - [0, incorrect, fail]
+    - [' 0 ', incorrect, fail]
+    - [' 0.0 ', incorrect, fail]
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-coordinateuncertainty_outofrange:
+coordinateuncertainty_inrange:
   data:
     - [coordinateUncertaintyInMeters, type, expected]
     - [1, correct, pass]
@@ -373,7 +373,7 @@ country_notstandard:
     - [-2000, irrelevent, fail]
     - ["", missing, fail]
   comment:
-day_notstandard:
+day_standard:
   data:
     - [day, type, expected]
     - ['1', correct, pass]
@@ -483,7 +483,7 @@ mindepth_greaterthan_maxdepth:
     - [100, 99, incorrect, fail]
     - ["", 100, missing, fail]
   comment:
-eventdate_notstandard:
+eventdate_standard:
   data:
     - [eventDate, type, expected]
     - ['2018-02-02', correct, pass]
@@ -492,7 +492,7 @@ eventdate_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-dateidentified_notstandard:
+dateidentified_standard:
   data:
     - [dateIdentified, type, expected]
     - ['2018-02-02', correct, pass]
