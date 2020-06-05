@@ -69,10 +69,10 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
     for (j in seq_along(target_result)) {
       flag <- ifelse(
         target_result[[j]],
-        dc@output$output_standard_pass,
-        dc@output$output_standard_fail
+        dc@output$output_tdwg_standard_pass,
+        dc@output$output_tdwg_standard_fail
       )
-      flag[is.na(flag)] <- dc@output$output_standard_missing
+      flag[is.na(flag)] <- dc@output$output_tdwg_standard_missing
       result_dc[[length(result_dc) + 1]] <-
         methods::new("DataCheckFlag",
           name = dc@name,

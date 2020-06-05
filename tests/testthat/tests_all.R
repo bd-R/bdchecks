@@ -15,7 +15,7 @@ test_that("perform_dc", {
   expect_warning(perform_dc(mtcars))
   # This will depend on data version
   expect_equal(sum(
-    perform_dc(data_bats, "validation_taxonrank_empty")@flags[[1]]@result
+    perform_dc(data_bats, "taxonrank_present")@flags[[1]]@result
   ), 1e3)
 })
 

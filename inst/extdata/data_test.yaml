@@ -61,7 +61,7 @@ kingdom_valid:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-phylum_notfound:
+phylum_valid:
   data:
     - [phylum, type, expected]
     - [Hemichordata, correct, pass]
@@ -73,7 +73,7 @@ phylum_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-class_notfound:
+class_valid:
   data:
     - [class, type, expected]
     - [Mammalia, correct, pass]
@@ -84,7 +84,7 @@ class_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-order_notfound:
+order_valid:
   data:
     - [order, type, expected]
     - [Carnivora, correct, pass]
@@ -102,7 +102,7 @@ order_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-family_notfound:
+family_valid:
   data:
     - [family, type, expected]
     - [Lemuridae, correct, pass]
@@ -119,7 +119,7 @@ family_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-genus_notfound:
+genus_valid:
   data:
     - [genus, type, expected]
     - [Macaca, correct, pass]
@@ -254,19 +254,19 @@ occurrenceid_present:
     - [' urn:catalog:FMNH:Mammal:145732 ', type, pass]
     - ["", missing, fail]
   comment:
-notification_datageneralizations_notempty:
+datageneralizations_present:
   data:
     - [dataGeneralizations, type, expected]
     - ['record placed on 0.1 degree grid', correct, pass]
     - ["", missing, fail]
   comment:
-notification_establishmentmeans_notempty:
+establishmentmeans_present:
   data:
     - [establishmentMeans, type, expected]
     - [cultivated, correct, pass]
     - ["", missing, fail]
   comment:
-occurrenceid_notstandard:
+occurrenceid_standard:
   data:
     - [occurrenceID, type, expected]
     - ['36003c56-5f53-484f-8022-d0a5dc64968a', correct, pass]
@@ -314,7 +314,7 @@ month_standard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-basisofrecord_notstandard:
+basisofrecord_standard:
   data:
     - [basisOfRecord, type, expected]
     - [PreservedSpecimen, correct, pass]
@@ -362,7 +362,7 @@ coordinateuncertainty_inrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-country_notstandard:
+country_standard:
   data:
     - [country, type, expected]
     - [Liberia, correct, pass]
@@ -386,7 +386,7 @@ day_standard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-minelevation_outofrange:
+minelevation_inrange:
   data:
     - [minelevation, type, expected]
     - ['0', correct, pass]
@@ -398,7 +398,7 @@ minelevation_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-maxelevation_outofrange:
+maxelevation_inrange:
   data:
     - [maxelevation, type, expected]
     - ['0', correct, pass]
@@ -410,7 +410,7 @@ maxelevation_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-decimallongitude_outofrange:
+decimallongitude_inrange:
   data:
     - [decimalLongitude, type, expected]
     - ['0', correct, pass]
@@ -426,7 +426,7 @@ decimallongitude_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-decimallatitude_outofrange:
+decimallatitude_inrange:
   data:
     - [decimalLongitude, type, expected]
     - ['0', correct, pass]
@@ -442,7 +442,7 @@ decimallatitude_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-country_countrycode_inconsistent:
+country_countrycode_consistent:
   data:
     - [country, countryCode, type, expected]
     - [Finland, FI, correct, pass]
@@ -452,7 +452,7 @@ country_countrycode_inconsistent:
     - ["", AU, missing, fail]
     - [Australia, "", missing, fail]
   comment:
-mindepth_maxdepth_outofrange:
+mindepth_maxdepth_inrange:
   data:
     - [minimumDepthInMeters, type, expected]
     - ['0', correct, pass]
@@ -465,7 +465,7 @@ mindepth_maxdepth_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-minelevation_greaterthan_maxelevation:
+minelevation_lessthan_maxelevation:
   data:
     - [minimumElevationInMeters, maximumElevationInMeters, type, expected]
     - [100, 200, correct, pass]
@@ -474,7 +474,7 @@ minelevation_greaterthan_maxelevation:
     - [100, 99, incorrect, fail]
     - ["", 100, missing, fail]
   comment:
-mindepth_greaterthan_maxdepth:
+mindepth_lessthan_maxdepth:
   data:
     - [minimumDepthInMeters, maximumDepthInMeters, type, expected]
     - [100, 200, correct, pass]
@@ -501,7 +501,7 @@ dateidentified_standard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-occurrencestatus_notstandard:
+occurrencestatus_standard:
   data:
     - [occurrenceStatus, type, expected]
     - [present, correct, pass]
