@@ -1,14 +1,14 @@
 #' @rdname dc_month_standard
 #' 
-#' @param TARGET a vector of month information. To pass must be an integer
+#' @param input a vector of month information. To pass must be an integer
 #' within 1 and 12.
 #' 
-dc_month_standard <- function(TARGET = NULL) {
+dc_month_standard <- function(input = NULL) {
   suppressWarnings(
-    result <- TARGET %>%
+    clean_input <- input %>%
       gsub(" ", "", .) %>% # Remove possible spaces
       as.numeric()
   )
-  result <- result %% 1 == 0 & result >= 1 & result <= 12
-  return(perform_dc_missing(result, TARGET))
+  result <- clean_input %% 1 == 0 & clean_input >= 1 & clean_input <= 12
+  return(perform_dc_missing(result, input))
 }

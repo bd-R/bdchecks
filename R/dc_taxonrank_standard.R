@@ -1,6 +1,6 @@
 #' @rdname dc_taxonrank_standard
 #' 
-#' @param TARGET a vector of taxon rank. To pass must be within given
+#' @param input a vector of taxon rank. To pass must be within given
 #' dictionary.
 #' @param language language for terms (default is English 'en', but usage of
 #' all 'all' is also possible). 
@@ -9,13 +9,13 @@
 #' @param path_rank path to gbif dictionary
 #' 
 dc_taxonrank_standard <- function(
-  TARGET = NULL,
+  input = NULL,
   language = "en",
   alternative = FALSE,
   get_gbif_rank = FALSE,
   path_rank = "http://rs.gbif.org/vocabulary/gbif/rank.xml"
 ) {
-  result <- TARGET %>%
+  clean_input <- input %>%
     tolower() %>%
     gsub(" ", "", .) # Remove possible spaces
 
@@ -40,8 +40,8 @@ dc_taxonrank_standard <- function(
     data_reference <- data_reference[data_reference$group == "prefered", ]
   }
   # Check if submitted taxon rank is in dictionary
-  result <- result %in% tolower(data_reference$term)
-  return(perform_dc_missing(result, TARGET))
+  result <- clean_input %in% tolower(data_reference$term)
+  return(perform_dc_missing(result, input))
 }
 
 

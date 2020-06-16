@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_day_standard(TARGET = NULL)
+dc_day_standard(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of day information. To pass must be an integer
+\item{input}{a vector of day information. To pass must be an integer
 within 1 and 31.}
 }
 \description{

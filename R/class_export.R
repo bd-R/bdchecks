@@ -61,7 +61,7 @@ roxygen_comment_generate <- function(DC) {
     "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name')",
     "#' @section samplePassData:\n#' FIELDPASS",
     "#' @section sampleFailData:\n#' FIELDFAIL",
-    "#' @section targetDWCField:\n#' FIELDTARGET",
+    "#' @section targetDWCField:\n#' FIELDinput",
     "#' @section checkCategory:\n#'  FIELDCATERGORY",
     "#' @importFrom magrittr %>%",
     "#' @export"
@@ -113,7 +113,7 @@ roxygen_comment_generate <- function(DC) {
 
   skeleton <- sub("FIELDPASS", DC$meta$example$pass, skeleton)
   skeleton <- sub("FIELDFAIL", DC$meta$example$fail, skeleton)
-  skeleton <- sub("FIELDTARGET", DC$input$target, skeleton)
+  skeleton <- sub("FIELDinput", DC$input$target, skeleton)
   skeleton <- sub(
     "FIELDCATERGORY",
     DC$meta$information$darwin_core_class,

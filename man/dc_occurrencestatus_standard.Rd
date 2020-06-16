@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_occurrencestatus_standard(TARGET = NULL, sources = c("present", "absent"))
+dc_occurrencestatus_standard(input = NULL, sources = c("present", "absent"))
 }
 \arguments{
-\item{TARGET}{a vector of occurrenceStatus information. To pass it must be
+\item{input}{a vector of occurrenceStatus information. To pass it must be
 within given reference dictionary.}
 
 \item{sources}{a vector of available sources.}

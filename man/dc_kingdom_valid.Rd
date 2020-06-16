@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_kingdom_valid(TARGET = NULL)
+dc_kingdom_valid(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of kingdom information. To pass it must be within
+\item{input}{a vector of kingdom information. To pass it must be within
 gbif kingdom ranks.}
 }
 \description{

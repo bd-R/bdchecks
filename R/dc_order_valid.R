@@ -1,11 +1,11 @@
 #' @rdname dc_order_valid
 #' 
-#' @param TARGET a vector of order information. To pass it must be within
+#' @param input a vector of order information. To pass it must be within
 #' gbif order ranks.
 #' 
-dc_order_valid <- function(TARGET = NULL) {
-  TARGET <- TARGET %>%
+dc_order_valid <- function(input = NULL) {
+  clean_input <- input %>%
     gsub(" ", "", .) # Remove possible spaces
-  result <- TARGET %in% tax_available_name(TARGET, "order")
-  return(perform_dc_missing(result, TARGET))
+  result <- clean_input %in% tax_available_name(clean_input, "order")
+  return(perform_dc_missing(result, clean_input))
 }

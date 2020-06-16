@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_taxonrank_present(TARGET = NULL)
+dc_taxonrank_present(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of taxonrank information. To pass it must be non-empty
+\item{input}{a vector of taxonrank information. To pass it must be non-empty
 entry.}
 }
 \description{

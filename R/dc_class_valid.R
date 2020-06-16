@@ -1,11 +1,11 @@
 #' @rdname dc_class_valid
 #' 
-#' @param TARGET a vector of class information. To pass it must be within
+#' @param input a vector of class information. To pass it must be within
 #' gbif class ranks.
 #' 
-dc_class_valid <- function(TARGET = NULL) {
-  TARGET <- TARGET %>%
+dc_class_valid <- function(input = NULL) {
+  clean_input <- input %>%
     gsub(" ", "", .) # Remove possible spaces
-  result <- TARGET %in% tax_available_name(TARGET, "class")
-  return(perform_dc_missing(result, TARGET))
+  result <- clean_input %in% tax_available_name(clean_input, "class")
+  return(perform_dc_missing(result, clean_input))
 }

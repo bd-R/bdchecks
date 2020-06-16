@@ -7,10 +7,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_order_valid(TARGET = NULL)
+dc_order_valid(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of order information. To pass it must be within
+\item{input}{a vector of order information. To pass it must be within
 gbif order ranks.}
 }
 \description{

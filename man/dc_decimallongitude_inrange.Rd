@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_decimallongitude_inrange(TARGET = NULL)
+dc_decimallongitude_inrange(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of longitude information. To pass it must
+\item{input}{a vector of longitude information. To pass it must
 be within -180 and 180 degrees.}
 }
 \description{

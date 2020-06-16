@@ -7,10 +7,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_class_valid(TARGET = NULL)
+dc_class_valid(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of class information. To pass it must be within
+\item{input}{a vector of class information. To pass it must be within
 gbif class ranks.}
 }
 \description{

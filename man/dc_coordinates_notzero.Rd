@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_coordinates_notzero(TARGET = NULL)
+dc_coordinates_notzero(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of decimalLatitude or decimalLongitude information.
+\item{input}{a vector of decimalLatitude or decimalLongitude information.
 To pass it must not be equal to zero.}
 }
 \description{

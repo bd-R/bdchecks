@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_eventdate_standard(TARGET = NULL)
+dc_eventdate_standard(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of eventDate information. To pass it must be a valid 
+\item{input}{a vector of eventDate information. To pass it must be a valid 
 ISO 8601-1:2019 date.}
 }
 \description{

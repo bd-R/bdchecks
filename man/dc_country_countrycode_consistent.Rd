@@ -8,13 +8,13 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_country_countrycode_consistent(TARGET = NULL, TARGET2 = NULL)
+dc_country_countrycode_consistent(input = NULL, input2 = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of country information.
+\item{input}{a vector of country information.
 country name (checked against data_countries reference dataset).}
 
-\item{TARGET2}{a vector of country code information.
+\item{input2}{a vector of country code information.
 country code (checked against data_countries reference dataset).}
 }
 \description{

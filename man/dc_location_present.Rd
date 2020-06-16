@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_location_present(TARGET = NULL)
+dc_location_present(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of location information. To pass it must be non-empty
+\item{input}{a vector of location information. To pass it must be non-empty
 entry.}
 }
 \description{

@@ -9,13 +9,13 @@ An object of class function to perform a specific data check.
 }
 \usage{
 dc_year_inrange(
-  TARGET = NULL,
+  input = NULL,
   date_start = "1600",
   date_end = format(Sys.Date(), "\%Y")
 )
 }
 \arguments{
-\item{TARGET}{a vector of year information. To pass must be within 
+\item{input}{a vector of year information. To pass must be within 
 given dates (start and end).}
 
 \item{date_start}{earliest possible date.}

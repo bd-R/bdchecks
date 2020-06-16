@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_decimallongitude_present(TARGET = NULL)
+dc_decimallongitude_present(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of decimallongitude information. To pass it must be
+\item{input}{a vector of decimallongitude information. To pass it must be
 non-empty entry.}
 }
 \description{

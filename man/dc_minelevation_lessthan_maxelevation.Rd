@@ -8,12 +8,12 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_minelevation_lessthan_maxelevation(TARGET = NULL, TARGET2 = NULL)
+dc_minelevation_lessthan_maxelevation(input = NULL, input2 = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of minimumElevationInMeters.}
+\item{input}{a vector of minimumElevationInMeters.}
 
-\item{TARGET2}{a vector of maximumElevationInMeters.}
+\item{input2}{a vector of maximumElevationInMeters.}
 }
 \description{
 This data check answers: "Is minimumElevationInMeters less or equal to maximumElevationInMeters?" question.\cr Data check will pass if \strong{Given minimumElevationInMeters is not greater than maximumElevationInMeters.} and will fail if \strong{Given minimumElevationInMeters is greater than maximumElevationInMeters.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumElevationInMeters="100",maximumElevationInMeters="200"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{minimumElevationInMeters="100",maximumElevationInMeters="20"}, such data check would return \code{FALSE}.

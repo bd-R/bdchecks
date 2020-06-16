@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_maxelevation_inrange(TARGET = NULL, lower_limit = -428, upper_limit = 8850)
+dc_maxelevation_inrange(input = NULL, lower_limit = -428, upper_limit = 8850)
 }
 \arguments{
-\item{TARGET}{a vector of maximum elevation meters. To pass it must
+\item{input}{a vector of maximum elevation meters. To pass it must
 be within lower and upper limits.}
 
 \item{lower_limit}{a numeric value for a lower limit.}

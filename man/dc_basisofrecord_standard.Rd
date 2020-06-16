@@ -9,14 +9,14 @@ An object of class function to perform a specific data check.
 }
 \usage{
 dc_basisofrecord_standard(
-  TARGET = NULL,
+  input = NULL,
   sources = c("event", "fossil", "fossilspecimen", "human", "humanobservation",
     "livingspecimen", "machineobservation", "materialsample", "occurrence",
     "preservedspecimen", "photo", "photos", "taxon")
 )
 }
 \arguments{
-\item{TARGET}{a vector of basisOfRecord information. To pass it must be
+\item{input}{a vector of basisOfRecord information. To pass it must be
 within given reference dictionary.}
 
 \item{sources}{a vector of available sources.}

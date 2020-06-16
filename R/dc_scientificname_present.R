@@ -1,11 +1,11 @@
 #' @rdname dc_scientificname_present
 #' 
-#' @param TARGET a vector of scientificname information. To pass it must be
+#' @param input a vector of scientificname information. To pass it must be
 #' non-empty entry. 
 #' 
-dc_scientificname_present <- function(TARGET = NULL) {
-  result <- TARGET %>%
+dc_scientificname_present <- function(input = NULL) {
+  clean_input <- input %>%
     gsub(" ", "", .) # Remove possible spaces
-  result <- !is.na(result) & result != "" # Check if not empty
+  result <- !is.na(clean_input) & clean_input != "" # Check if not empty
   return(result)
 }

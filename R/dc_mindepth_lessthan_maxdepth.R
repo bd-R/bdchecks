@@ -1,24 +1,24 @@
 #' @rdname dc_mindepth_lessthan_maxdepth
 #' 
-#' @param TARGET a vector of minimumDepthInMeters.
-#' @param TARGET2 a vector of maximumDepthInMeters.
+#' @param input a vector of minimumDepthInMeters.
+#' @param input2 a vector of maximumDepthInMeters.
 #' 
 dc_mindepth_lessthan_maxdepth <- function(
-  TARGET = NULL,
-  TARGET2 = NULL
+  input = NULL,
+  input2 = NULL
 ) {
   suppressWarnings(
-    result1 <- TARGET %>%
+    clean_input1 <- input %>%
       trimws() %>%
       as.numeric()
   )
   suppressWarnings(
-    result2 <- TARGET2 %>%
+    clean_input2 <- input2 %>%
       trimws() %>%
       as.numeric()
   )
-  result <- as.numeric(result1) <= as.numeric(result2)
-  foo <- perform_dc_missing(result, TARGET)
-  bar <- perform_dc_missing(result, TARGET2)
+  result <- as.numeric(clean_input1) <= as.numeric(clean_input2)
+  foo <- perform_dc_missing(result, input)
+  bar <- perform_dc_missing(result, input2)
   return(foo + bar == 2)
 }

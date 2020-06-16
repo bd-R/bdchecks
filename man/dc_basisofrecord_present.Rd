@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_basisofrecord_present(TARGET = NULL)
+dc_basisofrecord_present(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of basisOfRecord information. To pass it must be
+\item{input}{a vector of basisOfRecord information. To pass it must be
 non-empty entry.}
 }
 \description{

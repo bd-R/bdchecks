@@ -7,10 +7,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_genus_valid(TARGET = NULL)
+dc_genus_valid(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of genus information. To pass it must be within
+\item{input}{a vector of genus information. To pass it must be within
 gbif genus ranks.}
 }
 \description{

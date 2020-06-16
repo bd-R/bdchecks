@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_country_standard(TARGET = NULL)
+dc_country_standard(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of country information. To pass must be a valid
+\item{input}{a vector of country information. To pass must be a valid
 country name (checked against data_countries reference dataset).}
 }
 \description{

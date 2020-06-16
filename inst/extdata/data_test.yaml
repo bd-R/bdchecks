@@ -513,3 +513,10 @@ occurrencestatus_standard:
     - [-2000, irrelevent, fail]
     - ["", missing, fail]
   comment:
+spatial_resolution:
+  data:
+    - [coordinateUncertaintyInMeters, input, type, expected]
+    - [1, 1000, correct, pass]
+    - [1000, 1000, correct_equal, pass]
+    - [3000, 1000, incorrect, fail]
+  comment:

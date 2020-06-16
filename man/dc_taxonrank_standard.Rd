@@ -9,7 +9,7 @@ An object of class function to perform a specific data check.
 }
 \usage{
 dc_taxonrank_standard(
-  TARGET = NULL,
+  input = NULL,
   language = "en",
   alternative = FALSE,
   get_gbif_rank = FALSE,
@@ -17,7 +17,7 @@ dc_taxonrank_standard(
 )
 }
 \arguments{
-\item{TARGET}{a vector of taxon rank. To pass must be within given
+\item{input}{a vector of taxon rank. To pass must be within given
 dictionary.}
 
 \item{language}{language for terms (default is English 'en', but usage of

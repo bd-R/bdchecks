@@ -9,13 +9,13 @@ An object of class function to perform a specific data check.
 }
 \usage{
 dc_mindepth_maxdepth_inrange(
-  TARGET = NULL,
+  input = NULL,
   lower_depth = 0,
   upper_depth = 11000
 )
 }
 \arguments{
-\item{TARGET}{a vector of minimum or maximum depth in meters. To pass it must
+\item{input}{a vector of minimum or maximum depth in meters. To pass it must
 be within lower and upper depth parameters.}
 
 \item{lower_depth}{a numeric value for a lower depth.}

@@ -9,13 +9,13 @@ An object of class function to perform a specific data check.
 }
 \usage{
 dc_eventdate_inrange(
-  TARGET = NULL,
+  input = NULL,
   date_start = "1600-01-01",
   date_end = Sys.Date()
 )
 }
 \arguments{
-\item{TARGET}{a vector of event date information. To pass must be within 
+\item{input}{a vector of event date information. To pass must be within 
 given dates (start and end).}
 
 \item{date_start}{earliest possible date.}

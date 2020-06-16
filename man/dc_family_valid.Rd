@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_family_valid(TARGET = NULL)
+dc_family_valid(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of family information. To pass it must be within
+\item{input}{a vector of family information. To pass it must be within
 gbif family ranks.}
 }
 \description{

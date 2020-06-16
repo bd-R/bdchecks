@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_month_standard(TARGET = NULL)
+dc_month_standard(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of month information. To pass must be an integer
+\item{input}{a vector of month information. To pass must be an integer
 within 1 and 12.}
 }
 \description{

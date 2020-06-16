@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_year_present(TARGET = NULL)
+dc_year_present(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of year information. To pass it must be
+\item{input}{a vector of year information. To pass it must be
 non-empty entry.}
 }
 \description{

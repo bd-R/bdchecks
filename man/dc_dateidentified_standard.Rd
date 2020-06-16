@@ -8,10 +8,10 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_dateidentified_standard(TARGET = NULL)
+dc_dateidentified_standard(input = NULL)
 }
 \arguments{
-\item{TARGET}{a vector of dateIdentified information. To pass it must be a
+\item{input}{a vector of dateIdentified information. To pass it must be a
 valid ISO 8601-1:2019 date.}
 }
 \description{
