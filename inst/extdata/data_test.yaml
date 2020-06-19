@@ -520,3 +520,17 @@ spatial_resolution:
     - [1000, 1000, correct_equal, pass]
     - [3000, 1000, incorrect, fail]
   comment:
+earliest_date:
+  data:
+    - [eventDate, input, type, expected]
+    - ['2018-06-02', '2018-02-02', correct, pass]
+    - ['2018-02-02', '2018-02-02', correct_equal, pass]
+    - ['2018-01-02', '2018-02-02', incorrect, fail]
+  comment:
+taxo_level:
+  data:
+    - [taxonrank, input, type, expected]
+    - [species, family, correct, pass]
+    - [species, species, correct_equal, pass]
+    - [family, species, incorrect, fail]
+  comment:

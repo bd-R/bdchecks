@@ -2285,3 +2285,95 @@ DC_spatial_resolution:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+DC_earliest_date:
+  name: earliest_date
+  meta:
+    information:
+      description: Check if eventDate is greater than inputted resolution.
+      question: Is eventDate greater than inputted resolution?
+      check_type: bdclean
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: time,validation,conformance
+      guid: 3cff4dc4-72e9-4abe-9bf3-8a30f1618432
+    example:
+      pass: The value for eventDate is greather than inputted resolution.
+      fail: The value for eventDate is not greater than inputted resolution.
+      input_pass: eventDate="2002-02-02",resolution="1996-07-06"
+      input_fail: eventDate="2002-02-02",resolution="2020-06-01"
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.missing(value) & value != "" & resolution <= value 
+    source:
+      resource: https://github.com/tdwg/bdq/issues/36
+      reference: https://en.wikipedia.org/wiki/ISO_8601
+      creator:
+      modifier: Martynas Jocys
+      modification: 2020-06-18
+    notes:
+  input:
+    target: eventDate
+    target2:
+    type: date
+    dependency:
+      dependency_type: internal
+      data_checks:
+      rpackages:
+      data:
+  output:
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
+DC_taxo_level:
+  name: taxo_level
+  meta:
+    information:
+      description: Check if taxonRank is lower than inputted resolution.
+      question: Is taxonRank lower than inputted resolution?
+      check_type: bdclean
+      darwin_core_class: taxon
+      data_quality_dimension: conformance
+      dimension: name
+      output: validation
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: taxon,validation,completeness,missing,incomplete
+      guid: 7bdb13a4-8a51-4ee5-be7f-20693fdb183e
+    example:
+      pass: The value for taxonRank is lower than inputted resolution.
+      fail: The value for taxonRank is higher than inputted resolution.
+      input_pass: taxonRank="species",resolution="family"
+      input_fail: taxonRank="family",resolution="species"
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      value %in% reference & resolution >= value
+    source:
+      resource: https://github.com/tdwg/bdq/issues/162
+      reference: http://rs.gbif.org/vocabulary/gbif/rank.xml
+      creator: TDWG2018
+      modifier: Martynas Jocys
+      modification: 2020-06-19
+    notes:
+  input:
+    target: taxonRank
+    target2:
+    type: character
+    dependency:
+      dependency_type: external
+      data_checks:
+      rpackages:
+      data: data_taxonrank
+  output:
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met

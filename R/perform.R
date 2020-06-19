@@ -23,18 +23,23 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, input = NULL) {
   # All data checks to perform
   # If not we have to make sure that all wanted dc exist
   if (is.null(wanted_dc)) {
-      wanted_dc <- names(data.checks@dc_body)
+    wanted_dc <- names(data.checks@dc_body)
   }
   # Input must be provided to run bdclean checks 
   if (is.null(input)) {
-      skipped_dc <- list()
-      for (i in seq_along(wanted_dc)) {
-        type <- data.checks@dc_body[[wanted_dc[i]]]@information$check_type
-        if (type == "bdclean") {
-            skipped_dc <- which(names(data.checks@dc_body) == wanted_dc[i])
-            wanted_dc <- names(data.checks@dc_body)[-skipped_dc]
-        }
+    skipped_dc <- NULL
+    for (i in seq_along(wanted_dc)) {
+      type <- data.checks@dc_body[[wanted_dc[i]]]@information$check_type
+      if (type == "bdclean") {
+        skipped_dc <- c(
+          skipped_dc, 
+          which(names(data.checks@dc_body) == wanted_dc[i])
+        )
       }
+    }
+    if (!is.null(skipped_dc)) {
+      wanted_dc <- names(data.checks@dc_body)[-skipped_dc]
+    }
   }
   result_dc <- list()
 
@@ -67,7 +72,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, input = NULL) {
           # Perform data check only on the unique set (smaller than all)
           # And after this merge with all set (expand)
           if (is.null(input) || dc@information$check_type == "tdwg_standard") {
-              target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
+            target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
           } else {
             target_uniq$res <- get(paste0("dc_", dc@name))(
               target_uniq$x,
