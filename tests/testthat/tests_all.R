@@ -45,6 +45,7 @@ test_that("perform_test_dc", {
       }
     }
   expect_true(foo(result), label = "Tests for data check")
+  expect_silent(perform_test_dc(report = TRUE))
 })
 
 # Test summary functions
@@ -69,3 +70,17 @@ test_that("summary_dc", {
   foo <- summary_dc(result)
   expect_s3_class(foo, "knitr_kable")
 })
+
+# Test class export functions
+context("Export Functions")
+# test datacheck_info_export
+# exports data checks from YAML file to rda and/or roxygen2 file.
+test_that("datacheck_info_export", {
+  path_yaml <- system.file("extdata/data_check.yaml", package = "bdchecks")
+  expect_true(
+    file.exists(path_yaml)
+  )
+  data_yaml <- yaml::yaml.load_file(path_yaml)
+  expect_true(length(data_yaml) != 0)
+})
+

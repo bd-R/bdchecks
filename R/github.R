@@ -1,4 +1,4 @@
-#' Get Githb Project Information
+#' Get Github Project Information
 #'
 #' `get_github_project()` is a function for retrieve information for a given github
 #' project
