@@ -8,25 +8,25 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_earliest_date(input = NULL, resolution = "2018-02-02")
+dc_earliest_date(input = NULL, provided_input = "2018-02-02")
 }
 \arguments{
 \item{input}{a vector of event date information. To pass must be greater 
-than inputted resolution.}
+than provided resolution.}
 
-\item{resolution}{a date for the lowest date required.}
+\item{provided_input}{a date for the lowest date required.}
 }
 \description{
-This data check answers: "Is eventDate greater than inputted resolution?" question.\cr Data check will pass if \strong{The value for eventDate is greather than inputted resolution.} and will fail if \strong{The value for eventDate is not greater than inputted resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{eventDate="2002-02-02",resolution="1996-07-06"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{eventDate="2002-02-02",resolution="2020-06-01"}, such data check would return \code{FALSE}.
+This data check answers: "Is eventDate greater than inputted resolution?" question.\cr Data check will pass if \strong{The value for eventDate is greather than provided resolution.} and will fail if \strong{The value for eventDate is not greater than provided resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{eventDate="2002-02-02",provided_input="1996-07-06"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{eventDate="2002-02-02",provided_input="2020-06-01"}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 
-The value for eventDate is greather than inputted resolution.
+The value for eventDate is greather than provided resolution.
 }
 
 \section{sampleFailData}{
 
-The value for eventDate is not greater than inputted resolution.
+The value for eventDate is not greater than provided resolution.
 }
 
 \section{targetDWCField}{

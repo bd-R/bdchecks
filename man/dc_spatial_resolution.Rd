@@ -8,26 +8,26 @@
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_spatial_resolution(input = NULL, resolution = 1000)
+dc_spatial_resolution(input = NULL, provided_input = 1000)
 }
 \arguments{
 \item{input}{a vector of coordinate uncertainty in meters. To pass it must
-be lower than inputted resolution.}
+be lower than provided resolution.}
 
-\item{resolution}{a numeric value for the highest coordinate uncertainty
+\item{provided_input}{a numeric value for the highest coordinate uncertainty
 required.}
 }
 \description{
-This data check answers: "Is coordinateUncertaintyInMeters not greater than inputted resolution?" question.\cr Data check will pass if \strong{The value for coordinateUncertaintyInMeters is not greater than inputted resolution.} and will fail if \strong{The value for coordinateUncertaintyInMeters is greater than inputted resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{coordinateUncertaintyInMeters="1",resolution="1000"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{coordinateUncertaintyInMeters="3000",resolution="1000"}, such data check would return \code{FALSE}.
+This data check answers: "Is coordinateUncertaintyInMeters not greater than inputted resolution?" question.\cr Data check will pass if \strong{The value for coordinateUncertaintyInMeters is not greater than provided resolution.} and will fail if \strong{The value for coordinateUncertaintyInMeters is greater than provided resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{coordinateUncertaintyInMeters="1",provided_input="1000"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{coordinateUncertaintyInMeters="3000",provided_input="1000"}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 
-The value for coordinateUncertaintyInMeters is not greater than inputted resolution.
+The value for coordinateUncertaintyInMeters is not greater than provided resolution.
 }
 
 \section{sampleFailData}{
 
-The value for coordinateUncertaintyInMeters is greater than inputted resolution.
+The value for coordinateUncertaintyInMeters is greater than provided resolution.
 }
 
 \section{targetDWCField}{

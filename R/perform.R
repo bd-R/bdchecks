@@ -73,10 +73,10 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, input = NULL) {
           # And after this merge with all set (expand)
           if (is.null(input) || dc@information$check_type == "tdwg_standard") {
             target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
-          } else {
+          } else if (dc@information$check_type == "bdclean") {
             target_uniq$res <- get(paste0("dc_", dc@name))(
               target_uniq$x,
-              resolution = input
+              provided_input = input
             )
           }
           target_result[[j]] <- merge(

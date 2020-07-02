@@ -2,14 +2,13 @@
 #' 
 #' @param input a vector of taxon rank. To pass must be within given
 #' dictionary.
-#' @param resolution The low rank of species required
+#' @param provided_input The low rank of species required.
+#' @param ranks A list of taxon ranks that could be chosen.
 #' 
 dc_taxo_level <- function(
   input = NULL,
-  resolution = "species"
-) {
-  # change to get_taxon_rank() from dc_taxonrank_standard.R
-  ranks <- c(
+  provided_input = "species",
+  ranks = c(
     "class",
     "order",
     "family",
@@ -17,15 +16,18 @@ dc_taxo_level <- function(
     "species",
     "subspecies"
   )
-  resolution <- tolower(resolution)  
+) {
+  # tdwg_standard check
+  passed <- get(paste0("dc_", "taxonrank_standard"))(input)
+  provided_input <- tolower(provided_input)  
   clean_input <- input %>%
     tolower() %>%
     gsub(" ", "", .) # Remove possible spaces
 
-  if (!(resolution %in% ranks)) {
+  if (!(provided_input %in% ranks)) {
       warning("Rank Value unknown. It should be family, genus, species or subspecies")
   }   
-  idx <- which(ranks == resolution)
-  result <- clean_input %in% ranks[idx:length(ranks)]
+  idx <- which(ranks == provided_input)
+  result <- clean_input[passed] %in% ranks[idx:length(ranks)]
   return(perform_dc_missing(result, input))
 }
