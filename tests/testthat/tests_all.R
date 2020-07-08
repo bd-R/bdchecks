@@ -71,25 +71,37 @@ test_that("summary_dc", {
   expect_s3_class(foo, "knitr_kable")
 })
 
-# # Test class export functions
-# context("Export Functions")
-# # test datacheck_info_export
-# # exports data checks from YAML file to rda and/or roxygen2 file.
-# test_that("datacheck_info_export", {
-#   # Check if data is not empty
-#   path_yaml <- file("inst/extdata/data_check.yaml")
-#   expect_true(file.exists(path_yaml))
-#   data_yaml <- yaml::yaml.load_file(path_yaml)
-#   expect_true(length(data_yaml) != 0)
-#   # Check if output is valid
-#   result <- expect_silent(datacheck_info_export())
-#   expect_s4_class(result, "DataCheckSet")
-# })
+# Test class export functions
+context("Export Functions")
+# test datacheck_info_export
+# exports data checks from YAML file to rda and/or roxygen2 file.
+test_that("datacheck_info_export", {
+  # check if file exists
+  path_yaml <- system.file("extdata/data_check.yaml", package = "bdchecks")
+  expect_true(file.exists(path_yaml))
+  # check if file is not empty
+  data_yaml <- yaml::yaml.load_file(path_yaml)
+  expect_true(length(data_yaml) != 0)
+  # Check if output is valid
+  if (!file.exists("./R")) {
+    foo <- dir.create("./foo")
+    result <- expect_silent(datacheck_info_export(path_rd = foo)) 
+  }
+  expect_s4_class(result, "DataCheckSet")
+})
 
 # # Test dataCheck method functions
 # context("Method for dataCheck objects")
-# test_that("datacheck_info_export", {
-#   expect
+# test_that("DataCheck-class", {
+#   cat(
+#   "Data check is used to:\n   ",
+#   object@information$description, "\n",
+#   "This data check answers following question:\n   ",
+#   object@information$question, "\n",
+#   "Target columns that this data check operates on:\n   ",
+#   object@input$target,
+#   "\n"
+#   )
 # })
 
 # # Test filter functions
@@ -102,5 +114,5 @@ test_that("summary_dc", {
 #   # We expect warnings as not all columns are present
 #   result <- expect_warning(perform_dc(data_bats))
 #   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
-#   bar <- expect_silent(dc_filter_generate(foo,))
+#   bar <- expect_silent(dc_filter_generate(foo,foo[5,3]))
 # })
