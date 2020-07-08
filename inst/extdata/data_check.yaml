@@ -2302,7 +2302,7 @@ DC_spatial_resolution:
         record: single_record
         term:
       keywords: space,conformance,validation
-      guid: c6adf2ea-3051-4498-97f4-4b2f8a105f57
+      guid: 
     example:
       pass: The value for coordinateUncertaintyInMeters is not greater than provided resolution.
       fail: The value for coordinateUncertaintyInMeters is greater than provided resolution.
@@ -2349,7 +2349,7 @@ DC_earliest_date:
         record: single_record
         term:
       keywords: time,validation,conformance
-      guid: 3cff4dc4-72e9-4abe-9bf3-8a30f1618432
+      guid: 
     example:
       pass: The value for eventDate is greather than provided resolution.
       fail: The value for eventDate is not greater than provided resolution.
@@ -2396,7 +2396,7 @@ DC_taxo_level:
         record: single_record
         term:
       keywords: taxon,validation,completeness,missing,incomplete
-      guid: 7bdb13a4-8a51-4ee5-be7f-20693fdb183e
+      guid: 
     example:
       pass: The value for taxonRank is lower than provided resolution.
       fail: The value for taxonRank is higher than provided resolution.
@@ -2411,7 +2411,7 @@ DC_taxo_level:
       reference: http://rs.gbif.org/vocabulary/gbif/rank.xml
       creator: TDWG2018
       modifier: Martynas Jocys
-      modification: 2020-06-25
+      modification: 2020-07-07
     communication:
     notes:
   input:
@@ -2427,3 +2427,51 @@ DC_taxo_level:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+DC_temporal_resolution:
+  name: temporal_resolution
+  meta:
+    information:
+      description: Check if eventDate is within given range and resolution.
+      question: Is eventDate within given range and resolution?
+      check_type: bdclean
+      darwin_core_class: event
+      data_quality_dimension: conformance
+      dimension: time
+      output: validation
+      warning: invalid
+      resolution:
+        record: single_record
+        term:
+      keywords: time,validation,conformance
+      guid: 
+    example:
+      pass: The value for eventDate is within given range and resolution.
+      fail: The value for eventDate is not within given range and resolution.
+      input_pass: eventDate="2018-02-28",start_date="2016-01-02",end_date="2018-02-08",resolution="month"
+      input_fail: eventDate="2002-03-01",start_date="2016-01-02",end_date="2018-02-08",resolution="month"
+      output_pass: TRUE
+      output_fail: FALSE
+    pseudocode: |
+      !is.missing(value) & value != "" & resolution(start_date) <= value <= resolution(end_date)
+    source:
+      resource: https://github.com/tdwg/bdq/issues/36
+      reference: https://en.wikipedia.org/wiki/ISO_8601
+      creator:
+      modifier: Martynas Jocys
+      modification: 2020-07-07
+    communication:
+    notes:
+  input:
+    target: eventDate
+    target2:
+    type: date
+    dependency:
+      dependency_type: internal
+      data_checks: eventdate_inrange
+      rpackages: lubridate
+      data:
+  output:
+    output_tdwg_standard_pass: compliant
+    output_tdwg_standard_fail: not_compliant 
+    output_tdwg_standard_missing: internal_prerequisites_not_met
+

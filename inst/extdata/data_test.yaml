@@ -534,3 +534,10 @@ taxo_level:
     - [species, species, correct_equal, pass]
     - [family, species, incorrect, fail]
   comment:
+temporal_resolution:
+  data:
+    - [eventDate, input, type, expected]
+    - ['2018-02-28', '2016-01-02, 2018-02-08, month', correct, pass]
+    - ['2018-01-01', '2016-01-02, 2018-02-08, month', correct, pass]
+    - ['2018-03-01', '2016-01-02, 2018-02-08, month', incorrect, fail]
+  comment:    

@@ -41,7 +41,8 @@ Imports: gh,
          rmarkdown,
          taxize,
          yaml,
-         xml2
+         xml2,
+         lubridate
 LazyData: true
 RoxygenNote: 7.1.0
 Encoding: UTF-8
