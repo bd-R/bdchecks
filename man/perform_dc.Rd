@@ -9,8 +9,8 @@ perform_dc(data = NULL, wanted_dc = NULL, input = NULL)
 \arguments{
 \item{data}{Data set to perform data checks}
 
-\item{wanted_dc}{Character vector of names for data checks that should be performed
-(ie perform only these data checks)}
+\item{wanted_dc}{Character vector of names for data checks that should be 
+performed (ie perform only these data checks)}
 
 \item{input}{A value for the input-based checks}
 }

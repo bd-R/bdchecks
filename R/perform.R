@@ -4,8 +4,8 @@
 #' on a give data set
 #'
 #' @param data Data set to perform data checks
-#' @param wanted_dc Character vector of names for data checks that should be performed
-#' (ie perform only these data checks)
+#' @param wanted_dc Character vector of names for data checks that should be 
+#' performed (ie perform only these data checks)
 #' @param input A value for the input-based checks
 #'
 #' @importFrom methods new
@@ -34,6 +34,9 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, input = NULL) {
         skipped_dc <- c(
           skipped_dc, 
           which(names(data.checks@dc_body) == wanted_dc[i])
+        )
+        warning(
+          "No input provided. Skipping ", wanted_dc[i], " data check"
         )
       }
     }
@@ -120,8 +123,8 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, input = NULL) {
 
 #' Find Missing Values
 #'
-#' Internal function that deals with missing values. For original missing values
-#' ("" or NA) it returns NA. For generated NA values it returns NA.
+#' Internal function that deals with missing values. For original missing 
+#' values ("" or NA) it returns NA. For generated NA values it returns NA.
 #'
 #' @param result Data check modified input vector
 #' @param input Original input column that's submitted to datacheck

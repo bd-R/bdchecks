@@ -15,6 +15,6 @@ perform_dc_missing(result, input)
 result vector with inserted NA and FALSE values
 }
 \description{
-Internal function that deals with missing values. For original missing values
-("" or NA) it returns NA. For generated NA values it returns NA.
+Internal function that deals with missing values. For original missing 
+values ("" or NA) it returns NA. For generated NA values it returns NA.
 }

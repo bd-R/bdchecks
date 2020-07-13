@@ -13,6 +13,9 @@ test_that("perform_dc", {
   # No arguments provided
   expect_warning(perform_dc(data_bats))
   expect_warning(perform_dc(mtcars))
+  expect_silent(
+    perform_dc(data_bats, wanted_dc = "taxo_level", input = "family")
+  )
   # This will depend on data version
   expect_equal(sum(
     perform_dc(data_bats, "taxonrank_present")@flags[[1]]@result
@@ -90,29 +93,15 @@ test_that("datacheck_info_export", {
   expect_s4_class(result, "DataCheckSet")
 })
 
-# # Test dataCheck method functions
-# context("Method for dataCheck objects")
-# test_that("DataCheck-class", {
-#   cat(
-#   "Data check is used to:\n   ",
-#   object@information$description, "\n",
-#   "This data check answers following question:\n   ",
-#   object@information$question, "\n",
-#   "Target columns that this data check operates on:\n   ",
-#   object@input$target,
-#   "\n"
-#   )
-# })
-
-# # Test filter functions
-# context("Filter functions")
-# # test dc_filter_generate
-# # generates vector for filtering data checks result table
-# # according to `selectCells` object.
-# test_that("dc_filter_generate", {
-#   # Data checks on example data
-#   # We expect warnings as not all columns are present
-#   result <- expect_warning(perform_dc(data_bats))
-#   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
-#   bar <- expect_silent(dc_filter_generate(foo,foo[5,3]))
-# })
+# Test filter functions
+context("Filter functions")
+# test dc_filter_generate
+# generates vector for filtering data checks result table
+# according to `selectCells` object.
+test_that("dc_filter_generate", {
+  # Data checks on example data
+  # We expect warnings as not all columns are present
+  result <- expect_warning(perform_dc(data_bats))
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
+  bar <- expect_silent(dc_filter_generate(foo,foo[3]))
+})
