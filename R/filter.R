@@ -12,9 +12,11 @@
 #' @return A list that contains name of a data checks, it's target and
 #' filtering status
 #'
-dc_filter_generate <- function(dc_result_summary,
-                               cell_selected,
-                               filters = c("P", "F", "M")) {
+dc_filter_generate <- function(
+  dc_result_summary,
+  cell_selected,
+  filters = c("P", "F", "M")
+) {
   result <- lapply(unique(cell_selected[, 1]), function(i) {
     dc_current <- dc_result_summary[i, ]
     foo <- unique(cell_selected[cell_selected[, 1] == i, 2] - 1)

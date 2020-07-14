@@ -4,17 +4,17 @@
 \alias{perform_dc_missing}
 \title{Find Missing Values}
 \usage{
-perform_dc_missing(result, TARGET)
+perform_dc_missing(result, input)
 }
 \arguments{
-\item{result}{Data check modified TARGET vector}
+\item{result}{Data check modified input vector}
 
-\item{TARGET}{Original TARGET column that's submitted to datacheck}
+\item{input}{Original input column that's submitted to datacheck}
 }
 \value{
 result vector with inserted NA and FALSE values
 }
 \description{
-Internal function that deals with missing values. For original missing values
-("" or NA) it returns NA. For generated NA values it returns NA.
+Internal function that deals with missing values. For original missing 
+values ("" or NA) it returns NA. For generated NA values it returns NA.
 }

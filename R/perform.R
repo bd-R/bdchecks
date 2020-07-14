@@ -4,8 +4,9 @@
 #' on a give data set
 #'
 #' @param data Data set to perform data checks
-#' @param wanted_dc Character vector of names for data checks that should be performed
-#' (ie perform only these data checks)
+#' @param wanted_dc Character vector of names for data checks that should be 
+#' performed (ie perform only these data checks)
+#' @param input A value for the input-based checks
 #'
 #' @importFrom methods new
 #'
@@ -17,12 +18,31 @@
 #' 
 #' @export
 #'
-perform_dc <- function(data = NULL, wanted_dc = NULL) {
+perform_dc <- function(data = NULL, wanted_dc = NULL, input = NULL) {
 
   # All data checks to perform
   # If not we have to make sure that all wanted dc exist
   if (is.null(wanted_dc)) {
     wanted_dc <- names(data.checks@dc_body)
+  }
+  # Input must be provided to run bdclean checks 
+  if (is.null(input)) {
+    skipped_dc <- NULL
+    for (i in seq_along(wanted_dc)) {
+      type <- data.checks@dc_body[[wanted_dc[i]]]@information$check_type
+      if (type == "bdclean") {
+        skipped_dc <- c(
+          skipped_dc, 
+          which(names(data.checks@dc_body) == wanted_dc[i])
+        )
+        warning(
+          "No input provided. Skipping ", wanted_dc[i], " data check"
+        )
+      }
+    }
+    if (!is.null(skipped_dc)) {
+      wanted_dc <- names(data.checks@dc_body)[-skipped_dc]
+    }
   }
   result_dc <- list()
 
@@ -54,7 +74,14 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
           target_uniq <- data.frame(x = unique(target_all$x))
           # Perform data check only on the unique set (smaller than all)
           # And after this merge with all set (expand)
-          target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
+          if (is.null(input) || dc@information$check_type == "tdwg_standard") {
+            target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
+          } else if (dc@information$check_type == "bdclean") {
+            target_uniq$res <- get(paste0("dc_", dc@name))(
+              target_uniq$x,
+              provided_input = input
+            )
+          }
           target_result[[j]] <- merge(
             target_all, target_uniq, "x", sort = FALSE
           )$res
@@ -69,10 +96,10 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
     for (j in seq_along(target_result)) {
       flag <- ifelse(
         target_result[[j]],
-        dc@output$output_standard_pass,
-        dc@output$output_standard_fail
+        dc@output$output_tdwg_standard_pass,
+        dc@output$output_tdwg_standard_fail
       )
-      flag[is.na(flag)] <- dc@output$output_standard_missing
+      flag[is.na(flag)] <- dc@output$output_tdwg_standard_missing
       result_dc[[length(result_dc) + 1]] <-
         methods::new("DataCheckFlag",
           name = dc@name,
@@ -96,18 +123,18 @@ perform_dc <- function(data = NULL, wanted_dc = NULL) {
 
 #' Find Missing Values
 #'
-#' Internal function that deals with missing values. For original missing values
-#' ("" or NA) it returns NA. For generated NA values it returns NA.
+#' Internal function that deals with missing values. For original missing 
+#' values ("" or NA) it returns NA. For generated NA values it returns NA.
 #'
-#' @param result Data check modified TARGET vector
-#' @param TARGET Original TARGET column that's submitted to datacheck
+#' @param result Data check modified input vector
+#' @param input Original input column that's submitted to datacheck
 #'
 #' @return result vector with inserted NA and FALSE values
 #'
-perform_dc_missing <- function(result, TARGET) {
+perform_dc_missing <- function(result, input) {
   # Turn failed values to FALSE
   result[is.na(result)] <- FALSE
   # Get original missing values
-  result[is.na(TARGET) | TARGET == ""] <- NA
+  result[is.na(input) | input == ""] <- NA
   return(result)
 }

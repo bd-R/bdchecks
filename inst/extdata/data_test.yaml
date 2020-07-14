@@ -1,61 +1,67 @@
-validation_taxon_empty:
+taxon_present:
   data:
     - [kingom, type, expected]
-    - [animal, correct, pass]
-    - [plant, correct, pass]
-    - [' plant ', correct, pass]
+    - [animal, present, pass]
+    - [plant, present, pass]
+    - [' plant ', present, pass]
+    - [orange, present, pass]
+    - [1, present, pass]
     - ["", missing, fail]
   comment:
-validation_taxonid_empty:
+taxonid_present:
   data:
     - [taxonid, type, expected]
-    - [0001, correct, pass]
-    - [0101, correct, pass]
-    - [' 0101 ', correct, pass]
+    - [0001, present, pass]
+    - [0101, present, pass]
+    - [' 0101 ', present, pass]
+    - [orange, present, pass]
+    - [1, present, pass]
     - ["", missing, fail]
   comment:
-validation_taxonrank_empty:
+taxonrank_present:
   data:
     - [taxonrank, type, expected]
-    - [order, correct, pass]
-    - [genus, correct, pass]
-    - [' genus ', correct, pass]
+    - [order, present, pass]
+    - [genus, present, pass]
+    - [' genus ', present, pass]
+    - [orange, present, pass]
+    - [1, present, pass]
     - ["", missing, fail]
   comment:
-validation_taxonrank_notstandard:
+taxonrank_standard:
   data:
     - [taxonrank, type, expected]
-    - [domain, correct, pass]
-    - [kingdom, correct, pass]
-    - [superclass, correct, pass]
-    - [' superclass ', correct, pass]
+    - [domain, valid, pass]
+    - [kingdom, valid, pass]
+    - [superclass, valid, pass]
+    - [' superclass ', valid, pass]
     - [queendom, incorrect, fail]
-    - [-2000, irrelevent, fail]
+    - [1, irrelevent, fail]
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_scientificname_empty:
+scientificname_present:
   data:
     - [scientificname, type, expected]
-    - [Canis lupus, correct, pass]
-    - [Felis catus, correct, pass]
-    - [' Canis lupus familiaris ', correct, pass]
+    - [Canis lupus, present, pass]
+    - [Felis catus, present, pass]
+    - [' Canis lupus familiaris ', present, pass]
     - ["", missing, fail]
   comment:
-validation_kingdom_notfound:
+kingdom_valid:
   data:
     - [kingdom, type, expected]
-    - [Animalia, correct, pass]
-    - [' Animalia ', correct, pass]
-    - [Chromista, correct, pass]
-    - [Plantae, correct, pass]
-    - [Fungi, correct, pass]
-    - [Protozoa, correct, pass]
+    - [Animalia, valid, pass]
+    - [' Animalia ', valid, pass]
+    - [Chromista, valid, pass]
+    - [Plantae, valid, pass]
+    - [Fungi, valid, pass]
+    - [Protozoa, valid, pass]
     - [-2000, irrelevent, fail]
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_phylum_notfound:
+phylum_valid:
   data:
     - [phylum, type, expected]
     - [Hemichordata, correct, pass]
@@ -67,7 +73,7 @@ validation_phylum_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_class_notfound:
+class_valid:
   data:
     - [class, type, expected]
     - [Mammalia, correct, pass]
@@ -78,7 +84,7 @@ validation_class_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_order_notfound:
+order_valid:
   data:
     - [order, type, expected]
     - [Carnivora, correct, pass]
@@ -96,7 +102,7 @@ validation_order_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_family_notfound:
+family_valid:
   data:
     - [family, type, expected]
     - [Lemuridae, correct, pass]
@@ -113,7 +119,7 @@ validation_family_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_genus_notfound:
+genus_valid:
   data:
     - [genus, type, expected]
     - [Macaca, correct, pass]
@@ -126,14 +132,14 @@ validation_genus_notfound:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_location_empty:
+location_present:
   data:
     - [countryCode, type, expected]
     - [AU, correct, pass]
     - [' AU ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_decimallatitude_empty:
+decimallatitude_present:
   data:
     - [decimalLatitude, type, expected]
     - [-41.0983423, correct, pass]
@@ -144,7 +150,7 @@ validation_decimallatitude_empty:
     - [' 41.1 ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_decimallongitude_empty:
+decimallongitude_present:
   data:
     - [decimalLongitude, type, expected]
     - [-41.0983423, correct, pass]
@@ -155,7 +161,7 @@ validation_decimallongitude_empty:
     - [' 41.1 ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_geodeticdatum_empty:
+geodeticdatum_present:
   data:
     - [geodeticDatum, type, expected]
     - [WGS84, correct, pass]
@@ -163,21 +169,21 @@ validation_geodeticdatum_empty:
     - [' European 1950 ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_country_empty:
+country_present:
   data:
     - [country, type, expected]
     - [Australia, correct, pass]
     - [' Norway ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_countrycode_empty:
+countrycode_present:
   data:
     - [countryCode, type, expected]
     - [AU, correct, pass]
     - [' BE ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_eventtemporal_empty:
+eventtemporal_present:
   data:
     - [year, type, expected]
     - [2000, correct, pass]
@@ -185,7 +191,7 @@ validation_eventtemporal_empty:
     - [' 1999 ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_eventdate_empty:
+eventdate_present:
   data:
     - [eventDate, type, expected]
     - [2000, correct, pass]
@@ -195,7 +201,7 @@ validation_eventdate_empty:
     - ['  2009-02-12/2009-10-08 ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_year_empty:
+year_present:
   data:
     - [year, type, expected]
     - [2000, correct, pass]
@@ -203,7 +209,7 @@ validation_year_empty:
     - [' 1999 ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_dctype_empty:
+dctype_present:
   data:
     - [type, type, expected]
     - [image, correct, pass]
@@ -211,14 +217,14 @@ validation_dctype_empty:
     - [' collection ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_license_empty:
+license_present:
   data:
     - [license, type, expected]
     - [GFDL, correct, pass]
     - [' Open-Document ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_basisofrecord_empty:
+basisofrecord_present:
   data:
     - [basisOfRecord, type, expected]
     - [FossilSpecimen, correct, pass]
@@ -229,7 +235,7 @@ validation_basisofrecord_empty:
     - [' PreservedSpecimen ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_occurrencestatus_empty:
+occurrencestatus_present:
   data:
     - [occurrenceStatus, type, expected]
     - [absent, correct, pass]
@@ -241,26 +247,26 @@ validation_occurrencestatus_empty:
     - [' rare ', correct, pass]
     - ["", missing, fail]
   comment:
-validation_occurrenceid_empty:
+occurrenceid_present:
   data:
     - [occurrenceID, type, expected]
     - ['urn:lsid:nhm.ku.edu:Herps:32', type, pass]
     - [' urn:catalog:FMNH:Mammal:145732 ', type, pass]
     - ["", missing, fail]
   comment:
-notification_datageneralizations_notempty:
+datageneralizations_present:
   data:
     - [dataGeneralizations, type, expected]
     - ['record placed on 0.1 degree grid', correct, pass]
     - ["", missing, fail]
   comment:
-notification_establishmentmeans_notempty:
+establishmentmeans_present:
   data:
     - [establishmentMeans, type, expected]
     - [cultivated, correct, pass]
     - ["", missing, fail]
   comment:
-validation_occurrenceid_notstandard:
+occurrenceid_standard:
   data:
     - [occurrenceID, type, expected]
     - ['36003c56-5f53-484f-8022-d0a5dc64968a', correct, pass]
@@ -273,7 +279,7 @@ validation_occurrenceid_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_eventdate_outofrange:
+eventdate_inrange:
   data:
     - [eventDate, type, expected]
     - ['2001-12-12', correct, pass]
@@ -283,7 +289,7 @@ validation_eventdate_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_year_outofrange:
+year_inrange:
   data:
     - [year, type, expected]
     - ['1600', correct, pass]
@@ -295,7 +301,7 @@ validation_year_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_month_notstandard:
+month_standard:
   data:
     - [month, type, expected]
     - ['1', correct, pass]
@@ -308,7 +314,7 @@ validation_month_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_basisofrecord_notstandard:
+basisofrecord_standard:
   data:
     - [basisOfRecord, type, expected]
     - [PreservedSpecimen, correct, pass]
@@ -330,19 +336,19 @@ validation_basisofrecord_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_coordinates_zero:
+coordinates_notzero:
   data:
     - [decimalLongitude, type, expected]
-    - [0, correct, pass]
-    - [' 0 ', correct, pass]
-    - [' 0.0 ', correct, pass]
-    - [1, incorrect, fail]
-    - ['01', incorrect, fail]
-    - [-2000, incorrect, fail]
+    - [1, correct, pass]
+    - [1.1, correct, pass]
+    - [10, correct, pass]
+    - [0, incorrect, fail]
+    - [' 0 ', incorrect, fail]
+    - [' 0.0 ', incorrect, fail]
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_coordinateuncertainty_outofrange:
+coordinateuncertainty_inrange:
   data:
     - [coordinateUncertaintyInMeters, type, expected]
     - [1, correct, pass]
@@ -356,7 +362,7 @@ validation_coordinateuncertainty_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_country_notstandard:
+country_standard:
   data:
     - [country, type, expected]
     - [Liberia, correct, pass]
@@ -367,7 +373,7 @@ validation_country_notstandard:
     - [-2000, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_day_notstandard:
+day_standard:
   data:
     - [day, type, expected]
     - ['1', correct, pass]
@@ -380,7 +386,7 @@ validation_day_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_minelevation_outofrange:
+minelevation_inrange:
   data:
     - [minelevation, type, expected]
     - ['0', correct, pass]
@@ -392,7 +398,7 @@ validation_minelevation_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_maxelevation_outofrange:
+maxelevation_inrange:
   data:
     - [maxelevation, type, expected]
     - ['0', correct, pass]
@@ -404,7 +410,7 @@ validation_maxelevation_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_decimallongitude_outofrange:
+decimallongitude_inrange:
   data:
     - [decimalLongitude, type, expected]
     - ['0', correct, pass]
@@ -420,7 +426,7 @@ validation_decimallongitude_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_decimallatitude_outofrange:
+decimallatitude_inrange:
   data:
     - [decimalLongitude, type, expected]
     - ['0', correct, pass]
@@ -436,7 +442,7 @@ validation_decimallatitude_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_country_countrycode_inconsistent:
+country_countrycode_consistent:
   data:
     - [country, countryCode, type, expected]
     - [Finland, FI, correct, pass]
@@ -446,7 +452,7 @@ validation_country_countrycode_inconsistent:
     - ["", AU, missing, fail]
     - [Australia, "", missing, fail]
   comment:
-validation_mindepth_maxdepth_outofrange:
+mindepth_maxdepth_inrange:
   data:
     - [minimumDepthInMeters, type, expected]
     - ['0', correct, pass]
@@ -459,7 +465,7 @@ validation_mindepth_maxdepth_outofrange:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_minelevation_greaterthan_maxelevation:
+minelevation_lessthan_maxelevation:
   data:
     - [minimumElevationInMeters, maximumElevationInMeters, type, expected]
     - [100, 200, correct, pass]
@@ -468,7 +474,7 @@ validation_minelevation_greaterthan_maxelevation:
     - [100, 99, incorrect, fail]
     - ["", 100, missing, fail]
   comment:
-validation_mindepth_greaterthan_maxdepth:
+mindepth_lessthan_maxdepth:
   data:
     - [minimumDepthInMeters, maximumDepthInMeters, type, expected]
     - [100, 200, correct, pass]
@@ -477,7 +483,7 @@ validation_mindepth_greaterthan_maxdepth:
     - [100, 99, incorrect, fail]
     - ["", 100, missing, fail]
   comment:
-validation_eventdate_notstandard:
+eventdate_standard:
   data:
     - [eventDate, type, expected]
     - ['2018-02-02', correct, pass]
@@ -486,7 +492,7 @@ validation_eventdate_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_dateidentified_notstandard:
+dateidentified_standard:
   data:
     - [dateIdentified, type, expected]
     - ['2018-02-02', correct, pass]
@@ -495,7 +501,7 @@ validation_dateidentified_notstandard:
     - [Orange, irrelevent, fail]
     - ["", missing, fail]
   comment:
-validation_occurrencestatus_notstandard:
+occurrencestatus_standard:
   data:
     - [occurrenceStatus, type, expected]
     - [present, correct, pass]
@@ -507,3 +513,31 @@ validation_occurrencestatus_notstandard:
     - [-2000, irrelevent, fail]
     - ["", missing, fail]
   comment:
+spatial_resolution:
+  data:
+    - [coordinateUncertaintyInMeters, input, type, expected]
+    - [1, 1000, correct, pass]
+    - [1000, 1000, correct_equal, pass]
+    - [3000, 1000, incorrect, fail]
+  comment:
+earliest_date:
+  data:
+    - [eventDate, input, type, expected]
+    - ['2018-06-02', '2018-02-02', correct, pass]
+    - ['2018-02-02', '2018-02-02', correct_equal, pass]
+    - ['2018-01-02', '2018-02-02', incorrect, fail]
+  comment:
+taxo_level:
+  data:
+    - [taxonrank, input, type, expected]
+    - [species, family, correct, pass]
+    - [species, species, correct_equal, pass]
+    - [family, species, incorrect, fail]
+  comment:
+temporal_resolution:
+  data:
+    - [eventDate, input, type, expected]
+    - ['2018-02-28', '2016-01-02, 2018-02-08, month', correct, pass]
+    - ['2018-01-01', '2016-01-02, 2018-02-08, month', correct, pass]
+    - ['2018-03-01', '2016-01-02, 2018-02-08, month', incorrect, fail]
+  comment:    

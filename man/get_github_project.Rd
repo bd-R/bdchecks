@@ -2,7 +2,7 @@
 % Please edit documentation in R/github.R
 \name{get_github_project}
 \alias{get_github_project}
-\title{Get Githb Project Information}
+\title{Get Github Project Information}
 \usage{
 get_github_project(
   repo = "tdwg/bdq",
