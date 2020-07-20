@@ -4,9 +4,9 @@ name: Level 0 CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 on:
   push:
-    branches: [ master ]
+    branches: [ master,dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ master,dev ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -31,7 +31,8 @@ jobs:
     needs: R-CMD-check
     strategy:
       matrix:
-        repo: ['bd-R/bdutilities', 'bd-R/bdDwC', 'bd-R/bdverse', 'bd-R/bdutilities.app' ,'bd-R/bdDwC.app', 'bd-R/bdchecks.app','bd-R/bdclean']
+              #check if dispatch can trigger /dev of bdutilities
+        repo: ['bd-R/bdutilities/dev', 'bd-R/bdDwC', 'bd-R/bdverse', 'bd-R/bdutilities.app' ,'bd-R/bdDwC.app', 'bd-R/bdchecks.app','bd-R/bdclean']
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
