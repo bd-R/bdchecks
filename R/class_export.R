@@ -25,6 +25,7 @@ datacheck_info_export <- function(
     data_class[[i]] <- methods::new(
       "DataCheck",
       name = data_yaml[[i]]$name,
+      title = data_yaml[[i]]$title,
       input = data_yaml[[i]]$input,
       output = data_yaml[[i]]$output,
       information = data_yaml[[i]]$meta$information,

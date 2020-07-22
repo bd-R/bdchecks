@@ -7,7 +7,7 @@
 #' @return A list of data.frames that contain target column, test type and
 #' expected result 
 #' 
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr %>%
 #' @importFrom yaml read_yaml
 #'
 create_testdata <- function(

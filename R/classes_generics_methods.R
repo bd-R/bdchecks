@@ -5,6 +5,7 @@
 #' @export
 #'
 #' @slot name Official name of biodiversity data check
+#' @slot title Tidy name of biodiversity data check
 #' @slot input Additional options to perform a data check
 #' @slot output Additional options to modify data check flags
 #' @slot information Information about the data check
@@ -16,6 +17,7 @@ DataCheck <- setClass(
   "DataCheck",
   slots = c(
     name = "character",
+    title = "character",
     input = "list",
     output = "list",
     information = "list",

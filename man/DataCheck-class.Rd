@@ -23,6 +23,8 @@ Show method for dataCheck objects
 \describe{
 \item{\code{name}}{Official name of biodiversity data check}
 
+\item{\code{title}}{Tidy name of biodiversity data check}
+
 \item{\code{input}}{Additional options to perform a data check}
 
 \item{\code{output}}{Additional options to modify data check flags}
