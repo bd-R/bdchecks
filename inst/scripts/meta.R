@@ -1,13 +1,35 @@
 #clean_input <- clean(input, meta@type)
 
-clean <- function(input, type) {
+check_clean <- function(input, type) {
   if (type == "numeric") {
+    class_numeric(input)
     clean_numeric(input)
   } else if (type == "character") {
     clean_character(input)
   } else (type == "date") {
+    class_date(input)
     clean_date(input)
   }
+}
+# class_ functions check whether input class is correct
+class_numeric <- function(input) {
+  expected <- is.na(input)
+  observed <- suppressWarnings(
+    input %>%
+      as.numeric() %>%
+      is.na()
+  )
+  # in progress
+}
+#input <- c(NA, "2017-02-02", "asd", "1")
+class_date <- function(input) {
+  expected <- is.na(input)
+  observed <- suppressWarnings(
+    input %>%
+      lubridate::as_date() %>%
+      is.na()
+  )
+  # in progress
 }
 clean_numeric <- function(input) {
   suppressWarnings(
@@ -25,15 +47,4 @@ clean_date <- function(input) {
   input %>%
     as.Date() %>%
     as.POSIXct()
-}
-# most "_present" "_valid" and "_inrange" checks use same code
-dc_check <- function(clean_input, check_type) {
-  if (check_type == "present") {
-    !is.na(clean_input) & clean_input != ""
-  } else if (check_type == "valid") {
-    # for taxonomical checks
-    dc_valid(clean_input, taxon)
-  } else (check_type == "inrange") {
-    dc_inrange(clean_input, range)
-  }
 }
