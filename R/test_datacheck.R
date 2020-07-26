@@ -7,7 +7,7 @@
 #' @return A list of data.frames that contain target column, test type and
 #' expected result 
 #' 
-#' @importFrom magrittr %>%
+#' @importFrom magrittr "%>%"
 #' @importFrom yaml read_yaml
 #'
 create_testdata <- function(
@@ -31,7 +31,7 @@ create_testdata <- function(
 #' 
 #' Performs tests for datachecks and creates report
 #'
-#' @param report A logical value idicating if html report should be rendered
+#' @param report A logical value indicating if html report should be rendered
 #'
 #' @importFrom magrittr %>%
 #' @importFrom knitr kable

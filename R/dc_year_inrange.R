@@ -15,6 +15,8 @@ dc_year_inrange <- function(
       gsub(" ", "", .) %>% # Remove possible spaces
       as.numeric()
   )
-  result <- (clean_input >= as.numeric(date_start) & clean_input <= as.numeric(date_end))
+  result <- (
+    clean_input >= as.numeric(date_start) & clean_input <= as.numeric(date_end)
+  )
   return(perform_dc_missing(result, input))
 }

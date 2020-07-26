@@ -7,7 +7,7 @@
 perform_test_dc(report = FALSE)
 }
 \arguments{
-\item{report}{A logical value idicating if html report should be rendered}
+\item{report}{A logical value indicating if html report should be rendered}
 }
 \description{
 Performs tests for datachecks and creates report

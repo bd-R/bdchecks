@@ -25,7 +25,9 @@ dc_taxo_level <- function(
     gsub(" ", "", .) # Remove possible spaces
 
   if (!(provided_input %in% ranks)) {
-    stop("Rank Value unknown. It should be family, genus, species or subspecies")
+    stop(
+      "Rank Value unknown. It should be family, genus, species or subspecies"
+    )
   }   
   idx <- which(ranks == provided_input)
   result <- clean_input[passed] %in% ranks[idx:length(ranks)]

@@ -5,7 +5,7 @@
 #' is a summary table.
 #'
 #' @param input_flag Object of a DataCheckFlagSet class.
-#' @param fancy Should ouput be returned in a rst format.
+#' @param fancy Should output be returned in a rst format.
 #' @param filtering_dt Should output be returned as a summary table.
 #'
 #' @return A data.frame or rst table with summary statistics

@@ -10,7 +10,7 @@ tax_available_name(name = NULL, rank_orig = "class", db = "gbif")
 \item{name}{A character vector of taxonomical records (e.g.
 `c("Animalia", "Aves")`).}
 
-\item{rank_orig}{A string for taxonimical rank (e.g. `class`)}
+\item{rank_orig}{A string for taxonomical rank (e.g. `class`)}
 
 \item{db}{A string for reference database (passed to `tax_available_name`)}
 }
@@ -19,8 +19,8 @@ A character vector of available names within given rank.
 }
 \description{
 `tax_available_name()` is a function that checks if given records are within
-specified rank. It requires two inputs `name` of taxonimal records and
-`rank_orig` (taxonimical rank). Output is subset of names that were within
+specified rank. It requires two inputs `name` of taxonomical records and
+`rank_orig` (taxonomical rank). Output is subset of names that were within
 given rank.
 }
 \examples{

@@ -2400,7 +2400,7 @@ DC_earliest_date:
       keywords: time,validation,conformance
       guid: 
     example:
-      pass: The value for eventDate is greather than provided resolution.
+      pass: The value for eventDate is greater than provided resolution.
       fail: The value for eventDate is not greater than provided resolution.
       input_pass: eventDate="2002-02-02",provided_input="1996-07-06"
       input_fail: eventDate="2002-02-02",provided_input="2020-06-01"
