@@ -106,3 +106,43 @@ test_that("dc_filter_generate", {
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   bar <- expect_silent(dc_filter_generate(foo,foo[3]))
 })
+
+# Test dc functions
+context("Unique dc cases: taxonrank_standard")
+# test dc_taxonrank_standard
+test_that("dc_taxonrank_standard", {
+  foo <- unique(data_bats$taxonRank)
+  # We expect warnings as not all columns are present
+  bar <- expect_silent(dc_taxonrank_standard(input = foo, language = "all"))
+  bar <- expect_warning(dc_taxonrank_standard(input = foo, language = "test"))
+})
+
+# Test dc functions
+context("Unique dc cases: temporal_resolution")
+# test dc_temporal_resolution
+test_that("dc_temporal_resolution", {
+  foo <- unique(data_bats$eventDate)
+  # We expect warnings as not all columns are present
+  bar <- expect_silent(
+    dc_temporal_resolution(
+      input = foo, 
+      provided_input = c("2016-01-02", "2018-02-08", "day")
+    )
+  )
+  bar <- expect_error(
+    dc_temporal_resolution(
+      input = foo, 
+      provided_input = c("2016-01-02", "2018-02-08", "week")
+    )
+  )
+})
+
+# Test dc functions
+context("Unique dc cases: taxo_level")
+# test dc_taxo_level
+test_that("dc_taxo_level", {
+  foo <- unique(data_bats$taxonRank)
+  # We expect warnings as not all columns are present
+  bar <- expect_error(dc_taxo_level(input = foo, provided_input = "test"))
+})
+
