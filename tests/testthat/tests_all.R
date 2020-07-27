@@ -49,6 +49,7 @@ test_that("perform_test_dc", {
     }
   expect_true(foo(result), label = "Tests for data check")
   expect_silent(perform_test_dc(report = TRUE))
+  expect_silent(perform_test_dc(summary = TRUE))
 })
 
 # Test summary functions
