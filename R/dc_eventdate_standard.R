@@ -5,7 +5,8 @@
 #' 
 dc_eventdate_standard <- function(input = NULL) {
   result <- input %>%
-    as.Date() %>% # Convert to date first so that following call woul return NA
+    # Convert to date first so that following call would return NA
+    {suppressWarnings(lubridate::as_date(., format = '%Y-%m-%d'))} %>% 
     as.POSIXct() %>% # Gives NA for non-valid date
     is.na()
   return(perform_dc_missing(!result, input))
