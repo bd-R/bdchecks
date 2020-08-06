@@ -12,8 +12,8 @@ perform_test_dc(report = FALSE, wanted_dc = NULL, summary = FALSE)
 \item{wanted_dc}{Character vector of names for data checks that should be 
 tested (i.e. test only these data checks)}
 
-\item{summary}{A logical value indicating if the summary should be outputed
-instead of the full list of tests}
+\item{summary}{A logical value indicating if the summary should be 
+outputted instead of the full list of tests}
 }
 \description{
 Performs tests for datachecks and creates report

@@ -44,8 +44,8 @@ create_testdata <- function(
 #' @param report A logical value indicating if html report should be rendered
 #' @param wanted_dc Character vector of names for data checks that should be 
 #' tested (i.e. test only these data checks)
-#' @param summary A logical value indicating if the summary should be outputed
-#' instead of the full list of tests
+#' @param summary A logical value indicating if the summary should be 
+#' outputted instead of the full list of tests
 #'
 #' @importFrom magrittr "%>%"
 #' @importFrom knitr kable
