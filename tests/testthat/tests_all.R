@@ -1,6 +1,25 @@
 library(bdchecks)
 
-# Test summary functions
+# Test class export functions
+context("Export Function")
+# test datacheck_info_export
+# exports data checks from YAML file to rda and/or roxygen2 file.
+test_that("datacheck_info_export", {
+  # check if file exists
+  path_yaml <- system.file("extdata/data_check.yaml", package = "bdchecks")
+  expect_true(file.exists(path_yaml))
+  # check if file is not empty
+  data_yaml <- yaml::yaml.load_file(path_yaml)
+  expect_true(length(data_yaml) != 0)
+  # Check if output is valid
+  if (!file.exists("./R")) {
+    foo <- dir.create("./foo")
+    result <- expect_silent(datacheck_info_export(path_rd = foo)) 
+  }
+  expect_s4_class(result, "DataCheckSet")
+})
+
+# Test perform functions
 context("Data Checks")
 # test perform_dc
 # performs data checks on a given data set
@@ -52,61 +71,6 @@ test_that("perform_test_dc", {
   expect_silent(perform_test_dc(summary = TRUE))
 })
 
-# Test summary functions
-context("Summary Functions")
-# test dc_summary
-# outputs summary table for passed/failed data checks
-test_that("summary_dc", {
-  # Data checks on example data
-  # We expect warnings as not all columns are present
-  result <- expect_warning(perform_dc(data_bats))
-  # Check if output is valid
-  expect_s4_class(result, "DataCheckFlagSet")
-  # Summary output 1
-  foo <- summary_dc(result, fancy = FALSE, filtering_dt = FALSE)
-  expect_s3_class(foo, "data.frame")
-  # expect_equal(nrow(foo), 22)
-  expect_equal(ncol(foo), 5)
-  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
-  expect_s3_class(foo, "data.frame")
-  expect_match(colnames(foo)[3:5], "%")
-  # Summary output 2
-  foo <- summary_dc(result)
-  expect_s3_class(foo, "knitr_kable")
-})
-
-# Test class export functions
-context("Export Functions")
-# test datacheck_info_export
-# exports data checks from YAML file to rda and/or roxygen2 file.
-test_that("datacheck_info_export", {
-  # check if file exists
-  path_yaml <- system.file("extdata/data_check.yaml", package = "bdchecks")
-  expect_true(file.exists(path_yaml))
-  # check if file is not empty
-  data_yaml <- yaml::yaml.load_file(path_yaml)
-  expect_true(length(data_yaml) != 0)
-  # Check if output is valid
-  if (!file.exists("./R")) {
-    foo <- dir.create("./foo")
-    result <- expect_silent(datacheck_info_export(path_rd = foo)) 
-  }
-  expect_s4_class(result, "DataCheckSet")
-})
-
-# Test filter functions
-context("Filter functions")
-# test dc_filter_generate
-# generates vector for filtering data checks result table
-# according to `selectCells` object.
-test_that("dc_filter_generate", {
-  # Data checks on example data
-  # We expect warnings as not all columns are present
-  result <- expect_warning(perform_dc(data_bats))
-  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
-  bar <- expect_silent(dc_filter_generate(foo,foo[3]))
-})
-
 # Test dc functions
 context("Unique dc cases: taxonrank_standard")
 # test dc_taxonrank_standard
@@ -144,5 +108,83 @@ test_that("dc_taxo_level", {
   foo <- unique(data_bats$taxonRank)
   # We expect warnings as not all columns are present
   bar <- expect_error(dc_taxo_level(input = foo, provided_input = "test"))
+})
+
+# Test summary functions
+context("Summary Function")
+# test dc_summary
+# outputs summary table for passed/failed data checks
+test_that("summary_dc", {
+  # Data checks on example data
+  # We expect warnings as not all columns are present
+  result <- expect_warning(perform_dc(data_bats))
+  # Check if output is valid
+  expect_s4_class(result, "DataCheckFlagSet")
+  # Summary output 1
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = FALSE)
+  expect_s3_class(foo, "data.frame")
+  # expect_equal(nrow(foo), 22)
+  expect_equal(ncol(foo), 5)
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
+  expect_s3_class(foo, "data.frame")
+  expect_match(colnames(foo)[3:5], "%")
+  # Summary output 2
+  foo <- summary_dc(result)
+  expect_s3_class(foo, "knitr_kable")
+})
+
+# Test filter generating functions
+context("Filter generating function")
+# test dc_filter_generate
+# generates vector for filtering data checks result table
+# according to `selectCells` object.
+test_that("dc_filter_generate", {
+  # Data checks on example data
+  # We expect warnings as not all columns are present
+  dc <- names(data.checks@dc_body[c(1:3)])
+  result <- expect_warning(perform_dc(data_bats, wanted_dc = dc))
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
+  # will be used for 'cell_selected' option, usually generated in shiny app
+  # 1st column row number in the summary table, 2nd column - specific value:
+  # '2' for passed, '3' for failed, '4' for missing
+  filter_matrix <- matrix(c(seq(foo[,1]), 3, 3, 3), nrow = 3)
+  # generating filters
+  bar <- expect_silent(
+    dc_filter_generate(
+      dc_result_summary = foo, 
+      cell_selected = filter_matrix
+    )
+  )
+})
+
+# Test filter functions
+context("Filter function")
+# test dc_filter
+# filters data check result according to filtering vector
+test_that("dc_filter", {
+  # Data checks on example data
+  # We expect warnings as not all columns are present
+  dc <- names(data.checks@dc_body[c(1:3)])
+  result <- expect_warning(perform_dc(data_bats, wanted_dc = dc))
+  foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
+  # will be used for 'cell_selected' option, usually generated in shiny app
+  filter_matrix <- matrix(c(seq(foo[,1]), 3, 3, 3), nrow = 3)
+  # generating filters
+  bar <- expect_silent(
+    dc_filter_generate(
+      dc_result_summary = foo, 
+      cell_selected = filter_matrix
+    )
+  )
+  # performing filtering
+  fooo <- expect_silent(
+    dc_filter(
+      data = data_bats,
+      # 'result' and 'bar' from previous test
+      dc_result = result,
+      dc_filts = bar
+    )
+  )
+  expect_s3_class(fooo, "data.frame")
 })
 
