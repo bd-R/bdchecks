@@ -15,6 +15,7 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom taxize classification
 #' @importFrom stats na.omit
+#' @importFrom utils capture.output
 #'
 #' @examples
 #' my_name <- c("Animalia", "Chordata", "Aves", "Mammalia")

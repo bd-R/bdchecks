@@ -1,6 +1,6 @@
 DC_taxon_present:
   name: taxon_present
-  title: Taxon present
+  title: 'Taxon present'
   meta:
     information:
       description: Check if at least one field needed to determine the taxon of the entity exists and is not empty.
@@ -50,7 +50,7 @@ DC_taxon_present:
     output_tdwg_standard_missing: missing_data
 DC_taxonid_present:
   name: taxonid_present
-  title: Taxonid present
+  title: '`taxonId` present'
   meta:
     information:
       description: Check if taxonID exists and is not empty.
@@ -98,7 +98,7 @@ DC_taxonid_present:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_taxonrank_present:
   name: taxonrank_present
-  title: Taxonrank present
+  title: '`taxonRank` present'
   meta:
     information:
       description: Check if taxonRank exists and is not empty.
@@ -146,7 +146,7 @@ DC_taxonrank_present:
     output_tdwg_standard_missing: missing_data
 DC_taxonrank_standard:
   name: taxonrank_standard
-  title: Taxonrank standard
+  title: '`taxonRank` standard'
   meta:
     information:
       description: Check if taxonRank is standard.
@@ -195,7 +195,7 @@ DC_taxonrank_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_scientificname_present:
   name: scientificname_present
-  title: Scientificname present
+  title: '`scientificName` present'
   meta:
     information:
       description: Check if scientificName exists and is not empty.
@@ -246,7 +246,7 @@ DC_scientificname_present:
     output_tdwg_standard_missing: missing_data
 DC_kingdom_valid:
   name: kingdom_valid
-  title: Kingdom valid
+  title: '`kingdom` valid'
   meta:
     information:
       description: Check if kingdom was found as a value at the rank of kingdom by the specified source authority service.
@@ -295,7 +295,7 @@ DC_kingdom_valid:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_phylum_valid:
   name: phylum_valid
-  title: Phylum valid
+  title: '`phylum` valid'
   meta:
     information:
       description: Check if phylum was found as a value at the rank of phylum by the specified source authority service.
@@ -344,7 +344,7 @@ DC_phylum_valid:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_class_valid:
   name: class_valid
-  title: Class valid
+  title: '`class` valid'
   meta:
     information:
       description: Check if class was found as a value at the rank of class by the specified source authority service.
@@ -393,7 +393,7 @@ DC_class_valid:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_order_valid:
   name: order_valid
-  title: Order valid
+  title: '`order` valid'
   meta:
     information:
       description: Check if order was found as a value at the rank of order by the specified source authority service.
@@ -442,7 +442,7 @@ DC_order_valid:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_family_valid:
   name: family_valid
-  title: Family valid
+  title: '`family` valid'
   meta:
     information:
       description: Check if family was found as a value at the rank of family by the specified source authority service.
@@ -491,7 +491,7 @@ DC_family_valid:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_genus_valid:
   name: genus_valid
-  title: Genus valid
+  title: '`genus` valid'
   meta:
     information:
       description: Check if genus was found as a value at the rank of genus by the specified source authority service.
@@ -540,7 +540,7 @@ DC_genus_valid:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_location_present:
   name: location_present
-  title: Location present
+  title: 'Location present'
   meta:
     information:
       description: Check if at least one field needed to determine location of the entity exists and is not empty.
@@ -591,7 +591,7 @@ DC_location_present:
     output_tdwg_standard_missing: missing_data
 DC_decimallatitude_present:
   name: decimallatitude_present
-  title: Decimallatitude present
+  title: '`decimalLatitude` present'
   meta:
     information:
       description: Check if decimalLatitude exists and is not empty.
@@ -639,7 +639,7 @@ DC_decimallatitude_present:
     output_tdwg_standard_missing: missing_data
 DC_decimallongitude_present:
   name: decimallongitude_present
-  title: Decimallongitude present
+  title: '`decimalLongitude` present'
   meta:
     information:
       description: Check if decimalLongitude exists and is not empty.
@@ -687,7 +687,7 @@ DC_decimallongitude_present:
     output_tdwg_standard_missing: missing_data
 DC_geodeticdatum_present:
   name: geodeticdatum_present
-  title: Geodeticdatum present
+  title: '`geodeticDatum` present'
   meta:
     information:
       description: Check if geodeticDatum exists and is not empty.
@@ -735,7 +735,7 @@ DC_geodeticdatum_present:
     output_tdwg_standard_missing: missing_data
 DC_country_present:
   name: country_present
-  title: Country present
+  title: '`country` present'
   meta:
     information:
       description: Check if country exists and is not empty.
@@ -784,7 +784,7 @@ DC_country_present:
     output_tdwg_standard_missing: missing_data
 DC_countrycode_present:
   name: countrycode_present
-  title: Countrycode present
+  title: '`countryCode` present'
   meta:
     information:
       description: Check if countryCode exists and is not empty.
@@ -832,7 +832,7 @@ DC_countrycode_present:
     output_tdwg_standard_missing: missing_data
 DC_eventtemporal_present:
   name: eventtemporal_present
-  title: Eventtemporal present
+  title: '`eventTemporal` present'
   meta:
     information:
       description: Check if at least one field needed to determine event temporal of the entity exists and is not empty.
@@ -880,7 +880,7 @@ DC_eventtemporal_present:
     output_tdwg_standard_missing: missing_data
 DC_eventdate_present:
   name: eventdate_present
-  title: Eventdate present
+  title: '`eventDate` present'
   meta:
     information:
       description: Check if eventDate exists and is not empty.
@@ -930,7 +930,7 @@ DC_eventdate_present:
     output_tdwg_standard_missing: missing_data
 DC_year_present:
   name: year_present
-  title: Year present
+  title: '`year` present'
   meta:
     information:
       description: Check if year exists and is not empty.
@@ -979,7 +979,7 @@ DC_year_present:
     output_tdwg_standard_missing: missing_data
 DC_dctype_present:
   name: dctype_present
-  title: Dctype present
+  title: '`dctype` present'
   meta:
     information:
       description: Check if dctype exists and is not empty.
@@ -1029,7 +1029,7 @@ DC_dctype_present:
     output_tdwg_standard_missing: missing_data
 DC_license_present:
   name: license_present
-  title: License present
+  title: '`license` present'
   meta:
     information:
       description: Check if license exists and is not empty.
@@ -1078,7 +1078,7 @@ DC_license_present:
     output_tdwg_standard_missing: missing_data
 DC_basisofrecord_present:
   name: basisofrecord_present
-  title: Basisofrecord present
+  title: '`basisOfRecord` present'
   meta:
     information:
       description: Check if basisOfRecord exists and is not empty.
@@ -1127,7 +1127,7 @@ DC_basisofrecord_present:
     output_tdwg_standard_missing: missing_data
 DC_occurrencestatus_present:
   name: occurrencestatus_present
-  title: Occurrencestatus present
+  title: '`occurrenceStatus` present'
   meta:
     information:
       description: Check if occurrenceStatus exists and is not empty.
@@ -1179,7 +1179,7 @@ DC_occurrencestatus_present:
     output_tdwg_standard_missing: missing_data
 DC_occurrenceid_present:
   name: occurrenceid_present
-  title: Occurrenceid present
+  title: '`occurrenceId` present'
   meta:
     information:
       description: Check if occurrenceID exists and is not empty.
@@ -1231,7 +1231,7 @@ DC_occurrenceid_present:
     output_tdwg_standard_missing: missing_data
 DC_datageneralizations_present:
   name: datageneralizations_present
-  title: Datageneralizations present
+  title: '`dataGeneralizations` present'
   meta:
     information:
       description: Check if dataGeneralizations is not empty.
@@ -1287,7 +1287,7 @@ DC_datageneralizations_present:
     output_tdwg_standard_missing: not_reported
 DC_establishmentmeans_present:
   name: establishmentmeans_present
-  title: Establishmentmeans present
+  title: '`establishmentMeans` present'
   meta:
     information:
       description: Check if establishmentMeans is not empty.
@@ -1340,7 +1340,7 @@ DC_establishmentmeans_present:
     output_tdwg_standard_missing: not_reported
 DC_occurrenceid_standard:
   name: occurrenceid_standard
-  title: Occurrenceid standard
+  title: '`occurrenceId` standard'
   meta:
     information:
       description: Check if occurrenceID is not empty and follows a format commonly associated with globally unique identifiers (GUID).
@@ -1389,7 +1389,7 @@ DC_occurrenceid_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_eventdate_inrange:
   name: eventdate_inrange
-  title: Eventdate inrange
+  title: '`eventDate` in range'
   meta:
     information:
       description: Check if eventDate is not empty and is within given earliest and latest dates.
@@ -1438,7 +1438,7 @@ DC_eventdate_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_year_inrange:
   name: year_inrange
-  title: Year inrange
+  title: '`year` in range'
   meta:
     information:
       description: Check if year is not empty and is within given earliest and latest dates.
@@ -1487,7 +1487,7 @@ DC_year_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_month_standard:
   name: month_standard
-  title: Month standard
+  title: '`month` standard'
   meta:
     information:
       description: Check if month is an integer between 1 and 12 inclusive.
@@ -1536,7 +1536,7 @@ DC_month_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_basisofrecord_standard:
   name: basisofrecord_standard
-  title: Basisofrecord standard
+  title: '`basisOfRecord` standard'
   meta:
     information:
       description: Check if basisOfRecord is specified source authority service.
@@ -1584,7 +1584,7 @@ DC_basisofrecord_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_coordinates_notzero:
   name: coordinates_notzero
-  title: Coordinates notzero
+  title: 'Coordinates not zero'
   meta:
     information:
       description: Check if decimalLatitude or decimalLongitude are not zeroes.
@@ -1632,7 +1632,7 @@ DC_coordinates_notzero:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_coordinateuncertainty_inrange:
   name: coordinateuncertainty_inrange
-  title: Coordinateuncertainty inrange
+  title: '`coordinateUncertaintyInMeters` in range'
   meta:
     information:
       description: Check if coordinateUncertaintyInMeters is within given range.
@@ -1680,7 +1680,7 @@ DC_coordinateuncertainty_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_country_standard:
   name: country_standard
-  title: Country standard
+  title: '`country` standard'
   meta:
     information:
       description: Check if country is within a set of available country names.
@@ -1732,7 +1732,7 @@ DC_country_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_day_standard:
   name: day_standard
-  title: Day standard
+  title: '`day` standard'
   meta:
     information:
       description: Check if day is an integer between 1 and 31 inclusive.
@@ -1783,7 +1783,7 @@ DC_day_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_minelevation_inrange:
   name: minelevation_inrange
-  title: Minelevation inrange
+  title: '`minimumElevationInMeters` in range'
   meta:
     information:
       description: Check if minimumElevationInMeters is within parameter range.
@@ -1839,7 +1839,7 @@ DC_minelevation_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_maxelevation_inrange:
   name: maxelevation_inrange
-  title: Maxelevation inrange
+  title: '`maximumElevationInMeters` in range'
   meta:
     information:
       description: Check if maximumElevationInMeters is within parameter range.
@@ -1887,7 +1887,7 @@ DC_maxelevation_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_decimallongitude_inrange:
   name: decimallongitude_inrange
-  title: Decimallongitude inrange
+  title: '`decimalLongitude` in range'
   meta:
     information:
       description: Check if decimalLongitude is within parameter range.
@@ -1935,7 +1935,7 @@ DC_decimallongitude_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_decimallatitude_inrange:
   name: decimallatitude_inrange
-  title: Decimallatitude inrange
+  title: '`decimalLatitude` in range'
   meta:
     information:
       description: Check if decimalLatitude is within parameter range.
@@ -1983,7 +1983,7 @@ DC_decimallatitude_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_country_countrycode_consistent:
   name: country_countrycode_consistent
-  title: Country countrycode consistent
+  title: '`country` `countryCode` consistent'
   meta:
     information:
       description: Check if country matches country code.
@@ -2031,7 +2031,7 @@ DC_country_countrycode_consistent:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_mindepth_maxdepth_inrange:
   name: mindepth_maxdepth_inrange
-  title: Mindepth maxdepth inrange
+  title: '`minimumDepthInMeters` `maximumDepthInMeters` in range'
   meta:
     information:
       description: Check if minimumDepthInMeters and maximumDepthInMeters is within parameter range.
@@ -2082,7 +2082,7 @@ DC_mindepth_maxdepth_inrange:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_minelevation_lessthan_maxelevation:
   name: minelevation_lessthan_maxelevation
-  title: Minelevation lessthan maxelevation
+  title: '`minimumElevationInMeters` less than `maximumElevationInMeters`'
   meta:
     information:
       description: Check if minimumElevationInMeters is not greater than maximumElevationInMeters.
@@ -2130,7 +2130,7 @@ DC_minelevation_lessthan_maxelevation:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_mindepth_lessthan_maxdepth:
   name: mindepth_lessthan_maxdepth
-  title: Mindepth lessthan maxdepth
+  title: '`minimumDepthInMeters` less than `maximumDepthInMeters`'
   meta:
     information:
       description: Check if minimumDepthInMeters is not greater than maximumDepthInMeters.
@@ -2183,7 +2183,7 @@ DC_mindepth_lessthan_maxdepth:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_eventdate_standard:
   name: eventdate_standard
-  title: Eventdate standard
+  title: '`eventDate` standard'
   meta:
     information:
       description: Check if eventDate is a valid ISO 8601-1:2019 date.
@@ -2239,7 +2239,7 @@ DC_eventdate_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_dateidentified_standard:
   name: dateidentified_standard
-  title: Dateidentified standard
+  title: '`dateIdentified` standard'
   meta:
     information:
       description: Check if dateIdentified is a valid ISO 8601-1:2019 date.
@@ -2287,7 +2287,7 @@ DC_dateidentified_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_occurrencestatus_standard:
   name: occurrencestatus_standard
-  title: Occurrencestatus standard
+  title: '`occurrenceStatus` standard'
   meta:
     information:
       description: Check if occurrenceStatus is specified source authority service.
@@ -2335,7 +2335,7 @@ DC_occurrencestatus_standard:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_spatial_resolution:
   name: spatial_resolution
-  title: Spatial resolution
+  title: 'Spatial resolution'
   meta:
     information:
       description: Check if coordinateUncertaintyInMeters is not greater than inputted resolution.
@@ -2383,7 +2383,7 @@ DC_spatial_resolution:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_earliest_date:
   name: earliest_date
-  title: Earliest date
+  title: 'Earliest date'
   meta:
     information:
       description: Check if eventDate is greater than inputted resolution.
@@ -2431,7 +2431,7 @@ DC_earliest_date:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_taxo_level:
   name: taxo_level
-  title: Taxo level
+  title: 'Taxo level'
   meta:
     information:
       description: Check if taxonRank is lower than provided resolution.
@@ -2479,7 +2479,7 @@ DC_taxo_level:
     output_tdwg_standard_missing: internal_prerequisites_not_met
 DC_temporal_resolution:
   name: temporal_resolution
-  title: Temporal resolution
+  title: 'Temporal resolution'
   meta:
     information:
       description: Check if eventDate is within given range and resolution.
