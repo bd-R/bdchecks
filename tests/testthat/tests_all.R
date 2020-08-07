@@ -147,7 +147,7 @@ test_that("dc_filter_generate", {
   # will be used for 'cell_selected' option, usually generated in shiny app
   # 1st column row number in the summary table, 2nd column - specific value:
   # '2' for passed, '3' for failed, '4' for missing
-  filter_matrix <- matrix(c(seq(foo[,1]), 3, 3, 3), nrow = 3)
+  filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
   # generating filters
   bar <- expect_silent(
     dc_filter_generate(
@@ -168,7 +168,7 @@ test_that("dc_filter", {
   result <- expect_warning(perform_dc(data_bats, wanted_dc = dc))
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   # will be used for 'cell_selected' option, usually generated in shiny app
-  filter_matrix <- matrix(c(seq(foo[,1]), 3, 3, 3), nrow = 3)
+  filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
   # generating filters
   bar <- expect_silent(
     dc_filter_generate(
