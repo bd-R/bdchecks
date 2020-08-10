@@ -1,5 +1,5 @@
 ## tic GitHub Actions template: linux-macos-windows-deploy
-## revision date: 2020-06-14
+## revision date: 2020-07-29
 on:
   push:
   pull_request:
@@ -23,7 +23,7 @@ jobs:
           # use a different tic template type if you do not want to build on all listed platforms
           - { os: windows-latest, r: "release" }
           - { os: macOS-latest, r: "release", pkgdown: "true", latex: "true" }
-          - { os: macOS-latest, r: "devel" }
+          - { os: ubuntu-latest, r: "devel" }
           - { os: ubuntu-latest, r: "release" }
 
     env:
@@ -43,7 +43,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v2.1.1
+      - uses: actions/checkout@v2.3.1
 
       - uses: r-lib/actions/setup-r@master
         with:
@@ -69,7 +69,7 @@ jobs:
 
       - name: "[Cache] Cache R packages"
         if: runner.os != 'Windows'
-        uses: pat-s/always-upload-cache@v2.0.0
+        uses: pat-s/always-upload-cache@v2.1.0
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
@@ -80,7 +80,6 @@ jobs:
         run: |
           Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'source')"
           Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'source')"
-
       - name: "[Stage] [Linux] Install curl"
         if: runner.os == 'Linux'
         run: sudo apt install libcurl4-openssl-dev
@@ -95,7 +94,6 @@ jobs:
         run: |
           echo -e 'options(Ncpus = 4, pkgType = "source", repos = structure(c(CRAN = "https://cloud.r-project.org/")))' > $HOME/.Rprofile
           Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
-
       - name: "[Stage] Script"
         run: Rscript -e 'tic::script()'
 
@@ -105,14 +103,13 @@ jobs:
 
       - name: "[Stage] Upload R CMD check artifacts"
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2.1.1
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
       - name: "[Stage] Before Deploy"
         run: |
           Rscript -e "tic::before_deploy()"
-
       - name: "[Stage] Deploy"
         run: Rscript -e "tic::deploy()"
 
