@@ -9,7 +9,7 @@ summary_dc(input_flag, fancy = TRUE, filtering_dt = FALSE)
 \arguments{
 \item{input_flag}{Object of a DataCheckFlagSet class.}
 
-\item{fancy}{Should ouput be returned in a rst format.}
+\item{fancy}{Should output be returned in a rst format.}
 
 \item{filtering_dt}{Should output be returned as a summary table.}
 }

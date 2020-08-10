@@ -1,13 +1,13 @@
-#' Return available taxonomical records
+#' Return available taxonomic records
 #'
 #' `tax_available_name()` is a function that checks if given records are within
-#' specified rank. It requires two inputs `name` of taxonimal records and
-#' `rank_orig` (taxonimical rank). Output is subset of names that were within
+#' specified rank. It requires two inputs `name` of taxonomic records and
+#' `rank_orig` (taxonomic rank). Output is subset of names that were within
 #' given rank.
 #'
-#' @param name A character vector of taxonomical records (e.g.
+#' @param name A character vector of taxonomic records (e.g.
 #' `c("Animalia", "Aves")`).
-#' @param rank_orig A string for taxonimical rank (e.g. `class`)
+#' @param rank_orig A string for taxonomic rank (e.g. `class`)
 #' @param db A string for reference database (passed to `tax_available_name`)
 #'
 #' @return A character vector of available names within given rank.
@@ -15,6 +15,7 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom taxize classification
 #' @importFrom stats na.omit
+#' @importFrom utils capture.output
 #'
 #' @examples
 #' my_name <- c("Animalia", "Chordata", "Aves", "Mammalia")

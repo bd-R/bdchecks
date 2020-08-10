@@ -8,22 +8,96 @@ output:
       collapsed: true
 ---
 
-```{r, results = "asis", echo = FALSE}
+# {.tabset .tabset-pills}
+
+## Summary
+
+```{r, results = 'asis', echo = FALSE}
+bar <- c()
 for (i in seq_along(data_test)) {
-  cat(paste("\n\n#", names(data_test)[i], "\n"))
   d <- data_test[[i]]
-  d %>%
-    knitr::kable() %>%
-    kableExtra::kable_styling(
-      full_width = FALSE,
-      bootstrap_options = "striped"
-    ) %>%
-    kableExtra::row_spec(
+  bar <- c(bar, any(d$expected != d$observed))
+}
+
+data.frame(
+  x = c("Total", "Passed", "Failed"),
+  y = c(length(data_test), sum(!bar), sum(bar))
+  ) %>%
+  knitr::kable(col.names = NULL) %>%
+  kableExtra::kable_styling(
+    full_width = FALSE,
+    bootstrap_options = c("striped", "hover"),
+    font_size = 36,
+    position = "float_left"
+  ) %>%
+  kableExtra::row_spec(
+    2, background = "#bce4b4"
+  ) %>%
+  kableExtra::row_spec(
+    3, background = "#ff9999"
+  ) %>%
+  print()
+```
+
+## Failed
+
+```{r, results = 'asis', echo = FALSE}
+for (i in seq_along(data_test)) {
+  d <- data_test[[i]]
+  skipping <- c()
+  type <- data.checks@dc_body[[names(data_test)[i]]]@information$check_type
+  title <- data.checks@dc_body[[names(data_test)[i]]]@title
+  if (any(d$expected != d$observed)) {
+    cat(paste("\n\n###", title, "\n", type, "\n\n"))
+    d %>%
+      knitr::kable() %>%
+      kableExtra::row_spec(
       which(d$observed == "pass"), background = "#bce4b4"
-    ) %>%
-    kableExtra::row_spec(
-      which(d$observed == "fail"), background = "#c09697"
-    ) %>%
-    print()
+      ) %>%
+      kableExtra::row_spec(
+        which(d$observed == "fail"), background = "#ffff99"
+      ) %>%
+      kableExtra::row_spec(
+        which(d$expected != d$observed), background = "#ff9999"
+      ) %>%
+      kableExtra::kable_styling(
+        full_width = TRUE,
+        bootstrap_options = c("striped", "hover", "bordered", "condensed")
+      ) %>%
+      print()
+    skipping <- c(skipping, names(data_test)[i])
+  }
+}
+if (is.null(skipping)) {
+  cat(
+    "No failed data checks. 
+    \nAll expected and observed values match."
+  )
+}
+``` 
+
+## Passed
+
+```{r, results = 'asis', echo = FALSE}
+for (i in seq_along(data_test)) {
+  if (!(names(data_test)[i] %in% skipping)) {
+    type <- data.checks@dc_body[[names(data_test)[i]]]@information$check_type
+    title <- data.checks@dc_body[[names(data_test)[i]]]@title
+    cat(paste("\n\n###", title, "\n", type, "\n\n"))
+    d <- data_test[[i]]
+    d %>%
+      knitr::kable() %>%
+      kableExtra::kable_styling(
+        full_width = TRUE,
+        bootstrap_options = c("striped", "bordered", "condensed")
+      ) %>%
+      kableExtra::row_spec(
+        which(d$observed == "pass"), background = "#bce4b4"
+      ) %>%
+      kableExtra::row_spec(
+        which(d$observed == "fail"), background = "#ffff99"
+      ) %>%
+      print()
+  }
 }
 ```

@@ -5,11 +5,15 @@
 \title{Create a dataset to test datachecks}
 \usage{
 create_testdata(
-  path_datatest = system.file("extdata/data_test.yaml", package = "bdchecks")
+  path_datatest = system.file("extdata/data_test.yaml", package = "bdchecks"),
+  wanted_dc = NULL
 )
 }
 \arguments{
 \item{path_datatest}{String that specifies path to test data in yaml format}
+
+\item{wanted_dc}{Character vector of names for data checks that should be 
+tested (i.e. test only these data checks)}
 }
 \value{
 A list of data.frames that contain target column, test type and

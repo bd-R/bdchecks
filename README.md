@@ -58,7 +58,7 @@ check()
 3.2 Add data check function to `./R/` directory (file should be named after a data check, e.g. `dc_checkthis.R`). First argument to a data check function must be a vector (column) to perform data check on.  
 3.3 Add test data to `./inst/extdata/data_test.yaml`
 
-4. Export new dat check
+4. Export new data check
 
 ```{r}
 install() # To have new check in `system.file("extdata/data_check.yaml")`
@@ -71,7 +71,7 @@ install() # install package with a new check
 5. Test if everything works
 
 ```{r}
-perform_test_dc() # perform tests for data checks
+perform_test_dc(summary = TRUE) # perform tests for data checks
 check() # perform general check
 ```
 
