@@ -83,7 +83,7 @@ jobs:
     strategy:
       matrix:
               #check if dispatch can trigger /dev of bdutilities
-        repo: ['bd-R/bdutilities@dev', 'bd-R/bdDwC', 'bd-R/bdverse', 'bd-R/bdutilities.app' ,'bd-R/bdDwC.app', 'bd-R/bdchecks.app','bd-R/bdclean']
+        repo: ['bd-R/bdchecks.app', 'bd-R/bdclean']
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
