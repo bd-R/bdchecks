@@ -3,7 +3,8 @@
 %   R/documentation_establishmentmeans_present.R
 \name{dc_establishmentmeans_present}
 \alias{dc_establishmentmeans_present}
-\title{Data check establishmentmeans_present Check if establishmentMeans is not empty.}
+\title{Data check establishmentmeans_present Check if establishmentMeans is not
+empty.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -14,7 +15,13 @@ dc_establishmentmeans_present(input = NULL)
 \item{input}{a vector of establishment means information.}
 }
 \description{
-This data check answers: "Is establishmentMeans information present?" question.\cr Data check will pass if \strong{The value for establishmentMeans is not empty.} and will fail if \strong{The value for establishmentMeans is not reported.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{establishmentMeans=cultivated}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{establishmentMeans=}, such data check would return \code{FALSE}.
+This data check answers: "Is establishmentMeans information present?"
+question.\cr Data check will pass if \strong{The value for
+establishmentMeans is not empty.} and will fail if \strong{The value for
+establishmentMeans is not reported.}.\cr Dimension of this data check is
+\strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
+that will pass: \code{establishmentMeans=cultivated}, such data check would
+return \code{TRUE}.\cr Example of entries that will fail:
 }
 \section{samplePassData}{
 

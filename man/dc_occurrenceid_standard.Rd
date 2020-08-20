@@ -3,7 +3,8 @@
 %   R/documentation_occurrenceid_standard.R
 \name{dc_occurrenceid_standard}
 \alias{dc_occurrenceid_standard}
-\title{Data check occurrenceid_standard Check if occurrenceID is not empty and follows a format commonly associated with globally unique identifiers (GUID).}
+\title{Data check occurrenceid_standard Check if occurrenceID is not empty and
+follows a format commonly associated with globally unique identifiers (GUID).}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -14,7 +15,13 @@ dc_occurrenceid_standard(input = NULL)
 \item{input}{a vector of occurence ID. To pass must be match a GUID style.}
 }
 \description{
-This data check answers: "Is occurrenceID a GUID?" question.\cr Data check will pass if \strong{The value for occurrenceID is guid.} and will fail if \strong{The value for occurrenceID is not guid.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{occurrenceID=9d26b451-9dad-4e27-a6e3-5b7ae332d5ed}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{occurrenceID=}, such data check would return \code{FALSE}.
+This data check answers: "Is occurrenceID a GUID?" question.\cr Data
+check will pass if \strong{The value for occurrenceID is guid.} and will
+fail if \strong{The value for occurrenceID is not guid.}.\cr Dimension of
+this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr
+Example of entries that will pass:
+\code{occurrenceID=9d26b451-9dad-4e27-a6e3-5b7ae332d5ed}, such data check
+would return \code{TRUE}.\cr Example of entries that will fail:
 }
 \section{samplePassData}{
 

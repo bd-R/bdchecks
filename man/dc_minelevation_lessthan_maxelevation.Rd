@@ -3,7 +3,8 @@
 %   R/documentation_minelevation_lessthan_maxelevation.R
 \name{dc_minelevation_lessthan_maxelevation}
 \alias{dc_minelevation_lessthan_maxelevation}
-\title{Data check minelevation_lessthan_maxelevation Check if minimumElevationInMeters is not greater than maximumElevationInMeters.}
+\title{Data check minelevation_lessthan_maxelevation Check if
+minimumElevationInMeters is not greater than maximumElevationInMeters.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -16,7 +17,15 @@ dc_minelevation_lessthan_maxelevation(input = NULL, input2 = NULL)
 \item{input2}{a vector of maximumElevationInMeters.}
 }
 \description{
-This data check answers: "Is minimumElevationInMeters less or equal to maximumElevationInMeters?" question.\cr Data check will pass if \strong{Given minimumElevationInMeters is not greater than maximumElevationInMeters.} and will fail if \strong{Given minimumElevationInMeters is greater than maximumElevationInMeters.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumElevationInMeters="100",maximumElevationInMeters="200"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{minimumElevationInMeters="100",maximumElevationInMeters="20"}, such data check would return \code{FALSE}.
+This data check answers: "Is minimumElevationInMeters less or equal to
+maximumElevationInMeters?" question.\cr Data check will pass if
+\strong{Given minimumElevationInMeters is not greater than
+maximumElevationInMeters.} and will fail if \strong{Given
+minimumElevationInMeters is greater than maximumElevationInMeters.}.\cr
+Dimension of this data check is \strong{} and it's flagging type is:
+\strong{FLAG}\cr Example of entries that will pass:
+\code{minimumElevationInMeters="100",maximumElevationInMeters="200"}, such
+data check would return \code{TRUE}.\cr Example of entries that will fail:
 }
 \section{samplePassData}{
 

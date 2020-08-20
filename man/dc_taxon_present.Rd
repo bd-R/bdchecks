@@ -3,7 +3,8 @@
 %   R/documentation_taxon_present.R
 \name{dc_taxon_present}
 \alias{dc_taxon_present}
-\title{Data check taxon_present Check if at least one field needed to determine the taxon of the entity exists and is not empty.}
+\title{Data check taxon_present Check if at least one field needed to determine
+the taxon of the entity exists and is not empty.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,13 @@ dc_taxon_present(input = NULL)
 entry.}
 }
 \description{
-This data check answers: "Is taxon information present?" question.\cr Data check will pass if \strong{The value for at least one term in the Taxon class is present.} and will fail if \strong{The value for all terms organized in the Taxon class are NULL.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{kingdom=animal}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{kingdom=}, such data check would return \code{FALSE}.
+This data check answers: "Is taxon information present?" question.\cr
+Data check will pass if \strong{The value for at least one term in the Taxon
+class is present.} and will fail if \strong{The value for all terms
+organized in the Taxon class are NULL.}.\cr Dimension of this data check is
+\strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
+that will pass: \code{kingdom=animal}, such data check would return
+\code{TRUE}.\cr Example of entries that will fail: \code{kingdom=}, such
 }
 \section{samplePassData}{
 

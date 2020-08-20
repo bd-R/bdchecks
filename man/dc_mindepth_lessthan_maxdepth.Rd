@@ -3,7 +3,8 @@
 %   R/documentation_mindepth_lessthan_maxdepth.R
 \name{dc_mindepth_lessthan_maxdepth}
 \alias{dc_mindepth_lessthan_maxdepth}
-\title{Data check mindepth_lessthan_maxdepth Check if minimumDepthInMeters is not greater than maximumDepthInMeters.}
+\title{Data check mindepth_lessthan_maxdepth Check if minimumDepthInMeters is not
+greater than maximumDepthInMeters.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -16,7 +17,15 @@ dc_mindepth_lessthan_maxdepth(input = NULL, input2 = NULL)
 \item{input2}{a vector of maximumDepthInMeters.}
 }
 \description{
-This data check answers: "Is minimumDepthInMeters less or equal to maximumDepthInMeters?" question.\cr Data check will pass if \strong{Given minimumDepthInMeters is not greater than maximumDepthInMeters.} and will fail if \strong{Given minimumDepthInMeters is greater than maximumDepthInMeters.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{minimumDepthInMeters="100",maximumDepthInMeters="200"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{minimumDepthInMeters="100",maximumDepthInMeters="20"}, such data check would return \code{FALSE}.
+This data check answers: "Is minimumDepthInMeters less or equal to
+maximumDepthInMeters?" question.\cr Data check will pass if \strong{Given
+minimumDepthInMeters is not greater than maximumDepthInMeters.} and will fail
+if \strong{Given minimumDepthInMeters is greater than
+maximumDepthInMeters.}.\cr Dimension of this data check is \strong{} and
+it's flagging type is: \strong{FLAG}\cr Example of entries that will pass:
+\code{minimumDepthInMeters="100",maximumDepthInMeters="200"}, such data
+check would return \code{TRUE}.\cr Example of entries that will fail:
+\code{minimumDepthInMeters="100",maximumDepthInMeters="20"}, such data check
 }
 \section{samplePassData}{
 

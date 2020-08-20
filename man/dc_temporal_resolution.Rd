@@ -3,7 +3,8 @@
 %   R/documentation_temporal_resolution.R
 \name{dc_temporal_resolution}
 \alias{dc_temporal_resolution}
-\title{Data check temporal_resolution Check if eventDate is within given range and resolution.}
+\title{Data check temporal_resolution Check if eventDate is within given range
+and resolution.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -20,7 +21,12 @@ provided range and resolution.}
 \item{provided_input}{a range of dates and required temporal resolution.}
 }
 \description{
-This data check answers: "Is eventDate within given range and resolution?" question.\cr Data check will pass if \strong{The value for eventDate is within given range and resolution.} and will fail if \strong{The value for eventDate is not within given range and resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{eventDate="2018-02-28",start_date="2016-01-02",end_date="2018-02-08",resolution="month"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{eventDate="2002-03-01",start_date="2016-01-02",end_date="2018-02-08",resolution="month"}, such data check would return \code{FALSE}.
+This data check answers: "Is eventDate within given range and
+resolution?" question.\cr Data check will pass if \strong{The value for
+eventDate is within given range and resolution.} and will fail if
+\strong{The value for eventDate is not within given range and
+resolution.}.\cr Dimension of this data check is \strong{} and it's
+flagging type is: \strong{FLAG}\cr Example of entries that will pass:
 }
 \section{samplePassData}{
 

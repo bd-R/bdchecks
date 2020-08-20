@@ -2,7 +2,8 @@
 % Please edit documentation in R/dc_order_valid.R, R/documentation_order_valid.R
 \name{dc_order_valid}
 \alias{dc_order_valid}
-\title{Data check order_valid Check if order was found as a value at the rank of order by the specified source authority service.}
+\title{Data check order_valid Check if order was found as a value at the rank of
+order by the specified source authority service.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -14,7 +15,13 @@ dc_order_valid(input = NULL)
 gbif order ranks.}
 }
 \description{
-This data check answers: "Is order information valid?" question.\cr Data check will pass if \strong{The value for order is present and correct.} and will fail if \strong{The value for order is missing or incorrect.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{order=Crocodilia}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{order=}, such data check would return \code{FALSE}.
+This data check answers: "Is order information valid?" question.\cr
+Data check will pass if \strong{The value for order is present and correct.}
+and will fail if \strong{The value for order is missing or incorrect.}.\cr
+Dimension of this data check is \strong{} and it's flagging type is:
+\strong{FLAG}\cr Example of entries that will pass:
+\code{order=Crocodilia}, such data check would return \code{TRUE}.\cr
+Example of entries that will fail: \code{order=}, such data check would
 }
 \section{samplePassData}{
 

@@ -3,7 +3,8 @@
 %   R/documentation_maxelevation_inrange.R
 \name{dc_maxelevation_inrange}
 \alias{dc_maxelevation_inrange}
-\title{Data check maxelevation_inrange Check if maximumElevationInMeters is within parameter range.}
+\title{Data check maxelevation_inrange Check if maximumElevationInMeters is
+within parameter range.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -19,7 +20,14 @@ be within lower and upper limits.}
 \item{upper_limit}{a numeric value for an upper limit.}
 }
 \description{
-This data check answers: "Is maximumElevationInMeters within parameter range?" question.\cr Data check will pass if \strong{The value for maximumElevationInMeters within given numbers.} and will fail if \strong{The value for maximumElevationInMeters is not within given numbers.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{maximumElevationInMeters=0}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{maximumElevationInMeters=9999}, such data check would return \code{FALSE}.
+This data check answers: "Is maximumElevationInMeters within parameter
+range?" question.\cr Data check will pass if \strong{The value for
+maximumElevationInMeters within given numbers.} and will fail if \strong{The
+value for maximumElevationInMeters is not within given numbers.}.\cr
+Dimension of this data check is \strong{} and it's flagging type is:
+\strong{FLAG}\cr Example of entries that will pass:
+\code{maximumElevationInMeters=0}, such data check would return
+\code{TRUE}.\cr Example of entries that will fail:
 }
 \section{samplePassData}{
 
