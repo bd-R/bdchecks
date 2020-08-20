@@ -27,9 +27,9 @@ dc_filter_generate <- function(
     )
   })
   result <- list(
-    name = sapply(result, "[[", 1),
-    target = sapply(result, "[[", 2),
-    filter = sapply(result, "[[", 3)
+    name = unlist(lapply(result, "[[", 1)),
+    target = unlist(lapply(result, "[[", 2)),
+    filter = unlist(lapply(result, "[[", 3))
   )
   return(result)
 }
@@ -48,8 +48,8 @@ dc_filter_generate <- function(
 #'
 dc_filter <- function(data, dc_result, dc_filts) {
   idx <- c()
-  names <- sapply(dc_result@flags, function(x) `@`(x, name))
-  targets <- sapply(dc_result@flags, function(x) `@`(x, target))
+  names <- unlist(lapply(dc_result@flags, function(x) `@`(x, name)))
+  targets <- unlist(lapply(dc_result@flags, function(x) `@`(x, target)))
   for (i in seq_along(dc_filts$name)) {
     if (nchar(dc_filts$filter[i]) < 3) {
       foo <- dc_result@flags[names == dc_filts$name[i] &
