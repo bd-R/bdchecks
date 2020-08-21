@@ -22,8 +22,8 @@ for (i in seq_along(wanted_dc)) {
     stopifnot(length(idx) == 1)
     dc <- data.checks@dc_body[[idx]]
 
-    target_names <- unlist(strsplit(dc@input$target, ",")) %>%
-      trimws()
+    target_names <- gsub(" ", "", dc@input$target)
+    target_names <- unlist(strsplit(target_names, ","))
     target_result <- vector("list", length(target_names))
     names(target_result) <- target_names
     for (j in target_names) {
