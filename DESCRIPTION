@@ -32,8 +32,7 @@ Authors@R: c(
         comment = c(ORCID = '0000-0002-5883-0184'))
     )
 Depends: R (>= 3.4)
-Imports: gh,
-         methods,
+Imports: methods,
          magrittr,
          kableExtra,
          knitr,
