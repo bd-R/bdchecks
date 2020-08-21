@@ -48,7 +48,7 @@ eventDate
 }
 
 \examples{
-perform_dc(data_bats, 'earliest_date', 2018-02-02)
+perform_dc(data_bats, 'earliest_date', c("2018-02-02"))
 }
 \references{
 None

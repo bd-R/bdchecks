@@ -4,7 +4,7 @@
 \alias{perform_dc}
 \title{Perform Data Checks}
 \usage{
-perform_dc(data = NULL, wanted_dc = NULL, input = NULL)
+perform_dc(data = NULL, wanted_dc = NULL, ...)
 }
 \arguments{
 \item{data}{Data set to perform data checks}
@@ -12,7 +12,7 @@ perform_dc(data = NULL, wanted_dc = NULL, input = NULL)
 \item{wanted_dc}{Character vector of names for data checks that should be 
 performed (ie perform only these data checks)}
 
-\item{input}{A value for the input-based checks}
+\item{...}{A value for the input-based checks}
 }
 \value{
 Object of a DataCheckFlagSet class (combined result for all performed

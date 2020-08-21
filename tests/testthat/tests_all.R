@@ -1,5 +1,8 @@
 library(bdchecks)
 
+# change only the line below to run tests on different data
+testing_data <- bdchecks::data_bats
+
 # Test class export functions
 context("Export Function")
 # test datacheck_info_export
@@ -26,18 +29,18 @@ context("Data Checks")
 test_that("perform_dc", {
   # No data set provided will give warnings and null
   result <- expect_error(perform_dc())
-  result <- expect_warning(perform_dc(data_bats))
+  result <- expect_warning(perform_dc(testing_data))
   # we should have at least 18 performed DCs
   expect_gt(length(result@DC), 1)
   # No arguments provided
-  expect_warning(perform_dc(data_bats))
+  expect_warning(perform_dc(testing_data))
   expect_warning(perform_dc(mtcars))
   expect_silent(
-    perform_dc(data_bats, wanted_dc = "taxo_level", input = "family")
+    perform_dc(testing_data, wanted_dc = "taxo_level", lowest_rank = "family")
   )
   # This will depend on data version
   expect_equal(sum(
-    perform_dc(data_bats, "taxonrank_present")@flags[[1]]@result
+    perform_dc(testing_data, "taxonrank_present")@flags[[1]]@result
   ), 1e3)
 })
 
@@ -75,7 +78,7 @@ test_that("perform_test_dc", {
 context("Unique dc cases: taxonrank_standard")
 # test dc_taxonrank_standard
 test_that("dc_taxonrank_standard", {
-  foo <- unique(data_bats$taxonRank)
+  foo <- unique(testing_data$taxonRank)
   # We expect warnings as not all columns are present
   bar <- expect_silent(dc_taxonrank_standard(input = foo, language = "all"))
   bar <- expect_warning(dc_taxonrank_standard(input = foo, language = "test"))
@@ -85,18 +88,18 @@ test_that("dc_taxonrank_standard", {
 context("Unique dc cases: temporal_resolution")
 # test dc_temporal_resolution
 test_that("dc_temporal_resolution", {
-  foo <- unique(data_bats$eventDate)
+  foo <- unique(testing_data$eventDate)
   # We expect warnings as not all columns are present
   bar <- expect_silent(
     dc_temporal_resolution(
       input = foo, 
-      provided_input = c("2016-01-02", "2018-02-08", "day")
+      temporal_res = c("2016-01-02", "2018-02-08", "day")
     )
   )
   bar <- expect_error(
     dc_temporal_resolution(
       input = foo, 
-      provided_input = c("2016-01-02", "2018-02-08", "week")
+      temporal_res = c("2016-01-02", "2018-02-08", "week")
     )
   )
 })
@@ -105,9 +108,9 @@ test_that("dc_temporal_resolution", {
 context("Unique dc cases: taxo_level")
 # test dc_taxo_level
 test_that("dc_taxo_level", {
-  foo <- unique(data_bats$taxonRank)
+  foo <- unique(testing_data$taxonRank)
   # We expect warnings as not all columns are present
-  bar <- expect_error(dc_taxo_level(input = foo, provided_input = "test"))
+  bar <- expect_error(dc_taxo_level(input = foo, lowest_rank = "test"))
 })
 
 # Test summary functions
@@ -117,7 +120,7 @@ context("Summary Function")
 test_that("summary_dc", {
   # Data checks on example data
   # We expect warnings as not all columns are present
-  result <- expect_warning(perform_dc(data_bats))
+  result <- expect_warning(perform_dc(testing_data))
   # Check if output is valid
   expect_s4_class(result, "DataCheckFlagSet")
   # Summary output 1
@@ -142,7 +145,7 @@ test_that("dc_filter_generate", {
   # Data checks on example data
   # We expect warnings as not all columns are present
   dc <- names(data.checks@dc_body[c(1:3)])
-  result <- expect_warning(perform_dc(data_bats, wanted_dc = dc))
+  result <- expect_warning(perform_dc(testing_data, wanted_dc = dc))
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   # will be used for 'cell_selected' option, usually generated in shiny app
   # 1st column row number in the summary table, 2nd column - specific value:
@@ -165,7 +168,7 @@ test_that("dc_filter", {
   # Data checks on example data
   # We expect warnings as not all columns are present
   dc <- names(data.checks@dc_body[c(1:3)])
-  result <- expect_warning(perform_dc(data_bats, wanted_dc = dc))
+  result <- expect_warning(perform_dc(testing_data, wanted_dc = dc))
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   # will be used for 'cell_selected' option, usually generated in shiny app
   filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
@@ -179,7 +182,7 @@ test_that("dc_filter", {
   # performing filtering
   fooo <- expect_silent(
     dc_filter(
-      data = data_bats,
+      data = testing_data,
       # 'result' and 'bar' from previous test
       dc_result = result,
       dc_filts = bar

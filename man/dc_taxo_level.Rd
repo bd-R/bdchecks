@@ -53,7 +53,7 @@ taxonRank
 }
 
 \examples{
-perform_dc(data_bats, 'taxo_level', species)
+perform_dc(data_bats, 'taxo_level', c("species"))
 }
 \references{
 None
