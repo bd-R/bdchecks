@@ -48,6 +48,8 @@ DC_taxon_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_taxonid_present:
   name: taxonid_present
   title: '`taxonId` present'
@@ -96,6 +98,8 @@ DC_taxonid_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_taxonrank_present:
   name: taxonrank_present
   title: '`taxonRank` present'
@@ -144,6 +148,8 @@ DC_taxonrank_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_taxonrank_standard:
   name: taxonrank_standard
   title: '`taxonRank` standard'
@@ -193,6 +199,8 @@ DC_taxonrank_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_scientificname_present:
   name: scientificname_present
   title: '`scientificName` present'
@@ -244,6 +252,8 @@ DC_scientificname_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_kingdom_valid:
   name: kingdom_valid
   title: '`kingdom` valid'
@@ -293,6 +303,8 @@ DC_kingdom_valid:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_phylum_valid:
   name: phylum_valid
   title: '`phylum` valid'
@@ -342,6 +354,8 @@ DC_phylum_valid:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_class_valid:
   name: class_valid
   title: '`class` valid'
@@ -391,6 +405,8 @@ DC_class_valid:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_order_valid:
   name: order_valid
   title: '`order` valid'
@@ -440,6 +456,8 @@ DC_order_valid:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_family_valid:
   name: family_valid
   title: '`family` valid'
@@ -489,6 +507,8 @@ DC_family_valid:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_genus_valid:
   name: genus_valid
   title: '`genus` valid'
@@ -538,6 +558,8 @@ DC_genus_valid:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_location_present:
   name: location_present
   title: 'Location present'
@@ -589,6 +611,8 @@ DC_location_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_decimallatitude_present:
   name: decimallatitude_present
   title: '`decimalLatitude` present'
@@ -637,6 +661,8 @@ DC_decimallatitude_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_decimallongitude_present:
   name: decimallongitude_present
   title: '`decimalLongitude` present'
@@ -685,6 +711,8 @@ DC_decimallongitude_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_geodeticdatum_present:
   name: geodeticdatum_present
   title: '`geodeticDatum` present'
@@ -733,6 +761,8 @@ DC_geodeticdatum_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_country_present:
   name: country_present
   title: '`country` present'
@@ -782,6 +812,8 @@ DC_country_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_countrycode_present:
   name: countrycode_present
   title: '`countryCode` present'
@@ -830,6 +862,8 @@ DC_countrycode_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_eventtemporal_present:
   name: eventtemporal_present
   title: '`eventTemporal` present'
@@ -878,6 +912,8 @@ DC_eventtemporal_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_eventdate_present:
   name: eventdate_present
   title: '`eventDate` present'
@@ -928,6 +964,8 @@ DC_eventdate_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_year_present:
   name: year_present
   title: '`year` present'
@@ -977,6 +1015,8 @@ DC_year_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_dctype_present:
   name: dctype_present
   title: '`dctype` present'
@@ -1027,6 +1067,8 @@ DC_dctype_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_license_present:
   name: license_present
   title: '`license` present'
@@ -1076,6 +1118,8 @@ DC_license_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_basisofrecord_present:
   name: basisofrecord_present
   title: '`basisOfRecord` present'
@@ -1125,6 +1169,8 @@ DC_basisofrecord_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_occurrencestatus_present:
   name: occurrencestatus_present
   title: '`occurrenceStatus` present'
@@ -1177,6 +1223,8 @@ DC_occurrencestatus_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_occurrenceid_present:
   name: occurrenceid_present
   title: '`occurrenceId` present'
@@ -1229,6 +1277,8 @@ DC_occurrenceid_present:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: missing_data
+  documentation:
+    input_example: 
 DC_datageneralizations_present:
   name: datageneralizations_present
   title: '`dataGeneralizations` present'
@@ -1285,6 +1335,8 @@ DC_datageneralizations_present:
     output_tdwg_standard_pass: not_empty
     output_tdwg_standard_fail: not_reported
     output_tdwg_standard_missing: not_reported
+  documentation:
+    input_example: 
 DC_establishmentmeans_present:
   name: establishmentmeans_present
   title: '`establishmentMeans` present'
@@ -1338,6 +1390,8 @@ DC_establishmentmeans_present:
     output_tdwg_standard_pass: not_empty
     output_tdwg_standard_fail: not_reported
     output_tdwg_standard_missing: not_reported
+  documentation:
+    input_example: 
 DC_occurrenceid_standard:
   name: occurrenceid_standard
   title: '`occurrenceId` standard'
@@ -1387,6 +1441,8 @@ DC_occurrenceid_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_eventdate_inrange:
   name: eventdate_inrange
   title: '`eventDate` in range'
@@ -1436,6 +1492,8 @@ DC_eventdate_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_year_inrange:
   name: year_inrange
   title: '`year` in range'
@@ -1485,6 +1543,8 @@ DC_year_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_month_standard:
   name: month_standard
   title: '`month` standard'
@@ -1534,6 +1594,8 @@ DC_month_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_basisofrecord_standard:
   name: basisofrecord_standard
   title: '`basisOfRecord` standard'
@@ -1582,6 +1644,8 @@ DC_basisofrecord_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_coordinates_notzero:
   name: coordinates_notzero
   title: 'Coordinates not zero'
@@ -1630,6 +1694,8 @@ DC_coordinates_notzero:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_coordinateuncertainty_inrange:
   name: coordinateuncertainty_inrange
   title: '`coordinateUncertaintyInMeters` in range'
@@ -1678,6 +1744,8 @@ DC_coordinateuncertainty_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_country_standard:
   name: country_standard
   title: '`country` standard'
@@ -1730,6 +1798,8 @@ DC_country_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_day_standard:
   name: day_standard
   title: '`day` standard'
@@ -1781,6 +1851,8 @@ DC_day_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_minelevation_inrange:
   name: minelevation_inrange
   title: '`minimumElevationInMeters` in range'
@@ -1837,6 +1909,8 @@ DC_minelevation_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_maxelevation_inrange:
   name: maxelevation_inrange
   title: '`maximumElevationInMeters` in range'
@@ -1885,6 +1959,8 @@ DC_maxelevation_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_decimallongitude_inrange:
   name: decimallongitude_inrange
   title: '`decimalLongitude` in range'
@@ -1933,6 +2009,8 @@ DC_decimallongitude_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_decimallatitude_inrange:
   name: decimallatitude_inrange
   title: '`decimalLatitude` in range'
@@ -1981,6 +2059,8 @@ DC_decimallatitude_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_country_countrycode_consistent:
   name: country_countrycode_consistent
   title: '`country` `countryCode` consistent'
@@ -2029,6 +2109,8 @@ DC_country_countrycode_consistent:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_mindepth_maxdepth_inrange:
   name: mindepth_maxdepth_inrange
   title: '`minimumDepthInMeters` `maximumDepthInMeters` in range'
@@ -2080,6 +2162,8 @@ DC_mindepth_maxdepth_inrange:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_minelevation_lessthan_maxelevation:
   name: minelevation_lessthan_maxelevation
   title: '`minimumElevationInMeters` less than `maximumElevationInMeters`'
@@ -2128,6 +2212,8 @@ DC_minelevation_lessthan_maxelevation:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_mindepth_lessthan_maxdepth:
   name: mindepth_lessthan_maxdepth
   title: '`minimumDepthInMeters` less than `maximumDepthInMeters`'
@@ -2181,6 +2267,8 @@ DC_mindepth_lessthan_maxdepth:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_eventdate_standard:
   name: eventdate_standard
   title: '`eventDate` standard'
@@ -2237,6 +2325,8 @@ DC_eventdate_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_dateidentified_standard:
   name: dateidentified_standard
   title: '`dateIdentified` standard'
@@ -2285,6 +2375,8 @@ DC_dateidentified_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_occurrencestatus_standard:
   name: occurrencestatus_standard
   title: '`occurrenceStatus` standard'
@@ -2333,6 +2425,8 @@ DC_occurrencestatus_standard:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 
 DC_spatial_resolution:
   name: spatial_resolution
   title: 'Spatial resolution'
@@ -2365,7 +2459,7 @@ DC_spatial_resolution:
       reference: https://en.wikipedia.org/wiki/Great-circle_distance, https://www.gbif.org/document/80536/biogeomancer-guide-to-best-practices-in-georeferencing
       creator: 
       modifier: Martynas Jocys
-      modification: 2020-06-25
+      modification: 2020-08-21
     communication:
     notes:
   input:
@@ -2381,6 +2475,8 @@ DC_spatial_resolution:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: 1000
 DC_earliest_date:
   name: earliest_date
   title: 'Earliest date'
@@ -2413,7 +2509,7 @@ DC_earliest_date:
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator:
       modifier: Martynas Jocys
-      modification: 2020-06-25
+      modification: 2020-08-21
     communication:
     notes:
   input:
@@ -2429,6 +2525,8 @@ DC_earliest_date:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: "c('2018-02-02')"
 DC_taxo_level:
   name: taxo_level
   title: 'Taxo level'
@@ -2461,7 +2559,7 @@ DC_taxo_level:
       reference: http://rs.gbif.org/vocabulary/gbif/rank.xml
       creator: TDWG2018
       modifier: Martynas Jocys
-      modification: 2020-07-07
+      modification: 2020-08-21
     communication:
     notes:
   input:
@@ -2477,6 +2575,8 @@ DC_taxo_level:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: "c('species')"
 DC_temporal_resolution:
   name: temporal_resolution
   title: 'Temporal resolution'
@@ -2509,7 +2609,7 @@ DC_temporal_resolution:
       reference: https://en.wikipedia.org/wiki/ISO_8601
       creator:
       modifier: Martynas Jocys
-      modification: 2020-07-07
+      modification: 2020-08-21
     communication:
     notes:
   input:
@@ -2525,4 +2625,6 @@ DC_temporal_resolution:
     output_tdwg_standard_pass: compliant
     output_tdwg_standard_fail: not_compliant 
     output_tdwg_standard_missing: internal_prerequisites_not_met
+  documentation:
+    input_example: "c('2016-01-02', '2018-02-08', 'month')"
 
