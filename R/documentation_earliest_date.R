@@ -14,7 +14,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' perform_dc(data_bats, 'earliest_date')
+#' perform_dc(data_bats, 'earliest_date', c("2018-02-02"))
 #' @section samplePassData:
 #' The value for eventDate is greater than provided resolution.
 #' @section sampleFailData:

@@ -11,14 +11,14 @@ An object of class function to perform a specific data check.
 \usage{
 dc_temporal_resolution(
   input = NULL,
-  provided_input = c("2016-01-02", "2018-02-08", "month")
+  temporal_res = c("2016-01-02", "2018-02-08", "month")
 )
 }
 \arguments{
 \item{input}{a vector of event date information. To pass must be within 
 provided range and resolution.}
 
-\item{provided_input}{a range of dates and required temporal resolution.}
+\item{temporal_res}{a range of dates and required temporal resolution.}
 }
 \description{
 This data check answers: "Is eventDate within given range and
@@ -49,7 +49,7 @@ eventDate
 }
 
 \examples{
-perform_dc(data_bats, 'temporal_resolution')
+perform_dc(data_bats, 'temporal_resolution', c("2016-01-02", "2018-02-08", "month"))
 }
 \references{
 None

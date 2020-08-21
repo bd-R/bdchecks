@@ -60,7 +60,11 @@ roxygen_comment_generate <- function(DC) {
     "#' @name",
     "#' @format An object of class function to perform a specific data check.",
     "#' @references None",
-    "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name')",
+    if (DC$meta$information$check_type == "bdclean") {
+      "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name', input_example)"
+    } else {
+      "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name')"
+    },
     "#' @section samplePassData:\n#' FIELDPASS",
     "#' @section sampleFailData:\n#' FIELDFAIL",
     "#' @section targetDWCField:\n#' FIELDTARGET",
@@ -132,21 +136,11 @@ roxygen_comment_generate <- function(DC) {
   }
 
   skeleton <- sub("longDesc", fixed_length, skeleton)
-  # Add additional fields for the bdclean
-  # if (DC$meta$information$check_type == "bdclean") {
-  #   provided_input <- grep(
-  #     "provided_input =", 
-  #     capture.output(get(paste0("dc_", DC$name))), 
-  #     value = TRUE
-  #   )
-  #   provided_input <- gsub("provided_input =", "\\1" , provided_input)
-  #   provided_input <- parse(text = provided_input)
-  #   skeleton <- sub(
-  #     "EXAMPLE@name'", c(DC$name, "', eval(", provided_input, ")"), skeleton
-  #   )
-  # } else {
-  #   skeleton <- sub("EXAMPLE@name", DC$name, skeleton)
-  # }
+  #Add additional fields for the bdclean
+  if (DC$meta$information$check_type == "bdclean") {
+    provided_input <- parse(text = DC$documentation$input_example)
+    skeleton <- sub("input_example", provided_input, skeleton)
+  }
   #temporary, to fix
   skeleton <- sub("EXAMPLE@name", DC$name, skeleton)
   # Add name

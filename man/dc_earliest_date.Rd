@@ -9,13 +9,13 @@ resolution.}
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_earliest_date(input = NULL, provided_input = "2018-02-02")
+dc_earliest_date(input = NULL, lowest_date = "2018-02-02")
 }
 \arguments{
 \item{input}{a vector of event date information. To pass must be greater 
 than provided resolution.}
 
-\item{provided_input}{a date for the lowest date required.}
+\item{lowest_date}{a date for the lowest date required.}
 }
 \description{
 This data check answers: "Is eventDate greater than inputted
@@ -48,7 +48,7 @@ eventDate
 }
 
 \examples{
-perform_dc(data_bats, 'earliest_date')
+perform_dc(data_bats, 'earliest_date', 2018-02-02)
 }
 \references{
 None

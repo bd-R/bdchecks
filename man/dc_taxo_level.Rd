@@ -10,17 +10,17 @@ An object of class function to perform a specific data check.
 \usage{
 dc_taxo_level(
   input = NULL,
-  ranks = c("class", "order", "family", "genus", "species", "subspecies"),
-  provided_input = "species"
+  lowest_rank = "species",
+  ranks = c("class", "order", "family", "genus", "species", "subspecies")
 )
 }
 \arguments{
 \item{input}{a vector of taxon rank. To pass must be within given
 dictionary.}
 
-\item{ranks}{A list of taxon ranks that could be chosen.}
+\item{lowest_rank}{The lowest rank of species required.}
 
-\item{provided_input}{The low rank of species required.}
+\item{ranks}{A list of taxon ranks that could be chosen.}
 }
 \description{
 This data check answers: "Is taxonRank lower than provided
@@ -53,7 +53,7 @@ taxonRank
 }
 
 \examples{
-perform_dc(data_bats, 'taxo_level')
+perform_dc(data_bats, 'taxo_level', species)
 }
 \references{
 None

@@ -9,13 +9,13 @@ not greater than inputted resolution.}
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_spatial_resolution(input = NULL, provided_input = 1000)
+dc_spatial_resolution(input = NULL, spatial_res = 1000)
 }
 \arguments{
 \item{input}{a vector of coordinate uncertainty in meters. To pass it must
 be lower than provided resolution.}
 
-\item{provided_input}{a numeric value for the highest coordinate uncertainty
+\item{spatial_res}{a numeric value for the highest coordinate uncertainty
 required.}
 }
 \description{
@@ -50,7 +50,7 @@ coordinateUncertaintyInMeters
 }
 
 \examples{
-perform_dc(data_bats, 'spatial_resolution')
+perform_dc(data_bats, 'spatial_resolution', 1000)
 }
 \references{
 None
