@@ -9,7 +9,6 @@
 #'                  (helps to differentiate other functions from data checks).
 #'
 #' @importFrom yaml yaml.load_file
-#' @importFrom utils capture.output
 #'
 datacheck_info_export <- function(
   path_yaml = system.file("extdata/data_check.yaml", package = "bdchecks"),
@@ -86,10 +85,10 @@ roxygen_comment_generate <- function(DC) {
         break
       }
     }
-    fixed_length <- paste0(
-      paste(bar[foobar], collapse = " "), "\n#' ", 
-      paste(bar[!foobar], collapse = " ")
-    )
+  fixed_length <- paste0(
+    paste(bar[foobar], collapse = " "), "\n#' ", 
+    paste(bar[!foobar], collapse = " ")
+  )
 
   skeleton <- sub("shortDesc", fixed_length, skeleton)
 
@@ -115,7 +114,7 @@ roxygen_comment_generate <- function(DC) {
       )
   # to reduce each description line length to 80
   bar <- unlist(strsplit(foo, " "))
-  for (i in 1:round(nchar(foo)/80, 0)) { 
+  for (i in 1:(round(nchar(foo)/80, 0) + 1)) { 
     n <- 81
     repeat{
       n <- n-1
@@ -136,12 +135,16 @@ roxygen_comment_generate <- function(DC) {
   }
 
   skeleton <- sub("longDesc", fixed_length, skeleton)
-  #Add additional fields for the bdclean
+  # Add additional fields for the bdclean
   if (DC$meta$information$check_type == "bdclean") {
     provided_input <- parse(text = DC$documentation$input_example)
     skeleton <- sub("input_example", provided_input, skeleton)
   }
-  #temporary, to fix
+  # Add dc name in the example field
+  if (nchar(grep("@examples", skeleton, value = TRUE)) > 80) {
+    skeleton <- sub("perform_dc\\(", "perform_dc(\n#'   ", skeleton)
+    skeleton <- sub("\\)$", "\n#' )", skeleton)
+  }
   skeleton <- sub("EXAMPLE@name", DC$name, skeleton)
   # Add name
   skeleton <- sub("@name", paste("@name", paste0("dc_", DC$name)), skeleton)
@@ -153,10 +156,69 @@ roxygen_comment_generate <- function(DC) {
       ""
     )
   )
-
-  skeleton <- sub("FIELDPASS", DC$meta$example$pass, skeleton)
-  skeleton <- sub("FIELDFAIL", DC$meta$example$fail, skeleton)
-  skeleton <- sub("FIELDTARGET", DC$input$target, skeleton)
+  if (nchar(DC$meta$example$pass) > 77) {
+    bar <- unlist(strsplit(DC$meta$example$pass, " "))
+      n <- 81
+      repeat{
+        n <- n-1
+        foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+        # 80 - 3 = 77, because of roxygen comment symbol 
+        if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+          break
+        }
+      }
+    fixed_length <- paste0(
+      paste(bar[foobar], collapse = " "), "\n#' ", 
+      paste(bar[!foobar], collapse = " ")
+    ) 
+    skeleton <- sub("FIELDPASS", fixed_length, skeleton)
+  } else {
+    skeleton <- sub("FIELDPASS", DC$meta$example$pass, skeleton)
+  }
+  if (nchar(DC$meta$example$fail) > 77) {
+    bar <- unlist(strsplit(DC$meta$example$fail, " "))
+      n <- 81
+      repeat{
+        n <- n-1
+        foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+        # 80 - 3 = 77, because of roxygen comment symbol 
+        if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+          break
+        }
+      }
+    fixed_length <- paste0(
+      paste(bar[foobar], collapse = " "), "\n#' ", 
+      paste(bar[!foobar], collapse = " ")
+    ) 
+    skeleton <- sub("FIELDFAIL", fixed_length, skeleton)
+  } else {
+    skeleton <- sub("FIELDFAIL", DC$meta$example$fail, skeleton)
+  }
+  if (nchar(DC$input$target) > 77) {
+    bar <- unlist(strsplit(DC$input$target, " "))
+  for (i in 1:(round(nchar(DC$input$target)/80, 0) + 1)) { 
+    n <- 81
+    repeat{
+      n <- n-1
+      foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+      # 80 - 3 = 77, because of roxygen comment symbol 
+      if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+        break
+      }
+    }
+    if (i == 1) {
+      fixed_length <- paste(bar[foobar], collapse = " ")
+    } else {
+      fixed_length <- paste0(
+        fixed_length, "\n#' ", paste(bar[foobar], collapse = " ")
+      ) 
+    }
+    bar <- bar[!foobar]
+  } 
+    skeleton <- sub("FIELDTARGET", fixed_length, skeleton)
+  } else {
+    skeleton <- sub("FIELDTARGET", DC$input$target, skeleton)
+  }
   skeleton <- sub(
     "FIELDCATERGORY",
     DC$meta$information$darwin_core_class,
