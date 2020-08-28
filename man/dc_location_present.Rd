@@ -23,6 +23,7 @@ terms organized for location are NULL.}.\cr Dimension of this data check is
 \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
 that will pass: \code{countryCode=AU}, such data check would return
 \code{TRUE}.\cr Example of entries that will fail: \code{countryCode=},
+such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 
@@ -36,7 +37,10 @@ The value for all terms organized for location are NULL.
 
 \section{targetDWCField}{
 
-country, countryCode, county, decimalLatitude, decimalLongitude, footprintWKT, higherGeography, higherGeographyID, island, islandGroup, locality, locationID, municipality, stateProvince, verbatimCoordinates, verbatimLatitude, verbatimLocality, verbatimLongitude, waterBody
+country, countryCode, county, decimalLatitude, decimalLongitude,
+footprintWKT, higherGeography, higherGeographyID, island, islandGroup,
+locality, locationID, municipality, stateProvince, verbatimCoordinates,
+verbatimLatitude, verbatimLocality, verbatimLongitude, waterBody
 }
 
 \section{checkCategory}{

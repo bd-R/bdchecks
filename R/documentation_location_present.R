@@ -9,6 +9,7 @@
 #' \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
 #' that will pass: \code{countryCode=AU}, such data check would return
 #' \code{TRUE}.\cr Example of entries that will fail: \code{countryCode=},
+#' such data check would return \code{FALSE}.
 #' @name dc_location_present
 #' @format An object of class function to perform a specific data check.
 #' @references None
@@ -19,7 +20,10 @@
 #' @section sampleFailData:
 #' The value for all terms organized for location are NULL.
 #' @section targetDWCField:
-#' country, countryCode, county, decimalLatitude, decimalLongitude, footprintWKT, higherGeography, higherGeographyID, island, islandGroup, locality, locationID, municipality, stateProvince, verbatimCoordinates, verbatimLatitude, verbatimLocality, verbatimLongitude, waterBody
+#' country, countryCode, county, decimalLatitude, decimalLongitude,
+#' footprintWKT, higherGeography, higherGeographyID, island, islandGroup,
+#' locality, locationID, municipality, stateProvince, verbatimCoordinates,
+#' verbatimLatitude, verbatimLocality, verbatimLongitude, waterBody
 #' @section checkCategory:
 #'  location
 #' @importFrom magrittr %>%

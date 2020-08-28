@@ -10,6 +10,7 @@
 #' Example of entries that will pass:
 #' \code{taxonRank="species",provided_input="family"}, such data check would
 #' return \code{TRUE}.\cr Example of entries that will fail:
+#' \code{taxonRank="family",provided_input="species"}, such data check would
 #' @name dc_taxo_level
 #' @format An object of class function to perform a specific data check.
 #' @references None

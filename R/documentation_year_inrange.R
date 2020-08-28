@@ -8,6 +8,7 @@
 #' Dimension of this data check is \strong{} and it's flagging type is:
 #' \strong{FLAG}\cr Example of entries that will pass: \code{year=2000}, such
 #' data check would return \code{TRUE}.\cr Example of entries that will fail:
+#' \code{year=3000}, such data check would return \code{FALSE}.
 #' @name dc_year_inrange
 #' @format An object of class function to perform a specific data check.
 #' @references None

@@ -23,6 +23,7 @@ missing.}.\cr Dimension of this data check is \strong{} and it's flagging
 type is: \strong{FLAG}\cr Example of entries that will pass:
 \code{decimalLatitude=-41.0983423}, such data check would return
 \code{TRUE}.\cr Example of entries that will fail:
+\code{decimalLatitude=}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

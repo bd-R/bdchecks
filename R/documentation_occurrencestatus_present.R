@@ -9,6 +9,7 @@
 #' type is: \strong{FLAG}\cr Example of entries that will pass:
 #' \code{occurrenceStatus=present}, such data check would return
 #' \code{TRUE}.\cr Example of entries that will fail:
+#' \code{occurrenceStatus=}, such data check would return \code{FALSE}.
 #' @name dc_occurrencestatus_present
 #' @format An object of class function to perform a specific data check.
 #' @references None

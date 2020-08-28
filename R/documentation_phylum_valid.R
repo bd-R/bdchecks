@@ -9,6 +9,7 @@
 #' type is: \strong{FLAG}\cr Example of entries that will pass:
 #' \code{phylum=Chordate}, such data check would return \code{TRUE}.\cr
 #' Example of entries that will fail: \code{phylum=birds}, such data check
+#' would return \code{FALSE}.
 #' @name dc_phylum_valid
 #' @format An object of class function to perform a specific data check.
 #' @references None

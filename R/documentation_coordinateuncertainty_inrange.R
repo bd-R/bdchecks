@@ -10,6 +10,7 @@
 #' type is: \strong{FLAG}\cr Example of entries that will pass:
 #' \code{coordinateUncertaintyInMeters=1}, such data check would return
 #' \code{TRUE}.\cr Example of entries that will fail:
+#' \code{coordinateUncertaintyInMeters=-1}, such data check would return
 #' @name dc_coordinateuncertainty_inrange
 #' @format An object of class function to perform a specific data check.
 #' @references None

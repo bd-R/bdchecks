@@ -23,6 +23,7 @@ ISO 8601-1:2019 date.}.\cr Dimension of this data check is \strong{} and
 it's flagging type is: \strong{FLAG}\cr Example of entries that will pass:
 \code{eventDate="02021981"}, such data check would return \code{TRUE}.\cr
 Example of entries that will fail: \code{eventDate="2018-02-02"}, such data
+check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

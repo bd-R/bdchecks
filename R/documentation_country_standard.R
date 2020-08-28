@@ -9,6 +9,7 @@
 #' type is: \strong{FLAG}\cr Example of entries that will pass:
 #' \code{country=Korea}, such data check would return \code{TRUE}.\cr Example
 #' of entries that will fail: \code{country=Forest}, such data check would
+#' return \code{FALSE}.
 #' @name dc_country_standard
 #' @format An object of class function to perform a specific data check.
 #' @references None

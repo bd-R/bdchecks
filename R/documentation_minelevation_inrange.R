@@ -10,6 +10,7 @@
 #' \strong{FLAG}\cr Example of entries that will pass:
 #' \code{minimumElevationInMeters=0}, such data check would return
 #' \code{TRUE}.\cr Example of entries that will fail:
+#' \code{minimumElevationInMeters=9999}, such data check would return
 #' @name dc_minelevation_inrange
 #' @format An object of class function to perform a specific data check.
 #' @references None

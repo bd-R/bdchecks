@@ -10,6 +10,7 @@
 #' \strong{FLAG}\cr Example of entries that will pass:
 #' \code{maximumElevationInMeters=0}, such data check would return
 #' \code{TRUE}.\cr Example of entries that will fail:
+#' \code{maximumElevationInMeters=9999}, such data check would return
 #' @name dc_maxelevation_inrange
 #' @format An object of class function to perform a specific data check.
 #' @references None

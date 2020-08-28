@@ -23,6 +23,7 @@ decimalLongitude is not within given numbers.}.\cr Dimension of this data
 check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of
 entries that will pass: \code{decimalLongitude=0}, such data check would
 return \code{TRUE}.\cr Example of entries that will fail:
+\code{decimalLongitude=181}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

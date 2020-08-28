@@ -9,6 +9,7 @@
 #' \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
 #' that will pass: \code{dateIdentified="2018-02-02"}, such data check would
 #' return \code{TRUE}.\cr Example of entries that will fail:
+#' \code{dateIdentified="02021981"}, such data check would return
 #' @name dc_dateidentified_standard
 #' @format An object of class function to perform a specific data check.
 #' @references None

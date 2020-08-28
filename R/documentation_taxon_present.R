@@ -9,6 +9,7 @@
 #' \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
 #' that will pass: \code{kingdom=animal}, such data check would return
 #' \code{TRUE}.\cr Example of entries that will fail: \code{kingdom=}, such
+#' data check would return \code{FALSE}.
 #' @name dc_taxon_present
 #' @format An object of class function to perform a specific data check.
 #' @references None
@@ -19,7 +20,10 @@
 #' @section sampleFailData:
 #' The value for all terms organized in the Taxon class are NULL.
 #' @section targetDWCField:
-#' taxonID, scientificNameID, acceptedNameUsageID, parentNameUsageID, originalNameUsageID, taxonConceptID, scientificName, higherClassification, kingdom, phylum, class, order, family, genus, subgenus, specificEpithet, infraspecificEpithet, vernacularName
+#' taxonID, scientificNameID, acceptedNameUsageID, parentNameUsageID,
+#' originalNameUsageID, taxonConceptID, scientificName, higherClassification,
+#' kingdom, phylum, class, order, family, genus, subgenus, specificEpithet,
+#' infraspecificEpithet, vernacularName
 #' @section checkCategory:
 #'  taxon
 #' @importFrom magrittr %>%

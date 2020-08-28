@@ -22,6 +22,7 @@ this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr
 Example of entries that will pass:
 \code{occurrenceID=9d26b451-9dad-4e27-a6e3-5b7ae332d5ed}, such data check
 would return \code{TRUE}.\cr Example of entries that will fail:
+\code{occurrenceID=}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

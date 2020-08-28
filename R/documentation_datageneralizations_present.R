@@ -9,6 +9,7 @@
 #' \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
 #' that will pass: \code{dataGeneralizations=record placed on 0.1 degree grid},
 #' such data check would return \code{TRUE}.\cr Example of entries that will
+#' fail: \code{dataGeneralizations=}, such data check would return
 #' @name dc_datageneralizations_present
 #' @format An object of class function to perform a specific data check.
 #' @references None

@@ -11,15 +11,18 @@
 #' \strong{FLAG}\cr Example of entries that will pass:
 #' \code{coordinateUncertaintyInMeters="1",provided_input="1000"}, such data
 #' check would return \code{TRUE}.\cr Example of entries that will fail:
+#' \code{coordinateUncertaintyInMeters="3000",provided_input="1000"}, such data
 #' @name dc_spatial_resolution
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
 #' perform_dc(data_bats, 'spatial_resolution', 1000)
 #' @section samplePassData:
-#' The value for coordinateUncertaintyInMeters is not greater than provided resolution.
+#' The value for coordinateUncertaintyInMeters is not greater than provided
+#' resolution.
 #' @section sampleFailData:
-#' The value for coordinateUncertaintyInMeters is greater than provided resolution.
+#' The value for coordinateUncertaintyInMeters is greater than provided
+#' resolution.
 #' @section targetDWCField:
 #' coordinateUncertaintyInMeters
 #' @section checkCategory:

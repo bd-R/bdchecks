@@ -10,6 +10,7 @@
 #' \strong{FLAG}\cr Example of entries that will pass:
 #' \code{eventDate="2002-02-02",provided_input="1996-07-06"}, such data check
 #' would return \code{TRUE}.\cr Example of entries that will fail:
+#' \code{eventDate="2002-02-02",provided_input="2020-06-01"}, such data check
 #' @name dc_earliest_date
 #' @format An object of class function to perform a specific data check.
 #' @references None

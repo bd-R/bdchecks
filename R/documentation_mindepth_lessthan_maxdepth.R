@@ -11,6 +11,7 @@
 #' \code{minimumDepthInMeters="100",maximumDepthInMeters="200"}, such data
 #' check would return \code{TRUE}.\cr Example of entries that will fail:
 #' \code{minimumDepthInMeters="100",maximumDepthInMeters="20"}, such data check
+#' would return \code{FALSE}.
 #' @name dc_mindepth_lessthan_maxdepth
 #' @format An object of class function to perform a specific data check.
 #' @references None

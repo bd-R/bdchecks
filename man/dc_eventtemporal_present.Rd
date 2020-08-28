@@ -23,6 +23,7 @@ all terms organized for event temporal are NULL.}.\cr Dimension of this data
 check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of
 entries that will pass: \code{year=2000}, such data check would return
 \code{TRUE}.\cr Example of entries that will fail: \code{year=}, such data
+check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

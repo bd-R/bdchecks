@@ -28,15 +28,18 @@ Dimension of this data check is \strong{} and it's flagging type is:
 \strong{FLAG}\cr Example of entries that will pass:
 \code{coordinateUncertaintyInMeters="1",provided_input="1000"}, such data
 check would return \code{TRUE}.\cr Example of entries that will fail:
+\code{coordinateUncertaintyInMeters="3000",provided_input="1000"}, such data
 }
 \section{samplePassData}{
 
-The value for coordinateUncertaintyInMeters is not greater than provided resolution.
+The value for coordinateUncertaintyInMeters is not greater than provided
+resolution.
 }
 
 \section{sampleFailData}{
 
-The value for coordinateUncertaintyInMeters is greater than provided resolution.
+The value for coordinateUncertaintyInMeters is greater than provided
+resolution.
 }
 
 \section{targetDWCField}{

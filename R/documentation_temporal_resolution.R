@@ -11,11 +11,14 @@
 #' 
 #' 
 #' 
+#' 
 #' @name dc_temporal_resolution
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' perform_dc(data_bats, 'temporal_resolution', c("2016-01-02", "2018-02-08", "month"))
+#' perform_dc(
+#'   data_bats, 'temporal_resolution', c("2016-01-02", "2018-02-08", "month")
+#' )
 #' @section samplePassData:
 #' The value for eventDate is within given range and resolution.
 #' @section sampleFailData:

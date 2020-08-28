@@ -21,6 +21,7 @@ present.} and will fail if \strong{The value for country is missing.}.\cr
 Dimension of this data check is \strong{} and it's flagging type is:
 \strong{FLAG}\cr Example of entries that will pass:
 \code{country=Australia}, such data check would return \code{TRUE}.\cr
+Example of entries that will fail: \code{country=}, such data check would
 }
 \section{samplePassData}{
 

@@ -23,6 +23,7 @@ missing.}.\cr Dimension of this data check is \strong{} and it's flagging
 type is: \strong{FLAG}\cr Example of entries that will pass:
 \code{scientificName=banana}, such data check would return \code{TRUE}.\cr
 Example of entries that will fail: \code{scientificName=}, such data check
+would return \code{FALSE}.
 }
 \section{samplePassData}{
 

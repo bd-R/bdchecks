@@ -30,6 +30,7 @@ will fail if \strong{The value for year is not within given dates.}.\cr
 Dimension of this data check is \strong{} and it's flagging type is:
 \strong{FLAG}\cr Example of entries that will pass: \code{year=2000}, such
 data check would return \code{TRUE}.\cr Example of entries that will fail:
+\code{year=3000}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

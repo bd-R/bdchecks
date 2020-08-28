@@ -8,6 +8,7 @@
 #' Dimension of this data check is \strong{} and it's flagging type is:
 #' \strong{FLAG}\cr Example of entries that will pass: \code{genus=Canis},
 #' such data check would return \code{TRUE}.\cr Example of entries that will
+#' fail: \code{genus=}, such data check would return \code{FALSE}.
 #' @name dc_genus_valid
 #' @format An object of class function to perform a specific data check.
 #' @references None

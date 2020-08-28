@@ -9,6 +9,7 @@
 #' it's flagging type is: \strong{FLAG}\cr Example of entries that will pass:
 #' \code{day=6}, such data check would return \code{TRUE}.\cr Example of
 #' entries that will fail: \code{day=32}, such data check would return
+#' \code{FALSE}.
 #' @name dc_day_standard
 #' @format An object of class function to perform a specific data check.
 #' @references None

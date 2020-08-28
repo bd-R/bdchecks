@@ -26,6 +26,7 @@ Dimension of this data check is \strong{} and it's flagging type is:
 \strong{FLAG}\cr Example of entries that will pass:
 \code{minimumElevationInMeters="100",maximumElevationInMeters="200"}, such
 data check would return \code{TRUE}.\cr Example of entries that will fail:
+\code{minimumElevationInMeters="100",maximumElevationInMeters="20"}, such
 }
 \section{samplePassData}{
 
