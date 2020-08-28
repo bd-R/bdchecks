@@ -11,7 +11,8 @@ An object of class function to perform a specific data check.
 \usage{
 dc_temporal_resolution(
   input = NULL,
-  temporal_res = c("2016-01-02", "2018-02-08", "month")
+  temporal_res = c("2016-01-02", "2018-02-08", "month"),
+  ...
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ dc_temporal_resolution(
 provided range and resolution.}
 
 \item{temporal_res}{a range of dates and required temporal resolution.}
+
+\item{...}{to allow other input-based to run simultaneously.}
 }
 \description{
 This data check answers: "Is eventDate within given range and

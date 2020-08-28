@@ -3,12 +3,14 @@
 #' @param input a vector of event date information. To pass must be within 
 #'  provided range and resolution.
 #' @param temporal_res a range of dates and required temporal resolution.
+#' @param ... to allow other input-based to run simultaneously.
 #' 
 #' @importFrom magrittr "%<>%"
 #' 
 dc_temporal_resolution <- function(
     input = NULL, 
-    temporal_res = c("2016-01-02", "2018-02-08", "month")
+    temporal_res = c("2016-01-02", "2018-02-08", "month"),
+    ...
 ) {
   res <- strsplit(temporal_res, " ")[[3]] %>%
     tolower()

@@ -20,7 +20,7 @@
 #'
 perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
 
-  # All data checks to perform
+  # All data checks ("tdwg_standard" type) to perform
   # If not we have to make sure that all wanted dc exist
   if (is.null(wanted_dc)) {
     to_keep <- vapply(
@@ -30,14 +30,19 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
     )
     wanted_dc <- names(data.checks@dc_body)[to_keep]
   }
-
+  # DataCheckFlagSet object place
   result_dc <- list()
 
   for (i in seq_along(wanted_dc)) {
+    # match each check name to data.checks object
     idx <- which(names(data.checks@dc_body) == wanted_dc[i])
+    # stop if any check names are duplicated, MAYBE UNIQUE() INSTEAD?
     stopifnot(length(idx) == 1)
     dc <- data.checks@dc_body[[idx]]
+    # TODO !!!!!!!!!!!!!!!!!!!!!!
+    #target_names[target_names %in% names(data)]
 
+    # remove any possible white spaces for target columns
     target_names <- gsub(" ", "", dc@input$target)
     target_names <- unlist(strsplit(target_names, ","))
     target_result <- vector("list", length(target_names))
@@ -51,6 +56,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
         )
         target_result[[j]] <- rep(NA, nrow(data))
       } else {
+        # TODO!!!!!!!!!!!!!!!
         if (!is.null(dc@input$target2)) {
           target_result[[j]] <- get(paste0("dc_", dc@name))(
             data[, j, drop = TRUE],
@@ -65,6 +71,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
           # And after this merge with all set (expand)
           if (dc@information$check_type == "tdwg_standard") {
             target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
+          # for all input-based data checks
           } else if (dc@information$check_type == "bdclean") {
             target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x, ...)
           }

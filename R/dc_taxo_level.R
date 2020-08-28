@@ -4,6 +4,7 @@
 #' dictionary.
 #' @param lowest_rank The lowest rank of species required.
 #' @param ranks A list of taxon ranks that could be chosen.
+#' @param ... to allow other input-based to run simultaneously.
 #' 
 dc_taxo_level <- function(
   input = NULL,
@@ -15,7 +16,8 @@ dc_taxo_level <- function(
     "genus",
     "species",
     "subspecies"
-  )
+  ),
+  ...
 ) {
   # tdwg_standard check
   passed <- get(paste0("dc_", "taxonrank_standard"))(input)

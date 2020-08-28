@@ -11,7 +11,8 @@ An object of class function to perform a specific data check.
 dc_taxo_level(
   input = NULL,
   lowest_rank = "species",
-  ranks = c("class", "order", "family", "genus", "species", "subspecies")
+  ranks = c("class", "order", "family", "genus", "species", "subspecies"),
+  ...
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ dictionary.}
 \item{lowest_rank}{The lowest rank of species required.}
 
 \item{ranks}{A list of taxon ranks that could be chosen.}
+
+\item{...}{to allow other input-based to run simultaneously.}
 }
 \description{
 This data check answers: "Is taxonRank lower than provided

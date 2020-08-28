@@ -3,10 +3,12 @@
 #' @param input a vector of event date information. To pass must be greater 
 #' than provided resolution.
 #' @param lowest_date a date for the lowest date required.
+#' @param ... to allow other input-based to run simultaneously.
 #' 
 dc_earliest_date <- function(
     input = NULL,
-    lowest_date = "2018-02-02"
+    lowest_date = "2018-02-02",
+    ...
 ) {
   # tdwg_standard check
   passed <- get(paste0("dc_", "eventdate_inrange"))(input)

@@ -9,7 +9,7 @@ not greater than inputted resolution.}
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_spatial_resolution(input = NULL, spatial_res = 1000)
+dc_spatial_resolution(input = NULL, spatial_res = 1000, ...)
 }
 \arguments{
 \item{input}{a vector of coordinate uncertainty in meters. To pass it must
@@ -17,6 +17,8 @@ be lower than provided resolution.}
 
 \item{spatial_res}{a numeric value for the highest coordinate uncertainty
 required.}
+
+\item{...}{to allow other input-based to run simultaneously.}
 }
 \description{
 This data check answers: "Is coordinateUncertaintyInMeters not greater

@@ -4,10 +4,12 @@
 #' be lower than provided resolution.
 #' @param spatial_res a numeric value for the highest coordinate uncertainty
 #' required.
+#' @param ... to allow other input-based to run simultaneously.
 #' 
 dc_spatial_resolution <- function(
     input = NULL, 
-    spatial_res = 1000
+    spatial_res = 1000,
+    ...
 ) {
   # tdwg_standard check
   passed <- get(paste0("dc_", "coordinateuncertainty_inrange"))(input)
