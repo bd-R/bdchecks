@@ -35,7 +35,7 @@ test_that("perform_dc", {
   expect_gt(length(result@DC), 1)
   # No arguments provided
   expect_warning(perform_dc(testing_data))
-  expect_warning(perform_dc(mtcars))
+  expect_error(perform_dc(mtcars))
   expect_silent(
     perform_dc(testing_data, wanted_dc = "taxo_level", lowest_rank = "family")
   )
@@ -127,7 +127,7 @@ test_that("summary_dc", {
   expect_s4_class(result, "DataCheckFlagSet")
   # If any DataCheckFlagSet@flags@result missing, its not included in summary
   fake_result <- result
-  fake_result@flags[[47]]@result <- logical()
+  fake_result@flags[[10]]@result <- logical()
   bar <- summary_dc(fake_result, fancy = FALSE, filtering_dt = FALSE)
   expect_false(length(fake_result@flags) == nrow(bar))
   # Summary output 1

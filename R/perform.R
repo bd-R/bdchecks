@@ -7,6 +7,7 @@
 #' @param wanted_dc Character vector of names for data checks that should be 
 #' performed (ie perform only these data checks)
 #' @param ... A value for the input-based checks
+#' (possible choices: temporal_res, spatial_res, lowest_rank, lowest_date)
 #'
 #' @importFrom methods new
 #'
@@ -39,46 +40,44 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
     # stop if any check names are duplicated, MAYBE UNIQUE() INSTEAD?
     stopifnot(length(idx) == 1)
     dc <- data.checks@dc_body[[idx]]
-    # TODO !!!!!!!!!!!!!!!!!!!!!!
-    #target_names[target_names %in% names(data)]
-
     # remove any possible white spaces for target columns
     target_names <- gsub(" ", "", dc@input$target)
     target_names <- unlist(strsplit(target_names, ","))
+    missing_targets <- target_names[!target_names %in% colnames(data)]
+    if (length(missing_targets) != 0) {
+      warning(
+        dc@name, " won't be performed on the following columns, ", 
+        "because they don't exist in a given dataset: ", 
+        paste(missing_targets, collapse=", ")
+      )
+    }
+    # keep only existing target columns
+    target_names <- target_names[target_names %in% colnames(data)]
     target_result <- vector("list", length(target_names))
     names(target_result) <- target_names
     for (j in target_names) {
-      if (!j %in% colnames(data)) {
-        #skip instead of warnings, output to data.frame
-        warning(
-          "Column ", j, " does not exist in a given dataset;",
-          " skipping data check ", dc@name, " for it."
+      # to fix
+      if (!is.null(dc@input$target2)) {
+        target_result[[j]] <- get(paste0("dc_", dc@name))(
+          data[, j, drop = TRUE],
+          data[, dc@input$target2, drop = TRUE]
         )
-        target_result[[j]] <- rep(NA, nrow(data))
       } else {
-        # TODO!!!!!!!!!!!!!!!
-        if (!is.null(dc@input$target2)) {
-          target_result[[j]] <- get(paste0("dc_", dc@name))(
-            data[, j, drop = TRUE],
-            data[, dc@input$target2, drop = TRUE]
-          )
-        } else {
-          # All targets in a given dataset
-          target_all <- data.frame(x = data[, j, drop = TRUE])
-          # Unique set of all targets
-          target_uniq <- data.frame(x = unique(target_all$x))
-          # Perform data check only on the unique set (smaller than all)
-          # And after this merge with all set (expand)
-          if (dc@information$check_type == "tdwg_standard") {
-            target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
-          # for all input-based data checks
-          } else if (dc@information$check_type == "bdclean") {
-            target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x, ...)
-          }
-          target_result[[j]] <- merge(
-            target_all, target_uniq, "x", sort = FALSE
-          )$res
+        # All targets in a given dataset
+        target_all <- data.frame(x = data[, j, drop = TRUE])
+        # Unique set of all targets
+        target_uniq <- data.frame(x = unique(target_all$x))
+        # Perform data check only on the unique set (smaller than all)
+        # And after this merge with all set (expand)
+        if (dc@information$check_type == "tdwg_standard") {
+          target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
+        # for all input-based data checks
+        } else if (dc@information$check_type == "bdclean") {
+          target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x, ...)
         }
+        target_result[[j]] <- merge(
+          target_all, target_uniq, "x", sort = FALSE
+        )$res
       }
     }
     if (!is.null(dc@information$resolution$term)) {
