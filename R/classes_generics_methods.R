@@ -109,6 +109,8 @@ setMethod(
       data.frame(check = x@name, target = x@target)
     })
     res <- do.call(rbind, res)
-    message(paste(res$check, "->", res$target, "\n"))
+    #message(paste(res$check, "->", res$target, "\n"))
+    foo <- data.frame(check = res$check, target = res$target)
+    message(paste0(capture.output(foo), collapse = "\n"))
   }
 )

@@ -18,8 +18,8 @@ A data.frame or rst table with summary statistics
 }
 \description{
 `summary_dc()` is a function that calculated statistics for how many data
-checks passed. It's main input is an object of a DataCheckFlagSet class and output
-is a summary table.
+checks passed. It's main input is an object of a DataCheckFlagSet class and 
+output is a summary table.
 }
 \examples{
 result <- perform_dc(data_bats)

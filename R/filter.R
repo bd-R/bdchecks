@@ -1,7 +1,7 @@
 #' Filter Data Checks
 #'
-#' `dc_filter_generate()` is a function that generates vector for filtering data
-#' checks result table according to filtering table `selectCells` object.
+#' `dc_filter_generate()` is a function that generates vector for filtering 
+#' data checks result table according to filtering table `selectCells` object.
 #'
 #' @param dc_result_summary Summary table for a DataCheckFlagSet class
 #' (must be filterable in `DT`)
@@ -40,9 +40,10 @@ dc_filter_generate <- function(
 #'  to filtering vector.
 #'
 #' @param data Data set on which data checks where performed
-#' @param dc_result Object of a DataCheckFlagSet generated with `perforDataCheck()`
-#' @param dc_filts A list containing filtering targets and status generated with
-#' `dc_filter_generate()`
+#' @param dc_result Object of a DataCheckFlagSet generated with 
+#' `perforDataCheck()`
+#' @param dc_filts A list containing filtering targets and status generated 
+#' with `dc_filter_generate()`
 #'
 #' @return A data.frame that is filtered according to given vector
 #'
@@ -67,7 +68,7 @@ dc_filter <- function(data, dc_result, dc_filts) {
       }
       idx <- c(idx, bar)
     } else {
-      warning("Can't filter all three")
+      stop("Can't filter all three")
     }
   }
   idx <- unique(idx)

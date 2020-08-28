@@ -1,7 +1,7 @@
 #' Get Github Project Information
 #'
-#' `get_github_project()` is a function for retrieve information for a given github
-#' project
+#' `get_github_project()` is a function for retrieve information for a given 
+#' github project
 #'
 #' @param repo Repository that we want to work on
 #' @param project Name of the project that we want to get
