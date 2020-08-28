@@ -20,8 +20,9 @@ test_that("datacheck_info_export", {
     result <- expect_silent(datacheck_info_export(path_rd = foo)) 
   }
   expect_s4_class(result, "DataCheckSet")
+  expect_message(print(result))
 })
-
+ 
 # Test perform functions
 context("Data Checks")
 # test perform_dc
@@ -42,6 +43,7 @@ test_that("perform_dc", {
   expect_equal(sum(
     perform_dc(testing_data, "taxonrank_present")@flags[[1]]@result
   ), 1e3)
+  expect_message(print(result))
 })
 
 # Test data checks
@@ -123,6 +125,11 @@ test_that("summary_dc", {
   result <- expect_warning(perform_dc(testing_data))
   # Check if output is valid
   expect_s4_class(result, "DataCheckFlagSet")
+  # If any DataCheckFlagSet@flags@result missing, its not included in summary
+  fake_result <- result
+  fake_result@flags[[47]]@result <- logical()
+  bar <- summary_dc(fake_result, fancy = FALSE, filtering_dt = FALSE)
+  expect_false(length(fake_result@flags) == nrow(bar))
   # Summary output 1
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = FALSE)
   expect_s3_class(foo, "data.frame")
@@ -189,5 +196,22 @@ test_that("dc_filter", {
     )
   )
   expect_s3_class(fooo, "data.frame")
+  # filter all 3 options at once
+  bad_matrix <- matrix(c(rep(1, 3), 2, 3, 4), nrow = 3)
+  bar <- expect_silent(
+    dc_filter_generate(
+      dc_result_summary = foo, 
+      cell_selected = bad_matrix
+    )
+  )
+  # performing filtering
+  fooo <- expect_error(
+    dc_filter(
+      data = testing_data,
+      # 'result' and 'bar' from previous test
+      dc_result = result,
+      dc_filts = bar
+    )
+  )
 })
 
