@@ -11,8 +11,8 @@
 #'
 #' @importFrom methods new
 #'
-#' @return Object of a DataCheckFlagSet class (combined result for all performed
-#' data checks)
+#' @return Object of a DataCheckFlagSet class (combined result for all 
+#' performed data checks)
 #'
 #' @examples
 #' perform_dc(data_bats)
@@ -35,15 +35,24 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
   result_dc <- list()
 
   for (i in seq_along(wanted_dc)) {
-    # match each check name to data.checks object
+    # Match each check name to data.checks object
     idx <- which(names(data.checks@dc_body) == wanted_dc[i])
-    # stop if any check names are duplicated, MAYBE UNIQUE() INSTEAD?
+    # Stop if any check names are duplicated, MAYBE UNIQUE() INSTEAD?
     stopifnot(length(idx) == 1)
     dc <- data.checks@dc_body[[idx]]
-    # remove any possible white spaces for target columns
+    # Remove any possible white spaces for target columns
     target_names <- gsub(" ", "", dc@input$target)
     target_names <- unlist(strsplit(target_names, ","))
     missing_targets <- target_names[!target_names %in% colnames(data)]
+    # Same removal for target2 field
+    if (!is.null(dc@input$target2)) {
+      target2_names <- gsub(" ", "", dc@input$target2)
+      target2_names <- unlist(strsplit(target2_names, ","))
+      missing_targets <- c(missing_targets, 
+        target2_names[!target2_names %in% colnames(data)]
+      )
+    }
+    # Output any missing targets
     if (length(missing_targets) != 0) {
       warning(
         dc@name, " won't be performed on the following columns, ", 
@@ -51,12 +60,11 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
         paste(missing_targets, collapse=", ")
       )
     }
-    # keep only existing target columns
+    # Keep only existing target columns
     target_names <- target_names[target_names %in% colnames(data)]
     target_result <- vector("list", length(target_names))
     names(target_result) <- target_names
     for (j in target_names) {
-      # to fix
       if (!is.null(dc@input$target2)) {
         target_result[[j]] <- get(paste0("dc_", dc@name))(
           data[, j, drop = TRUE],
@@ -71,20 +79,29 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
         # And after this merge with all set (expand)
         if (dc@information$check_type == "tdwg_standard") {
           target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x)
-        # for all input-based data checks
+        # For all input-based data checks
         } else if (dc@information$check_type == "bdclean") {
           target_uniq$res <- get(paste0("dc_", dc@name))(target_uniq$x, ...)
         }
+        # Performed unique values are spread to all values
         target_result[[j]] <- merge(
           target_all, target_uniq, "x", sort = FALSE
         )$res
       }
     }
+    # Merge values (if multiple targets exist) based on data check logic
     if (!is.null(dc@information$resolution$term)) {
-      target_result <- list(merged_targets = 
-        rowSums(do.call("cbind", target_result)) > 0
-      )
+      if (dc@information$resolution$term == "multi_term_logical_AND") {
+        target_result <- list(merged_targets = 
+          rowSums(do.call("cbind", target_result)) == length(target_result)
+        )
+      } else if (dc@information$resolution$term == "multi_term_logical_OR") {
+        target_result <- list(merged_targets = 
+          rowSums(do.call("cbind", target_result)) > 0
+        )
+      }
     }
+    # Match flags to results of data checks
     for (j in seq_along(target_result)) {
       flag <- ifelse(
         target_result[[j]],
@@ -92,6 +109,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
         dc@output$output_tdwg_standard_fail
       )
       flag[is.na(flag)] <- dc@output$output_tdwg_standard_missing
+      # Complete DataCheckFlag object
       result_dc[[length(result_dc) + 1]] <-
         methods::new("DataCheckFlag",
           name = dc@name,
@@ -103,6 +121,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
   }
 
   if (length(result_dc) > 0) {
+    # Create DataCheckFlagSet from DataCheckFlag
     result_dc <- methods::new("DataCheckFlagSet",
       DC = as.character(lapply(result_dc, function(x) `@`(x, name))),
       flags = result_dc

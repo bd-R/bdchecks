@@ -13,7 +13,7 @@ DC_taxon_present:
       warning: incomplete
       resolution:
         record: single_record
-        term: multi_term
+        term: multi_term_logical_OR
       keywords: taxon,validation,completeness,missing,incomplete
       guid: 06851339-843f-4a43-8422-4e61b9a00e75
     example:
@@ -30,7 +30,7 @@ DC_taxon_present:
       reference:
       creator: Lee Belbin
       modifier: Martynas Jocys
-      modification: 2020-06-04
+      modification: 2020-08-29
     communication:
     notes:
       1: Lee Belbin - This needs discussion. For example, would kingdom, phylum, class or order only be useful?
@@ -575,7 +575,7 @@ DC_location_present:
       warning: incomplete
       resolution:
         record: single_record
-        term: multi_term
+        term: multi_term_logical_OR
       keywords: location,validation,completeness,missing,incomplete
       guid: 58486cb6-1114-4a8a-ba1e-bd89cfe887e9
     example:
@@ -592,7 +592,7 @@ DC_location_present:
       reference:
       creator: Lee Belbin
       modifier: Martynas Jocys
-      modification: 2020-06-04
+      modification: 2020-08-29
     communication:
     notes:
       1: Paula Zermoglio - I believe DwC terms should include some more, e.g., island, islandGroup, waterbody, county, municipality, continent, countryCode.
@@ -879,7 +879,7 @@ DC_eventtemporal_present:
       warning: incomplete
       resolution:
         record: single_record
-        term: multi_term
+        term: multi_term_logical_OR
       keywords: location,validation,completeness,missing,incomplete
       guid: 41267642-60ff-4116-90eb-499fee2cd83f
     example:
@@ -896,7 +896,7 @@ DC_eventtemporal_present:
       reference:
       creator: Lee Belbin
       modifier: Martynas Jocys
-      modification: 2020-06-04
+      modification: 2020-08-29
     communication:
     notes:
   input:
@@ -1661,7 +1661,7 @@ DC_coordinates_notzero:
       warning: unlikely
       resolution:
         record: single_record
-        term: multi_term
+        term: multi_term_logical_AND
       keywords: space,likelihood,validation
       guid: 1bf0e210-6792-4128-b8cc-ab6828aa4871
     example:
@@ -1678,7 +1678,7 @@ DC_coordinates_notzero:
       reference: 
       creator: 
       modifier: Martynas Jocys
-      modification: 2020-06-04
+      modification: 2020-08-29
     communication:
     notes:
   input:
@@ -2126,7 +2126,7 @@ DC_mindepth_maxdepth_inrange:
       warning: invalid
       resolution:
         record: single_record
-        term: multi_term
+        term: multi_term_logical_AND
       keywords: space,validation
       guid: 04b2c8f3-c71b-4e95-8e43-f70374c5fb92
     example:
@@ -2143,7 +2143,7 @@ DC_mindepth_maxdepth_inrange:
       reference: https://en.wikipedia.org/wiki/Extreme_points_of_Earth
       creator:
       modifier: Martynas Jocys
-      modification: 2020-06-04
+      modification: 2020-08-29
     communication:
     notes:
       1: Paul Morris - Minumum depth should also be less than 11000m, and max depth should also be greater than or equal to 0 meters, as only a single depth might be provided. @pz, feels like likeliness rather than conformance, as it isn't a format problem, just the compliance of a range with expected reality.
