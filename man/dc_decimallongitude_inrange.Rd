@@ -3,7 +3,8 @@
 %   R/documentation_decimallongitude_inrange.R
 \name{dc_decimallongitude_inrange}
 \alias{dc_decimallongitude_inrange}
-\title{Data check decimallongitude_inrange Check if decimalLongitude is within parameter range.}
+\title{Data check decimallongitude_inrange Check if decimalLongitude is within
+parameter range.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,14 @@ dc_decimallongitude_inrange(input = NULL)
 be within -180 and 180 degrees.}
 }
 \description{
-This data check answers: "Is decimalLongitude within parameter range?" question.\cr Data check will pass if \strong{The value for decimalLongitude within given numbers.} and will fail if \strong{The value for decimalLongitude is not within given numbers.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{decimalLongitude=0}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{decimalLongitude=181}, such data check would return \code{FALSE}.
+This data check answers: "Is decimalLongitude within parameter range?"
+question.\cr Data check will pass if \strong{The value for decimalLongitude
+within given numbers.} and will fail if \strong{The value for
+decimalLongitude is not within given numbers.}.\cr Dimension of this data
+check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of
+entries that will pass: \code{decimalLongitude=0}, such data check would
+return \code{TRUE}.\cr Example of entries that will fail:
+\code{decimalLongitude=181}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

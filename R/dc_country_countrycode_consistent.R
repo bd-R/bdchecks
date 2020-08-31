@@ -18,10 +18,10 @@ dc_country_countrycode_consistent <- function(
   cn <- tolower(data_countries$country_name)
   cc <- tolower(data_countries$country_code)
 
-  res1 <- sapply(clean_input1, function(x) which(cn == x))
-  res2 <- sapply(clean_input2, function(x) which(cc == x))
-  
-  result <- as.numeric(res1) == as.numeric(res2)
+  res1 <- paste(clean_input1, clean_input2, sep = "_")
+  res2 <- paste(cn, cc, sep = "_")
+
+  result <- res1 %in% res2
   foo <- perform_dc_missing(result, input)
   bar <- perform_dc_missing(result, input2)
 

@@ -3,7 +3,8 @@
 %   R/documentation_day_standard.R
 \name{dc_day_standard}
 \alias{dc_day_standard}
-\title{Data check day_standard Check if day is an integer between 1 and 31 inclusive.}
+\title{Data check day_standard Check if day is an integer between 1 and 31
+inclusive.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,14 @@ dc_day_standard(input = NULL)
 within 1 and 31.}
 }
 \description{
-This data check answers: "Is day an integer between 1 and 31 inclusive?" question.\cr Data check will pass if \strong{The value for day within given numbers.} and will fail if \strong{The value for day is not within given numbers.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{day=6}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{day=32}, such data check would return \code{FALSE}.
+This data check answers: "Is day an integer between 1 and 31
+inclusive?" question.\cr Data check will pass if \strong{The value for day
+within given numbers.} and will fail if \strong{The value for day is not
+within given numbers.}.\cr Dimension of this data check is \strong{} and
+it's flagging type is: \strong{FLAG}\cr Example of entries that will pass:
+\code{day=6}, such data check would return \code{TRUE}.\cr Example of
+entries that will fail: \code{day=32}, such data check would return
+\code{FALSE}.
 }
 \section{samplePassData}{
 

@@ -109,6 +109,22 @@ setMethod(
       data.frame(check = x@name, target = x@target)
     })
     res <- do.call(rbind, res)
-    message(paste(res$check, "->", res$target, "\n"))
+    #message(paste(res$check, "->", res$target, "\n"))
+    bar <- data.frame(check = res$check, target = res$target)
+    message("Performed data checks: \n", 
+         paste0(capture.output(bar), collapse = "\n")
+       )
+    # if (!is.null(not_performed)) {
+    #   not_performed <- not_performed[!not_performed$check %in% bar$check,]
+    #   message("Performed data checks: \n", 
+    #     paste0(capture.output(bar), collapse = "\n"),
+    #     "\n\nNot performed data checks (because of missing columns): \n",
+    #     paste0(capture.output(not_performed), collapse = "\n")
+    #   )
+    # } else {
+    #   message("Performed data checks: \n", 
+    #     paste0(capture.output(bar), collapse = "\n")
+    #   )
+    # }
   }
 )

@@ -3,7 +3,8 @@
 %   R/documentation_eventdate_standard.R
 \name{dc_eventdate_standard}
 \alias{dc_eventdate_standard}
-\title{Data check eventdate_standard Check if eventDate is a valid ISO 8601-1:2019 date.}
+\title{Data check eventdate_standard Check if eventDate is a valid ISO
+8601-1:2019 date.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,14 @@ dc_eventdate_standard(input = NULL)
 ISO 8601-1:2019 date.}
 }
 \description{
-This data check answers: "Is eventDate a valid ISO 8601-1:2019 date?" question.\cr Data check will pass if \strong{Given eventDate is a valid ISO 8601-1:2019 date.} and will fail if \strong{Given eventDate is not a valid ISO 8601-1:2019 date.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{eventDate="02021981"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{eventDate="2018-02-02"}, such data check would return \code{FALSE}.
+This data check answers: "Is eventDate a valid ISO 8601-1:2019 date?"
+question.\cr Data check will pass if \strong{Given eventDate is a valid ISO
+8601-1:2019 date.} and will fail if \strong{Given eventDate is not a valid
+ISO 8601-1:2019 date.}.\cr Dimension of this data check is \strong{} and
+it's flagging type is: \strong{FLAG}\cr Example of entries that will pass:
+\code{eventDate="02021981"}, such data check would return \code{TRUE}.\cr
+Example of entries that will fail: \code{eventDate="2018-02-02"}, such data
+check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

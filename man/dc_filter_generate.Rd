@@ -24,6 +24,6 @@ A list that contains name of a data checks, it's target and
 filtering status
 }
 \description{
-`dc_filter_generate()` is a function that generates vector for filtering data
-checks result table according to filtering table `selectCells` object.
+`dc_filter_generate()` is a function that generates vector for filtering 
+data checks result table according to filtering table `selectCells` object.
 }

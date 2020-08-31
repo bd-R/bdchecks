@@ -15,7 +15,13 @@ dc_dctype_present(input = NULL)
 non-empty entry.}
 }
 \description{
-This data check answers: "Is dctype information present?" question.\cr Data check will pass if \strong{The value for dctype is present.} and will fail if \strong{The value for dctype is missing.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{dctype=Image}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{dctype=}, such data check would return \code{FALSE}.
+This data check answers: "Is dctype information present?"
+question.\cr Data check will pass if \strong{The value for dctype is
+present.} and will fail if \strong{The value for dctype is missing.}.\cr
+Dimension of this data check is \strong{} and it's flagging type is:
+\strong{FLAG}\cr Example of entries that will pass: \code{dctype=Image},
+such data check would return \code{TRUE}.\cr Example of entries that will
+fail: \code{dctype=}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

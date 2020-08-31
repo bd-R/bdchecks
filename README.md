@@ -63,7 +63,7 @@ check()
 ```{r}
 install() # To have new check in `system.file("extdata/data_check.yaml")`
 data.checks <- bdchecks:::datacheck_info_export() # export documentation and combines new check with old ones
-use_data(data_taxonrank, data_countries, data.checks, data_bats, overwrite = TRUE, internal = TRUE) # exports old (and new data checks)
+use_data(data_taxonrank, data_countries, data.checks, data_bats, cleaning_table, overwrite = TRUE, internal = TRUE) # exports old (and new data checks)
 document() # document new check to `Rd`
 install() # install package with a new check
 ```

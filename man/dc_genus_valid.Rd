@@ -2,7 +2,8 @@
 % Please edit documentation in R/dc_genus_valid.R, R/documentation_genus_valid.R
 \name{dc_genus_valid}
 \alias{dc_genus_valid}
-\title{Data check genus_valid Check if genus was found as a value at the rank of genus by the specified source authority service.}
+\title{Data check genus_valid Check if genus was found as a value at the rank of
+genus by the specified source authority service.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -14,7 +15,13 @@ dc_genus_valid(input = NULL)
 gbif genus ranks.}
 }
 \description{
-This data check answers: "Is genus information valid?" question.\cr Data check will pass if \strong{The value for genus is present and correct.} and will fail if \strong{The value for genus is missing or incorrect.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{genus=Canis}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{genus=}, such data check would return \code{FALSE}.
+This data check answers: "Is genus information valid?" question.\cr
+Data check will pass if \strong{The value for genus is present and correct.}
+and will fail if \strong{The value for genus is missing or incorrect.}.\cr
+Dimension of this data check is \strong{} and it's flagging type is:
+\strong{FLAG}\cr Example of entries that will pass: \code{genus=Canis},
+such data check would return \code{TRUE}.\cr Example of entries that will
+fail: \code{genus=}, such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

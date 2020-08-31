@@ -3,7 +3,8 @@
 %   R/documentation_scientificname_present.R
 \name{dc_scientificname_present}
 \alias{dc_scientificname_present}
-\title{Data check scientificname_present Check if scientificName exists and is not empty.}
+\title{Data check scientificname_present Check if scientificName exists and is
+not empty.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,14 @@ dc_scientificname_present(input = NULL)
 non-empty entry.}
 }
 \description{
-This data check answers: "Is scientificName information present?" question.\cr Data check will pass if \strong{The value for scientificName is present.} and will fail if \strong{The value for scientificName is missing.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{scientificName=banana}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{scientificName=}, such data check would return \code{FALSE}.
+This data check answers: "Is scientificName information present?"
+question.\cr Data check will pass if \strong{The value for scientificName
+is present.} and will fail if \strong{The value for scientificName is
+missing.}.\cr Dimension of this data check is \strong{} and it's flagging
+type is: \strong{FLAG}\cr Example of entries that will pass:
+\code{scientificName=banana}, such data check would return \code{TRUE}.\cr
+Example of entries that will fail: \code{scientificName=}, such data check
+would return \code{FALSE}.
 }
 \section{samplePassData}{
 

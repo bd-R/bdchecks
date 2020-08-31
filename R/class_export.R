@@ -34,7 +34,7 @@ datacheck_info_export <- function(
       pseudocode = data_yaml[[i]]$meta$pseudocode
     )
   }
-  names(data_class) <- sapply(data_class, "slot", "name")
+  names(data_class) <- unlist(lapply(data_class, "slot", "name"))
   result <- methods::new("DataCheckSet", dc_body = data_class)
   return(result)
 }
@@ -59,7 +59,11 @@ roxygen_comment_generate <- function(DC) {
     "#' @name",
     "#' @format An object of class function to perform a specific data check.",
     "#' @references None",
-    "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name')",
+    if (DC$meta$information$check_type == "bdclean") {
+      "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name', input_example)"
+    } else {
+      "#' @examples \n#' perform_dc(data_bats, 'EXAMPLE@name')"
+    },
     "#' @section samplePassData:\n#' FIELDPASS",
     "#' @section sampleFailData:\n#' FIELDFAIL",
     "#' @section targetDWCField:\n#' FIELDTARGET",
@@ -69,38 +73,79 @@ roxygen_comment_generate <- function(DC) {
   )
 
   # Add short description
-  skeleton <- sub(
-    "shortDesc",
-    paste("#' Data check", DC$name, DC$meta$information$description),
-    skeleton
+  foo <- paste("#' Data check", DC$name, DC$meta$information$description)
+  # to reduce each description line length to 80
+  bar <- unlist(strsplit(foo, " "))
+    n <- 81
+    repeat{
+      n <- n-1
+      foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+      # 80 - 3 = 77, because of roxygen comment symbol 
+      if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+        break
+      }
+    }
+  fixed_length <- paste0(
+    paste(bar[foobar], collapse = " "), "\n#' ", 
+    paste(bar[!foobar], collapse = " ")
   )
+
+  skeleton <- sub("shortDesc", fixed_length, skeleton)
 
   # Add long description
-  skeleton <- sub(
-    "longDesc", paste0(
-      "#'     This data check answers: \"", DC$meta$information$question,
-      "\" question.",
-      "\\\\cr Data check will pass if \\\\strong{",
-      DC$meta$example$pass, "}",
-      " and will fail if \\\\strong{",
-      DC$meta$example$fail, "}.",
-      "\\\\cr Dimension of this data check is \\\\strong{",
-      DC$meta$dimension, "}",
-      " and it's flagging type is: \\\\strong{FLAG}",
-      "\\\\cr Example of entries that will pass: \\\\code{",
-      DC$meta$example$input_pass, "},",
-      " such data check would return \\\\code{",
-      DC$meta$example$output_pass, "}.",
-      "\\\\cr Example of entries that will fail: \\\\code{",
-      DC$meta$example$input_fail, "},",
-      " such data check would return \\\\code{",
-      DC$meta$example$output_fail, "}."
-    ),
-    skeleton
-  )
-  # Add additional fiels for the bdclean
-  skeleton <- sub("EXAMPLE@name", DC$name, skeleton)
+  foo <- paste0(
+        "#'     This data check answers: \"", DC$meta$information$question,
+        "\" question.",
+        "\\\\cr Data check will pass if \\\\strong{",
+        DC$meta$example$pass, "}",
+        " and will fail if \\\\strong{",
+        DC$meta$example$fail, "}.",
+        "\\\\cr Dimension of this data check is \\\\strong{",
+        DC$meta$dimension, "}",
+        " and it's flagging type is: \\\\strong{FLAG}",
+        "\\\\cr Example of entries that will pass: \\\\code{",
+        DC$meta$example$input_pass, "},",
+        " such data check would return \\\\code{",
+        DC$meta$example$output_pass, "}.",
+        "\\\\cr Example of entries that will fail: \\\\code{",
+        DC$meta$example$input_fail, "},",
+        " such data check would return \\\\code{",
+        DC$meta$example$output_fail, "}."
+      )
+  # to reduce each description line length to 80
+  bar <- unlist(strsplit(foo, " "))
+  for (i in 1:(round(nchar(foo)/80, 0) + 1)) { 
+    n <- 81
+    repeat{
+      n <- n-1
+      foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+      # 80 - 3 = 77, because of roxygen comment symbol 
+      if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+        break
+      }
+    }
+    if (i == 1) {
+      fixed_length <- paste(bar[foobar], collapse = " ")
+    } else {
+      fixed_length <- paste0(
+        fixed_length, "\n#' ", paste(bar[foobar], collapse = " ")
+      ) 
+    }
+    bar <- bar[!foobar]
+  }
 
+  skeleton <- sub("longDesc", fixed_length, skeleton)
+  # Add additional fields for the bdclean
+  if (DC$meta$information$check_type == "bdclean") {
+    provided_input <- parse(text = DC$documentation$input_example)
+    skeleton <- sub("input_example", provided_input, skeleton)
+  }
+  # Add dc name in the example field
+  if (nchar(grep("@examples", skeleton, value = TRUE)) > 80) {
+    skeleton <- sub("perform_dc\\(", "perform_dc(\n#'   ", skeleton)
+    skeleton <- sub("\\)$", "\n#' )", skeleton)
+  }
+  skeleton <- sub("EXAMPLE@name", DC$name, skeleton)
   # Add name
   skeleton <- sub("@name", paste("@name", paste0("dc_", DC$name)), skeleton)
   # Add keywords
@@ -111,10 +156,69 @@ roxygen_comment_generate <- function(DC) {
       ""
     )
   )
-
-  skeleton <- sub("FIELDPASS", DC$meta$example$pass, skeleton)
-  skeleton <- sub("FIELDFAIL", DC$meta$example$fail, skeleton)
-  skeleton <- sub("FIELDTARGET", DC$input$target, skeleton)
+  if (nchar(DC$meta$example$pass) > 77) {
+    bar <- unlist(strsplit(DC$meta$example$pass, " "))
+      n <- 81
+      repeat{
+        n <- n-1
+        foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+        # 80 - 3 = 77, because of roxygen comment symbol 
+        if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+          break
+        }
+      }
+    fixed_length <- paste0(
+      paste(bar[foobar], collapse = " "), "\n#' ", 
+      paste(bar[!foobar], collapse = " ")
+    ) 
+    skeleton <- sub("FIELDPASS", fixed_length, skeleton)
+  } else {
+    skeleton <- sub("FIELDPASS", DC$meta$example$pass, skeleton)
+  }
+  if (nchar(DC$meta$example$fail) > 77) {
+    bar <- unlist(strsplit(DC$meta$example$fail, " "))
+      n <- 81
+      repeat{
+        n <- n-1
+        foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+        # 80 - 3 = 77, because of roxygen comment symbol 
+        if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+          break
+        }
+      }
+    fixed_length <- paste0(
+      paste(bar[foobar], collapse = " "), "\n#' ", 
+      paste(bar[!foobar], collapse = " ")
+    ) 
+    skeleton <- sub("FIELDFAIL", fixed_length, skeleton)
+  } else {
+    skeleton <- sub("FIELDFAIL", DC$meta$example$fail, skeleton)
+  }
+  if (nchar(DC$input$target) > 77) {
+    bar <- unlist(strsplit(DC$input$target, " "))
+  for (i in 1:(round(nchar(DC$input$target)/80, 0) + 1)) { 
+    n <- 81
+    repeat{
+      n <- n-1
+      foobar <- cumsum(vapply(bar, nchar, integer(1))) < n
+      # 80 - 3 = 77, because of roxygen comment symbol 
+      if (nchar(paste(bar[foobar], collapse = " ")) <= 77) {
+        break
+      }
+    }
+    if (i == 1) {
+      fixed_length <- paste(bar[foobar], collapse = " ")
+    } else {
+      fixed_length <- paste0(
+        fixed_length, "\n#' ", paste(bar[foobar], collapse = " ")
+      ) 
+    }
+    bar <- bar[!foobar]
+  } 
+    skeleton <- sub("FIELDTARGET", fixed_length, skeleton)
+  } else {
+    skeleton <- sub("FIELDTARGET", DC$input$target, skeleton)
+  }
   skeleton <- sub(
     "FIELDCATERGORY",
     DC$meta$information$darwin_core_class,

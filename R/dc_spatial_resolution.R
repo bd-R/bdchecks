@@ -2,12 +2,14 @@
 #' 
 #' @param input a vector of coordinate uncertainty in meters. To pass it must
 #' be lower than provided resolution.
-#' @param provided_input a numeric value for the highest coordinate uncertainty
+#' @param spatial_res a numeric value for the highest coordinate uncertainty
 #' required.
+#' @param ... to allow other input-based to run simultaneously.
 #' 
 dc_spatial_resolution <- function(
     input = NULL, 
-    provided_input = 1000
+    spatial_res = 1000,
+    ...
 ) {
   # tdwg_standard check
   passed <- get(paste0("dc_", "coordinateuncertainty_inrange"))(input)
@@ -16,9 +18,9 @@ dc_spatial_resolution <- function(
   suppressWarnings(
     clean_input <- as.numeric(input)
   )
-    provided_input <- as.numeric(provided_input)
-    if (provided_input > 0) {
-        result <- clean_input[passed] <= provided_input
+    spatial_res <- as.numeric(spatial_res)
+    if (spatial_res > 0) {
+        result <- clean_input[passed] <= spatial_res
     }
     return(perform_dc_missing(result, input))
 }

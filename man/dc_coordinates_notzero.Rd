@@ -3,7 +3,8 @@
 %   R/documentation_coordinates_notzero.R
 \name{dc_coordinates_notzero}
 \alias{dc_coordinates_notzero}
-\title{Data check coordinates_notzero Check if decimalLatitude or decimalLongitude are not zeroes.}
+\title{Data check coordinates_notzero Check if decimalLatitude or
+decimalLongitude are not zeroes.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,14 @@ dc_coordinates_notzero(input = NULL)
 To pass it must not be equal to zero.}
 }
 \description{
-This data check answers: "Are coordinates not equal to zero." question.\cr Data check will pass if \strong{The value for decimalLatitude is not equal to 0.} and will fail if \strong{The value for decimalLatitude is equal to 0.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{decimalLatitude=1}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{decimalLatitude=0}, such data check would return \code{FALSE}.
+This data check answers: "Are coordinates not equal to zero."
+question.\cr Data check will pass if \strong{The value for decimalLatitude
+is not equal to 0.} and will fail if \strong{The value for decimalLatitude
+is equal to 0.}.\cr Dimension of this data check is \strong{} and it's
+flagging type is: \strong{FLAG}\cr Example of entries that will pass:
+\code{decimalLatitude=1}, such data check would return \code{TRUE}.\cr
+Example of entries that will fail: \code{decimalLatitude=0}, such data check
+would return \code{FALSE}.
 }
 \section{samplePassData}{
 

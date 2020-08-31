@@ -3,7 +3,8 @@
 %   R/documentation_datageneralizations_present.R
 \name{dc_datageneralizations_present}
 \alias{dc_datageneralizations_present}
-\title{Data check datageneralizations_present Check if dataGeneralizations is not empty.}
+\title{Data check datageneralizations_present Check if dataGeneralizations is not
+empty.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -14,7 +15,14 @@ dc_datageneralizations_present(input = NULL)
 \item{input}{a vector of data generalization information.}
 }
 \description{
-This data check answers: "Is dataGeneralizations information present?" question.\cr Data check will pass if \strong{The value for dataGeneralizations is not empty.} and will fail if \strong{The value for dataGeneralizations is not reported.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{dataGeneralizations=record placed on 0.1 degree grid}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{dataGeneralizations=}, such data check would return \code{FALSE}.
+This data check answers: "Is dataGeneralizations information present?"
+question.\cr Data check will pass if \strong{The value for
+dataGeneralizations is not empty.} and will fail if \strong{The value for
+dataGeneralizations is not reported.}.\cr Dimension of this data check is
+\strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries
+that will pass: \code{dataGeneralizations=record placed on 0.1 degree grid},
+such data check would return \code{TRUE}.\cr Example of entries that will
+fail: \code{dataGeneralizations=}, such data check would return
 }
 \section{samplePassData}{
 

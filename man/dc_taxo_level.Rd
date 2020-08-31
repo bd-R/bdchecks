@@ -2,27 +2,39 @@
 % Please edit documentation in R/dc_taxo_level.R, R/documentation_taxo_level.R
 \name{dc_taxo_level}
 \alias{dc_taxo_level}
-\title{Data check taxo_level Check if taxonRank is lower than provided resolution.}
+\title{Data check taxo_level Check if taxonRank is lower than provided
+resolution.}
 \format{
 An object of class function to perform a specific data check.
 }
 \usage{
 dc_taxo_level(
   input = NULL,
-  provided_input = "species",
-  ranks = c("class", "order", "family", "genus", "species", "subspecies")
+  lowest_rank = "species",
+  ranks = c("class", "order", "family", "genus", "species", "subspecies"),
+  ...
 )
 }
 \arguments{
 \item{input}{a vector of taxon rank. To pass must be within given
 dictionary.}
 
-\item{provided_input}{The low rank of species required.}
+\item{lowest_rank}{The lowest rank of species required.}
 
 \item{ranks}{A list of taxon ranks that could be chosen.}
+
+\item{...}{to allow other input-based to run simultaneously.}
 }
 \description{
-This data check answers: "Is taxonRank lower than provided resolution?" question.\cr Data check will pass if \strong{The value for taxonRank is lower than provided resolution.} and will fail if \strong{The value for taxonRank is higher than provided resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{taxonRank="species",provided_input="family"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{taxonRank="family",provided_input="species"}, such data check would return \code{FALSE}.
+This data check answers: "Is taxonRank lower than provided
+resolution?" question.\cr Data check will pass if \strong{The value for
+taxonRank is lower than provided resolution.} and will fail if \strong{The
+value for taxonRank is higher than provided resolution.}.\cr Dimension of
+this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr
+Example of entries that will pass:
+\code{taxonRank="species",provided_input="family"}, such data check would
+return \code{TRUE}.\cr Example of entries that will fail:
+\code{taxonRank="family",provided_input="species"}, such data check would
 }
 \section{samplePassData}{
 
@@ -45,7 +57,7 @@ taxonRank
 }
 
 \examples{
-perform_dc(data_bats, 'taxo_level')
+perform_dc(data_bats, 'taxo_level', c("species"))
 }
 \references{
 None

@@ -39,3 +39,13 @@ NULL
 #' @export
 #'
 NULL
+
+#' Meta cleaning table
+#'
+#' All data checks with their cleaning functionality
+#'
+#' @name cleaning_table
+#' @docType data
+#' @export
+#'
+NULL

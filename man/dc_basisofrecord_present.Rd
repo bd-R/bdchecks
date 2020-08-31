@@ -3,7 +3,8 @@
 %   R/documentation_basisofrecord_present.R
 \name{dc_basisofrecord_present}
 \alias{dc_basisofrecord_present}
-\title{Data check basisofrecord_present Check if basisOfRecord exists and is not empty.}
+\title{Data check basisofrecord_present Check if basisOfRecord exists and is not
+empty.}
 \format{
 An object of class function to perform a specific data check.
 }
@@ -15,7 +16,14 @@ dc_basisofrecord_present(input = NULL)
 non-empty entry.}
 }
 \description{
-This data check answers: "Is basisOfRecord information present?" question.\cr Data check will pass if \strong{The value for basisOfRecord is present.} and will fail if \strong{The value for basisOfRecord is missing.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{basisOfRecord=LivingSpecimen}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{basisOfRecord=}, such data check would return \code{FALSE}.
+This data check answers: "Is basisOfRecord information present?"
+question.\cr Data check will pass if \strong{The value for basisOfRecord is
+present.} and will fail if \strong{The value for basisOfRecord is
+missing.}.\cr Dimension of this data check is \strong{} and it's flagging
+type is: \strong{FLAG}\cr Example of entries that will pass:
+\code{basisOfRecord=LivingSpecimen}, such data check would return
+\code{TRUE}.\cr Example of entries that will fail: \code{basisOfRecord=},
+such data check would return \code{FALSE}.
 }
 \section{samplePassData}{
 

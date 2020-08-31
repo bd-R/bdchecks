@@ -1,7 +1,7 @@
 #' Filter Data Checks
 #'
-#' `dc_filter_generate()` is a function that generates vector for filtering data
-#' checks result table according to filtering table `selectCells` object.
+#' `dc_filter_generate()` is a function that generates vector for filtering 
+#' data checks result table according to filtering table `selectCells` object.
 #'
 #' @param dc_result_summary Summary table for a DataCheckFlagSet class
 #' (must be filterable in `DT`)
@@ -27,9 +27,9 @@ dc_filter_generate <- function(
     )
   })
   result <- list(
-    name = sapply(result, "[[", 1),
-    target = sapply(result, "[[", 2),
-    filter = sapply(result, "[[", 3)
+    name = unlist(lapply(result, "[[", 1)),
+    target = unlist(lapply(result, "[[", 2)),
+    filter = unlist(lapply(result, "[[", 3))
   )
   return(result)
 }
@@ -40,16 +40,17 @@ dc_filter_generate <- function(
 #'  to filtering vector.
 #'
 #' @param data Data set on which data checks where performed
-#' @param dc_result Object of a DataCheckFlagSet generated with `perforDataCheck()`
-#' @param dc_filts A list containing filtering targets and status generated with
-#' `dc_filter_generate()`
+#' @param dc_result Object of a DataCheckFlagSet generated with 
+#' `perforDataCheck()`
+#' @param dc_filts A list containing filtering targets and status generated 
+#' with `dc_filter_generate()`
 #'
 #' @return A data.frame that is filtered according to given vector
 #'
 dc_filter <- function(data, dc_result, dc_filts) {
   idx <- c()
-  names <- sapply(dc_result@flags, function(x) `@`(x, name))
-  targets <- sapply(dc_result@flags, function(x) `@`(x, target))
+  names <- unlist(lapply(dc_result@flags, function(x) `@`(x, name)))
+  targets <- unlist(lapply(dc_result@flags, function(x) `@`(x, target)))
   for (i in seq_along(dc_filts$name)) {
     if (nchar(dc_filts$filter[i]) < 3) {
       foo <- dc_result@flags[names == dc_filts$name[i] &
@@ -67,7 +68,7 @@ dc_filter <- function(data, dc_result, dc_filts) {
       }
       idx <- c(idx, bar)
     } else {
-      warning("Can't filter all three")
+      stop("Can't filter all three")
     }
   }
   idx <- unique(idx)

@@ -3,31 +3,45 @@
 %   R/documentation_spatial_resolution.R
 \name{dc_spatial_resolution}
 \alias{dc_spatial_resolution}
-\title{Data check spatial_resolution Check if coordinateUncertaintyInMeters is not greater than inputted resolution.}
+\title{Data check spatial_resolution Check if coordinateUncertaintyInMeters is
+not greater than inputted resolution.}
 \format{
 An object of class function to perform a specific data check.
 }
 \usage{
-dc_spatial_resolution(input = NULL, provided_input = 1000)
+dc_spatial_resolution(input = NULL, spatial_res = 1000, ...)
 }
 \arguments{
 \item{input}{a vector of coordinate uncertainty in meters. To pass it must
 be lower than provided resolution.}
 
-\item{provided_input}{a numeric value for the highest coordinate uncertainty
+\item{spatial_res}{a numeric value for the highest coordinate uncertainty
 required.}
+
+\item{...}{to allow other input-based to run simultaneously.}
 }
 \description{
-This data check answers: "Is coordinateUncertaintyInMeters not greater than inputted resolution?" question.\cr Data check will pass if \strong{The value for coordinateUncertaintyInMeters is not greater than provided resolution.} and will fail if \strong{The value for coordinateUncertaintyInMeters is greater than provided resolution.}.\cr Dimension of this data check is \strong{} and it's flagging type is: \strong{FLAG}\cr Example of entries that will pass: \code{coordinateUncertaintyInMeters="1",provided_input="1000"}, such data check would return \code{TRUE}.\cr Example of entries that will fail: \code{coordinateUncertaintyInMeters="3000",provided_input="1000"}, such data check would return \code{FALSE}.
+This data check answers: "Is coordinateUncertaintyInMeters not greater
+than inputted resolution?" question.\cr Data check will pass if \strong{The
+value for coordinateUncertaintyInMeters is not greater than provided
+resolution.} and will fail if \strong{The value for
+coordinateUncertaintyInMeters is greater than provided resolution.}.\cr
+Dimension of this data check is \strong{} and it's flagging type is:
+\strong{FLAG}\cr Example of entries that will pass:
+\code{coordinateUncertaintyInMeters="1",provided_input="1000"}, such data
+check would return \code{TRUE}.\cr Example of entries that will fail:
+\code{coordinateUncertaintyInMeters="3000",provided_input="1000"}, such data
 }
 \section{samplePassData}{
 
-The value for coordinateUncertaintyInMeters is not greater than provided resolution.
+The value for coordinateUncertaintyInMeters is not greater than provided
+resolution.
 }
 
 \section{sampleFailData}{
 
-The value for coordinateUncertaintyInMeters is greater than provided resolution.
+The value for coordinateUncertaintyInMeters is greater than provided
+resolution.
 }
 
 \section{targetDWCField}{
@@ -41,7 +55,7 @@ coordinateUncertaintyInMeters
 }
 
 \examples{
-perform_dc(data_bats, 'spatial_resolution')
+perform_dc(data_bats, 'spatial_resolution', 1000)
 }
 \references{
 None
