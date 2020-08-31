@@ -16,8 +16,8 @@ performed (ie perform only these data checks)}
 (possible choices: temporal_res, spatial_res, lowest_rank, lowest_date)}
 }
 \value{
-Object of a DataCheckFlagSet class (combined result for all performed
-data checks)
+Object of a DataCheckFlagSet class (combined result for all 
+performed data checks)
 }
 \description{
 `perform_dc()` is a function for performing all available data checks

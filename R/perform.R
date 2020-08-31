@@ -33,7 +33,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
   }
   # DataCheckFlagSet object place
   result_dc <- list()
-
+  not_performed <- NULL
   for (i in seq_along(wanted_dc)) {
     # Match each check name to data.checks object
     idx <- which(names(data.checks@dc_body) == wanted_dc[i])
@@ -58,6 +58,13 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
         dc@name, " won't be performed on the following columns, ", 
         "because they don't exist in a given dataset: ", 
         paste(missing_targets, collapse=", ")
+      )
+      not_performed <- rbind(
+        not_performed, 
+        data.frame(
+          check = dc@name, 
+          missing_targets = paste(missing_targets, collapse=", ")
+        )
       )
     }
     # Keep only existing target columns
@@ -119,7 +126,6 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
         )
     }
   }
-
   if (length(result_dc) > 0) {
     # Create DataCheckFlagSet from DataCheckFlag
     result_dc <- methods::new("DataCheckFlagSet",
