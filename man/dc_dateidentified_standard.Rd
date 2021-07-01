@@ -5,9 +5,7 @@
 \alias{dc_dateidentified_standard}
 \title{Data check dateidentified_standard Check if dateIdentified is a valid ISO
 8601-1:2019 date.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_dateidentified_standard(input = NULL)
 }

@@ -5,16 +5,12 @@
 \alias{dc_basisofrecord_standard}
 \title{Data check basisofrecord_standard Check if basisOfRecord is specified
 source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_basisofrecord_standard(
-  input = NULL,
-  sources = c("event", "fossil", "fossilspecimen", "human", "humanobservation",
-    "livingspecimen", "machineobservation", "materialsample", "occurrence",
-    "preservedspecimen", "photo", "photos", "taxon")
-)
+dc_basisofrecord_standard(input = NULL, sources = c("event", "fossil",
+  "fossilspecimen", "human", "humanobservation", "livingspecimen",
+  "machineobservation", "materialsample", "occurrence",
+  "preservedspecimen", "photo", "photos", "taxon"))
 }
 \arguments{
 \item{input}{a vector of basisOfRecord information. To pass it must be

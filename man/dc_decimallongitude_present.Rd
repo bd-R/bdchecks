@@ -5,9 +5,7 @@
 \alias{dc_decimallongitude_present}
 \title{Data check decimallongitude_present Check if decimalLongitude exists and
 is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_decimallongitude_present(input = NULL)
 }

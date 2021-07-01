@@ -4,9 +4,7 @@
 \alias{dc_genus_valid}
 \title{Data check genus_valid Check if genus was found as a value at the rank of
 genus by the specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_genus_valid(input = NULL)
 }

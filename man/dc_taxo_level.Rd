@@ -4,16 +4,11 @@
 \alias{dc_taxo_level}
 \title{Data check taxo_level Check if taxonRank is lower than provided
 resolution.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_taxo_level(
-  input = NULL,
-  lowest_rank = "species",
-  ranks = c("class", "order", "family", "genus", "species", "subspecies"),
-  ...
-)
+dc_taxo_level(input = NULL, lowest_rank = "species",
+  ranks = c("class", "order", "family", "genus", "species",
+  "subspecies"), ...)
 }
 \arguments{
 \item{input}{a vector of taxon rank. To pass must be within given

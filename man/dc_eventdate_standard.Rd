@@ -5,9 +5,7 @@
 \alias{dc_eventdate_standard}
 \title{Data check eventdate_standard Check if eventDate is a valid ISO
 8601-1:2019 date.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_eventdate_standard(input = NULL)
 }

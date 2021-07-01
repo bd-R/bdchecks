@@ -5,9 +5,7 @@
 \alias{dc_country_standard}
 \title{Data check country_standard Check if country is within a set of available
 country names.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_country_standard(input = NULL)
 }

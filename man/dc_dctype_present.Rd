@@ -4,9 +4,7 @@
 \name{dc_dctype_present}
 \alias{dc_dctype_present}
 \title{Data check dctype_present Check if dctype exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_dctype_present(input = NULL)
 }

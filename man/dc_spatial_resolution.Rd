@@ -5,9 +5,7 @@
 \alias{dc_spatial_resolution}
 \title{Data check spatial_resolution Check if coordinateUncertaintyInMeters is
 not greater than inputted resolution.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_spatial_resolution(input = NULL, spatial_res = 1000, ...)
 }

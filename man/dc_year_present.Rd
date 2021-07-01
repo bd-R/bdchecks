@@ -4,9 +4,7 @@
 \name{dc_year_present}
 \alias{dc_year_present}
 \title{Data check year_present Check if year exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_year_present(input = NULL)
 }

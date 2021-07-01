@@ -5,9 +5,7 @@
 \alias{dc_taxon_present}
 \title{Data check taxon_present Check if at least one field needed to determine
 the taxon of the entity exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_taxon_present(input = NULL)
 }

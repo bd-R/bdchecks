@@ -5,9 +5,7 @@
 \alias{dc_establishmentmeans_present}
 \title{Data check establishmentmeans_present Check if establishmentMeans is not
 empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_establishmentmeans_present(input = NULL)
 }

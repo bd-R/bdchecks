@@ -5,9 +5,7 @@
 \alias{dc_earliest_date}
 \title{Data check earliest_date Check if eventDate is greater than inputted
 resolution.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_earliest_date(input = NULL, lowest_date = "2018-02-02", ...)
 }

@@ -4,11 +4,10 @@
 \name{dc_taxonrank_standard}
 \alias{dc_taxonrank_standard}
 \title{Data check taxonrank_standard Check if taxonRank is standard.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_taxonrank_standard(input = NULL, language = "en", alternative = FALSE)
+dc_taxonrank_standard(input = NULL, language = "en",
+  alternative = FALSE)
 }
 \arguments{
 \item{input}{a vector of taxon rank. To pass must be within given

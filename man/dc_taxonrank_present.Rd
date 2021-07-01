@@ -4,9 +4,7 @@
 \name{dc_taxonrank_present}
 \alias{dc_taxonrank_present}
 \title{Data check taxonrank_present Check if taxonRank exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_taxonrank_present(input = NULL)
 }

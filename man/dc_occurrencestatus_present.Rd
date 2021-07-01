@@ -5,9 +5,7 @@
 \alias{dc_occurrencestatus_present}
 \title{Data check occurrencestatus_present Check if occurrenceStatus exists and
 is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_occurrencestatus_present(input = NULL)
 }

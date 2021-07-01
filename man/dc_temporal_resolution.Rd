@@ -5,15 +5,10 @@
 \alias{dc_temporal_resolution}
 \title{Data check temporal_resolution Check if eventDate is within given range
 and resolution.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_temporal_resolution(
-  input = NULL,
-  temporal_res = c("2016-01-02", "2018-02-08", "month"),
-  ...
-)
+dc_temporal_resolution(input = NULL, temporal_res = c("2016-01-02",
+  "2018-02-08", "month"), ...)
 }
 \arguments{
 \item{input}{a vector of event date information. To pass must be within 
