@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 TRUE*.R
+.DS_Store
+*.Rproj
