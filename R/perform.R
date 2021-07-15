@@ -153,6 +153,10 @@ perform_dc_missing <- function(result, input) {
   # Turn failed values to FALSE
   result[is.na(result)] <- FALSE
   # Get original missing values
-  result[is.na(input) | input == ""] <- NA
+  if (is.character(input)) {
+    result[is.na(input) | input == ""] <- NA
+  } else {
+    result[is.na(input)] <- NA
+  }
   return(result)
 }
