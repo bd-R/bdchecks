@@ -90,7 +90,8 @@ DataCheckFlag <- setClass(
 #'
 #' @slot DC names of performed data checks
 #' @slot flags list of performed data checks in a DataCheckFlagSet class
-#' @slot data frame of not performed data checks in a DataCheckFlagSet class
+#' @slot not_performed data.frame of not performed data checks in a 
+#' DataCheckFlagSet class
 #'
 DataCheckFlagSet <- setClass(
   "DataCheckFlagSet",

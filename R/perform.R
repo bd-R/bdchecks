@@ -33,7 +33,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
   }
   # DataCheckFlagSet object place
   result_dc <- list()
-  not_performed <- NULL
+  not_performed <- data.frame()
   for (i in seq_along(wanted_dc)) {
     # Match each check name to data.checks object
     idx <- which(names(data.checks@dc_body) == wanted_dc[i])

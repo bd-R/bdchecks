@@ -24,6 +24,7 @@ Show method for DataCheckFlagSet objects
 
 \item{\code{flags}}{list of performed data checks in a DataCheckFlagSet class}
 
-\item{\code{data}}{frame of not performed data checks in a DataCheckFlagSet class}
+\item{\code{not_performed}}{data.frame of not performed data checks in a 
+DataCheckFlagSet class}
 }}
 
