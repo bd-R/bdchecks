@@ -13,10 +13,10 @@ dc_eventdate_inrange <- function(
   clean_input <- input %>%
     gsub(" ", "", .) # Remove possible spaces
   clean_input <- ifelse(clean_input == "", NA, clean_input) %>%
-    {suppressWarnings(lubridate::as_date(., format = "%Y-%m-%d"))}
+    strptime(., format = "%Y-%m-%d")
   result <- (
-    clean_input >= as.Date(date_start, origin = "1970-01-01") & 
-    clean_input <= as.Date(date_end, origin = "1970-01-01")
+    clean_input >= strptime(date_start, format = "%Y-%m-%d") & 
+    clean_input <= strptime(date_end, format = "%Y-%m-%d")
   )
   return(perform_dc_missing(result, input))
 }
