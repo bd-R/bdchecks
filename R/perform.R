@@ -127,6 +127,10 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
     }
   }
   if (length(result_dc) > 0) {
+    # Filter partially performed checks in not_performed
+    performed <- unlist(lapply(result_dc, function(x) {x@name}))
+    not_performed <- not_performed[!not_performed$check %in% performed, ]
+    row.names(not_performed) <- NULL
     # Create DataCheckFlagSet from DataCheckFlag
     result_dc <- methods::new("DataCheckFlagSet",
       DC = as.character(lapply(result_dc, function(x) `@`(x, name))),

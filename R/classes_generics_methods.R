@@ -116,8 +116,6 @@ setMethod(
 
     not <- object@not_performed
     if (!is.null(not)) {
-      not <- not[!not$check %in% bar$check,]
-      row.names(not) <- NULL
       message("Performed data checks: \n", 
         paste0(capture.output(bar), collapse = "\n"),
         "\n\nNot performed data checks (because of missing columns): \n",
