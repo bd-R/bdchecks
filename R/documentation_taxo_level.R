@@ -15,7 +15,9 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' perform_dc(data_bats, 'taxo_level', c("species"))
+#' perform_dc(
+#'   data_bats, 'taxo_level', flags = FALSE, c("species")
+#' )
 #' @section samplePassData:
 #' The value for taxonRank is lower than provided resolution.
 #' @section sampleFailData:

@@ -16,7 +16,7 @@
 #' @format An object of class function to perform a specific data check.
 #' @references None
 #' @examples 
-#' perform_dc(data_bats, 'spatial_resolution', 1000)
+#' perform_dc(data_bats, 'spatial_resolution', flags = FALSE, 1000)
 #' @section samplePassData:
 #' The value for coordinateUncertaintyInMeters is not greater than provided
 #' resolution.

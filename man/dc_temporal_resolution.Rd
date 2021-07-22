@@ -53,7 +53,7 @@ eventDate
 
 \examples{
 perform_dc(
-  data_bats, 'temporal_resolution', c("2016-01-02", "2018-02-08", "month")
+  data_bats, 'temporal_resolution', flags = FALSE, c("2016-01-02", "2018-02-08", "month")
 )
 }
 \references{

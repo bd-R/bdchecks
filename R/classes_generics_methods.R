@@ -92,10 +92,16 @@ DataCheckFlag <- setClass(
 #' @slot flags list of performed data checks in a DataCheckFlagSet class
 #' @slot not_performed data.frame of not performed data checks in a 
 #' DataCheckFlagSet class
+#' @slot flag_table data.frame of original data with it's flagging information
 #'
 DataCheckFlagSet <- setClass(
   "DataCheckFlagSet",
-  slots = c(DC = "vector", flags = "list", not_performed = "data.frame")
+  slots = c(
+    DC = "vector", 
+    flags = "list", 
+    not_performed = "data.frame",
+    flag_table = "data.frame"
+  )
 )
 
 #' Show method for DataCheckFlagSet objects
@@ -114,12 +120,11 @@ setMethod(
     #message(paste(res$check, "->", res$target, "\n"))
     bar <- data.frame(check = res$check, target = res$target)
 
-    not <- object@not_performed
-    if (!is.null(not)) {
+    if (!is.null(object@not_performed)) {
       message("Performed data checks: \n", 
         paste0(capture.output(bar), collapse = "\n"),
         "\n\nNot performed data checks (because of missing columns): \n",
-        paste0(capture.output(not), collapse = "\n")
+        paste0(capture.output(object@not_performed), collapse = "\n")
       )
     } else {
       message("Performed data checks: \n", 
