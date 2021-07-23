@@ -5,9 +5,7 @@
 \alias{dc_kingdom_valid}
 \title{Data check kingdom_valid Check if kingdom was found as a value at the rank
 of kingdom by the specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_kingdom_valid(input = NULL)
 }

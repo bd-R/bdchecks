@@ -5,15 +5,10 @@
 \alias{dc_year_inrange}
 \title{Data check year_inrange Check if year is not empty and is within given
 earliest and latest dates.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_year_inrange(
-  input = NULL,
-  date_start = "1600",
-  date_end = format(Sys.Date(), "\%Y")
-)
+dc_year_inrange(input = NULL, date_start = "1600",
+  date_end = format(Sys.Date(), "\%Y"))
 }
 \arguments{
 \item{input}{a vector of year information. To pass must be within 

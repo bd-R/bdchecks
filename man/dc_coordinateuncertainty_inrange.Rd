@@ -5,15 +5,10 @@
 \alias{dc_coordinateuncertainty_inrange}
 \title{Data check coordinateuncertainty_inrange Check if
 coordinateUncertaintyInMeters is within given range.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_coordinateuncertainty_inrange(
-  input = NULL,
-  lower_limit = 1,
-  upper_limit = 20037509
-)
+dc_coordinateuncertainty_inrange(input = NULL, lower_limit = 1,
+  upper_limit = 20037509)
 }
 \arguments{
 \item{input}{a vector of coordinate uncertainty in meters. To pass it must

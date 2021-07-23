@@ -5,11 +5,10 @@
 \alias{dc_minelevation_inrange}
 \title{Data check minelevation_inrange Check if minimumElevationInMeters is
 within parameter range.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_minelevation_inrange(input = NULL, lower_limit = -428, upper_limit = 8850)
+dc_minelevation_inrange(input = NULL, lower_limit = -428,
+  upper_limit = 8850)
 }
 \arguments{
 \item{input}{a vector of minimum elevation meters. To pass it must

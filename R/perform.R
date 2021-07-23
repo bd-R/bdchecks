@@ -98,8 +98,9 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, flags = FALSE, ...) {
         )$res
       }
     }
+    
     # Merge values (if multiple targets exist) based on data check logic
-    if (!is.null(dc@information$resolution$term)) {
+    if (!is.null(dc@information$resolution$term) && length(target_result) != 0) {
       if (dc@information$resolution$term == "multi_term_logical_AND") {
         target_result <- list(merged_targets = 
           rowSums(do.call("cbind", target_result)) == length(target_result)

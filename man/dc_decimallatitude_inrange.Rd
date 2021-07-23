@@ -5,9 +5,7 @@
 \alias{dc_decimallatitude_inrange}
 \title{Data check decimallatitude_inrange Check if decimalLatitude is within
 parameter range.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_decimallatitude_inrange(input = NULL)
 }

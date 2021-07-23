@@ -4,9 +4,7 @@
 \alias{dc_order_valid}
 \title{Data check order_valid Check if order was found as a value at the rank of
 order by the specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_order_valid(input = NULL)
 }

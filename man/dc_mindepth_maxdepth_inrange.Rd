@@ -5,15 +5,10 @@
 \alias{dc_mindepth_maxdepth_inrange}
 \title{Data check mindepth_maxdepth_inrange Check if minimumDepthInMeters and
 maximumDepthInMeters is within parameter range.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_mindepth_maxdepth_inrange(
-  input = NULL,
-  lower_depth = 0,
-  upper_depth = 11000
-)
+dc_mindepth_maxdepth_inrange(input = NULL, lower_depth = 0,
+  upper_depth = 11000)
 }
 \arguments{
 \item{input}{a vector of minimum or maximum depth in meters. To pass it must

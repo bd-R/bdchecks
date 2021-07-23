@@ -4,9 +4,7 @@
 \name{dc_taxonid_present}
 \alias{dc_taxonid_present}
 \title{Data check taxonid_present Check if taxonID exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_taxonid_present(input = NULL)
 }

@@ -5,11 +5,10 @@
 \alias{dc_maxelevation_inrange}
 \title{Data check maxelevation_inrange Check if maximumElevationInMeters is
 within parameter range.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_maxelevation_inrange(input = NULL, lower_limit = -428, upper_limit = 8850)
+dc_maxelevation_inrange(input = NULL, lower_limit = -428,
+  upper_limit = 8850)
 }
 \arguments{
 \item{input}{a vector of maximum elevation meters. To pass it must

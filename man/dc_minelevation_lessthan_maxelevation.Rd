@@ -5,9 +5,7 @@
 \alias{dc_minelevation_lessthan_maxelevation}
 \title{Data check minelevation_lessthan_maxelevation Check if
 minimumElevationInMeters is not greater than maximumElevationInMeters.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_minelevation_lessthan_maxelevation(input = NULL, input2 = NULL)
 }
