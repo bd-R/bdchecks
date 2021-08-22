@@ -17,7 +17,10 @@ test_that("datacheck_info_export", {
   # Check if output is valid
   if (!file.exists("./R")) {
     foo <- dir.create("./foo")
-    result <- expect_silent(datacheck_info_export(path_rd = foo)) 
+    result <- expect_silent(bdchecks:::datacheck_info_export(path_rd = foo))
+    unlink("foo", recursive = TRUE) 
+  } else {
+    result <- expect_silent(bdchecks:::datacheck_info_export())
   }
   expect_s4_class(result, "DataCheckSet")
   expect_message(print(result))
@@ -159,7 +162,7 @@ test_that("dc_filter_generate", {
   filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
   # generating filters
   bar <- expect_silent(
-    dc_filter_generate(
+    bdchecks:::dc_filter_generate(
       dc_result_summary = foo, 
       cell_selected = filter_matrix
     )
@@ -180,14 +183,14 @@ test_that("dc_filter", {
   filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
   # generating filters
   bar <- expect_silent(
-    dc_filter_generate(
+    bdchecks:::dc_filter_generate(
       dc_result_summary = foo, 
       cell_selected = filter_matrix
     )
   )
   # performing filtering
   fooo <- expect_silent(
-    dc_filter(
+    bdchecks:::dc_filter(
       data = testing_data,
       # 'result' and 'bar' from previous test
       dc_result = result,
@@ -198,14 +201,14 @@ test_that("dc_filter", {
   # filter all 3 options at once
   bad_matrix <- matrix(c(rep(1, 3), 2, 3, 4), nrow = 3)
   bar <- expect_silent(
-    dc_filter_generate(
+    bdchecks:::dc_filter_generate(
       dc_result_summary = foo, 
       cell_selected = bad_matrix
     )
   )
   # performing filtering
   fooo <- expect_error(
-    dc_filter(
+    bdchecks:::dc_filter(
       data = testing_data,
       # 'result' and 'bar' from previous test
       dc_result = result,
