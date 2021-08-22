@@ -5,9 +5,7 @@
 \alias{dc_day_standard}
 \title{Data check day_standard Check if day is an integer between 1 and 31
 inclusive.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_day_standard(input = NULL)
 }

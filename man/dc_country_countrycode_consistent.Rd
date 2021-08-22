@@ -5,9 +5,7 @@
 \alias{dc_country_countrycode_consistent}
 \title{Data check country_countrycode_consistent Check if country matches country
 code.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_country_countrycode_consistent(input = NULL, input2 = NULL)
 }

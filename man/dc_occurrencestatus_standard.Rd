@@ -5,11 +5,10 @@
 \alias{dc_occurrencestatus_standard}
 \title{Data check occurrencestatus_standard Check if occurrenceStatus is
 specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
-dc_occurrencestatus_standard(input = NULL, sources = c("present", "absent"))
+dc_occurrencestatus_standard(input = NULL, sources = c("present",
+  "absent"))
 }
 \arguments{
 \item{input}{a vector of occurrenceStatus information. To pass it must be

@@ -5,9 +5,7 @@
 \alias{dc_scientificname_present}
 \title{Data check scientificname_present Check if scientificName exists and is
 not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_scientificname_present(input = NULL)
 }

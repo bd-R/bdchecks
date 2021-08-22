@@ -5,9 +5,7 @@
 \alias{dc_eventtemporal_present}
 \title{Data check eventtemporal_present Check if at least one field needed to
 determine event temporal of the entity exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_eventtemporal_present(input = NULL)
 }

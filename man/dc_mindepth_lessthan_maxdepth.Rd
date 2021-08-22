@@ -5,9 +5,7 @@
 \alias{dc_mindepth_lessthan_maxdepth}
 \title{Data check mindepth_lessthan_maxdepth Check if minimumDepthInMeters is not
 greater than maximumDepthInMeters.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_mindepth_lessthan_maxdepth(input = NULL, input2 = NULL)
 }

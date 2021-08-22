@@ -5,9 +5,7 @@
 \alias{dc_phylum_valid}
 \title{Data check phylum_valid Check if phylum was found as a value at the rank
 of phylum by the specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_phylum_valid(input = NULL)
 }

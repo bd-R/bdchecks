@@ -5,9 +5,7 @@
 \alias{dc_family_valid}
 \title{Data check family_valid Check if family was found as a value at the rank
 of family by the specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_family_valid(input = NULL)
 }

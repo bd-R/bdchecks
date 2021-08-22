@@ -5,9 +5,7 @@
 \alias{dc_datageneralizations_present}
 \title{Data check datageneralizations_present Check if dataGeneralizations is not
 empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_datageneralizations_present(input = NULL)
 }

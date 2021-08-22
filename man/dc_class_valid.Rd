@@ -4,9 +4,7 @@
 \alias{dc_class_valid}
 \title{Data check class_valid Check if class was found as a value at the rank of
 class by the specified source authority service.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_class_valid(input = NULL)
 }

@@ -5,9 +5,7 @@
 \alias{dc_countrycode_present}
 \title{Data check countrycode_present Check if countryCode exists and is not
 empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_countrycode_present(input = NULL)
 }

@@ -5,9 +5,7 @@
 \alias{dc_coordinates_notzero}
 \title{Data check coordinates_notzero Check if decimalLatitude or
 decimalLongitude are not zeroes.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_coordinates_notzero(input = NULL)
 }

@@ -4,9 +4,7 @@
 \name{dc_eventdate_present}
 \alias{dc_eventdate_present}
 \title{Data check eventdate_present Check if eventDate exists and is not empty.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_eventdate_present(input = NULL)
 }

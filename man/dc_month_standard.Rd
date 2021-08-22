@@ -5,9 +5,7 @@
 \alias{dc_month_standard}
 \title{Data check month_standard Check if month is an integer between 1 and 12
 inclusive.}
-\format{
-An object of class function to perform a specific data check.
-}
+\format{An object of class function to perform a specific data check.}
 \usage{
 dc_month_standard(input = NULL)
 }
