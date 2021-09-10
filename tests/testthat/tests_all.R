@@ -32,12 +32,12 @@ context("Data Checks")
 # performs data checks on a given data set
 test_that("perform_dc", {
   # No data set provided will give warnings and null
-  result <- expect_error(perform_dc())
+  expect_error(perform_dc())
   result <- perform_dc(testing_data)
   # we should have at least 18 performed DCs
   expect_gt(length(result@DC), 1)
   # No arguments provided
-  expect_error(perform_dc(mtcars))
+  expect_null(perform_dc(mtcars))
   expect_silent(
     perform_dc(testing_data, wanted_dc = "taxo_level", lowest_rank = "family")
   )
