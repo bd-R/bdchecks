@@ -23,6 +23,9 @@
 #'
 perform_dc <- function(data = NULL, wanted_dc = NULL, flags = FALSE, ...) {
 
+  if (is.null(data)) {
+    stop("missing data input for perform_dc()")
+  }
   # All data checks ("tdwg_standard" type) to perform
   # If not we have to make sure that all wanted dc exist
   if (is.null(wanted_dc)) {
@@ -135,7 +138,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, flags = FALSE, ...) {
     not_performed <- not_performed[!not_performed$check %in% performed, ]
     row.names(not_performed) <- NULL
     # Create DataCheckFlagSet from DataCheckFlag
-    if (flags) {
+    if (!flags) {
       result_dc <- methods::new("DataCheckFlagSet",
         DC = as.character(lapply(result_dc, function(x) `@`(x, name))),
         flags = result_dc,
