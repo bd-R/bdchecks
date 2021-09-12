@@ -26,5 +26,7 @@ Show method for DataCheckFlagSet objects
 
 \item{\code{not_performed}}{data.frame of not performed data checks in a 
 DataCheckFlagSet class}
+
+\item{\code{flag_table}}{data.frame of original data with it's flagging information}
 }}
 

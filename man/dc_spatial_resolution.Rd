@@ -53,7 +53,7 @@ coordinateUncertaintyInMeters
 }
 
 \examples{
-perform_dc(data_bats, 'spatial_resolution', 1000)
+perform_dc(data_bats, 'spatial_resolution', flags = FALSE, 1000)
 }
 \references{
 None

@@ -36,6 +36,7 @@ data.frame(
   kableExtra::row_spec(
     3, background = "#ff9999"
   ) %>%
+  htmltools::HTML() %>%
   print()
 ```
 
@@ -64,6 +65,7 @@ for (i in seq_along(data_test)) {
         full_width = TRUE,
         bootstrap_options = c("striped", "hover", "bordered", "condensed")
       ) %>%
+      htmltools::HTML() %>%
       print()
     skipping <- c(skipping, names(data_test)[i])
   }
@@ -97,6 +99,7 @@ for (i in seq_along(data_test)) {
       kableExtra::row_spec(
         which(d$observed == "fail"), background = "#ffff99"
       ) %>%
+      htmltools::HTML() %>%
       print()
   }
 }

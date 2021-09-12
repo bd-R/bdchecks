@@ -4,13 +4,16 @@
 \alias{perform_dc}
 \title{Perform Data Checks}
 \usage{
-perform_dc(data = NULL, wanted_dc = NULL, ...)
+perform_dc(data = NULL, wanted_dc = NULL, flags = FALSE, ...)
 }
 \arguments{
 \item{data}{Data set to perform data checks}
 
 \item{wanted_dc}{Character vector of names for data checks that should be 
 performed (ie perform only these data checks)}
+
+\item{flags}{Logical value whether to save flags information as a separate
+table in the final result object}
 
 \item{...}{A value for the input-based checks
 (possible choices: temporal_res, spatial_res, lowest_rank, lowest_date)}
