@@ -35,7 +35,7 @@ tax_available_name <- function(name = NULL, rank_orig = "class", db = "gbif") {
   data <- data[data != ""]
   # Need this to suppress querying message
   suppressMessages(capture.output(
-    res <- taxize::classification(data, db, ask = FALSE) %>%
+    res <- taxize::classification(data, db, ask = FALSE, rows = 1) %>%
       rbind()
   ))
   res <- res[res$rank == rank_orig, "name"] %>%

@@ -113,7 +113,6 @@ family_valid:
     - [Cebidae, correct, pass]
     - [Cercopithecidae, correct, pass]
     - [Hylobatidae, correct, pass]
-    - [Pongidae, correct, pass]
     - [Hominidae, correct, pass]
     - [-2000, irrelevent, fail]
     - [Orange, irrelevent, fail]

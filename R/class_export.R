@@ -138,7 +138,11 @@ roxygen_comment_generate <- function(DC) {
   # Add additional fields for the bdclean
   if (DC$meta$information$check_type == "bdclean") {
     provided_input <- parse(text = DC$documentation$input_example)
-    skeleton <- sub("input_example", provided_input, skeleton)
+    skeleton <- sub(
+      "input_example", 
+      paste0("flags = FALSE, ", provided_input), 
+      skeleton
+    )
   }
   # Add dc name in the example field
   if (nchar(grep("@examples", skeleton, value = TRUE)) > 80) {

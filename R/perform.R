@@ -6,6 +6,8 @@
 #' @param data Data set to perform data checks
 #' @param wanted_dc Character vector of names for data checks that should be 
 #' performed (ie perform only these data checks)
+#' @param flags Logical value whether to save flags information as a separate
+#' table in the final result object
 #' @param ... A value for the input-based checks
 #' (possible choices: temporal_res, spatial_res, lowest_rank, lowest_date)
 #'
@@ -19,8 +21,11 @@
 #' 
 #' @export
 #'
-perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
+perform_dc <- function(data = NULL, wanted_dc = NULL, flags = FALSE, ...) {
 
+  if (is.null(data)) {
+    stop("missing data input for perform_dc()")
+  }
   # All data checks ("tdwg_standard" type) to perform
   # If not we have to make sure that all wanted dc exist
   if (is.null(wanted_dc)) {
@@ -33,7 +38,7 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
   }
   # DataCheckFlagSet object place
   result_dc <- list()
-  not_performed <- NULL
+  not_performed <- data.frame()
   for (i in seq_along(wanted_dc)) {
     # Match each check name to data.checks object
     idx <- which(names(data.checks@dc_body) == wanted_dc[i])
@@ -54,11 +59,11 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
     }
     # Output any missing targets
     if (length(missing_targets) != 0) {
-      warning(
-        dc@name, " won't be performed on the following columns, ", 
-        "because they don't exist in a given dataset: ", 
-        paste(missing_targets, collapse=", ")
-      )
+      # warning(
+      #   dc@name, " won't be performed on the following columns, ", 
+      #   "because they don't exist in a given dataset: ", 
+      #   paste(missing_targets, collapse=", ")
+      # )
       not_performed <- rbind(
         not_performed, 
         data.frame(
@@ -128,11 +133,29 @@ perform_dc <- function(data = NULL, wanted_dc = NULL, ...) {
     }
   }
   if (length(result_dc) > 0) {
+    # Filter partially performed checks in not_performed
+    performed <- unlist(lapply(result_dc, function(x) {x@name}))
+    not_performed <- not_performed[!not_performed$check %in% performed, ]
+    row.names(not_performed) <- NULL
     # Create DataCheckFlagSet from DataCheckFlag
-    result_dc <- methods::new("DataCheckFlagSet",
-      DC = as.character(lapply(result_dc, function(x) `@`(x, name))),
-      flags = result_dc
-    )
+    if (!flags) {
+      result_dc <- methods::new("DataCheckFlagSet",
+        DC = as.character(lapply(result_dc, function(x) `@`(x, name))),
+        flags = result_dc,
+        not_performed = not_performed,
+        flag_table = data.frame()
+      )
+    } else {
+      flag_table <- data.frame(sapply(result_dc, function(x) {x@flag}))
+      colnames(flag_table) <- performed
+      flag_table <- cbind(data, flag_table)
+      result_dc <- methods::new("DataCheckFlagSet",
+        DC = as.character(lapply(result_dc, function(x) `@`(x, name))),
+        flags = result_dc,
+        not_performed = not_performed,
+        flag_table = flag_table
+      )
+    }
     return(result_dc)
   } else {
     return(NULL)
@@ -153,6 +176,10 @@ perform_dc_missing <- function(result, input) {
   # Turn failed values to FALSE
   result[is.na(result)] <- FALSE
   # Get original missing values
-  result[is.na(input) | input == ""] <- NA
+  if (is.character(input)) {
+    result[is.na(input) | input == ""] <- NA
+  } else {
+    result[is.na(input)] <- NA
+  }
   return(result)
 }

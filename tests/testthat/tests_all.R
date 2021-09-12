@@ -17,7 +17,10 @@ test_that("datacheck_info_export", {
   # Check if output is valid
   if (!file.exists("./R")) {
     foo <- dir.create("./foo")
-    result <- expect_silent(datacheck_info_export(path_rd = foo)) 
+    result <- expect_silent(bdchecks:::datacheck_info_export(path_rd = foo))
+    unlink("foo", recursive = TRUE) 
+  } else {
+    result <- expect_silent(bdchecks:::datacheck_info_export())
   }
   expect_s4_class(result, "DataCheckSet")
   expect_message(print(result))
@@ -29,13 +32,12 @@ context("Data Checks")
 # performs data checks on a given data set
 test_that("perform_dc", {
   # No data set provided will give warnings and null
-  result <- expect_error(perform_dc())
-  result <- expect_warning(perform_dc(testing_data))
+  expect_error(perform_dc())
+  result <- perform_dc(testing_data)
   # we should have at least 18 performed DCs
   expect_gt(length(result@DC), 1)
   # No arguments provided
-  expect_warning(perform_dc(testing_data))
-  expect_error(perform_dc(mtcars))
+  expect_null(perform_dc(mtcars))
   expect_silent(
     perform_dc(testing_data, wanted_dc = "taxo_level", lowest_rank = "family")
   )
@@ -122,7 +124,7 @@ context("Summary Function")
 test_that("summary_dc", {
   # Data checks on example data
   # We expect warnings as not all columns are present
-  result <- expect_warning(perform_dc(testing_data))
+  result <- perform_dc(testing_data)
   # Check if output is valid
   expect_s4_class(result, "DataCheckFlagSet")
   # If any DataCheckFlagSet@flags@result missing, its not included in summary
@@ -152,7 +154,7 @@ test_that("dc_filter_generate", {
   # Data checks on example data
   # We expect warnings as not all columns are present
   dc <- names(data.checks@dc_body[c(1:3)])
-  result <- expect_warning(perform_dc(testing_data, wanted_dc = dc))
+  result <- perform_dc(testing_data, wanted_dc = dc)
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   # will be used for 'cell_selected' option, usually generated in shiny app
   # 1st column row number in the summary table, 2nd column - specific value:
@@ -160,7 +162,7 @@ test_that("dc_filter_generate", {
   filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
   # generating filters
   bar <- expect_silent(
-    dc_filter_generate(
+    bdchecks:::dc_filter_generate(
       dc_result_summary = foo, 
       cell_selected = filter_matrix
     )
@@ -175,20 +177,20 @@ test_that("dc_filter", {
   # Data checks on example data
   # We expect warnings as not all columns are present
   dc <- names(data.checks@dc_body[c(1:3)])
-  result <- expect_warning(perform_dc(testing_data, wanted_dc = dc))
+  result <- perform_dc(testing_data, wanted_dc = dc)
   foo <- summary_dc(result, fancy = FALSE, filtering_dt = TRUE)
   # will be used for 'cell_selected' option, usually generated in shiny app
   filter_matrix <- matrix(c(seq(foo[,1]), 2, 3, 4), nrow = 3)
   # generating filters
   bar <- expect_silent(
-    dc_filter_generate(
+    bdchecks:::dc_filter_generate(
       dc_result_summary = foo, 
       cell_selected = filter_matrix
     )
   )
   # performing filtering
   fooo <- expect_silent(
-    dc_filter(
+    bdchecks:::dc_filter(
       data = testing_data,
       # 'result' and 'bar' from previous test
       dc_result = result,
@@ -199,14 +201,14 @@ test_that("dc_filter", {
   # filter all 3 options at once
   bad_matrix <- matrix(c(rep(1, 3), 2, 3, 4), nrow = 3)
   bar <- expect_silent(
-    dc_filter_generate(
+    bdchecks:::dc_filter_generate(
       dc_result_summary = foo, 
       cell_selected = bad_matrix
     )
   )
   # performing filtering
   fooo <- expect_error(
-    dc_filter(
+    bdchecks:::dc_filter(
       data = testing_data,
       # 'result' and 'bar' from previous test
       dc_result = result,

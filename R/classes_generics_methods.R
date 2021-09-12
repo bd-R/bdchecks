@@ -90,10 +90,18 @@ DataCheckFlag <- setClass(
 #'
 #' @slot DC names of performed data checks
 #' @slot flags list of performed data checks in a DataCheckFlagSet class
+#' @slot not_performed data.frame of not performed data checks in a 
+#' DataCheckFlagSet class
+#' @slot flag_table data.frame of original data with it's flagging information
 #'
 DataCheckFlagSet <- setClass(
   "DataCheckFlagSet",
-  slots = c(DC = "vector", flags = "list")
+  slots = c(
+    DC = "vector", 
+    flags = "list", 
+    not_performed = "data.frame",
+    flag_table = "data.frame"
+  )
 )
 
 #' Show method for DataCheckFlagSet objects
@@ -111,20 +119,17 @@ setMethod(
     res <- do.call(rbind, res)
     #message(paste(res$check, "->", res$target, "\n"))
     bar <- data.frame(check = res$check, target = res$target)
-    message("Performed data checks: \n", 
-         paste0(capture.output(bar), collapse = "\n")
-       )
-    # if (!is.null(not_performed)) {
-    #   not_performed <- not_performed[!not_performed$check %in% bar$check,]
-    #   message("Performed data checks: \n", 
-    #     paste0(capture.output(bar), collapse = "\n"),
-    #     "\n\nNot performed data checks (because of missing columns): \n",
-    #     paste0(capture.output(not_performed), collapse = "\n")
-    #   )
-    # } else {
-    #   message("Performed data checks: \n", 
-    #     paste0(capture.output(bar), collapse = "\n")
-    #   )
-    # }
+
+    if (!is.null(object@not_performed)) {
+      message("Performed data checks: \n", 
+        paste0(capture.output(bar), collapse = "\n"),
+        "\n\nNot performed data checks (because of missing columns): \n",
+        paste0(capture.output(object@not_performed), collapse = "\n")
+      )
+    } else {
+      message("Performed data checks: \n", 
+        paste0(capture.output(bar), collapse = "\n")
+      )
+    }
   }
 )
