@@ -19,7 +19,7 @@ dc_filter_generate <- function(
 ) {
   result <- lapply(unique(cell_selected[, 1]), function(i) {
     dc_current <- dc_result_summary[i, ]
-    foo <- unique(cell_selected[cell_selected[, 1] == i, 2] - 1)
+    foo <- unique(cell_selected[cell_selected[, 1] == i, 2] - 2)
     list(
       name = dc_current[, 1],
       target = dc_current[, 2],

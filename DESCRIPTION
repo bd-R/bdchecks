@@ -1,8 +1,8 @@
 Package: bdchecks
 Title: Biodiversity Data Checks
 Description: Supplies a set of functions to perform and manage data checks for biodiversity data. 
-Version: 0.2.4
-Date: 2021-09-12
+Version: 0.2.5
+Date: 2022-01-02
 License: GPL-3 | file LICENSE
 URL: https://github.com/bd-R/bdchecks
 BugReports: https://github.com/bd-R/bdchecks/issues
