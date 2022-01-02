@@ -72,5 +72,8 @@ dc_filter <- function(data, dc_result, dc_filts) {
     }
   }
   idx <- unique(idx)
-  return(data[-idx, ])
+  if (length(idx) > 0){
+    return(data[-idx, ])
+  }
+  return(data)
 }
